@@ -3,24 +3,40 @@ import { auth, googleProvider } from "../../confg/firebase";
 
 import {
     createUserWithEmailAndPassword,
-    signInWithPopup
+    signInWithPopup,
+    updateProfile
   } from "firebase/auth";
 
   import { useState } from "react";
+import {  useNavigate } from 'react-router-dom';
 
 function SignUp() {
 
+  //nav path
+  const navigate = useNavigate();
+
+  const[name, setName]= useState("");
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signIn = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
+  //create acc with emeil and password
+  const signIn = async () => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(async (res) => {
+      const user = res.user;
+      await updateProfile(user, {
+        displayName: name,
+      });
+      navigate("/");
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+
+//sign in with Google
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -39,7 +55,9 @@ function SignUp() {
                     <h4 className="mb-4 pb-3" id="color-gradient">Sign Up</h4>
                     <div className="form-group">
                       <input type="text" name="logname" className="form-style"
-                        placeholder="Your Full Name" id="logname" autocomplete="off"/>
+                        placeholder="Your Full Name" id="logname" autocomplete="off"
+                        onChange={(e) => setName(e.target.value)}
+                        />
                       <i className="input-icon uil uil-user"></i>
                     </div>
                     <div className="form-group mt-2">
