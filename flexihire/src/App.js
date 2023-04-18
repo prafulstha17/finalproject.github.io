@@ -4,11 +4,12 @@ import SignUp from './components/Signup/SignUp'
 import Login from './components/Login/Login'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import { auth } from './confg/firebase'
+import SignOut from './components/Signup/SignOut'
 
 function App() {
 
   const [userName, setUserName] = useState("");
-
+  
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -24,7 +25,9 @@ function App() {
        <Route path='/login' element={<Login/>}/>
        <Route path="/" element={<Home name={userName} />} />
       </Routes>
+      
     </BrowserRouter>
+    
     </>
     
   )

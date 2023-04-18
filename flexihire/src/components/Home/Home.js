@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SignOut from '../Signup/SignOut'
 
 function Home(props) {
   return (
@@ -12,6 +13,7 @@ function Home(props) {
         <h1>
           <Link to="/signup">Signup</Link>
         </h1>
+      
       </div>
 
       <br />
@@ -19,6 +21,9 @@ function Home(props) {
       <br />
 
       <h2>{props.name ? `Welcome - ${props.name}` : "Login please"}</h2>
+      
+      <SignOut/>
+
     </div>
     
   )
