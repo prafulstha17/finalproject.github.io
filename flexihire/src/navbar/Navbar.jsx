@@ -53,7 +53,9 @@ function Navbar() {
           <a className="nav-link" href="#">Services</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Contact me</a>
+        <Link className="nav-link" to="/contactUs">
+                        Contact Us
+                      </Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">About</a>
@@ -100,14 +102,7 @@ function Navbar() {
                 )}
               </ul>
         <div className="auth-wrapper">
-          {/* <div className="auth-inner container mt-5 mb-5">
-            <Routes>
-              <Route path="/" element={<Home name={userName} />} />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/profile" element={<Profile user={user} />} />
-            </Routes>
-          </div> */}
+          
         </div>
       </div>
             </div>
