@@ -5,27 +5,17 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import SignUp from './components/Signup/SignUp';
-import './login_signup.css'
 import './responsive.css';
 import Navbar from './navbar/Navbar';
 
 function App() {
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-
-    // unsubscribe from the listener when the component unmounts
-    return unsubscribe;
-  }, []);
+  const user = useState(null);
 
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    auth.onIdTokenChanged((user) => {
       if (user) {
         setUserName(user.displayName);
       } else setUserName("");
