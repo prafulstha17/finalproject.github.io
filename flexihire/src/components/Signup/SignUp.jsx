@@ -48,9 +48,6 @@ function SignUp() {
     }
   };
 
-
-
-
   return (
     <div className="card-back" id="card">
                 <div className="center-wrap">
@@ -92,10 +89,10 @@ function SignUp() {
                     <p className="mb-0 mt-4 text-center"><a href="#" id="color-gradient">
             <Link className="nav-link" to={'/sign-in'}>
             Have an account? Log in
-					  </Link>
+            </Link>
 					  <Routes>
                			 <Route path="/sign-in" element={<Login />} />
-            </Routes>
+              </Routes>
           </a></p>
                   </div>
                   

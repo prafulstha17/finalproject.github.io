@@ -23,6 +23,26 @@ function Profile() {
     });
   }, []);
 
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Upload the file to Firebase Storage
+      const storageRef = storage.ref(`users/${user.uid}/profile.jpg`);
+      const task = storageRef.put(file);
+      task.then(() => {
+        // Get the URL of the uploaded file and update the state
+        storageRef.getDownloadURL().then(url => {
+          setProfilePicUrl(url);
+        }).catch(error => {
+          console.log(error.message);
+          setProfilePicUrl(null);
+        });
+      }).catch(error => {
+        console.log(error.message);
+      });
+    }
+  };
+
   return (
     <div className="profile">
       {user ? (
@@ -34,6 +54,9 @@ function Profile() {
           )}
           <p className="profile-name">{user.displayName}</p>
           <p className="profile-email">{user.email}</p>
+          <div>
+            <input type="file" accept="image/*" onChange={handleFileUpload} />
+          </div>
         </>
       ) : (
         <p>Please sign in to view your profile.</p>

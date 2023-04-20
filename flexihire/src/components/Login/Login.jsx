@@ -55,17 +55,8 @@ signInWithEmailAndPassword(auth, email, password)
 													<i className="input-icon uil uil-lock-alt"></i>
 												</div>
 												<div className="side mb-0 pb-3">
-													<span>
-														<div className="form-check">
-															<input type="checkbox" name="rememberme"
-																className="form-checkbox text-center" id="rememberme" checked/>
-															<p for="rememberme" id="color-gradient" className='text-remember'>Remember me</p>
-														</div>
-													</span>
-													<span><br/>
-														<p><a href="#0" className="link" id="color-gradient">Forgot your
+														<p className="mb-0 mt-4 pb-3 text-center"><a href="#0" className="link text-center" id="color-gradient">Forgot your
 																password?</a></p>
-													</span>
 												</div>
 												<button className="btn btn-info btn-lg btn-block btn-outline-danger "
 													type="submit" onClick={handleLogin}>Login</button>
