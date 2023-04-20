@@ -5,7 +5,6 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import SignUp from './components/Signup/SignUp';
-import './login_signup.css';
 import './responsive.css';
 
 function App() {
