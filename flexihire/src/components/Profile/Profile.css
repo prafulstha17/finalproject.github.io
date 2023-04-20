@@ -42,28 +42,11 @@
   background-color: #ccc;
 }
 
-.profile-pic.hovered::after {
-  content: 'Change';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-  padding: 5px;
-  transition: all 0.3s ease;
-}
-
-.profile-pic.hovered:hover::after {
-  bottom: -40px;
-}
-
 .profile-name {
+  position: fixed;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-top: 12%;
 }
 
 .profile-email {
@@ -76,19 +59,18 @@
     margin-top: 10px;
   }
 
-  .profile-pic,
-  .profile-initial {
+  .profile-pic {
     width: 120px;
     height: 120px;
     margin-bottom: 5px;
   }
 
-  .profile-initial {
-    font-size: 40px;
-  }
-
   .profile-name {
     font-size: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 35%;
   }
 
   .profile-email {
@@ -98,23 +80,6 @@
 
 .profile-pic-container {
   position: relative;
-}
-
-.profile-pic-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.profile-pic-container:hover .profile-pic-overlay {
-  opacity: 1;
 }
 
 .profile-pic-container:hover .profile-pic {
@@ -141,16 +106,33 @@
 
 .camera-icon-container {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  padding: 10px;
   cursor: pointer;
+}
+
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.zoom-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
 
 .camera-icon-container:hover {
   background-color: #dddddd;
 }
-

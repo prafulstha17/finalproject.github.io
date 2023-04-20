@@ -8,6 +8,7 @@ function Profile() {
   const [user, setUser] = useState(null);
   const [profilePicUrl, setProfilePicUrl] = useState('');
   const [isHovered, setIsHovered] = useState(false);
+  const [zoomedIn, setZoomedIn] = useState(false);
 
   useEffect(() => {
     auth.onIdTokenChanged((user) => {
@@ -20,7 +21,15 @@ function Profile() {
           })
           .catch((error) => {
             console.log(error.message);
-            setProfilePicUrl(null);
+            const defaultStorageRef = ref(storage, `default/profile.jpg`);
+            getDownloadURL(defaultStorageRef)
+              .then((url) => {
+                setProfilePicUrl(url);
+              })
+              .catch((error) => {
+                console.log(error.message);
+                setProfilePicUrl(null);
+              });
           });
       } else {
         setUser(null);
@@ -61,30 +70,40 @@ function Profile() {
     setIsHovered(false);
   };
 
+  const handleProfilePicClick = () => {
+    setZoomedIn(!zoomedIn);
+  };
+
   return (
     <div className="profile">
       {user ? (
         <>
-          <label>
-            <div
-              className="profile-pic-container"
-              onMouseOver={handleProfilePicHover}
-              onMouseOut={handleProfilePicHoverExit}
-            >
-              {profilePicUrl ? (
+          <div
+            className="profile-pic-container"
+            onMouseOver={handleProfilePicHover}
+            onMouseOut={handleProfilePicHoverExit}
+          >
+            {profilePicUrl ? (
+              <div onClick={handleProfilePicClick}>
                 <img src={profilePicUrl} alt="Profile" className="profile-pic" />
-              ) : (
-                <div className="profile-pic profile-initial">{user.displayName ? user.displayName[0] : ''}</div>
-              )}
-              {isHovered && (
-                <label htmlFor="profile-pic-input">
-                  <div className="camera-icon-container">
-                    <BsCamera size={30} />
-                  </div>
-                </label>
-              )}
+              </div>
+            ) : (
+              <div className="profile-pic profile-initial" onClick={handleProfilePicClick}>{user.displayName ? user.displayName[0] : ''}</div>
+            )}
+            {isHovered && (
+              <label htmlFor="profile-pic-input">
+                <div className="camera-icon-container">
+                  <BsCamera size={30} />
+                </div>
+              </label>
+            )}
+          </div>
+          {zoomedIn && (
+            <div className="zoom-overlay" onClick={handleProfilePicClick}>
+              <img src={profilePicUrl} alt="Profile" />
             </div>
-          </label>
+          )}
+
           <input
             type="file"
             id="profile-pic-input"
@@ -92,11 +111,11 @@ function Profile() {
             style={{ display: 'none' }}
             onChange={handleFileUpload}
           />
-          <p className="profile-name">{user.displayName}</p>
-          <p className="profile-email">{user.email}</p>
+          <br />
+          <p className="profile-name">{user.displayName ? user.displayName : 'Anonymous'}</p>
         </>
       ) : (
-        <p>Please sign in to view your profile.</p>
+        <p>Please log in to view your profile</p>
       )}
     </div>
   );
