@@ -7,6 +7,7 @@ import Profile from './components/Profile/Profile';
 import SignUp from './components/Signup/SignUp';
 import './responsive.css';
 import Navbar from './navbar/Navbar';
+import ContactForm from './components/ContactForm/ContactForm';
 
 function App() {
 
@@ -23,14 +24,17 @@ function App() {
   }, []);
   return (
     <Router>
+      {/* NavbarSection */}
       <Navbar/>
+
       <Routes>
               <Route path="/" element={<Home name={userName} />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path='/contactUs' element={<ContactForm/>}/>
               <Route path="/profile" element={<Profile user={user} />} />
-            </Routes>
-      
+      </Routes>
+
     </Router>
     
   );
