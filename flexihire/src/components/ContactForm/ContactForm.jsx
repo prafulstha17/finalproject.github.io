@@ -3,7 +3,8 @@ import "./ContactForm.css"
 
 function ContactForm() {
 
-  const [error, setError] = useState(false);
+  const [formFilled, setFormFilled] = useState(false);
+
   const[formSubmit, setFormSubmit]= useState(false);
 
 
@@ -28,6 +29,11 @@ function ContactForm() {
   const submitData = async (event)=>{
     event.preventDefault();
     const { Name,email,message}=userData;
+    if (Name && email && message){
+      setFormFilled(true);
+    }else{
+      setFormFilled(false);
+    }
 
     if(Name && email && message ){
       const res = await fetch (
@@ -49,14 +55,10 @@ function ContactForm() {
     email : "",
     message:"",
         })
-      }else{
-        setError(true);
       }
+      
       setFormSubmit(true);
       
-  }
-  else{
-    setError(true);
   }
 }
 
@@ -93,12 +95,11 @@ function ContactForm() {
         required
       />
 
-      <button type="submit" onClick={submitData}>Submit</button>
+      <button type="submit"  disabled={formFilled} onClick={submitData}>Submit</button>
      
      {/* Bug  - both span are shown in same time*/}
-      {formSubmit && <span>Message Sent</span>}
+      {formSubmit && <span style={{color:"green"}}> Message Sent</span>}
 
-      {error && <span>Please, fill the data</span>}
     </form>
     </>
   )
