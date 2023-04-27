@@ -6,7 +6,7 @@
   .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #000000;
+    color: #d4cdcd;
   }
   
   .navbar-nav .nav-item {
@@ -15,16 +15,17 @@
   
   .nav-link {
     font-size: 1.1rem;
-    color: #000000;
   }
   
   .btn-link {
     font-size: 1.1rem;
-    color: #000000;
+    color: #d4cdcd;
   }
   
   .btn-link:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background-color: #d4cdcd;
+    color: #000;
   }
   
   .auth-wrapper {
@@ -56,5 +57,44 @@
   
   .btn-primary:hover {
     background-color: #0069d9;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+    background-color: #d4cdcd;
+  }
+  
+  .navbar-toggler .icon-bar {
+    background-color: #d4cdcd;
+  }
+  
+  @media (max-width: 767px) {
+    .navbar-nav {
+      flex-direction: column;
+      margin-top: 15px;
+    }
+  
+    .nav-item {
+      width: 100%;
+    }
+  
+    .nav-link {
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+      text-align: center;
+    }
+  
+    .navbar-collapse {
+      border-top: 1px solid #d4cdcd;
+      padding-top: 10px;
+      text-align: center;
+    }
   }
   

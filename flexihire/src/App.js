@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { auth } from './confg/firebase';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import SignUp from './components/Signup/SignUp';
-import './responsive.css';
-import Navbar from './navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import ContactForm from './components/ContactForm/ContactForm';
 
 function App() {

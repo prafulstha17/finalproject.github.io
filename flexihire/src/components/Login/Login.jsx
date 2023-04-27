@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import './Login.css'
 
 import SignUp from "../Signup/SignUp";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -33,13 +34,14 @@ function Login() {
   };
 
   return (
-    <div class="card-front" id="card">
+    <div class="login-card" id="card">
       <div className="center-wrap">
         <div className="section text-center">
           <h4 className="mb-4 pb-3" id="color-gradient">
             Log In
           </h4>
           <div className="form-group">
+            <i className="input-icon uil uil-at"></i>
             <input
               type="email"
               name="logemail"
@@ -50,9 +52,9 @@ function Login() {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-            <i className="input-icon uil uil-at"></i>
           </div>
           <div className="form-group mt-2">
+            <i className="input-icon uil uil-lock-alt"></i>
             <input
               type="password"
               name="logpass"
@@ -63,55 +65,52 @@ function Login() {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <i className="input-icon uil uil-lock-alt"></i>
           </div>
-          <div className="side mb-0 pb-3">
-            <p className="mb-0 mt-4 pb-3 text-center">
-              <a href="#0" className="link text-center" id="color-gradient">
-                Forgot your password?
-              </a>
-            </p>
-          </div>
-          <button
-            className="btn btn-info btn-lg btn-block btn-outline-danger "
-            type="submit"
-            onClick={handleLogin}
-          >
-            Login
-          </button>
-          {error && <span>Wrong email or password</span>}
-
-          <p className="or mt-4 text-center" id="color-gradient">
-            Or login with
-          </p>
-          <ul className="social-links">
-            <li>
-              <a href="#" id="color-gradient">
-                <i className="fab fa-google"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" id="color-gradient">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" id="color-gradient">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-          </ul>
-          <p className="mb-0 mt-4 text-center">
-            <a href="#" id="color-gradient">
-              <Link className="nav-link" to={"/sign-up"}>
-                Not a member? Sign up
-              </Link>
-              <Routes>
-                <Route path="/sign-up" element={<SignUp />} />
-              </Routes>
+          <p className="mb-0 mt-4 pb-3 text-center">
+            <a href="#0" className="link-forget text-center" id="color-gradient">
+              Forgot your password?
             </a>
           </p>
         </div>
+        <button
+          className="submitButton "
+          type="submit"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+        {error && <span class="error"><br/>Do I know you??</span>}
+
+        <p className="or mt-4 text-center" id="color-gradient">
+          Or login with
+        </p>
+        <ul className="social-links">
+          <li>
+            <a href="#" id="color-gradient">
+              <i className="fab fa-google"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="color-gradient">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="color-gradient">
+              <i className="fab fa-twitter"></i>
+            </a>
+          </li>
+        </ul>
+        <p className="mb-0 mt-4 text-center">
+          <a href="#" id="color-gradient">
+            <Link className="nav-link" to={"/sign-up"}>
+              Not a member? Sign up
+            </Link>
+            <Routes>
+              <Route path="/sign-up" element={<SignUp />} />
+            </Routes>
+          </a>
+        </p>
       </div>
     </div>
   );

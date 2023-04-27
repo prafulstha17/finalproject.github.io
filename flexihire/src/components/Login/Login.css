@@ -3,7 +3,6 @@
 body {
     background: #f5f5f5;
     font-family: "work sans";
-    overflow: auto;
 }
 
 .mb-4.pb-3 {
@@ -18,16 +17,23 @@ body {
 }
 
 .submitButton {
+    background-color: #6c5ce7;
     box-shadow: 0 5px 15px rgba(92, 179, 182, 0.8);
+    text-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
     text-transform: uppercase;
 }
 
 .submitButton:hover {
-    background-color: #483d8b;
+    background-color: #d4cdcd;
     box-shadow: 0 5px 15px rgba(58, 110, 110, 0.8);
 }
 
-.sign-card {
+span{
+    color: black;
+    margin: 2%;
+}
+
+.login-card {
     margin: 1%;
     margin-left: auto;
     margin-right: auto;
@@ -92,7 +98,7 @@ body {
         font-size: 16px;
     }
 
-    .sign-card {
+    .login-card {
         width: 90%;
         margin: 1rem 5%;
         padding: 1rem;
