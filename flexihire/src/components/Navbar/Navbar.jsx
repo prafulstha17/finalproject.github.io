@@ -18,6 +18,10 @@ function Navbar() {
     auth.signOut();
   }
 
+  const handleLinkClick = () => {
+    setShow(false);
+  }
+
   return (
     <section className='navbar-bg'>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,22 +35,22 @@ function Navbar() {
           <div className={`collapse navbar-collapse ${show ? "show" : ""}`} id="navbarMenu">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/" onClick={handleLinkClick}>
                   Jobs
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/" onClick={handleLinkClick}>
                   Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contactUs">
+                <Link className="nav-link" to="/contactUs" onClick={handleLinkClick}>
                   Contact Us
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/" onClick={handleLinkClick}>
                   About
                 </Link>
               </li>
@@ -55,7 +59,7 @@ function Navbar() {
               <>
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/profile">
+                    <Link className="nav-link" to="/profile" onClick={handleLinkClick}>
                       Profile
                     </Link>
                   </li>
@@ -70,12 +74,12 @@ function Navbar() {
             {!user && (
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-in">
+                  <Link className="nav-link" to="/sign-in" onClick={handleLinkClick}>
                     Login
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-up">
+                  <Link className="nav-link" to="/sign-up" onClick={handleLinkClick}>
                     Sign up
                   </Link>
                 </li>
