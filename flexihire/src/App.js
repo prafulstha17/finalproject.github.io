@@ -7,6 +7,7 @@ import Profile from './components/Profile/Profile';
 import SignUp from './components/Signup/SignUp';
 import Navbar from './components/Navbar/Navbar';
 import ContactForm from './components/ContactForm/ContactForm';
+import PageFooter from './components/PageFooter/PageFooter';
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
               <Route path="/profile" element={<Profile user={user} />} />
       </Routes>
 
+    <PageFooter/> 
+     
     </Router>
     
   );
