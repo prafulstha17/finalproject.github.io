@@ -57,61 +57,63 @@ function ContactForm() {
 
   return (
     <>
-      <form className="contact-form">
-        <div className="wrapper centered">
-          <article className="letter">
-            <div className="side">
-              <h1>Contact Us</h1>
-              <p>
-                <textarea
-                  id='message'
-                  name='message' placeholder="Your message"
-                  value={userData.message}
-                  onChange={postUserData}
-                  required
-                />
-              </p>
-            </div>
-            <div className="side">
-              <p>
-                <input
-                  id='Name'
-                  type='text'
-                  name='Name'
-                  placeholder='Your Name'
-                  value={userData.Name}
-                  onChange={postUserData}
-                  required
-                />
-              </p>
-              <p>
-                <input
-                  id='email'
-                  type='email'
-                  name='email'
-                  placeholder='Your Email'
-                  value={userData.email}
-                  onChange={postUserData}
-                  required
-                />
-              </p>
-              <p>
-                {userData.Name && userData.email && userData.message ? (
-                  <button type='submit' id="sendLetter" onClick={submitData}>
-                    Submit
-                  </button>
-                ) : null}
-              </p>
-            </div>
-          </article>
-          <div className="envelope front"></div>
-          <div className="envelope back"></div>
-        </div>
-        <p className="result-message centered">Your message have been received</p>
-        {formSubmit && (
-          addClass()
-        )}
-      </form>
+      <div className='contact-form'>
+        <form>
+          <div className="wrapper centered">
+            <article className="letter">
+              <div className="side">
+                <h1>Contact Us</h1>
+                <p>
+                  <textarea
+                    id='message'
+                    name='message' placeholder="Your message"
+                    value={userData.message}
+                    onChange={postUserData}
+                    required
+                  />
+                </p>
+              </div>
+              <div className="side">
+                <p>
+                  <input
+                    id='Name'
+                    type='text'
+                    name='Name'
+                    placeholder='Your Name'
+                    value={userData.Name}
+                    onChange={postUserData}
+                    required
+                  />
+                </p>
+                <p>
+                  <input
+                    id='email'
+                    type='email'
+                    name='email'
+                    placeholder='Your Email'
+                    value={userData.email}
+                    onChange={postUserData}
+                    required
+                  />
+                </p>
+                <p>
+                  {userData.Name && userData.email && userData.message ? (
+                    <button type='submit' id="sendLetter" onClick={submitData}>
+                      Submit
+                    </button>
+                  ) : null}
+                </p>
+              </div>
+            </article>
+            <div className="envelope front"></div>
+            <div className="envelope back"></div>
+          </div>
+          <p className="result-message centered">Your message have been received</p>
+          {formSubmit && (
+            addClass()
+          )}
+        </form>
+      </div>
     </>
   );
 }

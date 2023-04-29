@@ -3,13 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
+  height: 100vh;
 }
 
 .profile-pic,
 .profile-initial {
   width: 150px;
-  height: 150px;
+  height: 150px;  
+  box-shadow: 0px 0px 20px 10px rgba(0, 255, 255, 0.719);
   border-radius: 50%;
   margin-bottom: 10px;
   position: relative;
@@ -45,6 +47,7 @@
 
 .profile-name {
   position: absolute;
+  color: #fff;
   font-size: 24px;
   height: 20px;
   font-weight: bold;
@@ -55,7 +58,7 @@
 
 @media (max-width: 768px) {
   .profile {
-    margin-top: 10px;
+    margin-top: 40px;
   }
 
   .profile-pic {
@@ -76,16 +79,23 @@
   position: relative;
 }
 
+#profile-pic-input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
 .profile-pic-container:hover .profile-pic {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .camera-icon {
   font-size: 3rem;
-}
-
-.profile-pic-container {
-  position: relative;
 }
 
 .profile-initial {
@@ -101,11 +111,10 @@
   position: absolute;
   top: 45%;
   left: 50%;
-  color: #333;
+  color: #ffffff;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   cursor: pointer;
-  display: block !important;
 }
 
 .zoom-overlay {
@@ -129,13 +138,10 @@
 
 
 .camera-icon-container:hover {
-  background-color: #dddddd;
+  background-color: #818181;
 }
 
 @media (max-width: 576px) {
-  .profile {
-    margin-top: 5px;
-  }
 
   .profile-pic,
   .profile-initial {
@@ -150,7 +156,6 @@
 
   .camera-icon-container {
     top: 40%;
-    display: block !important;
   }
 
   .zoom-overlay img {
@@ -158,3 +163,4 @@
     max-height: 80%;
   }
 }
+

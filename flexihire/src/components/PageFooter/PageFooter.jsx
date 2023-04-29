@@ -38,7 +38,6 @@ function PageFooter() {
                      <div class="links">
                         <a href="#">About us</a>
                         <a href="#">How it Work</a>
-                        <a href="#">Supports</a>
                         <a href="#">Services</a>
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms & Condition </a>
@@ -46,13 +45,13 @@ function PageFooter() {
                      </div>
                   </div>
 
-                  <div class="col" id="contact">
-                      <h4>Contact</h4>
-                      <div class="contact-details">
+                  <div class="col" id="support">
+                      <h4>Support</h4>
+                      <div class="support-details">
                          <i class="fa-solid fa-envelope"></i>
                          <p>flexhire@gmail.com</p>
                       </div>
-                      <div class="contact-details">
+                      <div class="support-details">
                          <i class="fa fa-phone"></i>
                          <p>+977 98012345678</p>
                       </div>
@@ -61,11 +60,11 @@ function PageFooter() {
 
             <div className="col">
             <div class="social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook fa-2xl"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-2xl"></i></a>
+                        <a href="#"><i class="fab fa-youtube fa-2xl"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-2xl"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-2xl"></i></a>
                       </div>
             </div>
 

@@ -1,17 +1,22 @@
+@use postcss-nested;
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
 
 * {
   box-sizing: border-box;
 }
 
+.contact-form{
+  height: 100vh;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #0073ff;
+  background-image: linear-gradient(180deg, #5000e6, #ff014fff);
+  color: #4e5e72;
   text-align: center;
   font-family: monospace;
-  overflow: hidden;
+  overflow: auto;
 }
 
 h1,
@@ -23,6 +28,14 @@ p {
 h1 {
   font-size: 2rem;
   font-family: 'Dancing Script';
+  color: #6f00ff;
+}
+
+small {
+  display: block;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  transition: opacity 0.33s;
 }
 
 textarea,
@@ -37,7 +50,7 @@ button {
 
 textarea,
 input {
-  color: #6952e9;
+  color: #6f00ff;
   background-color: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
 }
@@ -62,7 +75,7 @@ input {
 button {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  background-color: #d4cdcd;
+  background-color: rgba(102, 0, 236, 0.9);
   color: white;
   font-size: 1rem;
   transition: background-color 0.2s;
@@ -70,7 +83,8 @@ button {
   &:hover,
   :focus {
     outline: none;
-    background-color: rgba(78, 94, 114, 1);
+  box-shadow: 0px 0px 20px 10px rgba(0, 255, 255, 0.619);
+  background-color: rgba(120, 0, 255, 0.9);
   }
 }
 
@@ -90,7 +104,7 @@ textarea:focus {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 10vh;
   width: 30rem;
   margin: auto;
   perspective: 60rem;
@@ -119,13 +133,14 @@ textarea:focus {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 10vh;
   margin: auto;
 }
 
 .envelope.front {
   width: 10rem;
   height: 6rem;
+  top: 10vh;
   border-radius: 0 0 1rem 1rem;
   overflow: hidden;
   z-index: 9999;
@@ -138,7 +153,7 @@ textarea:focus {
   display: block;
   width: 12rem;
   height: 6rem;
-  background-color: #f0de85;
+  background-color: #e9dc9d;
   transform: rotate(30deg);
   transform-origin: 0 0;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
@@ -152,7 +167,7 @@ textarea:focus {
 }
 
 .envelope.back {
-  top: -4rem;
+  top: 0;
   width: 10rem;
   height: 10rem;
   overflow: hidden;
@@ -171,20 +186,10 @@ textarea:focus {
   }
 }
 
-#sendLetter{
-  background-color: #6c5ce7;
-  box-shadow: 0 5px 15px rgba(92, 179, 182, 0.8);
-  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-}
-
-#sendLetter:hover {
-  background-color: #483d8b;
-  box-shadow: 0 5px 15px rgba(58, 110, 110, 0.8);
-}
-
 .result-message {
   opacity: 0;
+  top: 20vh;
+  color: aliceblue;
   transition: all 0.3s 2s;
   transform: translateY(9rem);
   z-index: -9999;
@@ -209,7 +214,7 @@ textarea:focus {
   }
 
   & button {
-    background-color: rgba(78, 94, 114, 0.2);
+    background-color: rgba(98, 0, 255, 0.795);
   }
 
   & .envelope {
@@ -291,7 +296,6 @@ textarea:focus {
     transform: translateY(-8rem) scale(0.3, 0.5);
   }
 }
-
 
 @keyframes pushLetter {
   0% {

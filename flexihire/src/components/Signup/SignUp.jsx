@@ -2,7 +2,7 @@ import React from 'react'
 import { auth, googleProvider } from "../../confg/firebase";
 import Login from '../Login/Login'
 import './SignUp.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { NavLink, Routes, Route } from "react-router-dom";
 
 import {
   createUserWithEmailAndPassword,
@@ -88,9 +88,9 @@ function SignUp() {
               </li>
             </ul>
             <p className="mb-0 mt-4 text-center"><a href="#" id="color-gradient">
-              <Link className="nav-link" to={'/sign-in'}>
+              <NavLink to={"/sign-in"} className="nav-link" id="color-gradient">
                 Have an account? Log in
-              </Link>
+              </NavLink>
               <Routes>
                 <Route path="/sign-in" element={<Login />} />
               </Routes>

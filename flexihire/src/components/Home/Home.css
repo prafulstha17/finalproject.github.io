@@ -1,0 +1,16 @@
+.home{
+    height: 100vh;
+}
+
+h2{
+  color: aliceblue;
+}
+
+body{
+  color: aliceblue;
+  background-image: linear-gradient(180deg, #5000e6, #ff014fff);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}

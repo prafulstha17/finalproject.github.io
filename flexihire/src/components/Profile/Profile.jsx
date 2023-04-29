@@ -115,7 +115,7 @@ function Profile() {
           <p className="profile-name">{user.displayName ? user.displayName : 'Anonymous'}</p>
         </>
       ) : (
-        <p>Please log in to view your profile</p>
+        <p className='profile-name'>Please log in to view your profile</p>
       )}
     </div>
   );

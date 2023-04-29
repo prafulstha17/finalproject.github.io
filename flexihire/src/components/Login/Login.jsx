@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import './Login.css'
+import { useNavigate, NavLink, Routes, Route } from "react-router-dom";
+import "./Login.css";
 
 import SignUp from "../Signup/SignUp";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function Login() {
   /* error condition */
@@ -12,7 +11,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navitage = useNavigate();
+  const navigate = useNavigate();
 
   // handleLogin
   const handleLogin = (e) => {
@@ -24,8 +23,8 @@ function Login() {
         // Signed in
         const user = userCredential.user;
 
-        // navitageAfterSuccesfullyLoginToNextPage
-        navitage("/"); //homepage
+        // navigateAfterSuccessfullyLoginToNextPage
+        navigate("/"); //homepage
         // ...
       })
       .catch((error) => {
@@ -34,7 +33,7 @@ function Login() {
   };
 
   return (
-    <div class="login-card" id="card">
+    <div className="login-card" id="card">
       <div className="center-wrap">
         <div className="section text-center">
           <h4 className="mb-4 pb-3" id="color-gradient">
@@ -48,7 +47,7 @@ function Login() {
               className="form-style"
               placeholder="Your Email"
               id="logemail"
-              autocomplete="off"
+              autoComplete="off"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -61,7 +60,7 @@ function Login() {
               className="form-style"
               placeholder="Your Password"
               id="logpass"
-              autocomplete="off"
+              autoComplete="off"
               required
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -79,7 +78,7 @@ function Login() {
         >
           Login
         </button>
-        {error && <span class="error"><br/>Do I know you??</span>}
+        {error && <span className="error"><br/>Do I know you??</span>}
 
         <p className="or mt-4 text-center" id="color-gradient">
           Or login with
@@ -102,14 +101,12 @@ function Login() {
           </li>
         </ul>
         <p className="mb-0 mt-4 text-center">
-          <a href="#" id="color-gradient">
-            <Link className="nav-link" to={"/sign-up"}>
-              Not a member? Sign up
-            </Link>
-            <Routes>
-              <Route path="/sign-up" element={<SignUp />} />
-            </Routes>
-          </a>
+          <NavLink to={"/sign-up"} className="nav-link" id="color-gradient">
+            Not a member? Sign up
+          </NavLink>
+          <Routes>
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
         </p>
       </div>
     </div>

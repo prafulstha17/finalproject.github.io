@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { auth } from '../../confg/firebase';
 import React, { useEffect, useState } from 'react';
 import "./Navbar.css"
@@ -26,42 +25,42 @@ function Navbar() {
     <section className='navbar-bg'>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="/">
             FlexiHire
-          </Link>
+          </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className={`collapse navbar-collapse ${show ? "show" : ""}`} id="navbarMenu">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={handleLinkClick}>
+                <a className="nav-link" href="/" onClick={handleLinkClick}>
                   Jobs
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={handleLinkClick}>
+                <a className="nav-link" href="/" onClick={handleLinkClick}>
                   Services
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contactUs" onClick={handleLinkClick}>
+                <a className="nav-link" href="/contactUs" onClick={handleLinkClick}>
                   Contact Us
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={handleLinkClick}>
+                <a className="nav-link" href="/aboutUS" onClick={handleLinkClick}>
                   About
-                </Link>
+                </a>
               </li>
             </ul>
             {user && (
               <>
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/profile" onClick={handleLinkClick}>
+                    <a className="nav-link" href="/profile" onClick={handleLinkClick}>
                       Profile
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item">
                     <button className="nav-link btn btn-link" onClick={handleLogout}>
@@ -74,14 +73,14 @@ function Navbar() {
             {!user && (
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-in" onClick={handleLinkClick}>
+                  <a className="nav-link" href="/sign-in" onClick={handleLinkClick}>
                     Login
-                  </Link>
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-up" onClick={handleLinkClick}>
+                  <a className="nav-link" href="/sign-up" onClick={handleLinkClick}>
                     Sign up
-                  </Link>
+                  </a>
                 </li>
               </ul>
             )}

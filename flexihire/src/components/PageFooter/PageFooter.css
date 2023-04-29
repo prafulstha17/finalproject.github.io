@@ -1,18 +1,20 @@
-
-.footerBody{
+.footerBody {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
     min-height: 80vh;
 }
-footer{
-     background-color: #000000ff;
-     position: relative;
-     width: 100%;
-     min-height: 350px;
-     padding: 3rem 1rem;
+
+footer {
+    background-color: #000000ff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    min-height: 350px;
+    padding: 3rem 1rem;
 }
+
 .footercontainer {
     max-width: 1140px;
     margin: 0 auto;
@@ -23,103 +25,120 @@ footer{
 
 
 }
-.row{
+
+.row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.col{
+.col {
     min-width: 250px;
-    color:#f2f2f2f2;
+    color: #f2f2f2f2;
     font-family: poppins;
-    padding:0 2rem;
+    padding: 0 2rem;
 }
-.col .logo{
+
+.col .logo {
     width: 100px;
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
-.col h4{
-    color:#ff014fff;
+
+.col h4 {
+    color: #ff014fff;
     margin-bottom: 20px;
     position: relative;
     cursor: pointer;
 }
-.col h4::after{
+
+.col h4::after {
     content: '';
-    height:3px;
-    width:0px;
+    height: 3px;
+    width: 0px;
     background-color: #ff014fff;
     position: absolute;
     bottom: 0;
-    left:0;
+    left: 0;
     transition: 0.3s ease;
 
 }
-.col h4:hover::after{
-    width:30px
+
+.col h4:hover::after {
+    width: 30px
 }
-.col .social a i{
-    color:#ff014fff;
-    margin-top:2rem;
+
+.col .social a i {
+    color: #ff014fff;
+    margin-top: 2rem;
     margin-right: 5px;
+    padding: 4px;
     transition: 0.3s ease;
 }
-.col .social a i:hover{
+
+.col .social a i:hover {
     transform: scale(1.5);
-    filter:grayscale(25);
+    filter: grayscale(25);
 }
-.col .links a{
+
+.col .links a {
     display: block;
     text-decoration: none;
-    color:#f2f2f2;
+    color: #f2f2f2;
     margin-bottom: 5px;
     position: relative;
     transition: 0.3s ease;
 }
-.col .links a::before{
-    content:'';
+
+.col .links a::before {
+    content: '';
     height: 16px;
-    width:3px;
+    width: 3px;
     position: absolute;
-    top:5px;
-    left:-10px;
+    top: 5px;
+    left: -10px;
     background-color: #ff014fff;
     transition: 0.5s ease;
     opacity: 0;
 }
-.col .links a:hover::before{
+
+.col .links a:hover::before {
     opacity: 1;
 }
-.col .links a:hover{
+
+.col .links a:hover {
     transform: translateX(-8px);
-    color:#ff014fff;
+    color: #ff014fff;
 }
-.col .contact-details{
+
+.col .support-details {
     display: inline-flex;
     justify-content: space-between;
 }
-.col .contact-details i{
-    margin-right:15px;
+
+.col .support-details i {
+    margin-right: 15px;
 }
-.row .form{
+
+.row .form {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:2rem 0;
+    padding: 2rem 0;
 }
-.row .form input{
+
+.row .form input {
     background-color: #1a1c20ff;
-    border:0;
-    outline:none;
-    padding:14px 20px;
+    border: 0;
+    outline: none;
+    padding: 14px 20px;
     border-radius: 6px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form button{
-    padding:14px 20px;
-    border:0;
+
+.form button {
+    padding: 14px 20px;
+    border: 0;
     border-radius: 6px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -127,25 +146,26 @@ footer{
 }
 
 /********** Responsive Design ********/
-@media(max-width:900px)
-{
-  .row{
-    flex-direction: column;
-  }
-  .col{
-    width: 100%;
-    text-align: left;
-    margin-bottom: 25px;
-  }
+@media(max-width:900px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 25px;
+    }
 }
-@media(max-width:768px)
-{
-  .row{
-    flex-direction: column;
-  }
-  .col{
-    width: 100%;
-    text-align: left;
-    margin-bottom: 20px;
-  }
+
+@media(max-width:768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 20px;
+    }
 }
