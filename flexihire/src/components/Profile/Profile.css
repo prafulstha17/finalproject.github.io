@@ -91,7 +91,7 @@
 }
 
 .profile-pic-container:hover .profile-pic {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .camera-icon {
@@ -164,3 +164,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .camera-icon-container {
+    position: absolute;
+    bottom: -45px;
+    left: 36%;
+    transform: translateY(20%);
+  }
+
+  .camera-icon-container:hover {
+    background-color: transparent;
+  }
+
+}

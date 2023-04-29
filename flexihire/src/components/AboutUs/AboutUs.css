@@ -5,7 +5,7 @@
 }
 
 .about {
-    height: 100vh;
+    height: 80vh;
 }
 
 .text-blk {
@@ -205,7 +205,7 @@
 
 @media (max-width: 400px) {
     .about{
-        height: 125vh;
+        height: 113vh;
     }
 }
 

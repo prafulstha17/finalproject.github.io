@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'FH';
+  src: url('../Icon/font/custom.woff') format('woff');
+}
+
 .navbar-bg {
   background-color: #5000e6;
   padding: 10px;
@@ -9,26 +14,58 @@
   border-radius: 1rem;
 }
 
-ul li:hover{
+ul li:hover {
   color: #fff;
   text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.brand-name {
+  margin-left: -20px;
+  font-family: 'FH';
+}
+
+.brand-logo img {
+  height: 40px;
 }
 
 .navbar-nav .nav-item {
   margin-right: 10px;
+}
+
+.navbar-nav li {
+  color: #5000e6;
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar-nav li::after {
+  content: '';
+  height: 3px;
+  width: 0px;
+  background-color: #5000e6;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.navbar-nav li:hover::after {
+  width: 30px
 }
 
 .nav-link {

@@ -167,7 +167,7 @@ textarea:focus {
 }
 
 .envelope.back {
-  top: 0;
+  top: 0.25rem;
   width: 10rem;
   height: 10rem;
   overflow: hidden;

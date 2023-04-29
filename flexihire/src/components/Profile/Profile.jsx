@@ -9,6 +9,7 @@ function Profile() {
   const [profilePicUrl, setProfilePicUrl] = useState('');
   const [isHovered, setIsHovered] = useState(false);
   const [zoomedIn, setZoomedIn] = useState(false);
+  const [isSmallDevice, setIsSmallDevice] = useState(false);
 
   useEffect(() => {
     auth.onIdTokenChanged((user) => {
@@ -36,6 +37,18 @@ function Profile() {
         setProfilePicUrl(null);
       }
     });
+
+    // Check device size on mount and whenever the window is resized
+    const checkDeviceSize = () => {
+      setIsSmallDevice(window.innerWidth <= 768);
+    };
+
+    checkDeviceSize();
+    window.addEventListener('resize', checkDeviceSize);
+
+    return () => {
+      window.removeEventListener('resize', checkDeviceSize);
+    };
   }, []);
 
   const handleFileUpload = (event) => {
@@ -63,11 +76,11 @@ function Profile() {
   };
 
   const handleProfilePicHover = () => {
-    setIsHovered(true);
+      setIsHovered(true);
   };
 
   const handleProfilePicHoverExit = () => {
-    setIsHovered(false);
+      setIsHovered(false);
   };
 
   const handleProfilePicClick = () => {
@@ -90,13 +103,13 @@ function Profile() {
             ) : (
               <div className="profile-pic profile-initial" onClick={handleProfilePicClick}>{user.displayName ? user.displayName[0] : ''}</div>
             )}
-            {isHovered && (
+            {(isSmallDevice || isHovered) ? (
               <label htmlFor="profile-pic-input">
                 <div className="camera-icon-container">
                   <BsCamera size={30} />
                 </div>
               </label>
-            )}
+            ) : null}
           </div>
           {zoomedIn && (
             <div className="zoom-overlay" onClick={handleProfilePicClick}>

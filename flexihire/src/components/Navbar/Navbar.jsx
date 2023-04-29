@@ -1,6 +1,7 @@
 import { auth } from '../../confg/firebase';
 import React, { useEffect, useState } from 'react';
-import "./Navbar.css"
+import "./Navbar.css";
+import transparent_bg from '../Icon/low_res/transparent_bg.png';
 
 function Navbar() {
   const [user, setUser] = useState(null);
@@ -26,7 +27,12 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <a className="navbar-brand" href="/">
-            FlexiHire
+            <div className="brand-logo">
+              <img src={transparent_bg} alt='brand-logo' />
+            </div>
+            <div className="brand-name">
+              FlexiHire
+            </div>
           </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
             <span className="navbar-toggler-icon"></span>
