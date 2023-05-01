@@ -1,0 +1,40 @@
+.container-xxl .container{
+    background-color: aliceblue;
+    padding: 1rem;
+}
+
+.nav-pills .nav-item .active {
+    border-bottom: 2px solid var(--primary);
+}
+
+.text-truncate{
+    display: flex;
+    gap: 5px;
+}
+
+.container ul li{
+    display: flex;
+    flex-direction: row;
+}
+
+.job-item {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: 0 0 45px rgba(195, 0, 255, 0.08);
+    transition: .5s;
+}
+
+.job-item:hover {
+    border-color: rgba(0, 0, 0, .08);
+    box-shadow: none;
+}
+
+.container-xxl .btn{
+    color: white;
+    background-color: blueviolet;
+}
+
+.container-xxl .btn-light{
+    color: white;
+    background-color: rgb(214, 186, 240);
+}

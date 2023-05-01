@@ -31,7 +31,7 @@ function SignUp() {
         await updateProfile(user, {
           displayName: name,
         });
-        navigate("/");
+        navigate("/termsCondition");
       })
       .catch((err) => {
         console.error(err);

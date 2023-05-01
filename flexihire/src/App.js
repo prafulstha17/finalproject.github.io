@@ -9,6 +9,11 @@ import Navbar from './components/Navbar/Navbar';
 import ContactForm from './components/ContactForm/ContactForm';
 import AboutUs from './components/AboutUs/AboutUs';
 import PageFooter from './components/PageFooter/PageFooter';
+import Jobs from './components/Jobs/Jobs';
+import Admin from './components/Admin/Admin';
+import WhyUs from './components/AboutUs/WhyUs';
+import TermsCondition from './components/AboutUs/TermsCondition';
+import Message from './components/Message/Message';
 
 function App() {
 
@@ -32,10 +37,15 @@ function App() {
         <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path='/contactUs' element={<ContactForm />} />
-        <Route path='/aboutUS' element={<AboutUs />} />
+        <Route path='/aboutUs' element={<AboutUs />} />
+        <Route path='/jobs' element={<Jobs/>} />
+        <Route path='/admin' element={<Admin/>} />
+        <Route path='/whyUs' element={<WhyUs/>} />
+        <Route path='/termsCondition' element={<TermsCondition/>} />
         <Route path="/profile" element={<Profile user={user} />} />
       </Routes>
       <PageFooter />
+      <Message/>
     </Router>
   );
 }

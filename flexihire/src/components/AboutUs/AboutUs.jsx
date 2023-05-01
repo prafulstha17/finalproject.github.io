@@ -21,7 +21,7 @@ function AboutUs() {
                     </p>
                     <div class="social-icons-container">
                         <a href="#" class="social-icon">
-                            <i className="fab fa-facebook-f fa-2xl"></i>
+                            <i className="fa-brands fa-facebook fa-2xl"></i>
                         </a>
                         <a href="#" class="social-icon">
                             <i class="socialIcon fa-brands fa-linkedin fa-2xl"></i>

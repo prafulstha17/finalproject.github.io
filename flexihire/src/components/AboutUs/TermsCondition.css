@@ -1,0 +1,92 @@
+.tc-page {
+    background-color: #ffffff94;
+}
+
+.tc-about-content {
+    padding: 90px 0px;
+    text-align: center;
+}
+
+.tc-about-content h1 {
+    font-size: 48px;
+    font-weight: 300;
+}
+
+.tc-row {
+    padding: 2rem;
+}
+
+.tc-agreement {
+    background-color: aliceblue;
+    padding: 2rem;
+    text-align: left;
+}
+
+.tc-agreement .heading-agreement {
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: large;
+}
+
+.tc-agreement .heading-agreement span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.tc-agreement .heading-number {
+    padding: 1rem 0;
+    font-weight: 700;
+}
+
+.tc-bottom-line {
+    margin-top: 3rem;
+    margin-bottom: -5rem;
+}
+
+.tc-accept-area {
+    background-color: aliceblue;
+    padding-bottom: 1.5rem;
+}
+
+.tc-accept-area .container-nav {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tc-accept-area .container-nav button {
+    width: 5rem;
+}
+
+.tc-agreement {
+    transform: scaleY(1);
+    opacity: 1;
+    transition: opacity transform 0.5s ease;
+}
+
+.tc-agreement.hidden {
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+.text-white {
+    color: white;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+}
+
+bold{
+    font-weight: 1000;
+    font-size: medium;
+    font-style: italic;
+}

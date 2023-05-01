@@ -68,7 +68,6 @@ footer {
 
 .col .social a i {
     color: #ff014fff;
-    margin-top: 2rem;
     margin-right: 5px;
     padding: 4px;
     transition: 0.3s ease;
@@ -76,7 +75,7 @@ footer {
 
 .col .social a i:hover {
     transform: scale(1.5);
-    filter: grayscale(25);
+    filter: grayscale(1);
 }
 
 .col .links a {
@@ -167,4 +166,32 @@ footer {
         text-align: left;
         margin-bottom: 20px;
     }
+}
+
+#followUs{
+    padding: 1.5rem;
+}
+
+footer .copyright {
+    padding: 25px 0;
+    margin-top: 20px;
+    font-size: 15px;
+    color: azure;
+    border-top: 1px solid #ff014fff;
+}
+
+footer .copyright a{
+    color: #5000e6;
+}
+
+footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #ff014fff;
+}
+
+footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
 }

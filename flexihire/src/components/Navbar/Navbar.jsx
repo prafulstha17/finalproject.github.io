@@ -1,7 +1,8 @@
 import { auth } from '../../confg/firebase';
 import React, { useEffect, useState } from 'react';
-import "./Navbar.css";
+import './Navbar.css';
 import transparent_bg from '../Icon/low_res/transparent_bg.png';
+import { Dropdown } from 'react-bootstrap';
 
 function Navbar() {
   const [user, setUser] = useState(null);
@@ -22,10 +23,45 @@ function Navbar() {
     setShow(false);
   }
 
+
+  useEffect(() => {
+    const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+
+    menuBtn.onclick = () => {
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+
+    cancelBtn.onclick = () => {
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    }
+
+    searchBtn.onclick = () => {
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+
+  }, []);
+
   return (
-    <section className='navbar-bg'>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
+    <>
+      <nav className='navbar sticky-top'>
+        <div class="menu-icon">
+          <span class="fas fa-bars"></span>
+        </div>
+        <div class="logo">
           <a className="navbar-brand" href="/">
             <div className="brand-logo">
               <img src={transparent_bg} alt='brand-logo' />
@@ -34,66 +70,75 @@ function Navbar() {
               FlexiHire
             </div>
           </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className={`collapse navbar-collapse ${show ? "show" : ""}`} id="navbarMenu">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="/" onClick={handleLinkClick}>
-                  Jobs
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/" onClick={handleLinkClick}>
-                  Services
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contactUs" onClick={handleLinkClick}>
-                  Contact Us
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/aboutUS" onClick={handleLinkClick}>
-                  About
-                </a>
-              </li>
-            </ul>
+        </div>
+        <div class="nav-items">
+          <li className="nav-item">
+            <a className="nav-link" href="/jobs" onClick={handleLinkClick}>
+              Jobs
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/admin" onClick={handleLinkClick}>
+              Services
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/contactUs" onClick={handleLinkClick}>
+              Contact Us
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/aboutUs" onClick={handleLinkClick}>
+              About Us
+            </a>
+          </li>
+          <div class='nav-items-case'>
             {user && (
               <>
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                    <a className="nav-link" href="/profile" onClick={handleLinkClick}>
-                      Profile
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <button className="nav-link btn btn-link" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </li>
-                </ul>
+                <Dropdown>
+                  <Dropdown.Toggle variant="link" id="dropdown-basic">
+                    <i class="fa-solid fa-user fa-l"></i>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className='dropdown-menu'>
+                    <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </>
             )}
             {!user && (
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <a className="nav-link" href="/sign-in" onClick={handleLinkClick}>
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/sign-up" onClick={handleLinkClick}>
-                    Sign up
-                  </a>
-                </li>
-              </ul>
+              <Dropdown>
+                <Dropdown.Toggle variant="link" id="dropdown-basic">
+                  Login / Create Account
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className='dropdown-menu'>
+                  <Dropdown.Item href="/sign-in">Login</Dropdown.Item>
+                  <Dropdown.Item href="/sign-up">Create Account</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             )}
           </div>
         </div>
+        <div class="search-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="cancel-icon">
+          <i class="fa-solid fa-xmark" style={{ color: "#ffffff", }} />
+        </div>
+        <form action="#">
+          <button type="submit" class="fas fa-search"></button>
+          <input type="search" class="search-data" placeholder="Search" required />
+          <div class="input-select">
+            <select data-trigger="" name="choices-single-default">
+              <option placeholder="">Flexer</option>
+              <option>FlexiHirer</option>
+            </select>
+          </div>
+        </form>
       </nav>
-    </section>
+    </>
   );
 }
 

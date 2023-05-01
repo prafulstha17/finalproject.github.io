@@ -5,7 +5,7 @@
 }
 
 .about {
-    height: 80vh;
+    height: auto;
 }
 
 .text-blk {
@@ -25,10 +25,7 @@
     min-height: 75px;
     height: fit-content;
     width: 100%;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding: 10px 10px 10px 10px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 0px;
@@ -39,30 +36,14 @@
 }
 
 .responsive-container-block.bigContainer {
-    padding-top: 10px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    background-image: url("https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb29.png");
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: cover;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: initial;
-    background-repeat-x: no-repeat;
-    background-repeat-y: no-repeat;
+    padding: 10px 30px 10px 30px;
 }
 
 .responsive-container-block.Container {
     max-width: 800px;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding: 20px 20px 20px 20px;
     margin-top: 70px;
     margin-right: auto;
     margin-bottom: 70px;
@@ -142,13 +123,7 @@
     }
 
     .about {
-        height: 110vh;
-    }
-}
-
-@media (max-width: 600px) {
-    .about{
-        height: 115vh;
+        height: auto;
     }
 }
 
@@ -167,10 +142,6 @@
         margin-right: 0px;
         margin-bottom: 20px;
         margin-left: 0px;
-    }
-
-    .about{
-        height: 100vh;
     }
 
     .text-blk.subHeading {
@@ -200,12 +171,6 @@
 
     .social-icon {
         margin: 0 20px 0 20px;
-    }
-}
-
-@media (max-width: 400px) {
-    .about{
-        height: 113vh;
     }
 }
 
