@@ -1,12 +1,7 @@
-import React, { useState } from 'react'
+
 import "./PageFooter.css"
 
 function PageFooter() {
-
-   const [show, setShow] = useState(false);
-   const handleLinkClick = () => {
-      setShow(false);
-   }
 
    return (
       <div className="footerBody">
@@ -41,10 +36,10 @@ function PageFooter() {
                      <h4>About</h4>
                      <div class="links">
                         <a href="#">How it Work</a>
-                        <a href="#">Services</a>
+                        <a href="/services">Services</a>
                         <a href="#">Privacy Policy</a>
-                        <a href="/termsCondition" onClick={handleLinkClick}>Terms & Condition </a>
-                        <a href="/whyUs" onClick={handleLinkClick}>Why Us?</a>
+                        <a href="/termsCondition">Terms & Condition </a>
+                        <a href="/whyUs">Why Us?</a>
                      </div>
                   </div>
 
@@ -53,7 +48,7 @@ function PageFooter() {
                      <div class="support-details">
                         <i class="fa-solid fa-envelope"></i>
                         <p>flexhirenepal@gmail.com</p>
-                     </div><br/>
+                     </div><br />
                      <div class="support-details">
                         <i class="fa fa-phone"></i>
                         <p>+977 98012345678</p>

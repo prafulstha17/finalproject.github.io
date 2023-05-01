@@ -32,50 +32,62 @@ function WhyUs() {
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-solid fa-user fa-xs"> </i> Expert Technicians</h4>
-                                <p>
-                                    We understand the importance of having skilled and experienced technicians for your projects. That's why we have a team of expert technicians who are available to work with you whenever you need them.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-solid fa-user fa-xs"> </i> Expert Technicians</h4>
+                                    <p>
+                                        We understand the importance of having skilled and experienced technicians for your projects. That's why we have a team of expert technicians who are always available to work with you.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-solid fa-id-card"> </i> Professional Service</h4>
-                                <p>
-                                    FlexiHire offers professional services with a team of highly skilled technicians who are trained and experienced in their respective fields, ensuring that all services are performed to the highest standards.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-solid fa-id-card"> </i> Professional Service</h4>
+                                    <p>
+                                        FlexiHire offers professional services with a team of highly skilled technicians who are trained and experienced in their respective fields, ensuring that all services are performed to the highest standards.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-solid fa-tty"> </i> Great Support</h4>
-                                <p>
-                                    Flexihire is committed to providing great support to our clients. We are always available to answer your questions, offer advice and provide assistance whenever you need it.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-solid fa-tty"> </i> Great Support</h4>
+                                    <p>
+                                        We are dedicated to being available around the clock to answer your questions, offer advice and provide assistance whenever you need it. Flexihire is committed to providing great support to our clients.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-solid fa-rocket"> </i> Technical Skills</h4>
-                                <p>
-                                    Flexihire offers access to highly skilled and experienced technicians who can handle various technical challenges with ease ensuring that your projects and tasks are completed efficiently and effectively.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-solid fa-rocket"> </i> Technical Skills</h4>
+                                    <p>
+                                        Flexihire offers access to highly skilled and experienced technicians who can handle various technical challenges with ease ensuring that your projects are completed efficiently and effectively.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-regular fa-gem"> </i> Highly Recomended</h4>
-                                <p>
-                                    Flexihire is proud to offer services that come highly recommended by our satisfied customers. You can trust in Flexihire to exceed your expectations and provide you with a seamless and enjoyable experience.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-regular fa-gem"> </i> Highly Recomended</h4>
+                                    <p>
+                                        We are proud to offer services that come highly recommended by our satisfied customers. You can trust us to exceed your expectations and provide you with a seamless and enjoyable experience.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-service">
-                                <h4><i class="fa-regular fa-comment"> </i> Positive Reviews</h4>
-                                <p>
-                                    Our team is dedicated to ensuring that your experience with us is nothing short of excellent. From start to finish, we strive to exceed your expectations and leave you with a smile on your face.
-                                </p>
+                                <div className="card-why-us">
+                                    <h4><i class="fa-regular fa-comment"> </i> Positive Reviews</h4>
+                                    <p>
+                                        Our team is dedicated to ensuring that your experience with us is nothing short of excellent. From start to finish, we strive to exceed your expectations and leave you with a smile on your face.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -111,10 +111,20 @@ footer {
 .col .support-details {
     display: inline-flex;
     justify-content: space-between;
+    color: rgb(255, 255, 255);
 }
 
 .col .support-details i {
     margin-right: 15px;
+}
+
+.support-details p{
+    color: rgb(255, 255, 255);
+}
+
+.support-details p:hover{
+    color: rgb(201, 201, 201);
+    cursor: pointer;
 }
 
 .row .form {

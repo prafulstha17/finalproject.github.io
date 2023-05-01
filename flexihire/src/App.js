@@ -14,6 +14,7 @@ import Admin from './components/Admin/Admin';
 import WhyUs from './components/AboutUs/WhyUs';
 import TermsCondition from './components/AboutUs/TermsCondition';
 import Message from './components/Message/Message';
+import Services from './components/Services/Services';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home name={userName} />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/services" element={<Services />} />
         <Route path='/contactUs' element={<ContactForm />} />
         <Route path='/aboutUs' element={<AboutUs />} />
         <Route path='/jobs' element={<Jobs/>} />

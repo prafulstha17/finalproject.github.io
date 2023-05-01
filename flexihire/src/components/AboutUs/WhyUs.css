@@ -1,4 +1,4 @@
-.banner-area{
+.banner-area {
     background-color: #ffffff6e;
 }
 
@@ -12,16 +12,44 @@
     font-weight: 300;
 }
 
-.row{
+.row {
     padding: 2rem;
 }
 
-.row .col-md-8{
+.row .col-md-8 {
+    color: #000000;
+    padding: 0 1em 1em 1em;
+    text-align: center;
+}
+
+.row .col-md-8 h2 {
     color: #000000;
 }
 
-.row .col-md-8 h2{
-    color: #000000;
+.card-why-us {
+    padding: 2em 1.5em;
+    background: linear-gradient(#ececec 50%, #ff014fff 50%);
+    background-size: 100% 200%;
+    background-position: 0 2.5%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.card-why-us:hover {
+    box-shadow: -14.142px 14.142px 20px 0px rgba(0, 0, 0, 0.5);
+    background-position: 0 100%;
+}
+
+.card-why-us:hover h4 {
+    color: #ffffff;
+    transition: color 0.7s;
+}
+
+.card-why-us:hover p {
+    color: #f0f0f0;
+    transition: color 0.7s;
 }
 
 section {
@@ -38,36 +66,13 @@ body {
 }
 
 .single-service {
-    background-color: #eeeeff;
-    padding: 30px;
-    margin-bottom: 30px;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
-.single-service h4{
-    transition: all 0.3s ease 0s;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.single-service:hover {
-    background-image: -webkit-linear-gradient(0deg, #ffacac 0%, #795fff 100%);
-    box-shadow: -14.142px 14.142px 20px 0px rgba(172, 172, 172, 0.5);
-    color: #0a0527;
-    transform: color 0.1s ease;
-    cursor: pointer;
-}
-
-.service-area{
+.service-area {
     background-color: #f9f9ff;
     padding: 0;
-}
-
-.service-area .header-text {
-    text-align: center;
 }
 
 @media (max-width: 960px) {
@@ -91,20 +96,24 @@ body {
     padding-bottom: 60px;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Poppins", sans-serif;
 }
 
-.feature-area{
-    background-color: #505050;
+.feature-area {
+    background-color: #636363;
     align-items: center;
 }
 
-.text-white{
+.text-white {
     padding-top: 2rem;
 }
 
-.text-white a{
+.text-white a {
     color: #ffffff;
     font-size: 1rem;
 }
@@ -113,7 +122,7 @@ h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.col-lg-3 p{
+.col-lg-3 p {
     color: #ffffff;
     font-size: medium;
 }

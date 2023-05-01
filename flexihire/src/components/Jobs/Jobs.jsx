@@ -29,10 +29,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -49,10 +49,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -69,10 +69,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Part Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -89,10 +89,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Part Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -109,10 +109,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -132,10 +132,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -152,10 +152,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -172,10 +172,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -192,10 +192,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -212,10 +212,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -235,10 +235,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Lalitpur, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -255,10 +255,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Marketing Manager</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Lalitpur, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -275,10 +275,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-3.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Product Designer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -295,10 +295,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-4.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Creative Director</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Kathmandu, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>
@@ -315,10 +315,10 @@ function Jobs() {
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt=""/>
+                                        <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-5.jpg" alt="" />
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">Wordpress Developer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Rewa, INDIA</span>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Lalitpur, Nepal</span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
                                         </div>

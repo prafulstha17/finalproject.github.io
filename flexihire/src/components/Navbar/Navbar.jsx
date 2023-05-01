@@ -78,7 +78,7 @@ function Navbar() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/admin" onClick={handleLinkClick}>
+            <a className="nav-link" href="/services" onClick={handleLinkClick}>
               Services
             </a>
           </li>
