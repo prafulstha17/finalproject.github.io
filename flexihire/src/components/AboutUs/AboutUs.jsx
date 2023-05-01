@@ -20,16 +20,16 @@ function AboutUs() {
                         Thank you for choosing Flexihire.
                     </p>
                     <div class="social-icons-container">
-                        <a href="#" class="social-icon">
+                        <a href="https://www.facebook.com/profile.php?id=100092199707911" class="social-icon" target='_blank'>
                             <i className="fa-brands fa-facebook fa-2xl"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://www.linkedin.com/in/flexi-hire-8437a0274" class="social-icon" target='_blank'>
                             <i class="socialIcon fa-brands fa-linkedin fa-2xl"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://www.instagram.com/hireflexi/" class="social-icon" target='_blank'>
                             <i class="fa-brands fa-instagram fa-2xl"></i>
                         </a>
-                        <a href='#' class="social-icon">
+                        <a href='https://twitter.com/HireFlexi' class="social-icon" target='_blank'>
                             <i class="fa-brands fa-twitter fa-2xl"></i>
                         </a>
                     </div>

@@ -64,11 +64,11 @@ function PageFooter() {
                <div className="col" id='followUs'>
                   <h4>Follow Us</h4>
                   <div class="social">
-                     <a href="#"><i class="fab fa-facebook fa-2xl"></i></a>
-                     <a href="#"><i class="fab fa-instagram fa-2xl"></i></a>
-                     <a href="#"><i class="fab fa-youtube fa-2xl"></i></a>
-                     <a href="#"><i class="fab fa-twitter fa-2xl"></i></a>
-                     <a href="#"><i class="fab fa-linkedin fa-2xl"></i></a>
+                     <a href="https://www.facebook.com/profile.php?id=100092199707911" target='_blank'><i class="fab fa-facebook fa-2xl"></i></a>
+                     <a href="https://www.instagram.com/hireflexi/" target='_blank'><i class="fab fa-instagram fa-2xl"></i></a>
+                     <a href="https://www.youtube.com/channel/UC0ntZYXMAsvcgrKLWyHMe5Q" target='_blank'><i class="fab fa-youtube fa-2xl"></i></a>
+                     <a href="https://twitter.com/HireFlexi" target='_blank'><i class="fab fa-twitter fa-2xl"></i></a>
+                     <a href="https://www.linkedin.com/in/flexi-hire-8437a0274" target='_blank'><i class="fab fa-linkedin fa-2xl"></i></a>
                   </div>
                </div>
 
