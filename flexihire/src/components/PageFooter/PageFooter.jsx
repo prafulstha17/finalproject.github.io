@@ -92,4 +92,4 @@ function PageFooter() {
    )
 }
 
-export default PageFooter
+export default PageFooter;
