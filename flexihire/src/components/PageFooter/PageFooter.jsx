@@ -53,7 +53,7 @@ function PageFooter() {
                      <div class="support-details">
                         <i class="fa-solid fa-envelope"></i>
                         <p>flexhirenepal@gmail.com</p>
-                     </div>
+                     </div><br/>
                      <div class="support-details">
                         <i class="fa fa-phone"></i>
                         <p>+977 98012345678</p>
