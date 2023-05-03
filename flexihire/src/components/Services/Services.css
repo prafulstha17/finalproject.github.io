@@ -88,7 +88,7 @@ p {
 
     .column {
         flex: 0 50%;
-        max-width: 50%;
+        max-width: auto;
     }
 }
 
