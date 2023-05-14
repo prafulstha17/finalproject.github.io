@@ -153,6 +153,10 @@ footer {
     background-color: #ff014fff;
 }
 
+.silhouette{
+    width: 100%;
+}
+
 /********** Responsive Design ********/
 @media(max-width:900px) {
     .row {
