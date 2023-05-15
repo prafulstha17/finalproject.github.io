@@ -154,7 +154,9 @@ footer {
 }
 
 .silhouette{
+    margin-bottom: 0;
     width: 100%;
+    color: rgb(0, 0, 0);
 }
 
 /********** Responsive Design ********/
