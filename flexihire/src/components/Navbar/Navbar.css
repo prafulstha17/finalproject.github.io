@@ -17,6 +17,8 @@
 .navbar{
   width: 100%;
   margin-right: -1rem;
+  background-image: url("../Icon/silhouette/silhouette.png");
+  background-size: 22rem;
 }
 
 .navbar-brand {

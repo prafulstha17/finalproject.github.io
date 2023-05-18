@@ -40,7 +40,7 @@ h2:after {
   width: 100%;
   top: 50%;
   display: block;
-  border: 15px solid red;
+  border: 12px solid red;
   transform: translateX(-50%) translateY(-50%) rotate(0deg);
   animation: tipsy 10s infinite alternate ease-in-out;
 }
@@ -66,4 +66,20 @@ h2:after {
   h2:after {
     border: 7px solid red;
   }
+  h2:before,
+h2:after {
+  border: 7px solid red;
+  transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  animation: tipsy 10s infinite alternate ease-in-out;
+}
+
+h2:before {
+  border-color: #d9524a #d9524a transparent transparent;
+  z-index: -1;
+}
+
+h2:after {
+  border-color: transparent transparent #d9524a #d9524a;
+  box-shadow: 25px 25px 25px rgba(46, 46, 49, .8);
+}
 }
