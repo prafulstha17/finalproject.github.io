@@ -67,12 +67,9 @@
   transition: font-size 0.2s;
 }
 
-.sidebar:hover {
-  width: 15rem; /* Adjust the width as needed */
-}
-
+.sidebar:hover,
 .sidebar.collapsed:hover {
-  width: 15rem; /* Adjust the width as needed */
+  width: 15rem; 
 }
 
 .sidebar.collapsed:hover ul li p {
@@ -186,30 +183,6 @@ navbar{
   padding-top: 70px;
 }
 
-@media (min-width: 768px) {
-  #wrapper {
-    padding-left: 0;
-  }
-
-  #page-content-wrapper {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    height: auto;
-    position: relative;
-  }
-
-  #wrapper {
-    padding-left: 0;
-  }
-
-  #page-content-wrapper {
-    padding-top: 20px;
-  }
-}
 
 .admin-logo{
   border-radius: 50%;
@@ -271,4 +244,30 @@ navbar{
 
 .sidebar.collapsed .admin-session a p{
   display: none;
+  transition: display 0.2s;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+    position: relative;
+  }
+
+  #wrapper {
+    padding-left: 0;
+  }
+
+  #page-content-wrapper {
+    padding-top: 20px;
+  }
 }
