@@ -1,31 +1,23 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate, NavLink, Routes, Route } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./Login.css";
 
-import SignUp from "../Signup/SignUp";
-
 function Login() {
-  /* error condition */
   const [error, setError] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // handleLogin
   const handleLogin = (e) => {
     e.preventDefault();
-
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-
-        // navigateAfterSuccessfullyLoginToNextPage
-        navigate("/"); //homepage
-        // ...
+      .then(() => {
+        // Set isAdmin to true if the email matches the admin credential
+        const isAdmin = email === "flexihirenepal@gmail.com";
+        // Navigate to the homepage
+        navigate("/");
       })
       .catch((error) => {
         setError(true);
@@ -66,19 +58,26 @@ function Login() {
             />
           </div>
           <p className="mb-0 mt-4 pb-3 text-center">
-            <a href="#0" className="link-forget text-center" id="color-gradient">
+            <a
+              href="#0"
+              className="link-forget text-center"
+              id="color-gradient"
+            >
               Forgot your password?
             </a>
           </p>
         </div>
-        <button
-          className="submitButton "
-          type="submit"
-          onClick={handleLogin}
-        >
+        <button className="submitButton" type="submit" onClick={handleLogin}>
           Login
         </button>
-        {error && <span className="error"><br/>Do I know you??</span>}
+        <div className="error-login">
+          {error && (
+            <span className="error">
+              <br />
+              Do I know you??
+            </span>
+          )}
+        </div>
 
         <p className="or mt-4 text-center" id="color-gradient">
           Or login with
@@ -104,9 +103,6 @@ function Login() {
           <NavLink to={"/sign-up"} className="nav-link" id="color-gradient">
             Not a member? Sign up
           </NavLink>
-          <Routes>
-            <Route path="/sign-up" element={<SignUp />} />
-          </Routes>
         </p>
       </div>
     </div>

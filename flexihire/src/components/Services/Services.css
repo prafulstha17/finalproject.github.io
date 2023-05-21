@@ -17,6 +17,11 @@ section {
     flex-wrap: wrap;
 }
 
+section .row h2{
+    color: #000000;
+    font-weight: 900;
+}
+
 .column {
     padding: 0 1em 1em 1em;
     text-align: center;
@@ -35,7 +40,7 @@ section {
 
 h3 {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 900;
     color: #1f194c;
     margin: 1em 0;
 }

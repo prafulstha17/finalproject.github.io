@@ -1,5 +1,5 @@
 .banner-area {
-    background-color: #ffffff6e;
+    background-color: #c0c0c096;
 }
 
 .about-content {
@@ -110,11 +110,12 @@ h6 {
 }
 
 .text-white {
+    color: #000000 !important;
     padding-top: 2rem;
 }
 
 .text-white a {
-    color: #ffffff;
+    color: #000000;
     font-size: 1rem;
 }
 

@@ -169,6 +169,11 @@ footer {
         text-align: left;
         margin-bottom: 25px;
     }
+    
+    #followUs{
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media(max-width:768px) {
@@ -180,6 +185,10 @@ footer {
         width: 100%;
         text-align: left;
         margin-bottom: 20px;
+    }
+    div#followUs{
+        width: 100%;
+        text-align: center;
     }
 }
 

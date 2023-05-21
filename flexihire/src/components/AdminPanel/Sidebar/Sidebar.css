@@ -1,0 +1,269 @@
+.sidebar {
+  width: 15rem;
+  height: 100%;
+  background-color: #131313;
+  overflow-y: auto;
+  transition: width 0.2s ease;
+}
+
+.sidebar navbar button{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.sidebar navbar button i{
+  color: #587246;
+}
+
+.sidebar navbar button i:not(:focus):not(:hover),
+.sidebar navbar button i:focus-visible {
+  outline: none;
+}
+
+
+.sidebar.collapsed navbar button i{
+  color: #eb0d0d;
+}
+
+.sidebar navbar button:hover{
+  box-shadow: none;
+}
+
+.sidebar.collapsed {
+  overflow: hidden;
+  width: 55px;
+}
+
+.sidebar ul li a span {
+  position: absolute;
+  margin-left: -0.6rem;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.sidebar ul li a p {
+  position: absolute;
+  margin-left: 2.5rem;
+  color: #541857;
+  padding: 4px 15px;
+}
+
+.sidebar.collapsed ul li p {
+  opacity: 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .navbar-brand p {
+  display: none;
+}
+
+.sidebar.collapsed:hover .navbar-brand p {
+  display: block;
+  font-size: 1.2rem;
+  color: #8f3e3e;
+  transition: display 0.2s;
+  transition: font-size 0.2s;
+}
+
+.sidebar:hover {
+  width: 15rem; /* Adjust the width as needed */
+}
+
+.sidebar.collapsed:hover {
+  width: 15rem; /* Adjust the width as needed */
+}
+
+.sidebar.collapsed:hover ul li p {
+  opacity: 1;
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  position: relative;
+}
+
+.sidebar ul li a {
+  text-align: left;
+  display: block;
+  padding: 2rem 15px;
+  color: #541857;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ffffff69;
+  border-left: #ff014fff 0.2rem solid;
+}
+
+.sidebar ul li ul li {
+  margin-left: 5rem;
+}
+
+.sidebar .sidebar-nav ul li.active > a {
+  background-color: #007bff;
+  color: #541857;
+}
+
+.sidebar .sidebar-nav ul li.active > a:hover {
+  background-color: #007bff;
+  color: #541857;
+}
+
+.sidebar .sidebar-nav ul li .nav-pills li a {
+  padding-left: 30px;
+}
+
+.sidebar .sidebar-nav ul li .nav-pills li a:hover {
+  background-color: #e9ecef;
+}
+
+.sidebar .sidebar-nav ul li .nav-pills li.active > a {
+  background-color: #007bff;
+  color: #541857;
+}
+
+.sidebar .sidebar-nav ul li .nav-pills li.active > a:hover {
+  background-color: #007bff;
+  color: #541857;
+}
+
+.sidebar i {
+  color: #541857;
+}
+
+#sidebar-wrapper ul li a {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar-header .navbar-brand {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.navbar-header .navbar-brand i {
+  margin-left: 0;
+}
+
+.navbar-header .navbar-brand p {
+  font-size: 1.2rem;
+  color: #8f3e3e;
+}
+
+.navbar .navbar-header {
+  display: flex;
+  flex-direction: row;
+  gap: 3.5rem;
+}
+
+navbar{
+  background-color: #080808;
+}
+
+.navbar-header .navbar-brand i {
+  color: #8f3e3e;
+}
+
+#wrapper {
+  padding-left: 250px;
+  transition: all 0.2s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  padding-top: 70px;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+    position: relative;
+  }
+
+  #wrapper {
+    padding-left: 0;
+  }
+
+  #page-content-wrapper {
+    padding-top: 20px;
+  }
+}
+
+.admin-logo{
+  border-radius: 50%;
+  background-color: rgb(236, 0, 0);
+  position: relative;
+}
+
+.sidebar {
+  position: relative;
+}
+
+.sidebar .admin-session {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #131313;
+  justify-content: flex-start;
+}
+
+.sidebar .admin-session .admin-logo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: blue;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar .admin-session a {
+  font-size: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.sidebar .admin-session a:hover{
+  cursor: pointer;
+}
+
+.sidebar.collapsed .admin-session .admin-logo {
+  font-size: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  transform: font-size 0.4s;
+}
+
+.sidebar.collapsed .admin-session a p{
+  display: none;
+}

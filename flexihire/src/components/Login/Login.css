@@ -28,11 +28,6 @@ body {
     box-shadow: 0 5px 15px rgba(58, 110, 110, 0.8);
 }
 
-span {
-    color: black;
-    margin: 2%;
-}
-
 .login-card {
     margin: 1%;
     margin-left: auto;
