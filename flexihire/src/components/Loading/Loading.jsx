@@ -12,8 +12,8 @@ function Loading() {
           <span></span>
         </div>
         <div className="loader-text">
-          <h2>Reacting</h2>
-          <h2>Reacting</h2>
+          <h2>Flexihire</h2>
+          <h2>Flexihire</h2>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@
 }
 
 .sidebar navbar button i{
-  color: #587246;
+  color: #6aff00;
 }
 
 .sidebar navbar button i:not(:focus):not(:hover),
@@ -24,7 +24,7 @@
 
 
 .sidebar.collapsed navbar button i{
-  color: #eb0d0d;
+  color: #ff0000;
 }
 
 .sidebar navbar button:hover{
@@ -46,7 +46,7 @@
 .sidebar ul li a p {
   position: absolute;
   margin-left: 2.5rem;
-  color: #541857;
+  color: #cacaca;
   padding: 4px 15px;
 }
 
@@ -62,7 +62,7 @@
 .sidebar.collapsed:hover .navbar-brand p {
   display: block;
   font-size: 1.2rem;
-  color: #8f3e3e;
+  color: #ffffff;
   transition: display 0.2s;
   transition: font-size 0.2s;
 }
@@ -93,7 +93,7 @@
   text-align: left;
   display: block;
   padding: 2rem 15px;
-  color: #541857;
+  color: #cacaca;
   font-weight: 800;
   text-decoration: none;
 }
@@ -109,12 +109,12 @@
 
 .sidebar .sidebar-nav ul li.active > a {
   background-color: #007bff;
-  color: #541857;
+  color: #4f58db;
 }
 
 .sidebar .sidebar-nav ul li.active > a:hover {
   background-color: #007bff;
-  color: #541857;
+  color: #e2e2e2;
 }
 
 .sidebar .sidebar-nav ul li .nav-pills li a {
@@ -127,16 +127,16 @@
 
 .sidebar .sidebar-nav ul li .nav-pills li.active > a {
   background-color: #007bff;
-  color: #541857;
+  color: #975de2;
 }
 
 .sidebar .sidebar-nav ul li .nav-pills li.active > a:hover {
   background-color: #007bff;
-  color: #541857;
+  color: #3c32bb;
 }
 
 .sidebar i {
-  color: #541857;
+  color: #cacaca;
 }
 
 #sidebar-wrapper ul li a {
@@ -158,7 +158,8 @@
 
 .navbar-header .navbar-brand p {
   font-size: 1.2rem;
-  color: #8f3e3e;
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .navbar .navbar-header {
@@ -172,7 +173,7 @@ navbar{
 }
 
 .navbar-header .navbar-brand i {
-  color: #8f3e3e;
+  color: #ffffff;
 }
 
 #wrapper {
@@ -248,9 +249,13 @@ navbar{
 
 .sidebar .admin-session a {
   font-size: 1.2rem;
-  color: #fff;
+  color: #cacaca;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.sidebar .admin-session a p{
+  color: #cacaca;
 }
 
 .sidebar .admin-session a:hover{
