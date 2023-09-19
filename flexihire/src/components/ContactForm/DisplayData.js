@@ -1,45 +1,51 @@
 import React, { useState, useEffect } from "react";
-import "./ContactForm";
-import firebase from 'firebase/app';
-import 'firebase/database';
-
-//display contectdata
+import { ref, onValue, off, push } from "firebase/database";
+import { database } from "../../config/firebase";
 function DisplayData() {
   const [contactData, setContactData] = useState([]);
+  const [listener, setListener] = useState(null);
 
   useEffect(() => {
-
-    // Reference the Firebase Realtime Database
-    const database = firebase.database();
-    const contactDataRef = database.ref("ContactFormData");
-
-    // Attach an event listener to retrieve the data
-    contactDataRef.on("value", (snapshot) => {
+    const contactDataRef = ref(database, "ContactFormData");
+    const post= push(contactDataRef);
+    console.log("Data from Firebase:", post);
+    const onDataChange = (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        // Convert the data to an array if it's an object
-        const dataArray = Object.values(data);
-        setContactData(dataArray);
-      }
-    });
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      contactDataRef.off("value");
+      if (data) {
+        const dataArray = Object.values(data);
+        //setContactData(dataArray);
+      }
     };
-  }, []);
+
+    const unsubscribe = onValue(contactDataRef, onDataChange);
+
+    setListener(unsubscribe);
+
+    return () => {
+      if (listener) {
+        off(listener);
+      }
+    };
+  }, [listener]);
 
   return (
     <div>
       <h1>Contact Form Data</h1>
       <ul>
-        {contactData.map((item, index) => (
+        {Array.isArray(contactData) && contactData.map((item, index) => (
           <li key={index}>
-            <strong>Name:</strong> {item.Name}
-            <br />
-            <strong>Email:</strong> {item.email}
-            <br />
-            <strong>Message:</strong> {item.message}
+            <p>
+              <strong>Name:</strong> {item.Name}
+            </p>
+
+            <p>
+              <strong>Email:</strong> {item.email}
+            </p>
+
+            <p>
+              <strong>Message:</strong> {item.message}
+            </p>
             <br />
           </li>
         ))}
