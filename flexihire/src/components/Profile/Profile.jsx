@@ -3,7 +3,6 @@ import { auth, storage } from '../../config/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { BsCamera } from 'react-icons/bs';
 import './Profile.css';
-
 function Profile() {
   const [user, setUser] = useState(null);
   const [profilePicUrl, setProfilePicUrl] = useState('');
