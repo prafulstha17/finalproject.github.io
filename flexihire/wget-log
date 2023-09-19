@@ -1,0 +1,21 @@
+--2023-06-27 10:30:29--  https://github.com/GitSquared/edex-ui/releases/download/v2.2.2/eDEX-UI.Linux.x86_64.AppImage
+Resolving github.com (github.com)... 20.205.243.166
+Connecting to github.com (github.com)|20.205.243.166|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/80276391/bd23be80-7a66-11e9-99e4-3ce31b62e499?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230627%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230627T044530Z&X-Amz-Expires=300&X-Amz-Signature=b797a8acddc193bb6d668565c2f2fde1c2cd1f02aa044910d9be7c600af73faa&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=80276391&response-content-disposition=attachment%3B%20filename%3DeDEX-UI.Linux.x86_64.AppImage&response-content-type=application%2Foctet-stream [following]
+--2023-06-27 10:30:30--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/80276391/bd23be80-7a66-11e9-99e4-3ce31b62e499?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230627%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230627T044530Z&X-Amz-Expires=300&X-Amz-Signature=b797a8acddc193bb6d668565c2f2fde1c2cd1f02aa044910d9be7c600af73faa&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=80276391&response-content-disposition=attachment%3B%20filename%3DeDEX-UI.Linux.x86_64.AppImage&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 61429411 (59M) [application/octet-stream]
+Saving to: ‘eDEX-UI.Linux.x86_64.AppImage’
+
+eDEX-UI.Linux.x86_64.AppImage                1%[>                                                                                     ] 719.42K  --.-KB/s    eta 18h 47meDEX-UI.Linux.x86_64.AppImage                2%[=>                                                                                    ]   1.47M   773KB/s    in 13m 41s 
+
+2023-06-27 10:44:12 (1.83 KB/s) - Read error at byte 1539506/61429411 (Error in the pull function.). Retrying.
+
+--2023-06-27 10:44:13--  (try: 2)  https://objects.githubusercontent.com/github-production-release-asset-2e65be/80276391/bd23be80-7a66-11e9-99e4-3ce31b62e499?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230627%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230627T044530Z&X-Amz-Expires=300&X-Amz-Signature=b797a8acddc193bb6d668565c2f2fde1c2cd1f02aa044910d9be7c600af73faa&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=80276391&response-content-disposition=attachment%3B%20filename%3DeDEX-UI.Linux.x86_64.AppImage&response-content-type=application%2Foctet-stream
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 401 Unauthorized
+
+Username/Password Authentication Failed.

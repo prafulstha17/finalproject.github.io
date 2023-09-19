@@ -1,5 +1,5 @@
 import React from "react";
-import { auth, googleProvider } from "../../confg/firebase";
+import { auth, googleProvider } from "../../config/firebase";
 import "./SignUp.css";
 import { NavLink } from "react-router-dom";
 

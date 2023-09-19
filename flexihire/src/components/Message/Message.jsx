@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth, db } from "../../confg/firebase";
+import { auth, db } from "../../config/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { firestore } from "firebase/app"; // Add this import
 import "./Message.css";

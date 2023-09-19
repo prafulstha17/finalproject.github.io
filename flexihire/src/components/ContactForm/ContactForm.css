@@ -112,8 +112,9 @@ textarea:focus {
 
 .side {
   height: 12rem;
-  background-color: #fcfcf8;
-  outline: 1px solid transparent;
+  background-color: #ffffce;
+  outline: px solid transparent;
+  box-shadow: #541857;
 
   &:nth-of-type(1) {
     padding: 2rem 2rem 0;
@@ -124,7 +125,7 @@ textarea:focus {
   &.side:nth-of-type(2) {
     padding: 2rem;
     border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.05), inset 0 -0.57rem 2rem rgba(229, 225, 187, 0.5);
+    box-shadow: 0 0.3rem 0.3rem rgba(255, 255, 255, 0.05), inset 0 -0.57rem 2rem rgba(255, 255, 255, 0.5);
     text-align: right;
   }
 }
@@ -153,7 +154,7 @@ textarea:focus {
   display: block;
   width: 12rem;
   height: 6rem;
-  background-color: #e9dc9d;
+  background-color: #ffe770;
   transform: rotate(30deg);
   transform-origin: 0 0;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
@@ -179,7 +180,7 @@ textarea:focus {
     display: block;
     width: 10rem;
     height: 10rem;
-    background-color: #e9dc9d;
+    background-color: #ffe45f;
     border-radius: 1rem;
     content: '';
     transform: scaleY(0.6) rotate(45deg)

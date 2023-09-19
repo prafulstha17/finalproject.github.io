@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { auth } from "./confg/firebase";
+import { auth } from "./config/firebase";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
@@ -16,6 +16,7 @@ import Admin from "./components/AdminPanel/Admin";
 import SignUp from "./components/Signup/SignUp";
 import Login from "./components/Login/Login";
 import Loading from "./components/Loading/Loading";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 
 const AdminContext = React.createContext(false);
@@ -38,10 +39,7 @@ function App() {
         setIsAdmin(false);
       }
 
-      setTimeout(() => {
-        setLoading(false);
-      }, 250); // Delay of seconds
-
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -71,6 +69,9 @@ function App() {
               <Route path="/whyUs" element={<WhyUs />} />
               <Route path="/termsCondition" element={<TermsCondition />} />
               <Route path="/profile" element={<Profile user={user} />} />
+
+              {/* Catch-all route for non-existent routes */}
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
             <PageFooter />
             <Message />

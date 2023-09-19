@@ -1,0 +1,26 @@
+.usersInfo{
+    margin: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.profiledUser{
+    background-color: aqua;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.namedUser{
+    background-color: aqua;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.mailedUser{
+    background-color: aqua;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}

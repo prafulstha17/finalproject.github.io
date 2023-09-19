@@ -1,4 +1,4 @@
-import { auth } from "../../confg/firebase";
+import { auth } from "../../config/firebase";
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import transparent_bg from "../Icon/low_res/transparent_bg.png";

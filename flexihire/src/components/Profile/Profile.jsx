@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { auth, storage } from '../../confg/firebase';
+import { auth, storage } from '../../config/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { BsCamera } from 'react-icons/bs';
 import './Profile.css';

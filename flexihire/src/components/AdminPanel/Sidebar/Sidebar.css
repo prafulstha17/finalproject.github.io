@@ -259,7 +259,7 @@ navbar{
 
 @media (max-width: 768px) {
   .sidebar {
-    height: auto;
+    height: 100%;
     position: relative;
   }
 

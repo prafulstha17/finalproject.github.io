@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {auth} from "../../../confg/firebase";
+import {auth} from "../../../config/firebase";
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -76,12 +76,12 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/mails">
                 {" "}
                 <span class="fa-stack fa-lg pull-left">
                   <i class="fa fa-cart-plus fa-stack-1x "></i>
                 </span>
-                <p>Events</p>
+                <p>Mails</p>
               </a>
             </li>
             <li>
