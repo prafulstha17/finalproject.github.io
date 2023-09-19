@@ -3,7 +3,7 @@ import "./ContactForm";
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-
+//display contectdata
 function DisplayData() {
   const [contactData, setContactData] = useState([]);
 
