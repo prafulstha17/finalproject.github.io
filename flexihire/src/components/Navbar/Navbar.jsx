@@ -3,10 +3,39 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import transparent_bg from "../Icon/low_res/transparent_bg.png";
 import { Dropdown } from "react-bootstrap";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
 function Navbar() {
   const [user, setUser] = useState(null);
   const [show, setShow] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (searchTerm.trim() === "") {
+        setSearchResults([]);
+        return;
+      }
+
+      const booksRef = collection(db, "movies"); // Change 'books' to your collection name
+      const querySnapshot = await getDocs(booksRef);
+
+      const results = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          results.push(data);
+        }
+      });
+
+      setSearchResults(results);
+    };
+
+    fetchData();
+  }, [searchTerm]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -73,11 +102,12 @@ function Navbar() {
               Jobs
             </a>
           </li>
-          <li className="nav-item">
+          {/* services  */}
+          {/* <li className="nav-item">
             <a className="nav-link" href="/services" onClick={handleLinkClick}>
               Services
             </a>
-          </li>
+          </li> */}
           <li className="nav-item">
             <a className="nav-link" href="/contactUs" onClick={handleLinkClick}>
               Contact Us
@@ -103,8 +133,18 @@ function Navbar() {
                 type="search"
                 class="search-data"
                 placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 required
               />
+              <div className="dataSearch">
+                <ul>
+                  {searchResults.map((book) => (
+                    <li key={book.id}>{book.title}</li>
+                  ))}
+                </ul>
+              </div>
+
               <div class="input-select">
                 <select data-trigger="" name="choices-single-default">
                   <option placeholder="">Flexer</option>

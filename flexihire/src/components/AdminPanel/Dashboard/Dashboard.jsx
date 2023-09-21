@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -13,7 +13,7 @@ function Dashboard() {
             <h6 class="mb-0">Calendar</h6>
             <a href="">Show All</a>
           </div>
-          <Calendar value={date} onChange={setDate} />
+          {/* <Calendar value={date} onChange={setDate} /> */}
         </div>
       </div>
     </div>
