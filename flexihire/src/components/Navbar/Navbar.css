@@ -409,3 +409,8 @@ nav .logo.space {
 .content .space {
   margin: 10px 0;
 }
+
+.dataSearch ul li{
+  list-style-type: none;
+  text-align: left;
+}

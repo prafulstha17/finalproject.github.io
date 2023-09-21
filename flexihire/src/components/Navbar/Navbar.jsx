@@ -82,6 +82,14 @@ function Navbar() {
     };
   }, []);
 
+  const handleSearchItemClick = (book) => {
+    // Handle the click on a searchable item
+    setSearchTerm(""); // Clear the search term
+    setSearchResults([]); // Clear the search results
+    // You can perform any action related to the selected item here
+    console.log("Clicked item:", book.title);
+  };
+
   return (
     <>
       <nav className="navbar sticky-top">
@@ -129,21 +137,30 @@ function Navbar() {
             </div>
             <form action="#">
               <button type="submit" class="fas fa-search"></button>
-              <input
-                type="search"
-                class="search-data"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                required
-              />
-              <div className="dataSearch">
-                <ul>
-                  {searchResults.map((book) => (
-                    <li key={book.id}>{book.title}</li>
-                  ))}
-                </ul>
-              </div>
+              <Dropdown>
+                <input
+                  type="search"
+                  className="search-data"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  required
+                />
+                <div className="dataSearch">
+                  <ul>
+                    {searchResults.map((book) => (
+                      <li key={book.id}>
+                        <a
+                          href="#"
+                          onClick={() => handleSearchItemClick(book)} // Handle item click
+                        >
+                          {book.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Dropdown>
 
               <div class="input-select">
                 <select data-trigger="" name="choices-single-default">
