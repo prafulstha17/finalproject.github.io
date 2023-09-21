@@ -22,19 +22,14 @@ function ContactForm() {
   const submitData = async (event) => {
     event.preventDefault();
     const { Name, email, message } = userData;
-    if (Name && email && message) {
-      setFormFilled(true);
-    } else {
-      setFormFilled(false);
-    }
-
+    
     if (Name && email && message) {
       const res = await fetch(
-        'https://flexihire-8f227-default-rtdb.firebaseio.com/ContactFormData.json',
+        `https://flexihire-8f227-default-rtdb.firebaseio.com/ContactFormData.json`,
         {
           method: 'POST',
-          Headers: {
-            'Contact-Type': 'application/json',
+          headers: {
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             Name,
@@ -43,17 +38,23 @@ function ContactForm() {
           }),
         }
       );
-      if (res) {
+  
+      if (res.ok) {
         setUserData({
           Name: '',
           email: '',
           message: '',
         });
+        setFormSubmit(true);
+      } else {
+        console.error('Failed to submit data.');
       }
-
-      setFormSubmit(true);
+    } else {
+      setFormFilled(false);
     }
   };
+  
+  
 
   return (
     <>

@@ -51,6 +51,7 @@ function App() {
   }
 
   return (
+    <>
     <AdminContext.Provider value={isAdmin}>
       <Router>
         {isAdmin ? (
@@ -79,6 +80,7 @@ function App() {
         )}
       </Router>
     </AdminContext.Provider>
+    </>
   );
 }
 
