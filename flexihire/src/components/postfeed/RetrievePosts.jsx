@@ -65,14 +65,15 @@ function RetrievePosts() {
 
   return (
     <div className="retrieve-posts-container">
-      <h2>Posts</h2>
+
       <div className="user-info">
         {currentUser ? (
-          <p>Logged in as: {currentUser.displayName}</p>
+          <h2>{currentUser.displayName}</h2>
         ) : (
           <p>Not logged in</p>
         )}
       </div>
+      <h3>Posts</h3>
       <ul>
         {posts.map((post, index) => (
           <li key={index}>
