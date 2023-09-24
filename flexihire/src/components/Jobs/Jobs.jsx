@@ -1,4 +1,5 @@
 import PostStatus from "../JobInfo/PostStatus";
+import RetrievePosts from "../JobInfo/RetrievePosts";
 import { useState } from "react";
 import "./Jobs.css";
 
@@ -24,6 +25,7 @@ function Jobs() {
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
           Job Listing
         </h1>
+        <RetrievePosts />
       </div>
     </div>
   );

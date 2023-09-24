@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { listenToAuthChanges } from "./AuthContext";
+import "./RetrievePosts.css"; // Import your CSS file for styling
 
 function RetrievePosts() {
   const [posts, setPosts] = useState([]);
@@ -31,7 +32,7 @@ function RetrievePosts() {
             id: doc.id,
           }));
 
-          // Filter out posts that do not have a "text" property
+          // Filter out posts that do not have a "title" property
           const validPosts = postList.filter((post) => post && post.title);
 
           setPosts(validPosts);
@@ -71,6 +72,11 @@ function RetrievePosts() {
     }
   };
 
+  const handleApplyPost = (postId) => {
+    // Implement reporting logic here
+    console.log("Applying post with ID:", postId);
+  };
+
   const handleReportPost = (postId) => {
     // Implement reporting logic here
     console.log("Reporting post with ID:", postId);
@@ -79,28 +85,35 @@ function RetrievePosts() {
   return (
     <div className="retrieve-posts-container">
       <ul>
-        {posts.map((post, index) => (
-          <li key={index}>
-            <div className="title">{post.title}</div>
-            <div className="description">{post.description}</div>
-            <div className="postDetails">
-              <p>
-                {post.username} posted on {formatDate(post.timestamp)}
-              </p>
+        {posts.map((post) => (
+          <li key={post.id} className="job-post">
+            <div className="job-header">
+              <div className="title">{post.title}</div>
+              <div className="postDetails">
+                <p>
+                  {post.username} posted on {formatDate(post.timestamp)}
+                </p>
+              </div>
             </div>
-            <div className="exp">{post.experience}</div> 
-            <div className="deadline">{post.deadline}</div>
-            Est. time <div className="workinghrs">{post.timing}</div>
-            <div className="salary">{post.salary}</div>          
-            {currentUser && currentUser.uid === post.userId ? (
-              <button onClick={() => handleDeletePost(post.id)}>
-                Remove Job Opening
-              </button>
-            ) : (
-              <button onClick={() => handleReportPost(post.id)}>
-                Apply
-              </button>
-            )}
+            <div className="job-details">
+              <div className="exp">Experience: {post.experience}</div>
+              <div className="deadline">Deadline: {post.deadline}</div>
+              <div className="workinghrs">Est. time: {post.timing}</div>
+              <div className="salary">Salary: {post.salary}</div>
+            </div>
+            <div className="job-description">{post.description}</div>
+            <div className="job-actions">
+              {currentUser && currentUser.uid === post.userId ? (
+                <button onClick={() => handleDeletePost(post.id)}>
+                  Remove Job Opening
+                </button>
+              ) : (
+                <div className="handleButton">
+                <button className="apply" onClick={() => handleApplyPost(post.id)}>Apply</button>
+                <button className="report" onClick={() => handleReportPost(post.id)}>Report</button>
+                </div>
+              )}
+            </div>
           </li>
         ))}
       </ul>
