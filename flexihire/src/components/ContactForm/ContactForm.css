@@ -19,49 +19,49 @@ body {
   overflow: auto;
 }
 
-h1,
-p {
+.contact-form h1,
+.contact-form p {
   margin: 0;
   padding: 0;
 }
 
-h1 {
+.contact-form h1 {
   font-size: 2rem;
   font-family: 'Dancing Script';
   color: #6f00ff;
 }
 
-small {
+.contact-form small {
   display: block;
   padding: 1rem 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   transition: opacity 0.33s;
 }
 
-textarea,
-input,
-button {
-  line-height: 1.5rem;
+.contact-form textarea,
+.contact-form input,
+.contact-form button {
+  line-height: 1.19rem;
   border: 0;
   outline: none;
   font-family: inherit;
   appearance: none;
 }
 
-textarea,
-input {
+.contact-form textarea,
+.contact-form input {
   color: #6f00ff;
   background-color: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
 }
 
-textarea {
+.contact-form textarea {
   width: 100%;
   height: 8rem;
   resize: none;
 }
 
-input {
+.contact-form input {
   width: 50%;
   margin-bottom: 1rem;
 
@@ -72,7 +72,7 @@ input {
   }
 }
 
-button {
+.contact-form button {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   background-color: rgba(102, 0, 236, 0.9);
@@ -88,19 +88,19 @@ button {
   }
 }
 
-input[type=text]:focus,
-input[type=email]:focus,
-textarea:focus {
+.contact-form input[type=text]:focus,
+.contact-form input[type=email]:focus,
+.contact-form textarea:focus {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgba(78, 94, 114, 0.3)' x='0' y='23' width='10' height='1'/></svg>");
   outline: none;
 }
 
-.wrapper {
+.contact-form .wrapper {
   width: 35rem;
   background-color: white;
 }
 
-.letter {
+.contact-form .letter {
   position: absolute;
   left: 0;
   right: 0;
@@ -110,7 +110,7 @@ textarea:focus {
   perspective: 60rem;
 }
 
-.side {
+.contact-form .side {
   height: 12rem;
   background-color: #ffffce;
   outline: px solid transparent;
@@ -130,7 +130,7 @@ textarea:focus {
   }
 }
 
-.envelope {
+.contact-form .envelope {
   position: absolute;
   left: 0;
   right: 0;
@@ -138,7 +138,7 @@ textarea:focus {
   margin: auto;
 }
 
-.envelope.front {
+.contact-form .envelope.front {
   width: 10rem;
   height: 6rem;
   top: 10vh;
@@ -148,8 +148,8 @@ textarea:focus {
   opacity: 0;
 }
 
-.envelope.front::before,
-.envelope.front::after {
+.contact-form .envelope.front::before,
+.contact-form .envelope.front::after {
   position: absolute;
   display: block;
   width: 12rem;
@@ -161,13 +161,13 @@ textarea:focus {
   content: '';
 }
 
-.envelope.front::after {
+.contact-form .envelope.front::after {
   right: 0;
   transform: rotate(-30deg);
   transform-origin: 100% 0;
 }
 
-.envelope.back {
+.contact-form .envelope.back {
   top: 0.25rem;
   width: 10rem;
   height: 10rem;
@@ -187,7 +187,7 @@ textarea:focus {
   }
 }
 
-.result-message {
+.contact-form .result-message {
   opacity: 0;
   top: 20vh;
   color: rgb(0, 0, 0);
@@ -196,7 +196,7 @@ textarea:focus {
   z-index: -9999;
 }
 
-.sent {
+.contact-form.sent {
   & .letter {
     animation: scaleLetter 1s forwards ease-in
       /*,

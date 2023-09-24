@@ -1,4 +1,4 @@
-.container-xxl .container{
+/* .container-xxl .container{
     background-color: aliceblue;
     padding: 1rem;
 }
@@ -37,4 +37,14 @@
 .container-xxl .btn-light{
     color: white;
     background-color: rgb(214, 186, 240);
+} */
+
+.container-xxl button{
+    background:#349ef5 !important ;
+    border-radius: 5rem;
+    margin-bottom: 3rem;
+}
+.container-xxl button:hover{
+    box-shadow: 0 5px 15px rgba(75, 136, 172, 0.8);
+    background-color: #483d8b;
 }

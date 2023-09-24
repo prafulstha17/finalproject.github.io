@@ -1,6 +1,6 @@
 import React from 'react';
-import PostStatus from '../postfeed/PostStatus';
-import RetrievePosts from '../postfeed/RetrievePosts';
+import PostStatus from '../JobInfo/PostStatus';
+import RetrievePosts from '../JobInfo/RetrievePosts';
 //import './Home.css';
 
 function Home(props) {
