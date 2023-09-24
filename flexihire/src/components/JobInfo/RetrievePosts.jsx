@@ -20,6 +20,7 @@ function RetrievePosts() {
       setCurrentUser(user);
     });
 
+    
     const fetchPosts = () => {
       if (currentUser) {
         const postsRef = collection(db, "posts");

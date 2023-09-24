@@ -5,6 +5,7 @@ import "./Admin.css";
 import Users from "./Users/Users";
 import Dashboard from "./Dashboard/Dashboard";
 import Mails from "./Mails/Mails";
+import ManagePost from "./ManagePost/ManagePost";
 
 function Admin() {
   return (
@@ -17,6 +18,8 @@ function Admin() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
           <Route path="/mails" element={<Mails/>}/>
+          <Route path="/managepost" element={<ManagePost/>}/>
+
         </Routes>
       </div>
     </div>

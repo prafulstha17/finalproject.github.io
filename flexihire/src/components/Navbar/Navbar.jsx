@@ -20,7 +20,7 @@ function Navbar() {
         return;
       }
 
-      const booksRef = collection(db, "movies"); // Change 'books' to your collection name
+      const booksRef = collection(db, "posts"); // Change 'books' to your collection name
       const querySnapshot = await getDocs(booksRef);
 
       const results = [];

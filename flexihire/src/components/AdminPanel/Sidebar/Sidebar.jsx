@@ -85,11 +85,12 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/managepost">
+              {" "}
                 <span class="fa-stack fa-lg pull-left">
                   <i class="fa fa-wrench fa-stack-1x "></i>
                 </span>
-                <p>Services</p>
+                <p>Manage Post</p>
               </a>
             </li>
           </ul>
