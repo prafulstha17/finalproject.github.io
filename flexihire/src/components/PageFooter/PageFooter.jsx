@@ -33,8 +33,7 @@ function PageFooter() {
             <div class="col" id="useful-links">
               <h4>About</h4>
               <div class="links">
-                <a href="/admin">How it Work</a>
-                <a href="/services">Services</a>
+                <a href="#">How it Work</a>
                 <a href="#">Privacy Policy</a>
                 <a href="/termsCondition">Terms & Condition </a>
                 <a href="/whyUs">Why Us?</a>
