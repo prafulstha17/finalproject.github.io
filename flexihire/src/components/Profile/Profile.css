@@ -109,8 +109,10 @@
 
 .camera-icon-container {
   position: absolute;
-  top: 45%;
-  left: 50%;
+  top: 60%;
+  left: 60%;
+  margin-top: 3.8rem;
+  margin-left: 3.8rem;
   color: #ffffff;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -155,7 +157,7 @@
   }
 
   .camera-icon-container {
-    top: 40%;
+    top: 50%;
   }
 
   .zoom-overlay img {
@@ -167,8 +169,8 @@
 @media (max-width: 768px) {
   .camera-icon-container {
     position: absolute;
-    bottom: -45px;
-    left: 36%;
+    bottom: 1rem;
+    left: -2rem;
     transform: translateY(20%);
   }
 
@@ -180,5 +182,9 @@
 
 .personal{
   margin: 5rem;
- 
+}
+
+.personal p{
+  margin: -5rem;
+  margin-left: -5rem;
 }

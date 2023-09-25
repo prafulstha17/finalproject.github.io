@@ -9,7 +9,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { listenToAuthChanges } from "./AuthContext";
-import "./RetrievePosts.css"; // Import your CSS file for styling
+import "./RetrievePosts.css";
+import ApplyButton from "./ApplyButton";
 
 function RetrievePosts({ isAdmin }) {
   const [posts, setPosts] = useState([]);
@@ -18,7 +19,7 @@ function RetrievePosts({ isAdmin }) {
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
       setCurrentUser(user);
-      console.log(isAdmin?"userAdmin":"currentUser");
+      console.log(isAdmin ? "userAdmin" : "currentUser");
     });
 
     const fetchPosts = () => {
@@ -73,9 +74,15 @@ function RetrievePosts({ isAdmin }) {
     }
   };
 
-  const handleApplyPost = (postId) => {
-    // Implement reporting logic here
-    console.log("Applying post with ID:", postId);
+  const handleApplyPost = (
+    postId,
+    postUploaderUserId,
+    postUploaderUsername
+  ) => {
+    // Implement notification logic here, e.g., sending a notification to postUploader
+    console.log(
+      `Applying post with ID: ${postId}. Notifying ${postUploaderUsername}.`
+    );
   };
 
   const handleReportPost = (postId) => {
@@ -92,7 +99,14 @@ function RetrievePosts({ isAdmin }) {
               <div className="title">{post.title}</div>
               <div className="postDetails">
                 <p>
-                  {post.username} posted on {formatDate(post.timestamp)}
+                  {/* Display username as a clickable link */}
+                  <a
+                    href={`/profile/${post.userId}`} // Replace with your profile URL structure
+                    className="username-link"
+                  >
+                    {post.username}
+                  </a>{" "}
+                  posted on {formatDate(post.timestamp)}
                 </p>
               </div>
             </div>
@@ -109,12 +123,13 @@ function RetrievePosts({ isAdmin }) {
                 </button>
               ) : (
                 <div className="handleButton">
-                  <button
-                    className="apply"
-                    onClick={() => handleApplyPost(post.id)}
-                  >
-                    Apply
-                  </button>
+                  <ApplyButton
+                    postId={post.id} // Make sure post.id is defined
+                    recipientUserId={post.userId} // Make sure post.userId is defined
+                    currentUserId={currentUser.uid} // Make sure currentUser.uid is defined
+                    applicationMessage="Your application message here" // Replace with the actual application message
+                  />
+
                   <button
                     className="report"
                     onClick={() => handleReportPost(post.id)}

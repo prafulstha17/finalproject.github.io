@@ -136,7 +136,7 @@ const PersonalDataForm = () => {
             className={formData.firstName ? "active" : ""}
             onClick={() => handleLabelClick("firstName")}
           >
-            firstName :
+            First Name
           </label>
         </div>
 
@@ -155,7 +155,7 @@ const PersonalDataForm = () => {
             className={formData.middleName ? "active" : ""}
             onClick={() => handleLabelClick("middleName")}
           >
-            middleName :
+            Middle Name
           </label>
         </div>
 
@@ -174,7 +174,7 @@ const PersonalDataForm = () => {
             className={formData.lastName ? "active" : ""}
             onClick={() => handleLabelClick("lastName")}
           >
-            lastName :
+            Last Name
           </label>
         </div>
 
@@ -193,7 +193,7 @@ const PersonalDataForm = () => {
             className={formData.phoneNo ? "active" : ""}
             onClick={() => handleLabelClick("phoneNo")}
           >
-            phoneNo :
+            Phone No.
           </label>
         </div>
 
@@ -212,7 +212,7 @@ const PersonalDataForm = () => {
             className={formData.email ? "active" : ""}
             onClick={() => handleLabelClick("email")}
           >
-            email :
+            Email
           </label>
         </div>
 
@@ -250,7 +250,7 @@ const PersonalDataForm = () => {
             className={formData.address ? "active" : ""}
             onClick={() => handleLabelClick("address")}
           >
-            address
+            Address
           </label>
         </div>
 
@@ -269,7 +269,7 @@ const PersonalDataForm = () => {
             className={formData.education ? "active" : ""}
             onClick={() => handleLabelClick("education")}
           >
-            education
+            Education
           </label>
         </div>
 
@@ -288,7 +288,7 @@ const PersonalDataForm = () => {
             className={formData.fieldOfExpertise ? "active" : ""}
             onClick={() => handleLabelClick("fieldOfExpertise")}
           >
-            fieldOfExpertise
+            Field Of Expertise
           </label>
         </div>
 
@@ -307,7 +307,7 @@ const PersonalDataForm = () => {
             className={formData.languages ? "active" : ""}
             onClick={() => handleLabelClick("languages")}
           >
-            languages
+            Languages
           </label>
         </div>
 
@@ -326,7 +326,7 @@ const PersonalDataForm = () => {
             className={formData.aboutYou ? "active" : ""}
             onClick={() => handleLabelClick("aboutYou")}
           >
-            aboutYou
+            Describe Yourself
           </label>
         </div>
 
@@ -345,7 +345,7 @@ const PersonalDataForm = () => {
             className={formData.gitHub ? "active" : ""}
             onClick={() => handleLabelClick("gitHub")}
           >
-            gitHub
+            GitHub Account
           </label>
         </div>
 
@@ -364,7 +364,7 @@ const PersonalDataForm = () => {
             className={formData.skills ? "active" : ""}
             onClick={() => handleLabelClick("skills")}
           >
-            skills
+            Skills
           </label>
         </div>
 

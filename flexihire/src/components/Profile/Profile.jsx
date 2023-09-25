@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { auth, storage } from '../../config/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { BsCamera } from 'react-icons/bs';
-import PersonalDataForm from '../Profile/PersonalDataForm';
-import './Profile.css';
+import React, { useEffect, useState } from "react";
+import { auth, storage } from "../../config/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { BsCamera } from "react-icons/bs";
+import PersonalDataForm from "../Profile/PersonalDataForm";
+import "./Profile.css";
 function Profile() {
   const [user, setUser] = useState(null);
-  const [profilePicUrl, setProfilePicUrl] = useState('');
+  const [profilePicUrl, setProfilePicUrl] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [zoomedIn, setZoomedIn] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
@@ -50,10 +50,10 @@ function Profile() {
     };
 
     checkDeviceSize();
-    window.addEventListener('resize', checkDeviceSize);
+    window.addEventListener("resize", checkDeviceSize);
 
     return () => {
-      window.removeEventListener('resize', checkDeviceSize);
+      window.removeEventListener("resize", checkDeviceSize);
     };
   }, []);
 
@@ -82,11 +82,11 @@ function Profile() {
   };
 
   const handleProfilePicHover = () => {
-      setIsHovered(true);
+    setIsHovered(true);
   };
 
   const handleProfilePicHoverExit = () => {
-      setIsHovered(false);
+    setIsHovered(false);
   };
 
   const handleProfilePicClick = () => {
@@ -104,12 +104,21 @@ function Profile() {
           >
             {profilePicUrl ? (
               <div onClick={handleProfilePicClick}>
-                <img src={profilePicUrl} alt="Profile" className="profile-pic" />
+                <img
+                  src={profilePicUrl}
+                  alt="Profile"
+                  className="profile-pic"
+                />
               </div>
             ) : (
-              <div className="profile-pic profile-initial" onClick={handleProfilePicClick}>{user.displayName ? user.displayName[0] : ''}</div>
+              <div
+                className="profile-pic profile-initial"
+                onClick={handleProfilePicClick}
+              >
+                {user.displayName ? user.displayName[0] : ""}
+              </div>
             )}
-            {(isSmallDevice || isHovered) ? (
+            {isSmallDevice || isHovered ? (
               <label htmlFor="profile-pic-input">
                 <div className="camera-icon-container">
                   <BsCamera size={30} />
@@ -128,27 +137,28 @@ function Profile() {
             type="file"
             id="profile-pic-input"
             accept="image/*"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             onChange={handleFileUpload}
           />
           <br />
-          <p className="profile-name">{user.displayName ? user.displayName : 'Anonymous'}</p>
-          
-          
+          <p className="profile-name">
+            {user.displayName ? user.displayName : "Anonymous"}
+          </p>
+          <div className="personal">
+            <strong>
+              <h5 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                Edit details:{" "}
+              </h5>
+            </strong>
+            {hidden ? <button onClick={handlePostSubmit}>Edit</button> : ""}
+            {status ? <PersonalDataForm /> : ""}
+          </div>
         </>
       ) : (
-        <p className='profile-name'>Please log in to view your profile</p>
-      )}
-      <div className='personal'>
-      <strong>
-        <h5 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-          Edit details:{" "}
-        </h5>
-      </strong>
-      {hidden ? <button onClick={handlePostSubmit}>Edit</button> : ""}
-      {status ? <PersonalDataForm/> : ""}
-            
+        <div className="personal">
+          <p className="profile-name">Please log in to view your profile</p>
         </div>
+      )}
     </div>
   );
 }
