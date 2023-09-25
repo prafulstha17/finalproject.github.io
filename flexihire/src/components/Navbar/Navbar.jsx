@@ -165,7 +165,7 @@ function Navbar() {
               <div class="input-select">
                 <select data-trigger="" name="choices-single-default">
                   <option placeholder="">Flexer</option>
-                  <option>FlexiHirer</option>
+                  <option>Openings</option>
                 </select>
               </div>
             </form>

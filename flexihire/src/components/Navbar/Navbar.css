@@ -69,7 +69,7 @@ nav {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   text-decoration: none;
 }
 

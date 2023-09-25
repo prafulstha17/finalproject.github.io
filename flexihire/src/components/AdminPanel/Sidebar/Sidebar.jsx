@@ -62,7 +62,7 @@ function Sidebar() {
             <li>
               <a href="#">
                 <span class="fa-stack fa-lg pull-left">
-                  <i class="fa fa-flag fa-stack-1x "></i>
+                <i class="fa fa-flag fa-stack-1x "></i>
                 </span>
                 <p>Shortcut</p>
               </a>
@@ -70,7 +70,7 @@ function Sidebar() {
             <li>
               <a href="#">
                 <span class="fa-stack fa-lg pull-left">
-                  <i class="fa fa-cloud-download fa-stack-1x "></i>
+                <i class="fa fa-cloud-download fa-stack-1x "></i>
                 </span>
                 <p>Users</p>
               </a>

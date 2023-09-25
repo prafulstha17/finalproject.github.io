@@ -11,16 +11,16 @@ import { db } from "../../config/firebase";
 import { listenToAuthChanges } from "./AuthContext";
 import "./RetrievePosts.css"; // Import your CSS file for styling
 
-function RetrievePosts() {
+function RetrievePosts({ isAdmin }) {
   const [posts, setPosts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
       setCurrentUser(user);
+      console.log(isAdmin?"userAdmin":"currentUser");
     });
 
-    
     const fetchPosts = () => {
       if (currentUser) {
         const postsRef = collection(db, "posts");
@@ -102,16 +102,25 @@ function RetrievePosts() {
               <div className="workinghrs">Est. time: {post.timing}</div>
               <div className="salary">Salary: {post.salary}</div>
             </div>
-            <div className="job-description">{post.description}</div>
             <div className="job-actions">
-              {currentUser && currentUser.uid === post.userId ? (
+              {(currentUser && currentUser.uid === post.userId) || isAdmin ? (
                 <button onClick={() => handleDeletePost(post.id)}>
                   Remove Job Opening
                 </button>
               ) : (
                 <div className="handleButton">
-                <button className="apply" onClick={() => handleApplyPost(post.id)}>Apply</button>
-                <button className="report" onClick={() => handleReportPost(post.id)}>Report</button>
+                  <button
+                    className="apply"
+                    onClick={() => handleApplyPost(post.id)}
+                  >
+                    Apply
+                  </button>
+                  <button
+                    className="report"
+                    onClick={() => handleReportPost(post.id)}
+                  >
+                    Report
+                  </button>
                 </div>
               )}
             </div>

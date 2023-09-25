@@ -1,9 +1,10 @@
 import React from 'react'
 import RetrievePosts from "../../JobInfo/RetrievePosts";
 function ManagePost() {
+  const isAdmin = true; 
   return (
     <div>
-        <RetrievePosts />
+        <RetrievePosts isAdmin={isAdmin} />
     </div>
   )
 }

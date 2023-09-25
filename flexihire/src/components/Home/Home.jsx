@@ -77,7 +77,7 @@ function Home(props) {
         </div>
 
         <div className="make-it-real">
-          <h1>Make it Real with Freelancer.</h1>
+          <h1>Make it Real with Flexer.</h1>
           <h5>Get some inspiration from 1800+ skills</h5>
           {/* Gallery */}
           <div className="gallery">{/* Add images here */}</div>
