@@ -1,8 +1,10 @@
+
 import './AboutUs.css';
 
 function AboutUs() {
     return (
-        <div className="about">
+    <>
+    <div className="about">
             <div class="responsive-container-block bigContainer">
                 <div class="responsive-container-block Container">
                     <p class="text-blk heading">
@@ -36,6 +38,10 @@ function AboutUs() {
                 </div>
             </div>
         </div>
+        
+    
+    </>
+        
     );
 }
 

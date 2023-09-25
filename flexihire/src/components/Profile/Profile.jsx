@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth, storage } from '../../config/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { BsCamera } from 'react-icons/bs';
+import PersonalDataForm from '../Profile/PersonalDataForm';
 import './Profile.css';
 function Profile() {
   const [user, setUser] = useState(null);
@@ -9,6 +10,12 @@ function Profile() {
   const [isHovered, setIsHovered] = useState(false);
   const [zoomedIn, setZoomedIn] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
+  const [status, setStatus] = useState(false);
+  const [hidden, setHidden] = useState(true);
+  const handlePostSubmit = async () => {
+    setStatus(true);
+    setHidden(false);
+  };
 
   useEffect(() => {
     auth.onIdTokenChanged((user) => {
@@ -110,6 +117,7 @@ function Profile() {
               </label>
             ) : null}
           </div>
+
           {zoomedIn && (
             <div className="zoom-overlay" onClick={handleProfilePicClick}>
               <img src={profilePicUrl} alt="Profile" />
@@ -125,10 +133,22 @@ function Profile() {
           />
           <br />
           <p className="profile-name">{user.displayName ? user.displayName : 'Anonymous'}</p>
+          
+          
         </>
       ) : (
         <p className='profile-name'>Please log in to view your profile</p>
       )}
+      <div className='personal'>
+      <strong>
+        <h5 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+          Edit details:{" "}
+        </h5>
+      </strong>
+      {hidden ? <button onClick={handlePostSubmit}>Edit</button> : ""}
+      {status ? <PersonalDataForm/> : ""}
+            
+        </div>
     </div>
   );
 }
