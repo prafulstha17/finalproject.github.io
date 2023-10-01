@@ -6,11 +6,7 @@ import "../JobInfo/PostStatus.css";
 
 const PersonalDataForm = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
     phoneNo: "",
-    email: "",
     address: "",
     education: "",
     experience: "",
@@ -63,19 +59,12 @@ const PersonalDataForm = () => {
 
       const postsRef = collection(db, "portfolio");
       await addDoc(postsRef, {
-        firstName: formData.firstName,
-        middleName: formData.middleName,
-        lastName: formData.lastName,
         experience: formData.experience,
         address: formData.address,
-        education: formData.education,
-        fieldOfExpertise: formData.fieldOfExpertise,
-        languages: formData.languages,
         gitHub: formData.gitHub,
         skills: formData.skills,
         aboutYou: formData.aboutYou,
         phoneNo: formData.phoneNo,
-        email: formData.email,
         timestamp: serverTimestamp(),
         userId: currentUser.uid,
         username: currentUser.displayName,
@@ -97,17 +86,10 @@ const PersonalDataForm = () => {
 
       // Clear the form fields and selected file
       setFormData({
-        firstName: "",
-        middleName: "",
-        lastName: "",
         phoneNo: "",
-        email: "",
         address: "",
-        education: "",
         experience: "",
-        fieldOfExpertise: "",
         aboutYou: "",
-        languages: "",
         gitHub: "",
         skills: "",
       });
@@ -121,62 +103,6 @@ const PersonalDataForm = () => {
     <div className="post-status-container">
       <h3>Enter your Personal Details :</h3>
       <div className="post-area">
-        {/* firstName */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="firstName"
-            className={formData.firstName ? "active" : ""}
-            onClick={() => handleLabelClick("firstName")}
-          >
-            First Name
-          </label>
-        </div>
-
-        {/* middleName */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="middleName"
-            name="middleName"
-            value={formData.middleName}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="middleName"
-            className={formData.middleName ? "active" : ""}
-            onClick={() => handleLabelClick("middleName")}
-          >
-            Middle Name
-          </label>
-        </div>
-
-        {/* lastName */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="lastName"
-            className={formData.lastName ? "active" : ""}
-            onClick={() => handleLabelClick("lastName")}
-          >
-            Last Name
-          </label>
-        </div>
 
         {/* phoneNo */}
         <div className="input-group">
@@ -194,25 +120,6 @@ const PersonalDataForm = () => {
             onClick={() => handleLabelClick("phoneNo")}
           >
             Phone No.
-          </label>
-        </div>
-
-        {/* email */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="email"
-            className={formData.email ? "active" : ""}
-            onClick={() => handleLabelClick("email")}
-          >
-            Email
           </label>
         </div>
 
@@ -251,63 +158,6 @@ const PersonalDataForm = () => {
             onClick={() => handleLabelClick("address")}
           >
             Address
-          </label>
-        </div>
-
-        {/* education */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="education"
-            name="education"
-            value={formData.education}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="education"
-            className={formData.education ? "active" : ""}
-            onClick={() => handleLabelClick("education")}
-          >
-            Education
-          </label>
-        </div>
-
-        {/* fieldOfExpertise */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="fieldOfExpertise"
-            name="fieldOfExpertise"
-            value={formData.fieldOfExpertise}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="fieldOfExpertise"
-            className={formData.fieldOfExpertise ? "active" : ""}
-            onClick={() => handleLabelClick("fieldOfExpertise")}
-          >
-            Field Of Expertise
-          </label>
-        </div>
-
-        {/* languages */}
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder=""
-            id="languages"
-            name="languages"
-            value={formData.languages}
-            onChange={handleInputChange}
-          />
-          <label
-            htmlFor="languages"
-            className={formData.languages ? "active" : ""}
-            onClick={() => handleLabelClick("languages")}
-          >
-            Languages
           </label>
         </div>
 

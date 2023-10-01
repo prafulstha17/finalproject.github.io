@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { listenToAuthChanges } from '../JobInfo/AuthContext';
 import heroimg from "../image/heroimg.jpg";
+import LazyLoad from "react-lazyload";
 import "./Home.css";
 
 function Home(props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = listenToAuthChanges((user, isAdmin) => {
+      setIsLoggedIn(!!user); // Update the state based on the user's existence
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const handleGetStarted = () => {
+    if (isLoggedIn) {
+      navigate("/jobs");
+    } else {
+      navigate("/sign-in");
+    }
+  };
   return (
     <div className="home">
       <div className="hero-content">
         <h1>Make your own change</h1>
         <p>Forget the old rules. Choose what's perfect for you.</p>
-        <button>Get Started</button>
+        <button onClick={handleGetStarted}>Get Started</button>
       </div>
       <div className="hero-image">
-        <img src={heroimg} alt="Hero" />
+        <link rel="preload" href={heroimg} as="image" />
+        <LazyLoad height={200} offset={100}>
+          <img src={heroimg} alt="Hero Section" loading="lazy" />
+        </LazyLoad>
       </div>
       <div className="separate-by-line">
         <div className="need-something-done">
@@ -63,15 +89,13 @@ function Home(props) {
             <div className="feature">
               <h3>Quality work</h3>
               <p>
-                FlexiHire has by far the largest pool of quality
-                freelancers globally to choose from.
+                FlexiHire has by far the largest pool of quality freelancers
+                globally to choose from.
               </p>
             </div>
             <div className="feature">
               <h3>Track progress</h3>
-              <p>
-                Keep up-to-date and on-the-go with what flexers are up to.
-              </p>
+              <p>Keep up-to-date and on-the-go with what flexers are up to.</p>
             </div>
           </div>
         </div>

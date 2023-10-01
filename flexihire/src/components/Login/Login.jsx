@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./Login.css";
 
@@ -21,6 +25,18 @@ function Login() {
       })
       .catch((error) => {
         setError(true);
+      });
+  };
+  const handleForgotPassword = () => {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Password reset email sent successfully
+        alert("Password reset email sent. Please check your email.");
+      })
+      .catch((error) => {
+        // Handle errors if needed
+        console.error("Error sending password reset email: ", error.message);
       });
   };
 
@@ -62,6 +78,7 @@ function Login() {
               href="#0"
               className="link-forget text-center"
               id="color-gradient"
+              onClick={handleForgotPassword}
             >
               Forgot your password?
             </a>

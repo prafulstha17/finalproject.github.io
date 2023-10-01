@@ -56,6 +56,19 @@
   top: 160px;
 }
 
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.edit-icon-container {
+  cursor: pointer;
+  margin-right: 0.6rem;
+}
+
+
 @media (max-width: 768px) {
   .profile {
     margin-top: 40px;
@@ -141,6 +154,15 @@
 
 .camera-icon-container:hover {
   background-color: #818181;
+}
+
+.edit-icon-container {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.edit-icon-container:hover {
+  color: #7be600; /* Change color on hover */
 }
 
 @media (max-width: 576px) {
