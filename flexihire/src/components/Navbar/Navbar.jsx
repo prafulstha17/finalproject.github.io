@@ -1,4 +1,5 @@
 import { auth } from "../../config/firebase";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import transparent_bg from "../Icon/low_res/transparent_bg.png";
@@ -12,6 +13,7 @@ function Navbar() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +48,7 @@ function Navbar() {
 
   const handleLogout = () => {
     auth.signOut();
+    navigate("/");
   };
 
   const handleLinkClick = () => {

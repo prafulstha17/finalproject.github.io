@@ -15,7 +15,7 @@
 
 .hero-image img {
   max-width: 100%;
-  height: auto;
+  height: 54rem;
   object-fit: cover;
 }
 
@@ -23,9 +23,11 @@
   position: absolute;
   top: 10rem;
   left: 1rem;
-  background-color: transparent;
+  background-color: transparent; /* Transparent white background */
   padding: 20px;
   z-index: 1;
+  width: 100%; /* Adjust the width as needed */
+  max-width: 50rem; /* Set a max-width for smaller screens */
 }
 
 .hero-content h1 {
@@ -70,7 +72,7 @@
   margin-bottom: 3rem;
 }
 
-.features{
+.features {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -90,10 +92,10 @@
   font-weight: bold;
   padding: 0 10px;
   text-align: start;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 }
 
-.make-it-real{
+.make-it-real {
   background-color: #555;
   color: #f5f5f5;
   padding-top: 1.5rem;
@@ -102,17 +104,19 @@
   text-align: left;
 }
 
-.make-it-real h1{
+.make-it-real h1 {
   font-weight: bold;
   text-align: start;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
 }
 
-.make-it-real h5{
+.make-it-real h5 {
   font-weight: bold;
   padding-bottom: 3rem;
 }
+
+
 
 @media (max-width: 768px) {
   .hero-image {
@@ -121,6 +125,8 @@
 
   .hero-content {
     position: static !important;
+    width: 100%; /* Full width on smaller screens */
+    max-width: none; /* Reset max-width */
   }
 
   .hero-content h1 {
@@ -133,5 +139,33 @@
 
   .hero-content button {
     font-size: 1rem !important;
+  }
+
+    .need-something-done, .whats-great {
+    padding: 1.2rem; /* Adjust padding for smaller screens */
+  }
+
+  .need-something-done h2, .whats-great h2, .make-it-real h1 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column; /* Reset to row for smaller screens */
+  }
+
+  .feature {
+    margin-bottom: 10px;
+  }
+
+  .feature h3,
+  .feature p {
+    font-size: 0.8rem !important;
+  }
+
+  .make-it-real h5 {
+    font-size: 1.1rem !important;
   }
 }

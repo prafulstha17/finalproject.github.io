@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { auth, storage } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { BsCamera } from "react-icons/bs";
+import { BsCamera, BsPencilSquare } from "react-icons/bs";
+// import { BsPencilSquare } from "react-icons/bs";
 import PersonalDataForm from "../Profile/PersonalDataForm";
 import "./Profile.css";
 function Profile() {
@@ -11,7 +12,7 @@ function Profile() {
   const [zoomedIn, setZoomedIn] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [status, setStatus] = useState(false);
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const handlePostSubmit = async () => {
     setStatus(true);
     setHidden(false);
@@ -141,18 +142,22 @@ function Profile() {
             onChange={handleFileUpload}
           />
           <br />
-          <p className="profile-name">
-            {user.displayName ? user.displayName : "Anonymous"}
-          </p>
-          <div className="personal">
-            <strong>
-              <h5 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                Edit details:{" "}
-              </h5>
-            </strong>
-            {hidden ? <button onClick={handlePostSubmit}>Edit</button> : ""}
-            {status ? <PersonalDataForm /> : ""}
+          <div className="profile-info">
+            <p className="profile-name">
+              {user.displayName ? user.displayName : "Anonymous"}
+            </p>
+            <div>
+              {user && (
+                <div
+                  className="edit-icon-container"
+                  onClick={() => setHidden(!hidden)}
+                >
+                  <BsPencilSquare size={20} />
+                </div>
+              )}
+            </div>
           </div>
+          <div className="personal">{hidden ? <PersonalDataForm /> : null}</div>
         </>
       ) : (
         <div className="personal">
