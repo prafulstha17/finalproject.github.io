@@ -68,7 +68,7 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/users">
                 <span class="fa-stack fa-lg pull-left">
                 <i class="fa fa-cloud-download fa-stack-1x "></i>
                 </span>

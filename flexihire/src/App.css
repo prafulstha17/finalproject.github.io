@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: #ffffff;
+  background: url('/public/Images/jpg/background.jpg');
 }
 
 .App-logo {

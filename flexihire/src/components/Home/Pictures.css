@@ -1,0 +1,84 @@
+.product-categories {
+  /* Add your styles for the container */
+}
+
+.categories-title {
+  font-size: 1.5rem;
+}
+
+.categories-container {
+  /* Add your styles for the container of individual images */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  /* Add your styles for each image item */
+  /* Make sure to set the height, width, and other necessary styles */
+  width: calc(33.33% - 20px); /* Adjust the width as needed, subtracting margin */
+  height: 28rem; /* Set a fixed height */
+  margin: 0.4rem;
+  position: relative;
+  background-size: 100% 100%; /* Set background-size to maintain aspect ratio */
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-backdrop {
+  /* Add styles for the image backdrop overlay */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.25;
+  transition: opacity 0.3s;
+}
+
+.image-content {
+  /* Add styles for the content inside each image item */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+}
+
+.image-title {
+  /* Add styles for the title inside each image item */
+  margin: 0;
+}
+
+.image-marked {
+  /* Add styles for the marked element inside each image item */
+  height: 3px;
+  width: 18px;
+  background: #fff;
+  position: absolute;
+  bottom: -2px;
+  left: calc(50% - 9px);
+  transition: opacity 0.3s;
+}
+
+.category-item:hover .image-backdrop {
+  opacity: 0.15;
+}
+
+.category-item:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .categories-title {
+    font-size: 0.9rem;
+  }
+
+  .category-item {
+    width: calc(100% - 20px); 
+   height: 20rem; 
+  }
+}

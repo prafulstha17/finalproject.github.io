@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { listenToAuthChanges } from '../JobInfo/AuthContext';
-import heroimg from "../image/heroimg.jpg";
+import { listenToAuthChanges } from "../JobInfo/AuthContext";
+import ProductCategories from "./Pictures";
+import heroimg from "../images/heroimg.jpg";
 import LazyLoad from "react-lazyload";
 import "./Home.css";
 
 function Home(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const buttonRef = useRef(null);
+
+  const handleButtonClick = (e) => {
+    const button = buttonRef.current;
+    const rect = button.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const offsetY = e.clientY - rect.top;
+
+    button.style.setProperty("--click-x", `${offsetX}px`);
+    button.style.setProperty("--click-y", `${offsetY}px`);
+    button.classList.add("clicked");
+    setTimeout(() => {
+      button.classList.remove("clicked");
+    }, 1000);
+  };
 
   useEffect(() => {
     const unsubscribe = listenToAuthChanges((user, isAdmin) => {
-      setIsLoggedIn(!!user); // Update the state based on the user's existence
+      setIsLoggedIn(!!user);
     });
 
     return () => {
@@ -102,9 +118,31 @@ function Home(props) {
 
         <div className="make-it-real">
           <h1>Make it Real with Flexer.</h1>
-          <h5>Get some inspiration from 1800+ skills</h5>
           {/* Gallery */}
-          <div className="gallery">{/* Add images here */}</div>
+          <div className="gallery">
+            <ProductCategories />
+          </div>
+        </div>
+        <div className="css-h9tkbh">
+          <section className="MuiContainer-root MuiContainer-maxWidthLg">
+            <button
+              className="MuiButton-root"
+              onClick={handleButtonClick}
+              ref={buttonRef}
+            >
+              <span className="MuiTypography-root MuiTypography-h4">
+                Got any questions? Need help?
+              </span>
+            </button>
+            <h3 className="MuiTypography-root MuiTypography-subtitle1">
+              We are here to help. Get in touch!
+            </h3>
+            <img
+              className="productBuoy"
+              src="../../../Images/svg/productBuoy.svg"
+              alt="buoy"
+            />
+          </section>
         </div>
       </div>
     </div>

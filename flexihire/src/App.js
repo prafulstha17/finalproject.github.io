@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Navbar from "./components/Navbar/Navbar";
 import ContactForm from "./components/ContactForm/ContactForm";
-import AboutUs from "./components/AboutUs/AboutUs";
+import AboutUs from "./components/AboutUs/About";
 import PageFooter from "./components/PageFooter/PageFooter";
 import Jobs from "./components/Jobs/Jobs";
 import WhyUs from "./components/AboutUs/WhyUs";
@@ -18,7 +18,6 @@ import Login from "./components/Login/Login";
 import Loading from "./components/Loading/Loading";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
-
 
 const AdminContext = React.createContext(false);
 
@@ -53,34 +52,33 @@ function App() {
 
   return (
     <>
-    <AdminContext.Provider value={isAdmin}>
-      <Router>
-        {isAdmin ? (
-          <Admin />
-        ) : (
-          <>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home name={userName} />} />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/contactUs" element={<ContactForm />} />
-              <Route path="/aboutUs" element={<AboutUs />} />
-              <Route path="/jobs" element={<Jobs />} />
-              <Route path="/whyUs" element={<WhyUs />} />
-              <Route path="/termsCondition" element={<TermsCondition />} />
-              <Route path="/profile" element={<Profile user={user} />} />
-
-              {/* Catch-all route for non-existent routes */}
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-            <PageFooter />
-            <Message />
-          </>
-        )}
-      </Router>
-    </AdminContext.Provider>
+      <AdminContext.Provider value={isAdmin}>
+        <Router>
+          {isAdmin ? (
+            <Admin />
+          ) : (
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home name={userName} />} />
+                <Route path="/sign-in" element={<Login />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/contactUs" element={<ContactForm />} />
+                <Route path="/aboutUs" element={<AboutUs />} />
+                <Route path="/jobs" element={<Jobs />} />
+                <Route path="/whyUs" element={<WhyUs />} />
+                <Route path="/termsCondition" element={<TermsCondition />} />
+                <Route path="/profile" element={<Profile user={user} />} />
+                {/* Catch-all route for non-existent routes */}
+                <Route path="*" element={<PageNotFound />} />
+              </Routes>
+              <PageFooter />
+              <Message />
+            </>
+          )}
+        </Router>
+      </AdminContext.Provider>
     </>
   );
 }

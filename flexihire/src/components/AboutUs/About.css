@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400");
+
+:root {
+  --primary-color: hsl(9, 94%, 61%);
+  --primary-color-alt: hsl(28, 72%, 83%);
+  --second-color: #3e537c;
+  --second-color-alt: hsla(220, 33%, 36%, 65%);
+  --third-color: hsl(220, 36%, 28%);
+  --white-color: #fbfbfb;
+  --white-color-alt: hsl(12, 14%, 93%);
+  --dark-color: hsl(300, 100%, 0%);
+}
+
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+
+.company-title,
+.company-slogan {
+  background: -webkit-linear-gradient(
+    120deg,
+    var(--primary-color-alt),
+    var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  
+  .container.section-1 {
+    display: flex;
+    background-color: var(--dark-color);
+    align-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Add a new class for full-width background */
+  .full-width-background {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--dark-color);
+    z-index: -1; /* Ensure it's behind other elements */
+  }
+  
+  /* Adjust the slogan margin to create space for the background */
+  .container.section-1 .slogan {
+    margin-top: 4rem;
+    text-align: left;
+    position: relative;
+  }
+  
+  /* Adjust the containers to be centered */
+  .aboutDescription .containers {
+    width: 50px;
+    height: 100%;
+    margin: 0 auto; /* Center the containers */
+    padding-bottom: 5rem;
+  }
+  
+  
+  .aboutDescription .pic {
+    box-shadow: 6px 6px 7px #888888;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+    margin-left: 135px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .aboutDescription .pic:before {
+    content: '';
+    margin-top: -5rem;
+    margin-left: -14rem;
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    background: url('../../../public/Images/jpg/8.jpg') center center;
+    background-size: contain;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .aboutDescription .pic:hover,
+  .aboutDescription .box1:hover,
+  .aboutDescription .box2:hover,
+  .aboutDescription .social1:hover,
+  .aboutDescription .social2:hover,
+  .aboutDescription .social3:hover {
+    box-shadow: 3px 3px 7px #000000;
+    cursor: pointer;
+  }
+  
+  .aboutDescription .box1 {
+    box-shadow: 6px 6px 7px #888888;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -124px;
+    margin-left: 16px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .aboutDescription .box1:before {
+    content: '';
+    margin-top: -25px;
+    margin-left: -31px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: url('../../../public/Images/jpg/8.jpg') center center;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .box2 {
+    box-shadow: 6px 6px 7px #888888;
+    position: relative;
+    overflow: hidden;
+    width: 194px;
+    height: 99px;
+    margin-top: 14px;
+    margin-left: 78px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .box2:before {
+    content: '';
+    margin-top: -74px;
+    margin-left: -31px;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: url('../../../public/Images/jpg/8.jpg') center center;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .social1 {
+    box-shadow: 6px 6px 7px #888888;
+    width: 5rem;
+    height: 5rem;
+    background-color: #3b5998;
+    margin-top: -3.75rem;
+    margin-left: 19.25rem;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .social1 > a > i {
+    font-size: 4rem;
+    margin-top: 0.4rem;
+    margin-left: 0;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    color: #ffffff;
+  }
+  
+  .social2 {
+    box-shadow: 6px 6px 7px #888888;
+    width: 5rem;
+    height: 5rem;
+    background-color: #c73b6f;
+    margin-top: -9rem;
+    margin-left: 23.25rem;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .social2 > a > i {
+    font-size: 4rem;
+    margin-top: 0.4rem;
+    margin-left: 0;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    color: #ffffff;
+  }
+  
+  .social3 {
+    box-shadow: 6px 6px 7px #888888;
+    width: 80px;
+    height: 80px;
+    background-color: #000000;
+    margin-top: -143px;
+    margin-left: 435px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .content {
+    height: 45%;
+    width: 25rem;
+    margin-left: 15rem;
+  }
+  
+  .content p {
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+  
+  .content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+  }
+  
+  .content .contentHead {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  
+  .content sup {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-style: italic;
+    font-size: smaller;
+  }
+  
+  .row{
+    width: fit-content;
+  }
+
+  @media screen and (max-width: 768px) {
+    .home-computer-container {
+        text-align: center;
+      }
+    
+      .home-computer {
+        width: 80%;
+        max-width: 300px; 
+      }
+
+    .container.section-1 {
+      flex-direction: column;
+    }
+  
+    .container.section-1 .slogan {
+      margin-top: 2rem;
+    }
+  
+    .aboutDescription .containers {
+      width: 100%;
+      margin-left: 0;
+    }
+  
+    .aboutDescription .pic,
+    .aboutDescription .box1,
+    .box2,
+    .social1,
+    .social2,
+    .social3 {
+      margin: 0 auto;
+    }
+  
+    .content {
+      width: 100%;
+      margin: 0;
+    }
+
+    .full-width-background {
+        height: 69vh;
+    }
+
+  }
