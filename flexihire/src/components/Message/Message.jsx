@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../config/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { firestore } from "firebase/app"; // Add this import
 import "./Message.css";
 
 function Message() {
@@ -37,7 +36,6 @@ function Message() {
       chatLogs.appendChild(message);
       setMessageText("");
 
-      // Save the message to Firebase Firestore
       const messagesRef = collection(db, "messages");
       await addDoc(messagesRef, {
         text: messageText,

@@ -41,7 +41,7 @@ body {
 .contact-form textarea,
 .contact-form input,
 .contact-form button {
-  line-height: 1.19rem;
+  line-height: 1.15rem;
   border: 0;
   outline: none;
   font-family: inherit;

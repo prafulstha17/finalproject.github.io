@@ -62,16 +62,7 @@ function About() {
                     class="social-icon"
                     target="_blank"
                   >
-                    <TwitterIcon
-                      style={{
-                        width: "4rem",
-                        height: "4rem",
-                        marginTop: "0.4rem",
-                        marginLeft: "0",
-                        transform: "rotate(-45deg)",
-                        filter: "invert(100%)",
-                      }}
-                    />
+                    <TwitterIcon className="twitter-icon" />
                   </a>
                 </div>
               </div>

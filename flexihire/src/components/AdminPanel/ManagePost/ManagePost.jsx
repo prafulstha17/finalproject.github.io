@@ -3,7 +3,7 @@ import RetrievePosts from "../../JobInfo/RetrievePosts";
 function ManagePost() {
   const isAdmin = true; 
   return (
-    <div>
+    <div className='retrievePost'>
         <RetrievePosts isAdmin={isAdmin} />
     </div>
   )
