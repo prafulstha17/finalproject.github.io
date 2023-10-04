@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {auth} from "../../../config/firebase";
 import "./Sidebar.css";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
@@ -11,13 +13,14 @@ function Sidebar() {
 
   const handleLogout = () => {
     auth.signOut();
+    navigate("/");
   };
 
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
       <navbar class="navbar navbar-default no-margin">
         <div class="navbar-header fixed-brand">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <i class="fa-brands fa-redhat"></i>
             <p> Admin</p>
           </a>

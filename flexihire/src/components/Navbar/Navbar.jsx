@@ -190,21 +190,9 @@ function Navbar() {
               </Dropdown>
             )}
             {!user && (
-              <Dropdown>
-                <div className="loggedOut">
-                  <Dropdown.Toggle variant="link" id="dropdown-basic">
-                    <p>Members Area</p>
-                    <i class="fa-solid fa-user fa-l"></i>
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu className="dropdown-menu">
-                    <Dropdown.Item href="/sign-in">Login</Dropdown.Item>
-                    <Dropdown.Item href="/sign-up">
-                      Create Account
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </div>
-              </Dropdown>
+              <div className="memberArea">
+                <a href="/member">Members Area</a>
+              </div>
             )}
           </div>
         </div>

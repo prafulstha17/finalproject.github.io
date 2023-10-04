@@ -13,11 +13,10 @@ import TermsCondition from "./components/AboutUs/TermsCondition";
 import Message from "./components/Message/Message";
 import Services from "./components/Services/Services";
 import Admin from "./components/AdminPanel/Admin";
-import SignUp from "./components/Signup/SignUp";
-import Login from "./components/Login/Login";
 import Loading from "./components/Loading/Loading";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
+import Member from "./components/Login/Member";
 
 const AdminContext = React.createContext(false);
 
@@ -61,8 +60,6 @@ function App() {
               <Navbar />
               <Routes>
                 <Route path="/" element={<Home name={userName} />} />
-                <Route path="/sign-in" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contactUs" element={<ContactForm />} />
                 <Route path="/aboutUs" element={<AboutUs />} />
@@ -70,6 +67,7 @@ function App() {
                 <Route path="/whyUs" element={<WhyUs />} />
                 <Route path="/termsCondition" element={<TermsCondition />} />
                 <Route path="/profile" element={<Profile user={user} />} />
+                <Route path="/member" element={<Member/>}/>
                 {/* Catch-all route for non-existent routes */}
                 <Route path="*" element={<PageNotFound />} />
               </Routes>

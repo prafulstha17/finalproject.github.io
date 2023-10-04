@@ -1,8 +1,10 @@
 {
   "name": "flexihire",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
+    "@amcharts/amcharts3-react": "^3.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
@@ -10,13 +12,17 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "amcharts3": "^3.21.15",
     "bootstrap": "^5.3.0-alpha3",
     "bootstrap-icons": "^1.10.5",
     "cors": "^2.8.5",
+    "d3": "^7.8.5",
     "express": "^4.18.2",
     "firebase": "^9.19.1",
     "firebase-admin": "^11.11.0",
+    "gltf-loader": "^1.0.0",
     "jquery": "^3.6.4",
+    "node-sass": "^7.0.3",
     "postcss-nested": "^6.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
@@ -28,13 +34,19 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
     "react-typist": "^2.0.5",
+    "styled-components": "^6.0.8",
+    "three": "^0.157.0",
+    "three-orbitcontrols": "^2.110.3",
+    "topojson-client": "^3.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "firebase deploy --only functions",
+    "compile-scss": "node-sass --output-style compressed -o ./src/components/AdminPanel/Dashboard/ ./src/components/AdminPanel/Dashboard/Clock.scss"
   },
   "eslintConfig": {
     "extends": [
@@ -53,5 +65,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.68.0",
+    "sass-loader": "^12.0.0"
   }
 }

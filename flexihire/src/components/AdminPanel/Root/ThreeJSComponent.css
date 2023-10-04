@@ -1,0 +1,31 @@
+@import "https://fonts.googleapis.com/css2?family=Megrim&display=swap";
+.three-js-container {
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.three-js-container  body::-webkit-scrollbar {
+    width: 8px; /* Adjust the width as needed */
+  }
+  
+  .three-js-container  body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+canvas{
+    display: block;
+    margin-top: -40rem;
+    z-index: 1;
+}
+
+#word{
+  font-family: Megrim, cursive;
+  font-weight: 1000;
+  font-size: 5rem;
+  position: fixed;
+  margin-top: -35rem; 
+  margin-left: 15rem;
+  color: #fc0;
+  -webkit-text-stroke: 0.15vh #c0f;
+  text-shadow: 0 0 0.5rem rgba(158, 111, 247, 0.6);
+}

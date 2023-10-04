@@ -3,3 +3,29 @@
     display: flex;
     flex-direction: row;
 }
+/* Admin.css */
+
+.admin {
+    display: flex;
+    height: 100vh; /* Use 100% of the viewport height */
+  }
+  
+  .sidebar-align {
+    width: 15rem; /* Set the width of the sidebar */
+    position: fixed; /* Fix the position of the sidebar */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0; /* Position it at the left of the viewport */
+    bottom: 0; /* Expand to the bottom of the viewport */
+    background-color: #f0f0f0; /* Set the background color */
+    overflow-y: auto; /* Allow vertical scrolling within the sidebar */
+  }
+  
+  .body-align {
+    flex: 1; /* Allow the body to take remaining space */
+    margin-left: 15rem; /* Adjust margin to accommodate the sidebar width */
+    overflow-y: auto; /* Allow vertical scrolling within the body */
+  }
+  
+  .postManage{
+    width: 10rem;
+  }

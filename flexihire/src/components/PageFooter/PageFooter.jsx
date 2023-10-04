@@ -1,4 +1,5 @@
 import "./PageFooter.css";
+import { ReactComponent as TwitterIcon } from "../images/x-twitter.svg";
 import silhouette from "../Icon/silhouette/silhouette.png";
 
 function PageFooter() {
@@ -73,7 +74,7 @@ function PageFooter() {
                 <i class="fab fa-youtube fa-2xl"></i>
               </a>
               <a href="https://twitter.com/HireFlexi" target="_blank">
-                <i class="fab fa-twitter fa-2xl"></i>
+                <TwitterIcon className="twitter-icon" />
               </a>
               <a
                 href="https://www.linkedin.com/in/flexi-hire-8437a0274"

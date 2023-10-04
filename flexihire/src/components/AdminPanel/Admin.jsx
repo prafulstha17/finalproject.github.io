@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Mails from "./Mails/Mails";
 import ManagePost from "./ManagePost/ManagePost";
 import UserProfiles from "./Users/UserProfiles";
+import ThreeJSComponent from "./Root/ThreeJSComponent";
 
 function Admin() {
   return (
@@ -13,12 +14,18 @@ function Admin() {
       <div className="sidebar-align">
         <Sidebar />
       </div>
+
       <div className="body-align">
         <Routes>
+          <Route path="/" element={<ThreeJSComponent />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<UserProfiles />} />
           <Route path="/mails" element={<Mails />} />
-          <Route path="/managepost" element={<ManagePost />} />
+          <Route
+            path="/managepost"
+            element={<ManagePost />}
+            className="postManage"
+          />
         </Routes>
       </div>
     </div>

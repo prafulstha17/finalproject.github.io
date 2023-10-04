@@ -2,7 +2,7 @@ import React from "react";
 import { ref, onValue, push, remove } from "firebase/database";
 import { Table } from "react-bootstrap";
 import { database } from "../../../config/firebase";
-import LoadingComponent from "../../Loading/Loading"; 
+import LoadingComponent from "../../Loading/Loading";
 import './DisplayData.css';
 
 export class DisplayData extends React.Component {

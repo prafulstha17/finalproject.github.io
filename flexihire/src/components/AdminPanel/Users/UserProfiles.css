@@ -1,26 +1,61 @@
-.usersInfo{
-    margin: 2rem;
+.user-profiles-container {
+    max-width: 50rem;
+    font-weight: 450;
+    margin: auto;
+  }
+  
+  .user-list {
     display: flex;
-    gap: 2rem;
-}
+    flex-direction: column;
+  } 
+  
+  .user-card, .headUser {
+    border-right: 0.25rem solid #ddd;
+    border-left: 0.25rem solid #ddd;
+    width: 65vw;
+    background: linear-gradient(#00121B, #000102);
+    border: 2px solid rgba(127, 255, 212, 0.5);
+    transform-style: preserve-3d;
+    box-shadow: inset 0 -0.5rem 1rem rgba(0, 18, 27, 0.5), inset 0 0 1rem rgba(127, 255, 212, 0.3);
+    border: 2px solid rgba(127, 255, 212, 0.5);
+    flex: 1 1 0;
+    color: #7FFFD4;
+    text-shadow: 0 0 0.5rem rgba(128, 255, 128, 0.6);
+  }
 
-.profiledUser{
-    background-color: aqua;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-}
+  .headUser{
+    border-top: 0.25rem solid #ddd;
+    border-right: 0.25rem solid #ddd;
+    border-left: 0.25rem solid #ddd;
+    border-bottom: 0.25rem solid #ddd;
+    transform-style: preserve-3d;
+    box-shadow: inset 0 -0.5rem 1rem rgba(0, 18, 27, 0.5), inset 0 0 1rem rgba(127, 255, 212, 0.3);
+    border: 2px solid rgba(127, 255, 212, 0.5);
+    width: 65vw;
+    font-weight: 900;
+    color: #80FF80;
+    text-shadow: 0 0 0.5rem rgba(128, 255, 128, 0.6);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 
-.namedUser{
-    background-color: aqua;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-}
-
-.mailedUser{
-    background-color: aqua;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-}
+  .user-info, .headUser {
+    display: flex;
+    flex-direction: row;
+    width: 65vw;
+    background: linear-gradient(#00121B, #000102);
+  }
+  
+  .numberUser,
+  .nameUser,
+  .emailUser,
+  .createdUser {
+    text-align: left;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    align-self: self-end;
+  }
+  
+  /* Add more styling as needed */
+  
