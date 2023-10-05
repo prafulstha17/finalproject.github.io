@@ -26,9 +26,7 @@ const Member = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        // Set isAdmin to true if the email matches the admin credential
         const isAdmin = email === "flexihirenepal@gmail.com";
-        // Navigate to the homepage
         navigate("/");
       })
       .catch((error) => {

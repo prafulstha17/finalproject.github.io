@@ -48,7 +48,7 @@ const ThreeJSComponent = () => {
     const wordDiv = document.createElement("div");
     wordDiv.id = "word";
     wordDiv.textContent = "Admin";
-    document.body.appendChild(wordDiv);
+    document.getElementById("three-js-container").appendChild(wordDiv);
 
     const pushShift = () => {
       shift.push(

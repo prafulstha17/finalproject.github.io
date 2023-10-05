@@ -27,13 +27,13 @@
 
 .loading-session h2:nth-child(1) {
   color: transparent;
-  -webkit-text-stroke: 0.05rem #00c8ff;
-  text-shadow: -0.5rem 0.6rem 0.8rem #00c8ff9c;
+  -webkit-text-stroke: 0.05rem #005368;
+  text-shadow: -0.5rem 0.6rem 0.8rem #4646469c;
 }
 
 
 .loading-session h2:nth-child(2) {
-  color: #00c8ff;
+  color: #006eff;
   animation: animate 2s ease-in-out infinite;
 }
 
@@ -74,7 +74,7 @@
   height: 10rem;
   position: relative;
   perspective: 50000px;
-  color: #00c8ff;
+  color: #006eff;
 }
 
 .circles span {
