@@ -18,10 +18,16 @@ function Jobs() {
           Post a job:{" "}
         </h5>
       </strong>
-      {hidden ? <button onClick={handlePostSubmit}>Create New Job</button> : ""}
-      {status ? <PostStatus /> : ""}
+      <center>
+        {hidden ? (
+          <button onClick={handlePostSubmit}>Create New Job</button>
+        ) : (
+          ""
+        )}
+        {status ? <PostStatus /> : ""}
+      </center>
       <br />
-      <div class="container">
+      <div class="containerJob">
         <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
           Job Listing
         </h1>
