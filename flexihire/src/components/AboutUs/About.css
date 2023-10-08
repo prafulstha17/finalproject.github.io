@@ -47,10 +47,15 @@
     position: relative;
   }
   
+  .bottomDescription{
+    margin-top: 4rem;
+  }
+
   .aboutDescription .containers {
     width: 50px;
     height: 100%;
     margin: 0 auto;
+    margin-top: 1rem;
     padding-bottom: 5rem;
   }
   
@@ -220,8 +225,8 @@
     font-family: 'Open Sans Condensed', sans-serif;
   }
   
-  .content h2 {
-    font-family: 'Dancing Script', cursive;
+  .sideAbout .content h2 {
+    font-family: 'FH';
     font-size: 1.15rem;
   }
   

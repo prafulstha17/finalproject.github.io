@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+italic{
+    font-style: italic;
+    font-size: small;
+}
+
 .contactUS {
   height: 100vh;
   display: flex;

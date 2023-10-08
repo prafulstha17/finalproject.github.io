@@ -37,11 +37,9 @@ const Member = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // Password reset email sent successfully
         alert("Password reset email sent. Please check your email.");
       })
       .catch((error) => {
-        // Handle errors if needed
         console.error("Error sending password reset email: ", error.message);
       });
   };
@@ -60,7 +58,6 @@ const Member = () => {
       });
   };
 
-  //sign in with Google
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -89,7 +86,7 @@ const Member = () => {
         <div className="backbox">
           <div className={`loginMsg ${loginVisible ? "visibility" : ""}`}>
             <div className="textcontent">
-              <p className="title">Have an account?</p>
+              <p className="title">Already have an account?</p>
               <p>Log in to see all your collection.</p>
               <button onClick={handleSwitch1}>LOG IN</button>
             </div>

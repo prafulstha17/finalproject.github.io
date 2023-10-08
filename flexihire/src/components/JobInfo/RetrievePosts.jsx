@@ -27,14 +27,12 @@ function RetrievePosts({ isAdmin }) {
         const postsRef = collection(db, "posts");
         const q = query(postsRef, orderBy("timestamp", "desc"));
 
-        // Use onSnapshot to listen for real-time updates
         onSnapshot(q, (querySnapshot) => {
           const postList = querySnapshot.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id,
           }));
 
-          // Filter out posts that do not have a "title" property
           const validPosts = postList.filter((post) => post && post.title);
 
           setPosts(validPosts);
@@ -42,11 +40,10 @@ function RetrievePosts({ isAdmin }) {
       }
     };
 
-    // Call fetchPosts whenever the currentUser state changes
     fetchPosts();
 
     return () => {
-      unsubscribeAuth(); // Unsubscribe from authentication changes when the component unmounts
+      unsubscribeAuth();
     };
   }, [currentUser]);
 
@@ -58,16 +55,14 @@ function RetrievePosts({ isAdmin }) {
         options
       );
     }
-    return ""; // Return an empty string if timestamp is null
+    return "";
   };
 
   const handleDeletePost = async (postId) => {
     try {
-      // Delete the post from Firestore
       const postDocRef = doc(db, "posts", postId);
       await deleteDoc(postDocRef);
 
-      // Remove the deleted post from the state
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -79,69 +74,77 @@ function RetrievePosts({ isAdmin }) {
     postUploaderUserId,
     postUploaderUsername
   ) => {
-    // Implement notification logic here, e.g., sending a notification to postUploader
     console.log(
       `Applying post with ID: ${postId}. Notifying ${postUploaderUsername}.`
     );
   };
 
   const handleReportPost = (postId) => {
-    // Implement reporting logic here
     console.log("Reporting post with ID:", postId);
   };
 
   return (
     <div className="retrieve-posts-container">
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id} className="job-post">
-            <div className="job-header">
-              <div className="title">{post.title}</div>
-              <div className="postDetails">
-                <p>
-                  {/* Display username as a clickable link */}
-                  <a
-                    href={`/profile/${post.userId}`} // Replace with your profile URL structure
-                    className="username-link"
-                  >
-                    {post.username}
-                  </a>{" "}
-                  posted on {formatDate(post.timestamp)}
-                </p>
-              </div>
-            </div>
-            <div className="job-details">
-              <div className="exp">Experience: {post.experience}</div>
-              <div className="deadline">Deadline: {post.deadline}</div>
-              <div className="workinghrs">Est. time: {post.timing}</div>
-              <div className="salary">Salary: {post.salary}</div>
-            </div>
-            <div className="job-actions">
-              {(currentUser && currentUser.uid === post.userId) || isAdmin ? (
-                <button onClick={() => handleDeletePost(post.id)}>
-                  Remove Job Opening
-                </button>
-              ) : (
-                <div className="handleButton">
-                  <ApplyButton
-                    postId={post.id} // Make sure post.id is defined
-                    recipientUserId={post.userId} // Make sure post.userId is defined
-                    currentUserId={currentUser.uid} // Make sure currentUser.uid is defined
-                    applicationMessage="Your application message here" // Replace with the actual application message
-                  />
-
-                  <button
-                    className="report"
-                    onClick={() => handleReportPost(post.id)}
-                  >
-                    Report
-                  </button>
+      {currentUser ? (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id} className="job-post">
+              <div className="job-header">
+                <div className="title">{post.title}</div>
+                <div className="postDetails">
+                  <p>
+                    <a
+                      href={`/profile/${post.userId}`}
+                      className="username-link"
+                    >
+                      {post.username}
+                    </a>{" "}
+                    posted on {formatDate(post.timestamp)}
+                  </p>
                 </div>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+              </div>
+              <div className="job-details">
+                <div className="exp">Experience: {post.experience}</div>
+                <div className="deadline">Deadline: {post.deadline}</div>
+                <div className="workinghrs">Est. time: {post.timing}</div>
+                <div className="salary">Salary: {post.salary}</div>
+              </div>
+              <div className="job-actions">
+                {(currentUser && currentUser.uid === post.userId) || isAdmin ? (
+                  <button onClick={() => handleDeletePost(post.id)}>
+                    Remove Job Opening
+                  </button>
+                ) : (
+                  <div className="handleButton">
+                    <ApplyButton
+                      postId={post.id}
+                      recipientUserId={post.userId}
+                      currentUserId={currentUser.uid}
+                      applicationMessage="Your application message here"
+                    />
+
+                    <button
+                      className="report"
+                      onClick={() => handleReportPost(post.id)}
+                    >
+                      Report
+                    </button>
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <center>
+          <div className="login-signup-message">
+            <p>
+              Please join to be a <a href="/member">member</a>{" "}
+              to start surfing the available jobs.
+            </p>
+          </div>
+        </center>
+      )}
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./ContactForm.css";
 
 function ContactForm() {
-  const [formSubmit, setFormSubmit] = useState(false);
   const [userData, setUserData] = useState({
     Name: "",
     email: "",
@@ -41,7 +40,7 @@ function ContactForm() {
             email: "",
             message: "",
           });
-          setFormSubmit(true);
+          window.location.reload();
         } else {
           console.error("Failed to submit data.");
         }
@@ -50,18 +49,17 @@ function ContactForm() {
       }
     }
   };
-  console.log("formSubmit:", formSubmit); 
 
   return (
     <>
-      <div className={`contactUS ${formSubmit ? "flip" : ""}`}>
+      <div className="contactUS">
         <div className="container">
-          <div className={`front side ${formSubmit ? "flip" : ""}`}>
+          <div className="front side">
             <div className="content">
-              <h1>Contact Us</h1>
+              <h1>Instruction</h1>
               <p>
-                If you have any doubts or suggestion, please feel free to write
-                us. Just hover over this box to get started.
+                If you have any doubts or suggestions, please feel free to write
+                to us. Just hover or click <italic>(for smaller devices)</italic> over this box to get started.
               </p>
             </div>
           </div>

@@ -39,7 +39,7 @@ function Home(props) {
     if (isLoggedIn) {
       navigate("/jobs");
     } else {
-      navigate("/sign-in");
+      navigate("/member");
     }
   };
   return (
@@ -124,25 +124,27 @@ function Home(props) {
           </div>
         </div>
         <div className="css-h9tkbh">
-          <section className="MuiContainer-root MuiContainer-maxWidthLg">
-            <button
-              className="MuiButton-root"
-              onClick={handleButtonClick}
-              ref={buttonRef}
-            >
-              <span className="MuiTypography-root MuiTypography-h4">
-                Got any questions? Need help?
-              </span>
-            </button>
-            <h3 className="MuiTypography-root MuiTypography-subtitle1">
-              We are here to help. Get in touch!
-            </h3>
-            <img
-              className="productBuoy"
-              src="../../../Images/svg/productBuoy.svg"
-              alt="buoy"
-            />
-          </section>
+          <center>
+            <section className="MuiContainer-root MuiContainer-maxWidthLg">
+              <button
+                className="MuiButton-root"
+                onClick={handleButtonClick}
+                ref={buttonRef}
+              >
+                <span className="MuiTypography-root MuiTypography-h4">
+                  Got any questions? Need help?
+                </span>
+              </button>
+              <h3 className="MuiTypography-root MuiTypography-subtitle1">
+                We are here to help. Get in touch!
+              </h3>
+              <img
+                className="productBuoy"
+                src="../../../Images/svg/productBuoy.svg"
+                alt="buoy"
+              />
+            </section>
+          </center>
         </div>
       </div>
     </div>
