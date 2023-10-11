@@ -1,3 +1,4 @@
+// RetrievePosts.js
 import React, { useEffect, useState } from "react";
 import {
   collection,
@@ -15,11 +16,11 @@ import ApplyButton from "./ApplyButton";
 function RetrievePosts({ isAdmin }) {
   const [posts, setPosts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [selectedSection, setSelectedSection] = useState("available");
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
       setCurrentUser(user);
-      console.log(isAdmin ? "userAdmin" : "currentUser");
     });
 
     const fetchPosts = () => {
@@ -83,64 +84,210 @@ function RetrievePosts({ isAdmin }) {
     console.log("Reporting post with ID:", postId);
   };
 
+  const availablePosts = posts.filter(
+    (post) => (!post.userId || post.userId !== currentUser?.uid) && !isAdmin
+  );
+
+  const createdPosts = posts.filter(
+    (post) => post.userId === currentUser?.uid && !isAdmin
+  );
+
   return (
     <div className="retrieve-posts-container">
       {currentUser ? (
-        <ul>
-          {posts.map((post) => (
-            <li key={post.id} className="job-post">
-              <div className="job-header">
-                <div className="title">{post.title}</div>
-                <div className="postDetails">
-                  <p>
-                    <a
-                      href={`/profile/${post.userId}`}
-                      className="username-link"
-                    >
-                      {post.username}
-                    </a>{" "}
-                    posted on {formatDate(post.timestamp)}
-                  </p>
-                </div>
-              </div>
-              <div className="job-details">
-                <div className="exp">Experience: {post.experience}</div>
-                <div className="deadline">Deadline: {post.deadline}</div>
-                <div className="workinghrs">Est. time: {post.timing}</div>
-                <div className="salary">Salary: {post.salary}</div>
-              </div>
-              <div className="job-actions">
-                {(currentUser && currentUser.uid === post.userId) || isAdmin ? (
-                  <button onClick={() => handleDeletePost(post.id)}>
-                    Remove Job Opening
-                  </button>
-                ) : (
-                  <div className="handleButton">
-                    <ApplyButton
-                      postId={post.id}
-                      recipientUserId={post.userId}
-                      currentUserId={currentUser.uid}
-                      applicationMessage="Your application message here"
-                    />
-
-                    <button
-                      className="report"
-                      onClick={() => handleReportPost(post.id)}
-                    >
-                      Report
+        <>
+          {isAdmin && (
+            <ul>
+              {posts.map((post) => (
+                <li key={post.id} className="job-post">
+                  {/* Render job post for admin */}
+                  <div className="job-header">
+                    <div className="title">{post.title}</div>
+                    <div className="postDetails">
+                      <p>
+                        <a
+                          href={`/profile/${post.userId}`}
+                          className="username-link"
+                        >
+                          {post.username}
+                        </a>{" "}
+                        posted on {formatDate(post.timestamp)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="job-description">
+                    {post.description && (
+                      <>
+                        <pre>{post.description}</pre>
+                      </>
+                    )}
+                  </div>
+                  <div className="job-details">
+                    <div className="exp">Experience: {post.experience}</div>
+                    <div className="deadline">Deadline: {post.deadline}</div>
+                    <div className="workinghrs">Est. time: {post.timing}</div>
+                    <div className="salary">Salary: {post.salary}</div>
+                  </div>
+                  <div className="job-actions">
+                    <button onClick={() => handleDeletePost(post.id)}>
+                      Remove Job Opening
                     </button>
                   </div>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+                </li>
+              ))}
+            </ul>
+          )}
+          {!isAdmin && (
+            <div className="section-wrapper">
+              <h6
+                className={`section-title ${
+                  selectedSection === "available" && "active"
+                }`}
+                onClick={() => setSelectedSection("available")}
+              >
+                Available Jobs
+              </h6>
+              <h6
+                className={`section-title ${
+                  selectedSection === "created" && "active"
+                }`}
+                onClick={() => setSelectedSection("created")}
+              >
+                Your Created Jobs
+              </h6>
+            </div>
+          )}
+          {selectedSection === "available" && (
+            <div className="available-posts">
+              <ul>
+                {availablePosts.map((post) => (
+                  <li key={post.id} className="job-post">
+                    {/* Render job post for available section */}
+                    <div className="job-header">
+                      <div className="title">{post.title}</div>
+                      <div className="postDetails">
+                        <p>
+                          <a
+                            href={`/profile/${post.userId}`}
+                            className="username-link"
+                          >
+                            {post.username}
+                          </a>{" "}
+                          posted on {formatDate(post.timestamp)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="job-description">
+                      {post.description && (
+                        <>
+                          <pre>{post.description}</pre>
+                        </>
+                      )}
+                    </div>
+                    <div className="job-details">
+                      <div className="exp">Experience: {post.experience}</div>
+                      <div className="deadline">Deadline: {post.deadline}</div>
+                      <div className="workinghrs">Est. time: {post.timing}</div>
+                      <div className="salary">Salary: {post.salary}</div>
+                    </div>
+                    <div className="job-actions">
+                      {(currentUser && currentUser.uid === post.userId) ||
+                      isAdmin ? (
+                        <button onClick={() => handleDeletePost(post.id)}>
+                          Remove Job Opening
+                        </button>
+                      ) : (
+                        <div className="handleButton">
+                          <ApplyButton
+                            postId={post.id}
+                            recipientUserId={post.userId}
+                            currentUserId={currentUser.uid}
+                            applicationMessage="Your application message here"
+                          />
+
+                          <button
+                            className="report"
+                            onClick={() => handleReportPost(post.id)}
+                          >
+                            Report
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {selectedSection === "created" && (
+            <div className="created-posts">
+              <ul>
+                {createdPosts.map((post) => (
+                  <li key={post.id} className="job-post">
+                    {/* Render job post for created section */}
+                    <div className="job-header">
+                      <div className="title">{post.title}</div>
+                      <div className="postDetails">
+                        <p>
+                          <a
+                            href={`/profile/${post.userId}`}
+                            className="username-link"
+                          >
+                            {post.username}
+                          </a>{" "}
+                          posted on {formatDate(post.timestamp)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="job-description">
+                      {post.description && (
+                        <>
+                          <pre>{post.description}</pre>
+                        </>
+                      )}
+                    </div>
+                    <div className="job-details">
+                      <div className="exp">Experience: {post.experience}</div>
+                      <div className="deadline">Deadline: {post.deadline}</div>
+                      <div className="workinghrs">Est. time: {post.timing}</div>
+                      <div className="salary">Salary: {post.salary}</div>
+                    </div>
+                    <div className="job-actions">
+                      {(currentUser && currentUser.uid === post.userId) ||
+                      isAdmin ? (
+                        <button onClick={() => handleDeletePost(post.id)}>
+                          Remove Job Opening
+                        </button>
+                      ) : (
+                        <div className="handleButton">
+                          <ApplyButton
+                            postId={post.id}
+                            recipientUserId={post.userId}
+                            currentUserId={currentUser.uid}
+                            applicationMessage="Your application message here"
+                          />
+
+                          <button
+                            className="report"
+                            onClick={() => handleReportPost(post.id)}
+                          >
+                            Report
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
       ) : (
         <center>
           <div className="login-signup-message">
             <p>
-              Please join to be a <a href="/member">member</a>{" "}
-              to start surfing the available jobs.
+              Please join to be a <a href="/member">member</a> to start surfing
+              the available jobs.
             </p>
           </div>
         </center>

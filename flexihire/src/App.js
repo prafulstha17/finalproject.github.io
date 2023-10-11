@@ -17,6 +17,7 @@ import Loading from "./components/Loading/Loading";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import "./App.css";
 import Member from "./components/Login/Member";
+import Working from "./components/PageFooter/Working";
 
 const AdminContext = React.createContext(false);
 
@@ -68,6 +69,7 @@ function App() {
                 <Route path="/termsCondition" element={<TermsCondition />} />
                 <Route path="/profile" element={<Profile user={user} />} />
                 <Route path="/member" element={<Member/>}/>
+                <Route path="/working" element={<Working/>}/>
                 {/* Catch-all route for non-existent routes */}
                 <Route path="*" element={<PageNotFound />} />
               </Routes>

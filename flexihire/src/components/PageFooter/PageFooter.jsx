@@ -14,28 +14,22 @@ function PageFooter() {
             <div className="col">
               <h4>For Client</h4>
               <div class="links">
-                <a href="#">How to Hire</a>
-                <a href="#">Talent Marketplace</a>
-                <a href="#">Project Catalog</a>
-                <a href="#">Hire an Agency</a>
+                <a href="/jobs">Talent Marketplace</a>
                 <a href="#">Any Hire</a>
-                <a href="#">Direct Contracts</a>
               </div>
             </div>
             <div className="col">
               <h4>For Talent</h4>
               <div className="links">
-                <a href="#">How to Find Work</a>
-                <a href="#">Direct Contracts</a>
-                <a href="#">Find Freelance Jobs in the Nepal</a>
+                <a href="/directContract">Direct Contracts</a>
+                <a href="/jobs">Find Freelance Jobs in the Nepal</a>
               </div>
             </div>
 
             <div class="col" id="useful-links">
               <h4>About</h4>
               <div class="links">
-                <a href="#">How it Work</a>
-                <a href="#">Privacy Policy</a>
+                <a href="/working">How it Work</a>
                 <a href="/termsCondition">Terms & Condition </a>
                 <a href="/whyUs">Why Us?</a>
               </div>
@@ -108,7 +102,7 @@ function PageFooter() {
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                   <div class="footer-menu">
-                    <a href="">Home</a>
+                    <a href="/">Home</a>
                     <a href="">Cookies</a>
                     <a href="">Help</a>
                     <a href="">FAQs</a>

@@ -247,7 +247,7 @@
     width: fit-content;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 900px) {
     .home-computer-container {
         text-align: center;
       }
@@ -315,6 +315,7 @@
   
     .content {
       width: 100%;
+      padding-top: 5rem;
       margin: 0;
     }
 

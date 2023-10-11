@@ -125,7 +125,11 @@ const Member = () => {
             >
               FORGET PASSWORD?
             </a>
-            <button type="submit" onClick={handleLogin}>
+            <button
+              className={`login-button ${loginVisible ? "" : "hide"}`}
+              type="submit"
+              onClick={handleLogin}
+            >
               LOG IN
             </button>
             <div className="error-login">
@@ -184,7 +188,12 @@ const Member = () => {
                 required
               />
             </div>
-            <button onClick={signIn}>SIGN UP</button>
+            <button
+              className={`signup-button ${signupVisible ? "" : "hide"}`}
+              onClick={signIn}
+            >
+              SIGN UP
+            </button>
             <p className="or mt-4 text-center" id="color-gradient">
               Or signup with
             </p>

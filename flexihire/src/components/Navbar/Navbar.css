@@ -69,12 +69,14 @@ nav {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 }
 
 #dropdown-basic p{
   color: #fff;
+  margin: 0;
 }
 
 #dropdown-basic:hover {
@@ -83,13 +85,10 @@ nav {
   text-decoration: none;
 }
 
-#dropdown-basic i {
-  display: none;
-}
-
 nav .nav-items {
   display: flex;
   flex: 1;
+  z-index: 100;
   padding: 0 0 0 40px;
 }
 
@@ -179,11 +178,6 @@ nav .search-icon {
   display: none;
 }
 
-.nav-items-case li {
-  display: flex;
-  flex-direction: row;
-}
-
 .btn-primary {
   background-color: transparent;
   border: none;
@@ -218,14 +212,31 @@ select {
   color: #ff014fff;
 }
 
-.memberArea a{
+.memberArea{
+  background-color: #3d3d3d9c;
+  cursor: pointer;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  color: #f5f5f5;
-  font-weight: 800;
-  border: 0.2rem solid #404040c4;
-  border-radius: 1rem;
-  background-color: #404040c4;
-  padding: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.memberArea a{
+  color: #fff;
+  margin: 0;
+}
+
+.memberArea a:hover {
+  text-decoration: none;
+}
+
+.memberArea:hover {
+  box-shadow: 0px 10px 20px 0px rgba(109, 109, 109, 0.5);
+  cursor: pointer;
 }
 
 @media (max-width: 1245px) {
@@ -240,7 +251,7 @@ select {
 
   nav .nav-items {
     position: fixed;
-    z-index: 99;
+    z-index: 100;
     top: 70px;
     width: 100%;
     left: -100%;
@@ -346,6 +357,10 @@ nav .logo.space {
     right: 30px;
   }
 
+  .memberArea{
+    padding: 0.25rem;
+  }
+
   .memberArea a{
     font-size: 0.55rem;
     padding: 0;
@@ -381,7 +396,7 @@ nav .logo.space {
 
   .menu-icon{
     position: absolute;
-    left: 0;
+    left: -0.7rem;
     top: 50%;
     transform: translateY(-50%);
   }

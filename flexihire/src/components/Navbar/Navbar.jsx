@@ -113,12 +113,6 @@ function Navbar() {
               Jobs
             </a>
           </li>
-          {/* services  */}
-          {/* <li className="nav-item">
-            <a className="nav-link" href="/services" onClick={handleLinkClick}>
-              Services
-            </a>
-          </li> */}
           <li className="nav-item">
             <a className="nav-link" href="/contactUs" onClick={handleLinkClick}>
               Contact Us
@@ -179,7 +173,6 @@ function Navbar() {
                 <div className="loggedIn">
                   <Dropdown.Toggle variant="link" id="dropdown-basic">
                     <p>User</p>
-                    <i class="fa-solid fa-user fa-l"></i>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="dropdown-menu">

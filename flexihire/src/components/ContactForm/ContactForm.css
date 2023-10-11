@@ -83,11 +83,12 @@ italic{
    z-index: 2;
   background-size: cover;
   margin-right: -5rem;
+  background-color: #000000;
   background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
 }
 
 .contactUS .back {
-  background-color: #333;
+  background-color: #000000;
   transform: rotateY(180deg);
   z-index: 0;
   margin-left: -2rem;

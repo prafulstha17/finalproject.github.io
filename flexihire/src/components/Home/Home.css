@@ -240,3 +240,14 @@
   position: relative;
   z-index: 1;
 }
+
+.how-it-works{
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.how-it-works .rightHow .features{
+  display: flex;
+  flex-direction: column;
+}
