@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 italic{
     font-style: italic;
     font-size: small;
@@ -133,3 +127,16 @@ italic{
   color: #fff;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .contactUS {
+    margin-left: 1rem;
+    width: 90vw;
+  }
+ 
+  .contactUS .content{
+    margin-left: -8.5rem;
+  }
+
+}
+

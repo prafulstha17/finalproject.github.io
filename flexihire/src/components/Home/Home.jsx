@@ -45,8 +45,40 @@ function Home(props) {
   return (
     <div className="home">
       <div className="hero-content">
-        <h1>Make your own change</h1>
-        <p>Forget the old rules. Choose what's perfect for you.</p>
+        <section className="nav">
+          <h1>Make your own change</h1>
+          <h3 className="span loader">
+            <span className="m">C</span>
+            <span className="m">H</span>
+            <span className="m">O</span>
+            <span className="m">O</span>
+            <span className="m">S</span>
+            <span className="m">E</span>
+            <span className="m">&nbsp;</span>
+            <span className="m">W</span>
+            <span className="m">H</span>
+            <span className="m">A</span>
+            <span className="m">T</span>
+            <span className="m">'</span>
+            <span className="m">S</span>
+            <span className="m">&nbsp;</span>
+            <span className="m">P</span>
+            <span className="m">E</span>
+            <span className="m">R</span>
+            <span className="m">F</span>
+            <span className="m">E</span>
+            <span className="m">C</span>
+            <span className="m">T</span>
+            <span className="m">&nbsp;</span>
+            <span className="m">F</span>
+            <span className="m">O</span>
+            <span className="m">R</span>
+            <span className="m">&nbsp;</span>
+            <span className="m">Y</span>
+            <span className="m">O</span>
+            <span className="m">U</span>
+          </h3>
+        </section>
         <button onClick={handleGetStarted}>Get Started</button>
       </div>
       <div className="hero-image">

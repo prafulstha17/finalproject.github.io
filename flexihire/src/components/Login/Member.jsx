@@ -83,23 +83,6 @@ const Member = () => {
   return (
     <div className="memberBody">
       <div className="containerMember">
-        <div className="backbox">
-          <div className={`loginMsg ${loginVisible ? "visibility" : ""}`}>
-            <div className="textcontent">
-              <p className="title">Already have an account?</p>
-              <p>Log in to see all your collection.</p>
-              <button onClick={handleSwitch1}>LOG IN</button>
-            </div>
-          </div>
-          <div className={`signupMsg ${signupVisible ? "visibility" : ""}`}>
-            <div className="textcontent">
-              <p className="title">Don't have an account?</p>
-              <p>Sign up to save all your graph.</p>
-              <button onClick={handleSwitch2}>Sign Up</button>
-            </div>
-          </div>
-        </div>
-
         <div className={`frontbox ${frontboxMoving ? "moving" : ""}`}>
           <div className={`login ${loginVisible ? "" : "hide"}`}>
             <h2>LOG IN</h2>
@@ -214,6 +197,35 @@ const Member = () => {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div className="backbox">
+          <div
+            className={`loginMsg ${loginVisible ? "visibility" : ""} ${
+              frontboxMoving ? "transform-left" : "transform-right"
+            }`}
+          >
+            <div className="textcontent">
+              <p className="title">Already have an account?</p>
+              <p>Log in to see all your collection.</p>
+              <button className="backLog" onClick={handleSwitch1}>
+                LOG IN
+              </button>
+            </div>
+          </div>
+          <div
+            className={`signupMsg ${signupVisible ? "visibility" : ""} ${
+              frontboxMoving ? "transform-right" : "transform-left"
+            }`}
+          >
+            <div className="textcontent">
+              <p className="title">Don't have an account?</p>
+              <p>Sign up to save all your graph.</p>
+              <button className="backSign" onClick={handleSwitch2}>
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -6,13 +6,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  outline: none;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
 
 .navbar{
   width: 100%;
@@ -222,6 +215,7 @@ select {
   align-items: center;
   text-decoration: none;
   padding: 0.5rem;
+  text-align: center;
   border-radius: 0.3rem;
 }
 
