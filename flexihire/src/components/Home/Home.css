@@ -49,8 +49,10 @@
 }
 
 .hero-content .nav h1:hover {
-  transform: translate3d(0, -10px, 22px);
+  transform: translate3d(0, -0.5rem, 2rem);
   color: #ff0266;
+  text-shadow: 0 0 0 #faebd7;
+  animation: loading 1s ease-in-out infinite alternate;
 }
 
 .hero-content h3.span.loader {
@@ -58,7 +60,7 @@
   padding-left: 0;
   margin-left: 0;
   display: block;
-  font-size: 1.5vw;
+  font-size: 1rem;
   letter-spacing: 0.7em;
   font-weight: 800;
   color: #000000;
@@ -362,25 +364,25 @@
   flex-direction: column;
 }
 
-@media (min-width: 800px) {
+@media (max-width: 800px) {
   .nav h1 {
     font-size: 5vw;
   }
 
   .hero-content h3.span.loader {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
     letter-spacing: 0.2vw;
   }
 
 }
 
-@media (min-width: 360px) {
+@media (max-width: 360px) {
   .nav h1{
     font-size: 8vw;
   }
 
   .hero-content h3.span.loader {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 0.2vw;
   }
 
