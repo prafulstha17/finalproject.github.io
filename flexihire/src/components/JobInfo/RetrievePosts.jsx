@@ -116,11 +116,7 @@ function RetrievePosts({ isAdmin }) {
                     </div>
                   </div>
                   <div className="job-description">
-                    {post.description && (
-                      <>
-                        <pre>{post.description}</pre>
-                      </>
-                    )}
+                    {post.description && <>{post.description}</>}
                   </div>
                   <div className="job-details">
                     <div className="exp">Experience: {post.experience}</div>
