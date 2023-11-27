@@ -1,0 +1,11 @@
+center h2{
+    padding: 1rem;
+    font-weight: 700;
+}
+
+.how-it-works{
+    margin-left: -10px;
+    align-self: start;
+    display: flex;
+    flex-direction: row;
+}
