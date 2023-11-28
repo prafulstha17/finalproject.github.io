@@ -19,6 +19,7 @@
     "d3": "^7.8.5",
     "express": "^4.18.2",
     "firebase": "^9.19.1",
+    "firebase-admin": "^11.11.0",
     "jquery": "^3.6.4",
     "postcss-nested": "^6.0.1",
     "react": "^18.2.0",
