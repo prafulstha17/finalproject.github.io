@@ -39,6 +39,7 @@ function About() {
                 <div className="pic"></div>
                 <div className="box1"></div>
                 <div className="box2"></div>
+                <div className="box3"></div>
                 <div className="social1">
                   <a
                     href="https://www.facebook.com/profile.php?id=100092199707911"

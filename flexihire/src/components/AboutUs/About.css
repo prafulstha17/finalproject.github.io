@@ -56,6 +56,7 @@
     height: 100%;
     margin: 0 auto;
     margin-top: 1rem;
+    margin-block-start: -2rem;
     padding-bottom: 5rem;
   }
   
@@ -89,6 +90,7 @@
   .aboutDescription .pic:hover,
   .aboutDescription .box1:hover,
   .aboutDescription .box2:hover,
+  .aboutDescription .box3:hover,
   .aboutDescription .social1:hover,
   .aboutDescription .social2:hover,
   .aboutDescription .social3:hover {
@@ -98,12 +100,12 @@
   
   .aboutDescription .box1 {
     box-shadow: 6px 6px 7px #888888;
-    width: 100px;
-    height: 100px;
+    width: 5rem;
+    height: 5rem;
     position: relative;
     overflow: hidden;
-    margin-top: -124px;
-    margin-left: 16px;
+    margin-top: -7rem;
+    margin-left: 2rem;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(-45deg);
@@ -111,25 +113,27 @@
   
   .aboutDescription .box1:before {
     content: '';
-    margin-top: -25px;
-    margin-left: -31px;
+    margin-top: -5rem;
+    margin-left: -5rem;
     position: absolute;
-    width: 200px;
-    height: 200px;
-    background: url('../../../public/Images/jpg/8.jpg') center center;
-    -ms-transform: rotate(-45deg);
+    width: 15rem;
+    height: 15rem;
+    background: url('../../../public/Images/jpg/side.jpg') center center;
+    background-size: contain;
+    -ms-transform: rotate(45deg);
     -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
   }
-  
+
   .box2 {
     box-shadow: 6px 6px 7px #888888;
     position: relative;
     overflow: hidden;
-    width: 194px;
-    height: 99px;
-    margin-top: 14px;
-    margin-left: 78px;
+    width: 5rem;
+    height: 5rem;
+    margin-top: -15px;
+    margin-bottom: 55px;
+    margin-left: 95px;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -137,15 +141,44 @@
   
   .box2:before {
     content: '';
-    margin-top: -74px;
-    margin-left: -31px;
+    margin-top: -6rem;
+    margin-left: -6rem;
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: url('../../../public/Images/jpg/8.jpg') center center;
+    width: 17rem;
+    height: 17rem;
+    background: url('../../../public/Images/jpg/mid.jpg') center center;
+    background-size: contain;
     -ms-transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
+  }  
+
+  .aboutDescription .box3 {
+    box-shadow: 6px 6px 7px #888888;
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: -4.4rem;
+    margin-left: 10rem;
+    margin-bottom: -4rem;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .aboutDescription .box3:before {
+    content: '';
+    margin-top: -80px;
+    margin-left: -80px;
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    background: url('../../../public/Images/jpg/side2.jpg') center center;
+    background-size: contain;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(45deg);
   }
   
   .social1 {
@@ -153,8 +186,8 @@
     width: 5rem;
     height: 5rem;
     background-color: #3b5998;
-    margin-top: -3.75rem;
-    margin-left: 19.25rem;
+    margin-top: -5rem;
+    margin-left: 20rem;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -178,7 +211,7 @@
      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
     margin-top: -9rem;
-    margin-left: 23.25rem;
+    margin-left: 24rem;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -200,7 +233,7 @@
     height: 80px;
     background-color: #000000;
     margin-top: -143px;
-    margin-left: 435px;
+    margin-left: 28rem;
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -300,17 +333,46 @@
     }
 
     .aboutDescription .box1 {
-      width: 3rem;
-      height: 3rem;
+      width: 2.75rem;
+      height: 2.75rem;
       margin-top: -3.25rem;
       margin-left: 5.5rem;
     }
 
     .box2 {
-      width: 5rem;
-      height: 3rem;
-      margin-top: 0;
-      margin-left: 7.5rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-top: -0.5rem;
+      margin-left: 7.75rem;
+    }
+
+    .aboutDescription .box3 {
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-top: -0.5rem;
+      margin-left: 10rem;
+      margin-bottom: -3rem;
+    }
+
+    .aboutDescription .box1:before{
+      margin-top: -3.6rem;
+      margin-left: -3.6rem;
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .box2:before{
+      margin-top: -3.6rem;
+      margin-left: -3.6rem;
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .aboutDescription .box3:before {
+      margin-top: -3.6rem;
+      margin-left: -3.6rem;
+      width: 10rem;
+      height: 10rem;
     }
   
     .content {
