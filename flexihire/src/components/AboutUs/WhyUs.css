@@ -3,7 +3,7 @@
 }
 
 .about-content {
-    padding: 80px 0px;
+    padding: 40px 0px;
     text-align: center;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .card-why-us {
-    padding: 2em 1.5em;
+    padding: 1em 1.5em;
     background: linear-gradient(#ececec 50%, #ff014fff 50%);
     background-size: 100% 200%;
     background-position: 0 2.5%;

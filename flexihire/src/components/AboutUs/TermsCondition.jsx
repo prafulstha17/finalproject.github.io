@@ -13,17 +13,23 @@ function TermsCondition() {
 
     return (
         <>
-            <section class="tc-page relative" id="tc">
-                <div class="tc-overlay overlay-bg"></div>
-                <div class="tc-container">
-                    <div class="tc-row d-flex align-items-center justify-content-center">
-                        <div class="tc-about-content col-lg-12">
-                            <h1 class="text-white">
-                                Terms and Conditions
-                            </h1>
-                            <small>Scroll <i class="fa-solid fa-down-long"></i> and accept to continue</small>
+            <section class="banner-area relative" id="home">
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <center>
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <div class="about-content col-lg-12">
+                                <strong>
+                                    <h1 class="text-white">About</h1>
+                                    <p class="text-white link-nav">
+                                        <a href="#">About</a> <i class="fa-solid fa-arrow-right"> </i>
+                                        <a href="#">Terms and Conditions</a>
+                                    </p>
+                                    <small>Scroll <i class="fa-solid fa-down-long"></i> and accept to continue</small>
+                                </strong>
+                            </div>
                         </div>
-                    </div>
+                    </center>
                 </div>
             </section>
             {isAgreementVisible && (

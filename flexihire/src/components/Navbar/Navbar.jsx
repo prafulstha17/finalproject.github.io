@@ -172,7 +172,7 @@ function Navbar() {
               <Dropdown>
                 <div className="loggedIn">
                   <Dropdown.Toggle variant="link" id="dropdown-basic">
-                    <div className="profile-icon">👤</div>
+                  <i class="fa-solid fa-user"></i>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="dropdown-menu">

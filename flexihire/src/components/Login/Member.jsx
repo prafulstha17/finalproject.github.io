@@ -60,11 +60,33 @@ const Member = () => {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      // You can handle the user data or navigate to a different page here
+      navigate("/");
     } catch (err) {
-      console.error(err);
+      console.error("Google Sign-In Error:", err);
     }
   };
+
+  // Similar functions for Facebook and Twitter sign-in
+  const signInWithFacebook = async () => {
+    try {
+      // Implement Facebook sign-in logic
+    } catch (err) {
+      console.error("Facebook Sign-In Error:", err);
+    }
+  };
+
+  const signInWithTwitter = async () => {
+    try {
+      // Implement Twitter sign-in logic
+    } catch (err) {
+      console.error("Twitter Sign-In Error:", err);
+    }
+  };
+
+
 
   const handleSwitch1 = () => {
     setLoginVisible(true);
@@ -128,17 +150,17 @@ const Member = () => {
             </p>
             <ul className="social-links">
               <li>
-                <a href="#" id="color-gradient">
+                <a href="#" id="color-gradient" onClick={signInWithGoogle}>
                   <i className="fab fa-google"></i>
                 </a>
               </li>
               <li>
-                <a href="#" id="color-gradient">
+                <a href="#" id="color-gradient" onClick={signInWithFacebook}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href="#" id="color-gradient">
+                <a href="#" id="color-gradient" onClick={signInWithTwitter}>
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
@@ -182,17 +204,17 @@ const Member = () => {
             </p>
             <ul className="social-links">
               <li>
-                <a href="#" id="color-gradient">
-                  <i className="fab fa-google" onClick={signInWithGoogle}></i>
+                <a href="#" id="color-gradient" onClick={signInWithGoogle}>
+                  <i className="fab fa-google"></i>
                 </a>
               </li>
               <li>
-                <a href="#" id="color-gradient">
+                <a href="#" id="color-gradient" onClick={signInWithFacebook}>
                   <i className="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li>
-                <a href="#" id="color-gradient">
+                <a href="#" id="color-gradient" onClick={signInWithTwitter}>
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
@@ -202,9 +224,8 @@ const Member = () => {
 
         <div className="backbox">
           <div
-            className={`loginMsg ${loginVisible ? "visibility" : ""} ${
-              frontboxMoving ? "transform-left" : "transform-right"
-            }`}
+            className={`loginMsg ${loginVisible ? "visibility" : ""} ${frontboxMoving ? "transform-left" : "transform-right"
+              }`}
           >
             <div className="textcontent">
               <p className="title">Already have an account?</p>
@@ -215,9 +236,8 @@ const Member = () => {
             </div>
           </div>
           <div
-            className={`signupMsg ${signupVisible ? "visibility" : ""} ${
-              frontboxMoving ? "transform-right" : "transform-left"
-            }`}
+            className={`signupMsg ${signupVisible ? "visibility" : ""} ${frontboxMoving ? "transform-right" : "transform-left"
+              }`}
           >
             <div className="textcontent">
               <p className="title">Don't have an account?</p>
