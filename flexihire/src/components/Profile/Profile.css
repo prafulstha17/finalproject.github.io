@@ -5,6 +5,40 @@
   align-items: center;
   margin-top: 40px;
   height: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  /* New styles for job-progress section */
+  .job-progress {
+    width: 80%;
+    min-width: 300px; /* Adjust this value based on your design preferences */
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .job-progress h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .job-progress-numbers {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .job-progress p {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .job-progress p span {
+    font-weight: bold;
+    margin-left: 10px;
+  }
 }
 
 .profile-pic,
@@ -67,7 +101,6 @@
   cursor: pointer;
   margin-right: 0.6rem;
 }
-
 
 @media (max-width: 768px) {
   .profile {

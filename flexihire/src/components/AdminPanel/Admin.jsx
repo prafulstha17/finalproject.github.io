@@ -8,7 +8,7 @@ import ManagePost from "./ManagePost/ManagePost";
 import UserProfiles from "./Users/UserProfiles";
 import ThreeJSComponent from "./Root/ThreeJSComponent";
 
-function Admin() {
+const Admin = () => {
   return (
     <div className="admin">
       <div className="sidebar-align">

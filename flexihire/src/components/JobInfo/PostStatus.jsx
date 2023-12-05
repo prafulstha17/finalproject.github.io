@@ -123,6 +123,7 @@ const PostStatus = () => {
             value={formData.deadline}
             onChange={handleInputChange}
             placeholder="Select a Deadline"
+            min={new Date().toISOString().split('T')[0]} // Set min attribute to the current date
           />
           <label
             htmlFor="deadline"

@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
 import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  deleteDoc,
+  setDoc,
+  doc,
+  getDocs,
+  where,
+} from "firebase/firestore";
+import {
   getAuth,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -7,7 +18,7 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { auth, googleProvider } from "../../config/firebase";
+import { auth, googleProvider, db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import "./Member.css"; // Import any CSS styles if needed
 
@@ -15,7 +26,8 @@ const Member = () => {
   const [loginVisible, setLoginVisible] = useState(true);
   const [signupVisible, setSignupVisible] = useState(false);
   const [frontboxMoving, setFrontboxMoving] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +45,7 @@ const Member = () => {
         setError(true);
       });
   };
+
   const handleForgotPassword = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, email)
@@ -45,23 +58,36 @@ const Member = () => {
   };
 
   const signIn = async () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (res) => {
-        const user = res.user;
-        await updateProfile(user, {
-          displayName: name,
-        });
-        navigate("/termsCondition");
-      })
-      .catch((err) => {
-        console.error(err);
+    try {
+      setLoading(true);
+      const auth = getAuth();
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+  
+      // Add user details to Firestore
+      await addUserToFirestore(user.uid, name, email);
+  
+      // Update user profile
+      await updateProfile(user, {
+        displayName: name,
       });
+  
+      navigate("/termsCondition");
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred during sign-up. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+  
 
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+
+      await addUserToFirestore(user.uid, name, email);
       // You can handle the user data or navigate to a different page here
       navigate("/");
     } catch (err) {
@@ -86,8 +112,6 @@ const Member = () => {
     }
   };
 
-
-
   const handleSwitch1 = () => {
     setLoginVisible(true);
     setSignupVisible(false);
@@ -101,6 +125,32 @@ const Member = () => {
     setFrontboxMoving(true);
     console.log("Box is moving.");
   };
+
+  const addUserToFirestore = async (userId, displayName, userEmail) => {
+    try {
+      const usersCollection = collection(db, "users");
+      const userDocRef = doc(db, "users", userId);
+  
+      // Data to be added
+      const userData = {
+        userId: userId,
+        displayName: displayName,
+        email: userEmail,
+      };
+  
+      // Add user data to Firestore
+      await setDoc(userDocRef, userData);
+  
+      // Log the data to console
+      console.log("User added to Firestore successfully!");
+      console.log("User Data:", userData);
+  
+    } catch (error) {
+      console.error("Error adding user to Firestore: ", error);
+    }
+  };
+  
+  
 
   return (
     <div className="memberBody">
@@ -122,6 +172,13 @@ const Member = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            <div className="error-login">
+              {error && (
+                <span className="error">
+                  !! Data not found !!
+                </span>
+              )}
+            </div>
             <a
               href="#0"
               className="link-forget text-center"
@@ -137,14 +194,6 @@ const Member = () => {
             >
               LOG IN
             </button>
-            <div className="error-login">
-              {error && (
-                <span className="error">
-                  <br />
-                  Do I know you??
-                </span>
-              )}
-            </div>
             <p className="or mt-4 text-center" id="color-gradient">
               Or login with
             </p>
@@ -181,7 +230,7 @@ const Member = () => {
                 name="email"
                 placeholder="  EMAIL"
                 onChange={(e) => setEmail(e.target.value)}
-                autocomplete="off"
+                autoComplete="off"
                 required
               />
               <input
@@ -189,7 +238,7 @@ const Member = () => {
                 name="password"
                 placeholder="  PASSWORD"
                 onChange={(e) => setPassword(e.target.value)}
-                autocomplete="off"
+                autoComplete="off"
                 required
               />
             </div>

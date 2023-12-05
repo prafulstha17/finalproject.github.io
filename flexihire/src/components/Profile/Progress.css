@@ -1,0 +1,71 @@
+/* Container for the progress circles and labels */
+.progress-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Style for each circle */
+.progress-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+/* Outer circle style */
+.outer-circle-accepted {
+  width: 60px; /* Increased size */
+  height: 60px; /* Increased size */
+  border-radius: 50%;
+  background-color: #f1cf0fbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-circle-rejected {
+  width: 60px; /* Increased size */
+  height: 60px; /* Increased size */
+  border-radius: 50%;
+  background-color: #db3434e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-circle-pending {
+  width: 60px; /* Increased size */
+  height: 60px; /* Increased size */
+  border-radius: 50%;
+  background-color: #003cffd8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner circle style */
+.inner-circle {
+  width: 50px; /* Increased size */
+  height: 50px; /* Increased size */
+  border-radius: 50%;
+  background-color: #b4b4b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em; /* Increased font size */
+}
+
+/* Label style */
+.label {
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .progress-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

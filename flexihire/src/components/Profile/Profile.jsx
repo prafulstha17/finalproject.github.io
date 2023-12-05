@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { auth, storage } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { BsCamera, BsPencilSquare } from "react-icons/bs";
-// import { BsPencilSquare } from "react-icons/bs";
 import PersonalDataForm from "../Profile/PersonalDataForm";
 import "./Profile.css";
+import Progress from "./Progress";
+
 function Profile() {
   const [user, setUser] = useState(null);
   const [profilePicUrl, setProfilePicUrl] = useState("");
@@ -13,6 +14,7 @@ function Profile() {
   const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [status, setStatus] = useState(false);
   const [hidden, setHidden] = useState(false);
+
   const handlePostSubmit = async () => {
     setStatus(true);
     setHidden(false);
@@ -164,6 +166,7 @@ function Profile() {
           <p className="profile-name">Please log in to view your profile</p>
         </div>
       )}
+      <Progress currentUserId={user?.uid} />
     </div>
   );
 }

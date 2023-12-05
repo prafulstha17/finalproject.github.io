@@ -3,6 +3,14 @@
     align-self: flex-start;
   }
   
+  .error-login {
+    color: #ff0000; /* Red color for error text */
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
   .containerMember{
     width: 600px;
     height: 27rem;
