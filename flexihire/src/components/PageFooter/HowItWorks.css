@@ -9,3 +9,8 @@ center h2{
     display: flex;
     flex-direction: row;
 }
+
+.rightHow .features{
+    display: flex;
+    flex-direction: column;
+}
