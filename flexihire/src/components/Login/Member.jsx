@@ -4,6 +4,7 @@ import {
   query,
   orderBy,
   onSnapshot,
+  serverTimestamp,
   deleteDoc,
   setDoc,
   doc,
@@ -136,6 +137,7 @@ const Member = () => {
         userId: userId,
         displayName: displayName,
         email: userEmail,
+        appliedAt: serverTimestamp(),
       };
   
       // Add user data to Firestore

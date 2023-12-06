@@ -1,7 +1,6 @@
 {
   "name": "flexihire",
   "version": "1.0.0",
-  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@amcharts/amcharts3-react": "^3.1.1",

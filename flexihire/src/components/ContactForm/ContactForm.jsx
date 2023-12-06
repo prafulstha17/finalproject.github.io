@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
 import "./ContactForm.css";
 
 function ContactForm() {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  useEffect(() => {
+    console.log('ContactForm component is being rendered.');
+  }, []);
+
   const [userData, setUserData] = useState({
     Name: "",
     email: "",
@@ -16,7 +23,7 @@ function ContactForm() {
   const submitData = async (event) => {
     event.preventDefault();
     const { Name, email, message } = userData;
-
+  
     if (Name && email && message) {
       try {
         const res = await fetch(
@@ -33,14 +40,16 @@ function ContactForm() {
             }),
           }
         );
-
+  
         if (res.ok) {
           setUserData({
             Name: "",
             email: "",
             message: "",
           });
-          window.location.reload();
+  
+          // Reload the page to /mailReceived
+          window.location.href = '/mailReceived';
         } else {
           console.error("Failed to submit data.");
         }
@@ -49,6 +58,7 @@ function ContactForm() {
       }
     }
   };
+  
 
   return (
     <>

@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { auth } from "./config/firebase";
-import Home from "./components/Home/Home";
-import Profile from "./components/Profile/Profile";
-import Navbar from "./components/Navbar/Navbar";
-import ContactForm from "./components/ContactForm/ContactForm";
-import AboutUs from "./components/AboutUs/About";
-import PageFooter from "./components/PageFooter/PageFooter";
-import Jobs from "./components/Jobs/Jobs";
-import WhyUs from "./components/AboutUs/WhyUs";
-import TermsCondition from "./components/AboutUs/TermsCondition";
-import Message from "./components/Message/Message";
-import Services from "./components/Services/Services";
-import Admin from "./components/AdminPanel/Admin";
-import Loading from "./components/Loading/Loading";
-import PageNotFound from "./components/PageNotFound/PageNotFound";
-import "./App.css";
-import Member from "./components/Login/Member";
-import HowItWorks from "./components/PageFooter/HowItWorks";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { auth, db } from './config/firebase';
+import {
+  getDoc,
+  doc,
+} from 'firebase/firestore';
+import Navbar from './components/Navbar/Navbar';
+import PageFooter from './components/PageFooter/PageFooter';
+import Message from './components/Message/Message';
+import Admin from './components/AdminPanel/Admin';
+import Loading from './components/Loading/Loading';
+import Revoked from './components/Revoked/Revoked';
+import AppRoutes from './AppRoutes';
 
 const AdminContext = React.createContext(false);
 
 function App() {
   const [user, setUser] = useState(null);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
   const [isAdmin, setIsAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isRevoked, setIsRevoked] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = auth.onIdTokenChanged((user) => {
+    const unsubscribe = auth.onIdTokenChanged(async (user) => {
       if (user) {
         setUserName(user.displayName);
         setUser(user);
-        setIsAdmin(user.email === "flexihirenepal@gmail.com");
+        setIsAdmin(user.email === 'flexihirenepal@gmail.com');
+
+        // Fetch user data from Firestore to check the revoked status
+        try {
+          const userDoc = await getUserDocFromFirestore(user.uid);
+          setIsRevoked(!!userDoc.disabled);
+        } catch (error) {
+          console.error('Error fetching user data from Firestore:', error);
+        }
       } else {
-        setUserName("");
+        setUserName('');
         setUser(null);
         setIsAdmin(false);
+        setIsRevoked(false);
       }
 
       setLoading(false);
@@ -44,6 +48,23 @@ function App() {
 
     return () => unsubscribe();
   }, []);
+
+  const getUserDocFromFirestore = async (userId) => {
+    try {
+      const userDocRef = doc(db, 'users', userId);
+      const userDocSnapshot = await getDoc(userDocRef);
+
+      if (userDocSnapshot.exists()) {
+        const userData = userDocSnapshot.data();
+        return userData;
+      } else {
+        throw new Error('User document not found in Firestore');
+      }
+    } catch (error) {
+      console.error('Error fetching user data from Firestore:', error);
+      throw error;
+    }
+  };
 
   if (loading) {
     // Show a loading indicator or skeleton screen while checking authentication state
@@ -54,29 +75,21 @@ function App() {
     <>
       <AdminContext.Provider value={isAdmin}>
         <Router>
-          {isAdmin ? (
-            <Admin />
-          ) : (
+          {isRevoked && (
+            <>
+              {console.log('Redirecting to /revoked')}
+              <Revoked />
+            </>
+          )}
+          {!isAdmin && !isRevoked && (
             <>
               <Navbar />
-              <Routes>
-                <Route path="/" element={<Home name={userName} />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/contactUs" element={<ContactForm />} />
-                <Route path="/aboutUs" element={<AboutUs />} />
-                <Route path="/jobs" element={<Jobs />} />
-                <Route path="/whyUs" element={<WhyUs />} />
-                <Route path="/termsCondition" element={<TermsCondition />} />
-                <Route path="/profile" element={<Profile user={user} />} />
-                <Route path="/member" element={<Member/>}/>
-                <Route path="/howItWorks" element={<HowItWorks/>}/>
-                {/* Catch-all route for non-existent routes */}
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
+              <AppRoutes userName={userName} />
               <PageFooter />
               <Message />
             </>
           )}
+          {isAdmin && <Admin />}
         </Router>
       </AdminContext.Provider>
     </>

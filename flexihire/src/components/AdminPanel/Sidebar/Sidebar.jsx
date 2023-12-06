@@ -67,7 +67,7 @@ function Sidebar() {
                 <span className="fa-stack fa-lg pull-left">
                 <i className="fa fa-flag fa-stack-1x "></i>
                 </span>
-                <p>Shortcut</p>
+                <p>Reports</p>
               </a>
             </li>
             <li>

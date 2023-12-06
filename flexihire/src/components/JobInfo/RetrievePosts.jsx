@@ -123,7 +123,7 @@ function RetrievePosts({ isAdmin }) {
     try {
       const applicationDocRef = doc(db, "applications", applicationId);
       await updateDoc(applicationDocRef, { approved: status });
-  
+
       // Update the state to reflect the change
       setPendingApplications((prevApplications) => {
         const updatedApplications = prevApplications.map((app) =>
@@ -131,7 +131,7 @@ function RetrievePosts({ isAdmin }) {
             ? { ...app, approved: status }
             : app
         );
-  
+
         return updatedApplications;
       });
     } catch (error) {
@@ -151,6 +151,43 @@ function RetrievePosts({ isAdmin }) {
     <div className="retrieve-posts-container">
       {currentUser ? (
         <>
+          {isAdmin && (
+            <ul>
+              {posts.map((post) => (
+                <li key={post.id} className="job-post">
+                  {/* Render job post for admin */}
+                  <div className="job-header">
+                    <div className="title">{post.title}</div>
+                    <div className="postDetails">
+                      <p>
+                        <a
+                          href={`/profile/${post.userId}`}
+                          className="username-link"
+                        >
+                          {post.username}
+                        </a>{" "}
+                        posted on {formatDate(post.timestamp)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="job-description">
+                    {post.description && <>{post.description}</>}
+                  </div>
+                  <div className="job-details">
+                    <div className="exp">Experience: {post.experience}</div>
+                    <div className="deadline">Deadline: {post.deadline}</div>
+                    <div className="workinghrs">Est. time: {post.timing}</div>
+                    <div className="salary">Salary: {post.salary}</div>
+                  </div>
+                  <div className="job-actions">
+                    <button onClick={() => handleDeletePost(post.id)}>
+                      Remove Job Opening
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
           {!isAdmin && (
             <div className="section-wrapper">
               <h6

@@ -1,0 +1,879 @@
+
+ol, ul {
+    list-style: none;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+  }
+  q, blockquote {
+    quotes: none;
+  }
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+  }
+  
+  a img {
+    border: none;
+  }
+  
+  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    display: block;
+  }
+  
+  body {
+    position: relative;
+  }
+  
+  .cloud, .space, .ground {
+    position: relative;
+  }
+  
+  .cloud {
+    height: 120px;
+    z-index: 16;
+  }
+  
+  .space {
+    height: 354px;
+    position: relative;
+    z-index: 2;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ViZGFhNCIvPjxzdG9wIG9mZnNldD0iNDUlIiBzdG9wLWNvbG9yPSIjMzhiMzlmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDA0ODlmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g'), url('https://omarkhanfer.github.io/CSS3Animation/images/../images/noise.png');
+    background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ebdaa4), color-stop(45%, #38b39f), color-stop(100%, #00489f)), url('https://omarkhanfer.github.io/CSS3Animation/images/noise.png');
+    background: -webkit-linear-gradient(bottom, #ebdaa4, #38b39f 45%, #00489f 100%), url('https://omarkhanfer.github.io/CSS3Animation/images/noise.png');
+    background: -moz-linear-gradient(bottom, #ebdaa4, #38b39f 45%, #00489f 100%), url('https://omarkhanfer.github.io/CSS3Animation/images/noise.png');
+    background: -o-linear-gradient(bottom, #ebdaa4, #38b39f 45%, #00489f 100%), url('https://omarkhanfer.github.io/CSS3Animation/images/noise.png');
+    background: linear-gradient(bottom, #ebdaa4, #38b39f 45%, #00489f 100%), url('https://omarkhanfer.github.io/CSS3Animation/images/noise.png');
+  }
+  
+  .first-part {
+    bottom: 0px;
+    height: 387px;
+    position: absolute;
+    width: 50%;
+    left: 0;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  .last-part {
+    bottom: 0px;
+    height: 387px;
+    position: absolute;
+    width: 50%;
+    right: 0;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  .ground {
+    height: 330px;
+    position: relative;
+    z-index: 11;
+  }
+  
+  .header {
+    background: #dff2f7;
+    height: 30px;
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+  }
+  .header > div {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .header .header__bar {
+    height: 10px;
+    background: #dff2f7;
+    padding: 0 20%;
+    text-align: left;
+  }
+  .header .header__bar .lang-en {
+    display: none;
+  }
+  .header .header__flag {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/flag.png") no-repeat transparent;
+    height: 19px;
+    margin: 0 10px 0 20%;
+    width: 19px;
+    float: left;
+  }
+  .header .header__text {
+    color: #929ea3;
+    font-size: 8px;
+    font-family: Lucida Sans Unicode;
+    padding-top: 5px;
+  }
+  .header .header__moon {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/moon.png");
+    height: 50px;
+    margin: 15px auto 10px;
+    width: 50px;
+  }
+  .header .header__sub-title {
+    color: #1a6cca;
+    font-family: 'Milonga', cursive;
+    font-size: 18px;
+  }
+  .header .header__title {
+    color: #4c79d6;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff,2px 2px 0 #0470bb;
+  }
+  .header .menu-button {
+    float: right;
+  }
+  .first-hill {
+    z-index: 8;
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/hill.png") no-repeat;
+    bottom: 0;
+    height: 390px;
+    position: absolute;
+    width: 834px;
+    left: 0;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  .first-hill else {
+    background-position: -20px 0;
+  }
+  
+  .last-hill {
+    z-index: 9;
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/hill.png") no-repeat;
+    bottom: 0;
+    height: 390px;
+    position: absolute;
+    width: 834px;
+    right: 0;
+  }
+  .last-hill else {
+    background-position: -20px 0;
+  }
+  
+  .grace {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/grace.png") repeat-x transparent;
+    background-size: 100% 100%;
+    bottom: 0px;
+    height: 308px;
+    width: 100%;
+    position: absolute;
+    z-index: 20;
+  }
+  
+  .house {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/house.png") no-repeat transparent;
+    height: 373px;
+    top: -100px;
+    position: absolute;
+    width: 288px;
+    z-index: 14;
+    left: 30%;
+  }
+  
+  .first-trees {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/trees.png") no-repeat transparent;
+    height: 178px;
+    position: absolute;
+    top: -100px;
+    width: 436px;
+    z-index: 6;
+    right: 10%;
+  }
+  
+  .last-trees {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/trees.png") no-repeat transparent;
+    height: 178px;
+    position: absolute;
+    top: -100px;
+    width: 436px;
+    z-index: 6;
+    left: 13%;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  
+  .larg-bubble {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/small-cloud.png") no-repeat transparent;
+    background-size: 100% 100%;
+    height: 27px;
+    position: absolute;
+    width: 36px;
+    right: 40%;
+    -webkit-animation: bubblemove 5s infinite linear;
+    -moz-animation: bubblemove 5s infinite linear;
+    -ms-animation: bubblemove 5s infinite linear;
+    animation: bubblemove 5s infinite linear;
+  }
+  
+  .small-bubble {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/small-cloud.png") no-repeat transparent;
+    background-size: 100% 100%;
+    height: 27px;
+    position: absolute;
+    width: 36px;
+    right: 40%;
+    -webkit-animation: bubblemove 5s infinite linear -2s;
+    -moz-animation: bubblemove 5s infinite linear -2s;
+    -ms-animation: bubblemove 5s infinite linear -2s;
+    animation: bubblemove 5s infinite linear -2s;
+  }
+  
+  .cloud__back {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/cloud.png") repeat-x transparent;
+    height: 228px;
+    position: absolute;
+    width: 100%;
+    top: 2px;
+    z-index: 18;
+  }
+  
+  .cloud__front {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/cloud.png") repeat-x transparent;
+    height: 228px;
+    position: absolute;
+    width: 100%;
+    top: -12px;
+    z-index: 19;
+  }
+  .cloud__main {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/main-cloud.png") repeat-x transparent;
+    height: 248px;
+    position: absolute;
+    top: -5px;
+    width: 100%;
+    z-index: 16;
+  }
+  
+  .blue-shadow {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/blue-shadow.png") no-repeat transparent;
+    height: 392px;
+    width: 1000px;
+    position: absolute;
+    top: 150px;
+    z-index: 8;
+    left: 13%;
+  }
+  .cloud .x1 {
+    -webkit-animation: cloudmove 3.5s infinite linear;
+    -moz-animation: cloudmove 3.5s infinite linear;
+    -ms-animation: cloudmove 3.5s infinite linear;
+    animation: cloudmove 3.5s infinite linear;
+  }
+  .cloud .x2 {
+    -webkit-animation: cloudmove 3s infinite linear;
+    -moz-animation: cloudmove 3s infinite linear;
+    -ms-animation: cloudmove 3s infinite linear;
+    animation: cloudmove 3s infinite linear;
+  }
+  .cloud .x3 {
+    -webkit-animation: cloudmove 2.5s infinite linear;
+    -moz-animation: cloudmove 2.5s infinite linear;
+    -ms-animation: cloudmove 2.5s infinite linear;
+    animation: cloudmove 2.5s infinite linear;
+  }
+  
+  @-webkit-keyframes cloudmove {
+    0% {
+      background-position: -105px 0px;
+    }
+  
+    100% {
+      background-position: -210px 0px;
+    }
+  }
+  
+  @-moz-keyframes cloudmove {
+    0% {
+      background-position: -105px 0px;
+    }
+  
+    100% {
+      background-position: -210px 0px;
+    }
+  }
+  
+  @-ms-keyframes cloudmove {
+    0% {
+      background-position: -105px 0px;
+    }
+    100% {
+      background-position: -210px 0px;
+    }
+  }
+  
+  @keyframes cloudmove {
+    0% {
+      background-position: -105px 0px;
+    }
+    100% {
+      background-position: -210px 0px;
+    }
+  }
+  
+  @-webkit-keyframes bubblemove {
+    0% {
+      height: 24px;
+      top: 0px;
+      width: 32px;
+      right: 40%;
+    }
+    30% {
+      top: -25px;
+    }
+    100% {
+      height: 44px;
+      top: -150px;
+      width: 55px;
+      right: 45%;
+    }
+  }
+  
+  @-moz-keyframes bubblemove {
+    0% {
+      height: 24px;
+      top: 0px;
+      width: 32px;
+      right: 40%;
+    }
+    30% {
+      top: -25px;
+    }
+    100% {
+      height: 44px;
+      top: -150px;
+      width: 55px;
+      right: 45%;
+    }
+  }
+  
+  @-ms-keyframes bubblemove {
+    0% {
+      height: 24px;
+      top: 0px;
+      width: 32px;
+      right: 40%;
+    }
+    30% {
+      top: -25px;
+    }
+    100% {
+      height: 44px;
+      top: -150px;
+      width: 55px;
+      right: 45%;
+    }
+  }
+  
+  @keyframes bubblemove {
+    0% {
+      height: 24px;
+      top: 0px;
+      width: 32px;
+      right: 40%;
+    }
+    30% {
+      top: -25px;
+    }
+    100% {
+      height: 44px;
+      top: -150px;
+      width: 55px;
+      right: 45%;
+    }
+  }
+  .balloon {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/balloon.png") no-repeat transparent;
+    height: 69px;
+    position: absolute;
+    top: -130px;
+    width: 49px;
+    z-index: 300;
+    -webkit-animation: balloonmove 15s infinite linear;
+    -moz-animation: balloonmove 15s infinite linear;
+    -ms-animation: balloonmove 15s infinite linear;
+    animation: balloonmove 15s infinite linear;
+    left: 500px;
+  }
+  
+  @-webkit-keyframes balloonmove {
+    0% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    15% {
+      top: -180px;
+      left: 460px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+    30% {
+      top: -220px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    45% {
+      top: -260px;
+      left: 500px;
+      -webkit-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+      transform: rotate(15deg);
+    }
+    60% {
+      top: -220px;
+      left: 520px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    75% {
+      top: -180px;
+      left: 530px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+    90% {
+      top: -160px;
+      left: 500px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  
+  @-moz-keyframes balloonmove {
+    0% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    15% {
+      top: -180px;
+      left: 460px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+    30% {
+      top: -220px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    45% {
+      top: -260px;
+      left: 500px;
+      -webkit-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+      transform: rotate(15deg);
+    }
+    60% {
+      top: -220px;
+      left: 520px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    75% {
+      top: -180px;
+      left: 530px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+    90% {
+      top: -160px;
+      left: 500px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  
+  @-ms-keyframes balloonmove {
+    0% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    15% {
+      top: -180px;
+      left: 460px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+  
+    30% {
+      top: -220px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    45% {
+      top: -260px;
+      left: 500px;
+      -webkit-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+      transform: rotate(15deg);
+    }
+  
+    60% {
+      top: -220px;
+      left: 520px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    75% {
+      top: -180px;
+      left: 530px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+    90% {
+      top: -160px;
+      left: 500px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  
+  @keyframes balloonmove {
+    0% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    15% {
+      top: -180px;
+      left: 460px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+  
+    30% {
+      top: -220px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    45% {
+      top: -260px;
+      left: 500px;
+      -webkit-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+      transform: rotate(15deg);
+    }
+  
+    60% {
+      top: -220px;
+      left: 520px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    75% {
+      top: -180px;
+      left: 530px;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+    }
+  
+    90% {
+      top: -160px;
+      left: 500px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      top: -140px;
+      left: 480px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  
+  .snake {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/snake.png");
+    height: 188px;
+    position: absolute;
+    top: 100px;
+    width: 188px;
+    z-index: 17;
+    -webkit-animation: snakemove 8s infinite linear;
+    -moz-animation: snakemove 8s infinite linear;
+    -ms-animation: snakemove 8s infinite linear;
+    animation: snakemove 8s infinite linear;
+    left: 24%;
+  }
+  
+  @-webkit-keyframes snakemove {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @-moz-keyframes snakemove {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @-ms-keyframes snakemove {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes snakemove {
+    /* line 33, ../sass/components/_snake.scss */
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  .stars {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/stars.png") no-repeat transparent;
+    height: 124px;
+    margin: 0 auto;
+    position: absolute;
+    top: 240px;
+    width: 820px;
+    z-index: 10;
+    left: 18%;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+  }
+  
+  .mountain {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/mountain.png") no-repeat transparent;
+    height: 188px;
+    position: absolute;
+    top: -145px;
+    width: 282px;
+    z-index: 3;
+    left: 19%;
+  }
+  
+  .yellow-lighting {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/yellow-lighting.png") no-repeat transparent;
+    height: 500px;
+    position: absolute;
+    top: -215px;
+    width: 500px;
+    z-index: 5;
+    right: 47%;
+  }
+  
+  .light-stripes {
+    background: url("https://omarkhanfer.github.io/CSS3Animation/images/light-stripes.png") no-repeat transparent;
+    height: 692px;
+    position: absolute;
+    top: 100px;
+    width: 970px;
+    z-index: 11;
+    left: 16%;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+    opacity: 0.4;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  .blog-link {
+    line-height:30px;
+    color:#1A6CCA;
+    text-decoration:none;
+  }
+  .blog-link:hover {
+    text-decoration:underline;
+    color:#5AaCAA;
+  }
