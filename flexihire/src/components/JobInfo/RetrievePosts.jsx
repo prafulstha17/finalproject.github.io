@@ -161,7 +161,7 @@ function RetrievePosts({ isAdmin }) {
                     <div className="postDetails">
                       <p>
                         <a
-                          href={`/profile/${post.userId}`}
+                          href={`/users/${post.userId}`}
                           className="username-link"
                         >
                           {post.username}
@@ -216,7 +216,7 @@ function RetrievePosts({ isAdmin }) {
                       <div className="postDetails">
                         <p>
                           <a
-                            href={`/profile/${post.userId}`}
+                            href={`/users/${post.userId}`}
                             className="username-link"
                           >
                             {post.username}
@@ -270,7 +270,7 @@ function RetrievePosts({ isAdmin }) {
                       <div className="postDetails">
                         <p>
                           <a
-                            href={`/profile/${post.userId}`}
+                            href={`/users/${post.userId}`}
                             className="username-link"
                           >
                             {post.username}
@@ -307,7 +307,7 @@ function RetrievePosts({ isAdmin }) {
                                 <li key={application.userId}>
                                   <p>
                                     <a
-                                      href={`/profile/${application.userId}`}
+                                      href={`/users/${application.userId}`}
                                     >
                                       {application.username}
                                     </a>{" "}

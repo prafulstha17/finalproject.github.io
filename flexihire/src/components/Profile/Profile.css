@@ -7,7 +7,14 @@
   height: auto;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: azure;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
   /* New styles for job-progress section */
   .job-progress {
     width: 80%;
@@ -39,7 +46,6 @@
     font-weight: bold;
     margin-left: 10px;
   }
-}
 
 .profile-pic,
 .profile-initial {
@@ -87,7 +93,7 @@
   font-weight: bold;
   display: flex;
   align-items: center;
-  top: 160px;
+  top: 17rem;
 }
 
 .profile-info {
@@ -100,6 +106,12 @@
 .edit-icon-container {
   cursor: pointer;
   margin-right: 0.6rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .user-container {
+    max-width: 800px;
+  }
 }
 
 @media (max-width: 768px) {

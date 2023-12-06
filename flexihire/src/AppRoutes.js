@@ -13,6 +13,7 @@ import Member from './components/Login/Member';
 import HowItWorks from './components/PageFooter/HowItWorks';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import MailReceived from './components/ContactForm/MailReceived';
+import OthersProfile from './components/Profile/OthersProfile';
 
 const AppRoutes = ({ userName }) => {
   return (
@@ -28,6 +29,8 @@ const AppRoutes = ({ userName }) => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/member" element={<Member />} />
       <Route path="/howItWorks" element={<HowItWorks />} />
+
+      <Route path="/users/:userId" element={<OthersProfile />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

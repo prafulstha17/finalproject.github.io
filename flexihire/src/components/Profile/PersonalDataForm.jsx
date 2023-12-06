@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, auth, storage } from "../../config/firebase";
 import "../JobInfo/PostStatus.css";
@@ -32,11 +32,20 @@ const PersonalDataForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Updating ${name} with value: ${value}`);
+
+    let borderColor = value.trim() === '' ? 'red' : 'green';
+
+    // Check specific conditions for phoneNo
+    if (name === 'phoneNo') {
+      borderColor = isNaN(value) || value.length !== 10 ? 'red' : 'green';
+    }
+
     setFormData({
       ...formData,
       [name]: value,
     });
+
+    document.getElementById(name).style.border = `2px solid ${borderColor}`;
   };
 
   const handleFileSelect = (e) => {
@@ -52,13 +61,10 @@ const PersonalDataForm = () => {
   const handlePostSubmit = async () => {
     console.log("handlePostSubmit called");
     try {
-      if (formData.firstName.trim() === "" || !currentUser) {
-        console.log("Validation failed");
-        return;
-      }
-
       const postsRef = collection(db, "portfolio");
-      await addDoc(postsRef, {
+
+      // Create a new document with user information
+      const docRef = await addDoc(postsRef, {
         experience: formData.experience,
         address: formData.address,
         gitHub: formData.gitHub,
@@ -74,14 +80,13 @@ const PersonalDataForm = () => {
 
       // Upload the file to Firebase Storage and store its URL in Firestore
       if (file) {
-        const storageRef = ref(storage, `user-files/${currentUser.uid}/cv.pdf`);
+        const fileExtension = file.name.split('.').pop(); // Get the original file extension
+        const storageRef = ref(storage, `user-files/${currentUser.uid}/cv.${fileExtension}`);
         await uploadBytes(storageRef, file);
         const downloadURL = await getDownloadURL(storageRef);
 
-        // Update the document with the file URL
-        const docRef = await addDoc(postsRef, {
-          fileURL: downloadURL,
-        });
+        // Update the same document with the file URL
+        await updateDoc(docRef, { fileURL: downloadURL });
       }
 
       // Clear the form fields and selected file
@@ -99,6 +104,21 @@ const PersonalDataForm = () => {
     }
   };
 
+  const isFormValid = () => {
+    // Check if any input field is empty
+    for (const key in formData) {
+      if (formData[key].trim() === '') {
+        return false;
+      }
+    }
+    // Check specific conditions for phoneNo
+    if (isNaN(formData.phoneNo) || formData.phoneNo.length !== 10) {
+      return false;
+    }
+  
+    return true;
+  };
+
   return (
     <div className="post-status-container">
       <h3>Enter your Personal Details :</h3>
@@ -108,18 +128,19 @@ const PersonalDataForm = () => {
         <div className="input-group">
           <input
             type="text"
-            placeholder=""
+            placeholder=''
             id="phoneNo"
             name="phoneNo"
             value={formData.phoneNo}
             onChange={handleInputChange}
+            style={{ borderColor: formData.phoneNo === '' ? 'black' : (isNaN(formData.phoneNo) || formData.phoneNo.length !== 10 ? 'red' : 'green') }}
           />
           <label
             htmlFor="phoneNo"
             className={formData.phoneNo ? "active" : ""}
             onClick={() => handleLabelClick("phoneNo")}
           >
-            Phone No.
+            Mobile No.
           </label>
         </div>
 
@@ -220,19 +241,21 @@ const PersonalDataForm = () => {
 
         {/* import file */}
         <div className="input-group">
-        <input type="file" name="file" id="file" onChange={handleFileSelect} />
-        <label
-            htmlFor="cv"
-            className={formData.file ? "active" : ""}
+          <input type="file" name="file" id="file" onChange={handleFileSelect} />
+          <label
+            htmlFor="file"
+            className={file ? "active" : ""}
             onClick={() => handleLabelClick("skills")}
           >
-            Curriculum Vitae 
+            Curriculum Vitae
           </label>
         </div>
-        
+
       </div>
 
-      <button onClick={handlePostSubmit}>Post</button>
+      <button onClick={handlePostSubmit} disabled={!isFormValid()}>
+        Post
+      </button>
     </div>
   );
 };

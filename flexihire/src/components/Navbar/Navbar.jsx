@@ -6,13 +6,15 @@ import transparent_bg from "../Icon/low_res/transparent_bg.png";
 import { Dropdown } from "react-bootstrap";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import OthersProfile from "../Profile/OthersProfile";
 
 function Navbar() {
   const [user, setUser] = useState(null);
   const [show, setShow] = useState(false);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedDropdown, setSelectedDropdown] = useState("Flexer"); // Added state for selected dropdown
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,22 +24,35 @@ function Navbar() {
         return;
       }
 
-      const booksRef = collection(db, "posts"); // Change 'books' to your collection name
-      const querySnapshot = await getDocs(booksRef);
+      let collectionName = "posts";
+      let fieldName = "title";
+
+      if (selectedDropdown === "Flexer") {
+        collectionName = "users";
+        fieldName = "displayName";
+      }
+
+      const collectionRef = collection(db, collectionName);
+      const querySnapshot = await getDocs(collectionRef);
 
       const results = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        if (data.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-          results.push(data);
+
+        // Check if the field we want to search is defined before using toLowerCase()
+        if (data && data[fieldName] && typeof data[fieldName] === 'string') {
+          if (data[fieldName].toLowerCase().includes(searchTerm.toLowerCase())) {
+            results.push(data);
+          }
         }
       });
 
       setSearchResults(results);
     };
 
+
     fetchData();
-  }, [searchTerm]);
+  }, [searchTerm, selectedDropdown]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -85,12 +100,58 @@ function Navbar() {
     };
   }, []);
 
-  const handleSearchItemClick = (book) => {
-    // Handle the click on a searchable item
+  const handleSearchItemClick = (item) => {
     setSearchTerm(""); // Clear the search term
     setSearchResults([]); // Clear the search results
-    // You can perform any action related to the selected item here
-    console.log("Clicked item:", book.title);
+
+    const userId = item.userId;
+    console.log("Selected userId:", userId);
+
+    if (selectedDropdown === "Flexer") {
+      // Assuming you have a route for user profiles, replace '/users/:userId' with the actual route
+      navigate(`/users/${userId}`);
+    } else {
+      // Assuming you have a route for posts, replace '/posts/:id' with the actual route
+      navigate(`/posts/${item.id}`);
+    }
+  };
+
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    // Fetch data for autocomplete suggestions
+    const fetchAutocompleteData = async () => {
+      if (value.trim() === "") {
+        setSearchResults([]);
+        return;
+      }
+
+      let collectionName = "posts";
+      let fieldName = "title";
+
+      if (selectedDropdown === "Flexer") {
+        collectionName = "users";
+        fieldName = "displayName";
+      }
+
+      const collectionRef = collection(db, collectionName);
+      const querySnapshot = await getDocs(collectionRef);
+
+      const results = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data && typeof data[fieldName] === 'string' &&
+          data[fieldName].toLowerCase().includes(value.toLowerCase())) {
+          results.push(data[fieldName]);
+        }
+      });
+
+      setSearchResults(results);
+    };
+
+    fetchAutocompleteData();
   };
 
   return (
@@ -145,24 +206,28 @@ function Navbar() {
                 />
                 <div className="dataSearch">
                   <ul>
-                    {searchResults.map((book) => (
-                      <li key={book.id}>
+                    {searchResults.map((item) => (
+                      <li key={item.id}>
                         <a
                           href="#"
-                          onClick={() => handleSearchItemClick(book)} // Handle item click
+                          onClick={() => handleSearchItemClick(item)} // Handle item click
                         >
-                          {book.title}
+                          {selectedDropdown === "Flexer" ? item.displayName : item.title}
                         </a>
                       </li>
                     ))}
                   </ul>
                 </div>
               </Dropdown>
-
               <div class="input-select">
-                <select data-trigger="" name="choices-single-default">
-                  <option placeholder="">Flexer</option>
-                  <option>Openings</option>
+                <select
+                  data-trigger=""
+                  name="choices-single-default"
+                  value={selectedDropdown}
+                  onChange={(e) => setSelectedDropdown(e.target.value)}
+                >
+                  <option value="Flexer">Flexer</option>
+                  <option value="Openings">All Openings</option>
                 </select>
               </div>
             </form>
@@ -172,7 +237,7 @@ function Navbar() {
               <Dropdown>
                 <div className="loggedIn">
                   <Dropdown.Toggle variant="link" id="dropdown-basic">
-                  <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="dropdown-menu">
