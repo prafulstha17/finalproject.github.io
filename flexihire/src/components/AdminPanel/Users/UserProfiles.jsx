@@ -155,7 +155,7 @@ const UserProfiles = () => {
                 {user.disabled ? (
                   <button
                     style={{
-                      backgroundColor: '#ff6666', // Red color
+                      backgroundColor: '#66cc66',
                       color: '#fff',
                       cursor: 'pointer',
                       padding: '5px 10px',
@@ -170,7 +170,7 @@ const UserProfiles = () => {
                 ) : (
                   <button
                     style={{
-                      backgroundColor: '#66cc66', // Green color
+                      backgroundColor: '#ff6666',
                       color: '#fff',
                       cursor: 'pointer',
                       padding: '5px 10px',
