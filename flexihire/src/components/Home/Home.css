@@ -45,7 +45,7 @@
   padding-bottom: 0.5rem;
   color: #03dac6;
   transition: all 0.3s ease;
-  z-index: 3;
+  z-index: 1;
 }
 
 .hero-content .nav h1:hover {
@@ -64,7 +64,7 @@
   letter-spacing: 0.7em;
   font-weight: 800;
   color: #000000;
-  z-index: 4;
+  z-index: 1;
 }
 
 .hero-content .loader span {

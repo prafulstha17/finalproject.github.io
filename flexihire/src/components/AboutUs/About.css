@@ -13,463 +13,470 @@
 
 .company-title,
 .company-slogan {
-  background: -webkit-linear-gradient(
-    120deg,
-    var(--primary-color-alt),
-    var(--primary-color)
-  );
+  background: -webkit-linear-gradient(120deg,
+      var(--primary-color-alt),
+      var(--primary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-  
-  .container.section-1 {
-    display: flex;
-    background-color: var(--dark-color);
-    align-content: center;
-    width: 100%;
-    height: 60vh;
-    box-sizing: border-box;
+
+.container.section-1 {
+  display: flex;
+  background-color: var(--dark-color);
+  align-content: center;
+  width: 100%;
+  height: 60vh;
+  box-sizing: border-box;
+}
+
+.full-width-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  background-color: var(--dark-color);
+  z-index: -1;
+}
+
+.container.section-1 .slogan {
+  margin-top: 4rem;
+  text-align: left;
+  position: relative;
+}
+
+.bottomDescription {
+  margin-top: 4rem;
+}
+
+.aboutDescription .containers {
+  width: 50px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-block-start: -2rem;
+  padding-bottom: 5rem;
+}
+
+.aboutDescription .pic {
+  box-shadow: 6px 6px 7px #888888;
+  width: 18.5rem;
+  height: 18.5rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+  margin-left: 135px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.aboutDescription .pic:before {
+  content: '';
+  margin-top: -6rem;
+  margin-left: -14.5rem;
+  position: absolute;
+  width: 47rem;
+  height: 30rem;
+  background: url('../../../public/Images/jpg/8.jpg') center center;
+  background-size: contain;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.aboutDescription .pic:hover,
+.aboutDescription .box1:hover,
+.aboutDescription .box2:hover,
+.aboutDescription .box3:hover,
+.aboutDescription .social1:hover,
+.aboutDescription .social2:hover,
+.aboutDescription .social3:hover {
+  box-shadow: 3px 3px 7px #000000;
+  cursor: pointer;
+}
+
+.aboutDescription .box1 {
+  box-shadow: 6px 6px 7px #888888;
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: -7rem;
+  margin-left: 2rem;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(-45deg);
+}
+
+.aboutDescription .box1:before {
+  content: '';
+  margin-top: -5rem;
+  margin-left: -5rem;
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  background: url('../../../public/Images/jpg/side.jpg') center center;
+  background-size: contain;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(45deg);
+}
+
+.box2 {
+  box-shadow: 6px 6px 7px #888888;
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 5rem;
+  margin-top: -15px;
+  margin-bottom: 55px;
+  margin-left: 95px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.box2:before {
+  content: '';
+  margin-top: -6rem;
+  margin-left: -6rem;
+  position: absolute;
+  width: 17rem;
+  height: 17rem;
+  background: url('../../../public/Images/jpg/mid.jpg') center center;
+  background-size: contain;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.aboutDescription .box3 {
+  box-shadow: 6px 6px 7px #888888;
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: -4.4rem;
+  margin-left: 10rem;
+  margin-bottom: -4rem;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(-45deg);
+}
+
+.aboutDescription .box3:before {
+  content: '';
+  margin-top: -80px;
+  margin-left: -80px;
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  background: url('../../../public/Images/jpg/side2.jpg') center center;
+  background-size: contain;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(45deg);
+}
+
+.social1 {
+  box-shadow: 6px 6px 7px #888888;
+  width: 5rem;
+  height: 5rem;
+  background-color: #3b5998;
+  margin-top: -5rem;
+  margin-left: 20rem;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.social1>a>i {
+  font-size: 4rem;
+  margin-top: 0.75rem;
+  margin-left: 1.5rem;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  color: #ffffff;
+}
+
+.social2 {
+  box-shadow: 6px 6px 7px #888888;
+  width: 5rem;
+  height: 5rem;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
+  margin-top: -9rem;
+  margin-left: 24rem;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.social2>a>i {
+  font-size: 4rem;
+  margin-top: 0.5rem;
+  margin-left: 0.75rem;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  color: #ffffff;
+}
+
+.social3 {
+  box-shadow: 6px 6px 7px #888888;
+  width: 80px;
+  height: 80px;
+  background-color: #000000;
+  margin-top: -143px;
+  margin-left: 28rem;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.twitter-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  transform: rotate(-45deg);
+  filter: invert(100%);
+}
+
+.content {
+  height: 45%;
+  width: 25rem;
+  margin-left: 17rem;
+}
+
+.content p {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.sideAbout .content h2 {
+  font-family: 'FH';
+  font-size: 1.15rem;
+}
+
+.content .contentHead {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 60px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.content sup {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.row {
+  width: fit-content;
+}
+
+@media screen and (max-width: 900px) {
+  .home-computer-container {
+    text-align: center;
   }
 
-  .full-width-background {
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 80vh;
-    background-color: var(--dark-color);
-    z-index: -1;
+  .home-computer {
+    width: 80%;
+    max-width: 300px;
   }
-  
+
+  .container.section-1 {
+    flex-direction: column;
+  }
+
   .container.section-1 .slogan {
-    margin-top: 4rem;
-    text-align: left;
-    position: relative;
-  }
-  
-  .bottomDescription{
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .aboutDescription .containers {
-    width: 50px;
-    height: 100%;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .aboutDescription .pic,
+  .aboutDescription .box1,
+  .box2,
+  .social1,
+  .social2,
+  .social3 {
     margin: 0 auto;
+  }
+
+  .aboutDescription {
+    height: 100vh;
+    margin-left: 20%;
     margin-top: 1rem;
-    margin-block-start: -2rem;
-    padding-bottom: 5rem;
+    margin-bottom: 16rem;
   }
-  
+
   .aboutDescription .pic {
-    box-shadow: 6px 6px 7px #888888;
-    width: 18.5rem;
-    height: 18.5rem;
-    position: relative;
-    overflow: hidden;
-    margin-top: 100px;
-    margin-left: 135px;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+    width: 9rem;
+    height: 9rem;
+    margin-left: 8.75rem;
   }
-  
+
   .aboutDescription .pic:before {
-    content: '';
-    margin-top: -6rem;
-    margin-left: -14.5rem;
-    position: absolute;
-    width: 47rem;
-    height: 30rem;
-    background: url('../../../public/Images/jpg/8.jpg') center center;
-    background-size: contain;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    margin-top: -4rem;
+    margin-left: -4rem;
+    width: 17rem;
+    height: 17rem;
   }
-  
-  .aboutDescription .pic:hover,
-  .aboutDescription .box1:hover,
-  .aboutDescription .box2:hover,
-  .aboutDescription .box3:hover,
-  .aboutDescription .social1:hover,
-  .aboutDescription .social2:hover,
-  .aboutDescription .social3:hover {
-    box-shadow: 3px 3px 7px #000000;
-    cursor: pointer;
-  }
-  
+
   .aboutDescription .box1 {
-    box-shadow: 6px 6px 7px #888888;
-    width: 5rem;
-    height: 5rem;
-    position: relative;
-    overflow: hidden;
-    margin-top: -7rem;
-    margin-left: 2rem;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(-45deg);
-  }
-  
-  .aboutDescription .box1:before {
-    content: '';
-    margin-top: -5rem;
-    margin-left: -5rem;
-    position: absolute;
-    width: 15rem;
-    height: 15rem;
-    background: url('../../../public/Images/jpg/side.jpg') center center;
-    background-size: contain;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(45deg);
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -3.25rem;
+    margin-left: 5.5rem;
   }
 
   .box2 {
-    box-shadow: 6px 6px 7px #888888;
-    position: relative;
-    overflow: hidden;
-    width: 5rem;
-    height: 5rem;
-    margin-top: -15px;
-    margin-bottom: 55px;
-    margin-left: 95px;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -0.5rem;
+    margin-left: 7.75rem;
   }
-  
-  .box2:before {
-    content: '';
-    margin-top: -6rem;
-    margin-left: -6rem;
-    position: absolute;
-    width: 17rem;
-    height: 17rem;
-    background: url('../../../public/Images/jpg/mid.jpg') center center;
-    background-size: contain;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }  
 
   .aboutDescription .box3 {
-    box-shadow: 6px 6px 7px #888888;
-    width: 5rem;
-    height: 5rem;
-    position: relative;
-    overflow: hidden;
-    margin-top: -4.4rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -0.5rem;
     margin-left: 10rem;
-    margin-bottom: -4rem;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(-45deg);
+    margin-bottom: -3rem;
   }
-  
+
+  .aboutDescription .box1:before {
+    margin-top: -3.6rem;
+    margin-left: -3.6rem;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .box2:before {
+    margin-top: -3.6rem;
+    margin-left: -3.6rem;
+    width: 10rem;
+    height: 10rem;
+  }
+
   .aboutDescription .box3:before {
-    content: '';
-    margin-top: -80px;
-    margin-left: -80px;
-    position: absolute;
-    width: 15rem;
-    height: 15rem;
-    background: url('../../../public/Images/jpg/side2.jpg') center center;
-    background-size: contain;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(45deg);
+    margin-top: -3.6rem;
+    margin-left: -3.6rem;
+    width: 10rem;
+    height: 10rem;
   }
-  
+
+  .content {
+    width: 100%;
+    padding-top: 5rem;
+    margin: 0;
+  }
+
+  .full-width-background {
+    height: 70.5vh;
+  }
+
   .social1 {
-    box-shadow: 6px 6px 7px #888888;
-    width: 5rem;
-    height: 5rem;
-    background-color: #3b5998;
-    margin-top: -5rem;
-    margin-left: 20rem;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -2rem;
+    margin-left: 14rem;
   }
-  
-  .social1 > a > i {
-    font-size: 4rem;
-    margin-top: 0.75rem;
-    margin-left: 1.5rem;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    color: #ffffff;
-  }
-  
-  .social2 {
-    box-shadow: 6px 6px 7px #888888;
-    width: 5rem;
-    height: 5rem;
-     background: #d6249f;
-     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
-    margin-top: -9rem;
-    margin-left: 24rem;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-  
-  .social2 > a > i {
-    font-size: 4rem;
+
+  .social1>a>i {
     margin-top: 0.5rem;
     margin-left: 0.75rem;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    color: #ffffff;
+    font-size: 2rem;
   }
-  
+
+  .social2 {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -4.95rem;
+    margin-left: 16.25rem;
+  }
+
+  .social2>a>i {
+    margin-top: 0.35rem;
+    margin-left: 0.5rem;
+    font-size: 2rem;
+  }
+
   .social3 {
-    box-shadow: 6px 6px 7px #888888;
-    width: 80px;
-    height: 80px;
-    background-color: #000000;
-    margin-top: -143px;
-    margin-left: 28rem;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: -5rem;
+    margin-left: 18.5rem;
   }
 
   .twitter-icon {
-    width: 4rem;
-    height: 4rem;
-    margin-top: 0.5rem;
     margin-left: 0.5rem;
-    transform: rotate(-45deg);
-    filter: invert(100%);
+    margin-top: 0.5rem;
+    width: 2rem;
+    height: 2rem;
   }
-  
+
   .content {
-    height: 45%;
-    width: 25rem;
-    margin-left: 17rem;
+    margin: 1rem;
+    height: 55%;
+    width: 80%;
+    margin-top: 8rem;
   }
-  
-  .content p {
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
-  
-  .sideAbout .content h2 {
-    font-family: 'FH';
-    font-size: 1.15rem;
-  }
-  
+
   .content .contentHead {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 60px;
-    font-weight: 500;
-    text-decoration: underline;
-  }
-  
-  .content sup {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-style: italic;
-    font-size: smaller;
-  }
-  
-  .row{
-    width: fit-content;
+    font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 900px) {
-    .home-computer-container {
-        text-align: center;
-      }
-    
-      .home-computer {
-        width: 80%;
-        max-width: 300px; 
-      }
-
-    .container.section-1 {
-      flex-direction: column;
-    }
-  
-    .container.section-1 .slogan {
-      margin-top: 2rem;
-    }
-  
-    .aboutDescription .containers {
-      width: 100%;
-      margin-left: 0;
-    }
-  
-    .aboutDescription .pic,
-    .aboutDescription .box1,
-    .box2,
-    .social1,
-    .social2,
-    .social3 {
-      margin: 0 auto;
-    }
-
-    .aboutDescription{
-      height: 100vh;
-      margin-left: 20%;
-      margin-top: 1rem;
-      margin-bottom: 16rem;
-    }
-
-    .aboutDescription .pic {
-      width: 9rem;
-      height: 9rem;
-      margin-left: 8.75rem;
-    }
-
-    .aboutDescription .pic:before {
-      margin-top: -4rem;
-      margin-left: -4rem;
-      width: 17rem;
-      height: 17rem;
-    }
-
-    .aboutDescription .box1 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -3.25rem;
-      margin-left: 5.5rem;
-    }
-
-    .box2 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -0.5rem;
-      margin-left: 7.75rem;
-    }
-
-    .aboutDescription .box3 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -0.5rem;
-      margin-left: 10rem;
-      margin-bottom: -3rem;
-    }
-
-    .aboutDescription .box1:before{
-      margin-top: -3.6rem;
-      margin-left: -3.6rem;
-      width: 10rem;
-      height: 10rem;
-    }
-
-    .box2:before{
-      margin-top: -3.6rem;
-      margin-left: -3.6rem;
-      width: 10rem;
-      height: 10rem;
-    }
-
-    .aboutDescription .box3:before {
-      margin-top: -3.6rem;
-      margin-left: -3.6rem;
-      width: 10rem;
-      height: 10rem;
-    }
-  
-    .content {
-      width: 100%;
-      padding-top: 5rem;
-      margin: 0;
-    }
-
-    .full-width-background {
-        height: 70.5vh;
-    }
-
-    .social1 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -2rem;
-      margin-left: 14rem;
-    }
-
-    .social1 > a > i {
-      margin-top: 0.5rem;
-      margin-left: 0.75rem;
-      font-size: 2rem;
-    }
-
-    .social2 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -4.95rem;
-      margin-left: 16.25rem;
-    }
-
-    .social2 > a > i {
-      margin-top: 0.35rem;
-      margin-left: 0.5rem;
-      font-size: 2rem;
-    }
-
-    .social3 {
-      width: 2.75rem;
-      height: 2.75rem;
-      margin-top: -5rem;
-      margin-left: 18.5rem;
-    }
-
-    .twitter-icon {
-      margin-left: 0.5rem;
-      margin-top: 0.5rem;
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .content {
-      margin: 1rem;
-      height: 55%;
-      width: 80%;
-      margin-top: 8rem;
-    }
-
-    .content .contentHead{
-      font-size: 1.5rem;
-    }
-
-    .content h2 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.25rem;
-    }
-
+  .content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
   }
 
-  @media screen and (max-width: 400px) {
-    .container.section-1 {
-      height: 60vh;
-    }
+}
 
-    .aboutDescription{
-      margin-left: -3.5rem;
-    }
-
-    .content .contentHead{
-      font-size: 1.5rem;
-      width: 17rem;
-    }
-
-    .content h2 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 0.8rem;
-      text-align: center;
-      width: 17rem;
-    }
-
-    .container.section-1 {
-      flex-direction: column;
-    }
-  
-    .container.section-1 .slogan {
-      margin-top: 2rem;
-    }
-
+@media screen and (max-width: 400px) {
+  .container.section-1 {
+    height: 60vh;
   }
+
+  .aboutDescription {
+    margin-left: -3.5rem;
+  }
+
+  .content .contentHead {
+    font-size: 1.5rem;
+    width: 17rem;
+  }
+
+  .content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 17rem;
+  }
+
+  .container.section-1 {
+    flex-direction: column;
+  }
+
+  .container.section-1 .slogan {
+    margin-top: 2rem;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  .content {
+    margin: 1rem;
+    height: 60%;
+    width: 80%;
+    margin-top: 8rem;
+  }
+}
