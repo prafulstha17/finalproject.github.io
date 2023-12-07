@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { listenToAuthChanges } from "../JobInfo/AuthContext";
+import { listenToAuthChanges } from "../../config/AuthContext";
 import ProductCategories from "./Pictures";
 import heroimg from "../images/heroimg.jpg";
 import LazyLoad from "react-lazyload";

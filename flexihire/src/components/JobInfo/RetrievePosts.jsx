@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../../config/firebase";
-import { listenToAuthChanges } from "./AuthContext";
+import { listenToAuthChanges } from "../../config/AuthContext";
 import PendingApplicationsPopup from "./PendingApplicationsPopup";
 import "./RetrievePosts.css";
 import ApplyButton from "./ApplyButton";

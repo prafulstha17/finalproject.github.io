@@ -1,4 +1,4 @@
-import { auth, db } from '../../config/firebase';
+import { auth } from './firebase';
 
 export const listenToAuthChanges = (callback) => {
   const unsubscribe = auth.onIdTokenChanged(async (user) => {
