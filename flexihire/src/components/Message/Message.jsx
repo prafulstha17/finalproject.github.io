@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { auth, db, storage } from "../../config/firebase";
 import {
   collection,
@@ -22,6 +22,14 @@ function Message() {
   const [messages, setMessages] = useState([]);
   const [profileImages, setProfileImages] = useState(null);
   const [loading, setLoading] = useState(true);
+  const chatLogsRef = useRef(null);
+
+  useEffect(() => {
+    if (chatLogsRef.current) {
+      // Scroll to the bottom
+      chatLogsRef.current.scrollTop = chatLogsRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -40,14 +48,18 @@ function Message() {
           userId: doc.data().userId,
           ...doc.data(),
         }));
-        setUsers(usersData);
+
+        // Filter out the current user from the list
+        const filteredUsers = usersData.filter(u => u.userId !== user.uid);
+
+        setUsers(filteredUsers);
       } catch (error) {
         console.error("Error fetching users:", error.message);
       }
     }
 
     fetchUsers();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     async function fetchProfileImages() {
@@ -61,46 +73,53 @@ function Message() {
           return { userId: user.userId, imageUrl: null };
         }
       });
-  
+
       // Wait for all promises to resolve
       const images = await Promise.all(imagePromises);
-  
+
       // Set profile images for all users
       const profileImagesMap = images.reduce((acc, { userId, imageUrl }) => {
         acc[userId] = imageUrl;
         return acc;
       }, {});
-  
+
       setProfileImages(profileImagesMap);
     }
-  
+
     // Introduce a 3-second delay before setting loading to false
     const delayTimeout = setTimeout(() => {
       setLoading(false); // Set loading to false once images are loaded
     }, 3000);
-  
+
     // Fetch profile images
     fetchProfileImages();
-  
-    // Clear the delay timeout on component unmount
+
     return () => clearTimeout(delayTimeout);
   }, [users]);
-  
-
 
   useEffect(() => {
     if (selectedUser) {
       const q = query(
         collection(db, "messages"),
-        orderBy("timestamp"),
-        where("users", "array-contains", user.uid)
+        where("users", "array-contains", user.uid),
+        orderBy("timestamp", "asc")
       );
 
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const messagesData = snapshot.docs
           .map((doc) => doc.data())
-          .filter((message) => message.users.includes(selectedUser.uid));
+          .filter((message) => message.users.includes(selectedUser.userId));
+
         setMessages(messagesData);
+
+        // Scroll to the bottom of the chat box when new messages are received
+        const chatLogs = document.getElementById("chat-logs");
+        if (chatLogs) {
+          chatLogs.scrollTop = chatLogs.scrollHeight;
+        }
+
+        // Log the fetched messages to the console
+        console.log("Fetched messages:", messagesData);
       });
 
       return unsubscribe;
@@ -110,11 +129,9 @@ function Message() {
 
   function handleClick() {
     if (isExpanded) {
-      // If the chat box is expanded, reset selectedUser and collapse the chat box
       setSelectedUser(null);
       setIsExpanded(false);
     } else {
-      // If the chat box is collapsed, expand the user list
       setIsExpanded(true);
     }
   }
@@ -122,28 +139,50 @@ function Message() {
   function handleUserSelect(userId) {
     // Find the selected user based on the userId
     const selectedUser = users.find(user => user.userId === userId);
-    setSelectedUser(selectedUser);
-    setIsExpanded(true);
+
+    if (selectedUser) {
+      setSelectedUser(selectedUser);
+      setIsExpanded(true);
+      console.log("The selected user:", selectedUser);
+      console.log("Selected user UID:", selectedUser.id);
+    } else {
+      console.error("Error: selectedUser is undefined for userId:", userId);
+    }
   }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (messageText.trim() !== "" && selectedUser) {
+    if (messageText.trim() !== "" && selectedUser && selectedUser.id) {
       try {
-        // Save the message in the Firestore collection
         const messagesRef = collection(db, "messages");
-        await addDoc(messagesRef, {
-          text: messageText,
-          users: [user.uid, selectedUser.uid],
-          timestamp: serverTimestamp(),
-        });
 
-        setMessageText("");
+        // Add additional check for selectedUser.id
+        if (selectedUser.id) {
+          await addDoc(messagesRef, {
+            senderId: user.uid,
+            text: messageText,
+            users: [user.uid, selectedUser.id],
+            timestamp: serverTimestamp(),
+          });
+
+          // Clear the messageText state after submitting
+          setMessageText("");
+
+          // Scroll the chat-logs container to the bottom
+          const chatLogsContainer = document.getElementById('chat-logs');
+          chatLogsContainer.scrollTop = chatLogsContainer.scrollHeight;
+        } else {
+          console.error("Error: selectedUser.id is undefined");
+        }
       } catch (error) {
         console.error("Error submitting message:", error.message);
       }
+    } else {
+      console.error("Error: selectedUser or selectedUser.id is undefined");
     }
   }
+
   // Render JSX based on user authentication state
   return (
     <>
@@ -165,11 +204,19 @@ function Message() {
             <div className="chat-box-header">
               {selectedUser ? (
                 <>
-                  <i
-                    class="fa-solid fa-circle-arrow-left"
-                    onClick={() => setSelectedUser(null)}
-                  ></i>
-                  {selectedUser.displayName}
+                  <div className="userhead">
+                    <i
+                      class="fa-solid fa-circle-arrow-left"
+                      onClick={() => setSelectedUser(null)}
+                    ></i>
+                    <div className="userHead-name">
+                      <img
+                        src={profileImages[selectedUser.userId]}
+                        className="profile-pic-chat"
+                      />
+                      {selectedUser.displayName}
+                    </div>
+                  </div>
                 </>
               ) : (
                 "FlexiTalk"
@@ -180,18 +227,33 @@ function Message() {
             </div>
             {isExpanded && selectedUser ? (
               <div className="chat-box-body">
-                <div className="chat-logs">
+                <div className="chat-logs" ref={chatLogsRef}>
                   {messages.map((message, index) => (
-                    <div key={index} className={`chat ${message.userId === user.uid ? 'self' : 'other'}`}>
-                      {message.text}
+                    <div
+                      key={index}
+                      className={`chat ${message.userId === user.uid ? 'self' : 'other'}`}
+                    >
+                      <div
+                        className={`message-box ${message.senderId === user.uid ? 'sent' : 'received'
+                          }`}
+                      >
+                        {message.text}
+                      </div>
                     </div>
                   ))}
+
                 </div>
                 <div className="chat-form">
                   <input
                     type="text"
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleSubmit(e);
+                      }
+                    }}
                     placeholder="Send a message..."
                     className="chat-input"
                   />
