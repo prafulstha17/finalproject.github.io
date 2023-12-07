@@ -22,8 +22,9 @@ function RetrievePosts({ isAdmin }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [selectedSection, setSelectedSection] = useState("available");
   const [pendingApplications, setPendingApplications] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [showPendingApplications, setShowPendingApplications] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
@@ -112,7 +113,7 @@ function RetrievePosts({ isAdmin }) {
         });
 
       setPendingApplications(pendingApplicationsData);
-      setShowPendingApplications(true);
+      setSelectedPostId(postId);  // Set the selected post ID
       setIsModalOpen(true);
     } catch (error) {
       console.error("Error handling application:", error);
@@ -300,7 +301,7 @@ function RetrievePosts({ isAdmin }) {
                         <button onClick={() => handleDeletePost(post.id)}>
                           Remove Job Opening
                         </button>
-                        {showPendingApplications && (
+                        {isModalOpen && selectedPostId === post.id && (
                           <div>
                             <ul>
                               {pendingApplications.map((application) => (
@@ -343,13 +344,16 @@ function RetrievePosts({ isAdmin }) {
       )}
 
       {isModalOpen && (
-        <PendingApplicationsPopup
-          pendingApplications={pendingApplications}
-          isAdmin={isAdmin}
-          handleApproveReject={handleApproveReject}
-          setIsModalOpen={setIsModalOpen}
-        />
+        <div className="pending-applications-popup-container">
+          <PendingApplicationsPopup
+            pendingApplications={pendingApplications}
+            isAdmin={isAdmin}
+            handleApproveReject={handleApproveReject}
+            setShowPendingApplications={setShowPendingApplications}
+          />
+        </div>
       )}
+
     </div>
   );
 }
