@@ -1,36 +1,35 @@
 /* Responsive CSS */
 .user-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: azure;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: azure;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.cv-container {
+  margin-top: 20px;
+}
+
+/* Media Query for Tablets */
+@media screen and (min-width: 600px) {
+  .profile-container {
+    padding: 30px;
   }
-  
-  .profile-image {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
+}
+
+/* Media Query for Desktops */
+@media screen and (min-width: 1024px) {
+  .profile-container {
+    max-width: 800px;
   }
-  
-  .cv-container {
-    margin-top: 20px;
-  }
-  
-  /* Media Query for Tablets */
-  @media screen and (min-width: 600px) {
-    .profile-container {
-      padding: 30px;
-    }
-  }
-  
-  /* Media Query for Desktops */
-  @media screen and (min-width: 1024px) {
-    .profile-container {
-      max-width: 800px;
-    }
-  }
-  
+}

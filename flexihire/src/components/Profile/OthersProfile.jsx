@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
     doc,
+    addDoc,
     getDoc,
+    collection,
+    serverTimestamp,
 } from 'firebase/firestore';
 import { ref, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../../config/firebase';
@@ -94,6 +97,37 @@ const OthersProfile = () => {
         return 'Invalid Date';
     };
 
+    const handleReportButtonClick = async () => {
+        try {
+            if (userDetails) {
+                // Prompt the user to enter a reason for reporting
+                const reportReason = prompt('Please enter the reason for reporting this user:');
+    
+                if (reportReason !== null) {
+                    // Use the 'reports' collection reference to automatically generate a reportId
+                    const reportsCollectionRef = collection(db, 'reports');
+                    const timestamp = serverTimestamp();
+                    
+                    // Add a new document to the 'reports' collection with the user's ID and reason
+                    const newReportDocRef = await addDoc(reportsCollectionRef, {
+                        user: userDetails.userId,
+                        reason: reportReason,
+                        timestamp: timestamp,
+                    });
+    
+                    console.log('User reported successfully with reason:', reportReason);
+                    console.log('Generated reportId:', newReportDocRef.id);
+                } else {
+                    console.log('User report canceled.');
+                }
+            } else {
+                console.error('User details not available.');
+            }
+        } catch (error) {
+            console.error('Error reporting user:', error);
+        }
+    };
+  
     return (
         <div className="user-container">
             {profileImage ? (
@@ -123,9 +157,11 @@ const OthersProfile = () => {
                     <a href={cvFile} target="_blank" rel="noopener noreferrer">
                         View CV
                     </a>
+
+                    {/* Add a button to report the user */}
                 </div>
             )}
-
+            <button onClick={handleReportButtonClick}>Report User</button>
             <Progress currentUserId={userDetails?.userId} />
         </div>
     );
