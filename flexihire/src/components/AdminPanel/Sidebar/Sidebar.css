@@ -144,6 +144,12 @@
   align-items: center;
 }
 
+
+#sidebar-wrapper ul li a p {
+  margin-bottom: 0;
+  align-items: baseline;
+}
+
 .navbar-header .navbar-brand {
   display: flex;
   flex-direction: row;
@@ -158,6 +164,7 @@
   font-size: 1.2rem;
   font-weight: 800;
   color: #ffffff;
+  margin-bottom: 0;
 }
 
 .navbar .navbar-header {
@@ -226,10 +233,15 @@ navbar{
   color: #cacaca;
   text-decoration: none;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar .admin-session a p{
   color: #cacaca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar .admin-session a:hover{

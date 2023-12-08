@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {auth} from "../../../config/firebase";
+import { auth } from "../../../config/firebase";
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -63,9 +63,9 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/reports">
                 <span className="fa-stack fa-lg pull-left">
-                <i className="fa fa-flag fa-stack-1x "></i>
+                  <i className="fa fa-flag fa-stack-1x "></i>
                 </span>
                 <p>Reports</p>
               </a>
@@ -73,7 +73,7 @@ function Sidebar() {
             <li>
               <a href="/users">
                 <span className="fa-stack fa-lg pull-left">
-                <i className="fa fa-cloud-download fa-stack-1x "></i>
+                  <i className="fa fa-cloud-download fa-stack-1x "></i>
                 </span>
                 <p>Users</p>
               </a>
@@ -89,7 +89,7 @@ function Sidebar() {
             </li>
             <li>
               <a href="/managepost">
-              {" "}
+                {" "}
                 <span className="fa-stack fa-lg pull-left">
                   <i className="fa fa-wrench fa-stack-1x "></i>
                 </span>
@@ -100,7 +100,7 @@ function Sidebar() {
         </div>
         <div className="admin-session">
           <div className="admin-logo">A</div>
-          <a onClick={handleLogout}><i className="fa-solid fa-right-from-bracket fa-flip-horizontal"> </i> <p>Logout</p></a>
+          <a onClick={handleLogout}><p><i className="fa-solid fa-right-from-bracket fa-flip-horizontal"> </i></p> <p>Logout</p></a>
         </div>
       </div>
     </div>
