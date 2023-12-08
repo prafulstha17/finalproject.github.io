@@ -1,0 +1,74 @@
+.cardFAQ {
+    background: #fff;
+    color: #000000;
+    margin: 5rem auto;
+    width: 90%;
+    max-width: 50rem;
+    min-height: 30rem;
+    border-radius: 2rem;
+}
+
+.titleFAQ {
+    text-align: center;
+    font-size: 5rem;
+    padding: 1rem;
+}
+
+.acc-container-faq {
+    padding: 4rem 2rem;
+}
+.acc-btn-faq {
+    width: 100%;
+    padding: 1.6rem 2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    background: inherit;
+    border: none;
+    outline: none;
+    color: #000;
+    outline: none !important;
+    text-align: left;
+    transition: all 0.5s linear;
+}
+
+.acc-btn-faq:after {
+    content: "\27A4";
+    color: #fa8d0c;
+    float: right;
+    outline: none;
+    transition: transform 0.3s ease-in-out;
+}
+.acc-btn-faq.is-open:after {
+    transform: rotate(90deg);
+    outline: none;
+}
+.acc-btn-faq:hover, .acc-btn-faq.is-open {
+    color: #000;
+    background-color: transparent;
+    font-weight: bold;
+    outline: none;
+}
+
+.acc-content-faq {
+    max-height: 0;
+    color: rgba(0,0,0,0.75);
+    font-size: 1.5rem;
+    margin: 0 2rem;
+    padding-left: 1rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    border-bottom: 1px solid #ccc;
+}
+  
+  .acc-btn-faq.is-open + .acc-content-faq {
+    max-height: 1000px;
+  }
+
+.creditFAQ {
+    text-align: center;
+    padding: 1rem;
+}
+.creditFAQ a {
+    text-decoration: wavy underline;
+    color: dodgerblue;
+}
