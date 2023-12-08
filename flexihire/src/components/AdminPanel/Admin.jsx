@@ -7,6 +7,7 @@ import Mails from "./Mails/Mails";
 import ManagePost from "./ManagePost/ManagePost";
 import UserProfiles from "./Users/UserProfiles";
 import ThreeJSComponent from "./Root/ThreeJSComponent";
+import Reports from "./Reports/Reports";
 
 const Admin = () => {
   return (
@@ -19,6 +20,7 @@ const Admin = () => {
         <Routes>
           <Route path="/" element={<ThreeJSComponent />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/users" element={<UserProfiles />} />
           <Route path="/mails" element={<Mails />} />
           <Route
