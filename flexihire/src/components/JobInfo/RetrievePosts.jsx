@@ -4,11 +4,13 @@ import {
   query,
   orderBy,
   onSnapshot,
+  addDoc,
   deleteDoc,
   updateDoc,
   doc,
   getDocs,
   where,
+  serverTimestamp,
 } from "firebase/firestore";
 
 import { db } from "../../config/firebase";
@@ -85,9 +87,38 @@ function RetrievePosts({ isAdmin }) {
     // Add your logic for handling applications here
   };
 
-  const handleReportPost = (postId) => {
-    console.log("Reporting post with ID:", postId);
+  const handleReportPost = async (postId) => {
+    try {
+      if (currentUser) {
+        // Prompt the user to enter a reason for reporting
+        const reportReason = prompt('Please enter the reason for reporting this post:');
+
+        if (reportReason !== null) {
+          // Use the 'reports' collection reference to automatically generate a reportId
+          const reportsCollectionRef = collection(db, 'reports');
+
+          // Get the current timestamp
+          const timestamp = serverTimestamp();
+
+          // Add a new document to the 'reports' collection with the postId, reason, and timestamp
+          await addDoc(reportsCollectionRef, {
+            post: postId,
+            reason: reportReason,
+            timestamp: timestamp,
+          });
+
+          console.log('Post reported successfully with reason:', reportReason);
+        } else {
+          console.log('Post report canceled.');
+        }
+      } else {
+        console.error('User details not available.');
+      }
+    } catch (error) {
+      console.error('Error reporting post:', error);
+    }
   };
+
 
   const handleApplication = (postId, postUploaderUserId, postUploaderUsername) => {
     console.log(`Handling application for post with ID: ${postId}. Notifying ${postUploaderUsername}.`);
