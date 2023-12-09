@@ -22,6 +22,7 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
   const [isApplicationSent, setIsApplicationSent] = useState(false);
   const [approvalStatus, setApprovalStatus] = useState(0); // 0: Pending, -1: Rejected, 1: Approved
   const [completed, setCompleted] = useState(0); // 0: Not completed, 1: Completed
+  const [approvedStatus, setApprovedStatus] = useState(0); // 0: Not completed, 1: Completed
   const [file, setFile] = useState(null);
 
   const handleApply = async () => {
@@ -143,64 +144,74 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Query the "accepted" collection to find the matching document
-        const acceptedCollectionRef = collection(db, "accepted");
-        const q = query(
-          acceptedCollectionRef,
-          where("postId", "==", postId),
-          where("userId", "==", currentUserId)
+        // Check if there is an application for the current user and post
+        const applicationsCollection = collection(db, "applications");
+        const applicationQ = query(
+          applicationsCollection,
+          where("postId", "==", postId)
         );
-  
-        const querySnapshot = await getDocs(q);
-  
-        if (querySnapshot.size > 0) {
-          const acceptedData = querySnapshot.docs[0].data();
-          setCompleted(acceptedData.completed);
-  
-          // If completed is 1, the file is turned in
-          if (acceptedData.completed === 1) {
-            setIsApplicationSent(true);
-            setApprovalStatus(1);
-          } else {
-            // Check the corresponding application in "applications" collection
-            const applicationsCollection = collection(db, "applications");
-            const applicationQ = query(
-              applicationsCollection,
-              where("userId", "==", currentUserId),
-              where("postId", "==", postId)
+
+        const applicationQuerySnapshot = await getDocs(applicationQ);
+
+        // Update isApplicationSent based on the existence of data
+        setIsApplicationSent(applicationQuerySnapshot.size > 0);
+
+        if (applicationQuerySnapshot.size > 0) {
+          const applicationData = applicationQuerySnapshot.docs[0].data();
+          setApprovalStatus(applicationData.approved);
+
+          // If there is an application, check its approval status
+          if (applicationData.approved === 0) {
+            // Application is pending
+            setApprovedStatus(0);
+          } else if (applicationData.approved === -1) {
+            // Application is rejected
+            setApprovedStatus(-1); // Adjust as needed
+          } else if (applicationData.approved === 1) {
+
+            setApprovedStatus(1); // Adjust as needed
+            // Application is approved, check the "accepted" collection
+            const acceptedCollectionRef = collection(db, "accepted");
+            const acceptedQ = query(
+              acceptedCollectionRef,
+              where("postId", "==", postId),
+              where("userId", "==", currentUserId)
             );
-  
-            const applicationQuerySnapshot = await getDocs(applicationQ);
-  
-            if (applicationQuerySnapshot.size > 0) {
-              const applicationData = applicationQuerySnapshot.docs[0].data();
-              setIsApplicationSent(true);
-              setApprovalStatus(applicationData.approved);
+
+            const acceptedQuerySnapshot = await getDocs(acceptedQ);
+
+            if (acceptedQuerySnapshot.size > 0) {
+              const acceptedData = acceptedQuerySnapshot.docs[0].data();
+
+              if (acceptedData.completed === 1) {
+                // File is turned in
+                setCompleted(1);
+              } else {
+                // File is not turned in, show the option to upload
+                setCompleted(0);
+              }
             } else {
-              // If no application document found, it's still pending
-              setIsApplicationSent(true);
-              setApprovalStatus(0);
+              // No data in "accepted" collection, show the option to upload
+              setCompleted(0);
             }
           }
-        } else {
-          // If no document found in "accepted", it's still pending
-          setIsApplicationSent(true);
-          setApprovalStatus(0);
         }
       } catch (error) {
-        console.error("Error checking completed status:", error);
+        console.error("Error fetching application data:", error);
       }
     };
-  
+
     fetchData();
   }, [currentUserId, postId]);
-  
 
   return (
     <>
-      {isApplicationSent ? (
+      {!isApplicationSent && (
+        <button onClick={handleApply}>Apply</button>
+      )}
+      {isApplicationSent && (
         <>
-          {approvalStatus === 0 && (
+          {approvedStatus === 0 && (
             <strong>
               <p
                 className="applicationSent"
@@ -210,7 +221,7 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
               </p>
             </strong>
           )}
-          {approvalStatus === -1 && (
+          {approvedStatus === -1 && (
             <strong>
               <p
                 className="applicationRejected"
@@ -220,7 +231,7 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
               </p>
             </strong>
           )}
-          {approvalStatus === 1 && completed === 0 && (
+          {approvedStatus === 1 && completed === 0 && (
             <>
               <strong>
                 <p
@@ -243,7 +254,7 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
               </div>
             </>
           )}
-          {approvalStatus === 1 && completed === 1 && (
+          {approvedStatus === 1 && completed === 1 && (
             <strong>
               <p
                 className="applicationTurnedIn"
@@ -254,8 +265,6 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
             </strong>
           )}
         </>
-      ) : (
-        <button onClick={handleApply}>Apply</button>
       )}
     </>
   );
