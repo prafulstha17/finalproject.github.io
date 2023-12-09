@@ -19,6 +19,8 @@ import { listenToAuthChanges } from "../../config/AuthContext";
 import PendingApplicationsPopup from "./PendingApplicationsPopup";
 import "./RetrievePosts.css";
 import ApplyButton from "./ApplyButton";
+import { async } from "@firebase/util";
+import { useNavigate } from "react-router-dom";
 
 function RetrievePosts({ isAdmin }) {
   const [posts, setPosts] = useState([]);
@@ -30,6 +32,7 @@ function RetrievePosts({ isAdmin }) {
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [feedbackMessages, setFeedbackMessages] = useState({});
   const [acceptedPosts, setAcceptedPosts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
@@ -154,6 +157,10 @@ function RetrievePosts({ isAdmin }) {
     // Add your logic for handling applications here
   };
 
+  const handleDownloadURL = async (downloadURL) => {
+
+  }
+
   const handleApplicationButton = async (postId, postUploaderUserId, postUploaderUsername) => {
     console.log(`Handling application for post with ID: ${postId}. Notifying ${postUploaderUsername}.`);
 
@@ -184,10 +191,10 @@ function RetrievePosts({ isAdmin }) {
     try {
       const applicationDocRef = doc(db, "applications", applicationId);
       const applicationDoc = await getDoc(applicationDocRef);
-
+  
       if (applicationDoc.exists()) {
         const applicationData = applicationDoc.data();
-
+  
         if (status === 1) {
           const acceptedCollectionRef = collection(db, "accepted");
           await addDoc(acceptedCollectionRef, {
@@ -195,7 +202,7 @@ function RetrievePosts({ isAdmin }) {
             userId: applicationData.userId,
             username: applicationData.username,
           });
-
+  
           // Set feedback message for the specific post
           setFeedbackMessages((prevMessages) => ({
             ...prevMessages,
@@ -204,32 +211,50 @@ function RetrievePosts({ isAdmin }) {
               action: "accept",
             },
           }));
+        } else if (status === -1) {
+          // Update the user's status to rejected in the "applications" collection
+          await updateDoc(applicationDocRef, { approved: status, rejected: true });
+  
+          // Set feedback message for rejection
+          setFeedbackMessages((prevMessages) => ({
+            ...prevMessages,
+            [applicationData.postId]: {
+              message: "User rejected.",
+              action: "reject",
+            },
+          }));
+  
+          // Clear the rejection message after 3 seconds
+          setTimeout(() => {
+            setFeedbackMessages((prevMessages) => ({
+              ...prevMessages,
+              [applicationData.postId]: null,
+            }));
+          }, 3000);
         }
-
-        await updateDoc(applicationDocRef, { approved: status });
-
+  
         setPendingApplications((prevApplications) => {
           const updatedApplications = prevApplications.map((app) =>
             app.applicationId === applicationId ? { ...app, approved: status } : app
           );
           return updatedApplications;
         });
-
-        // Clear the feedback message after 3 seconds
+  
+        // Clear the acceptance message after 3 seconds
         setTimeout(() => {
           setFeedbackMessages((prevMessages) => ({
             ...prevMessages,
             [applicationData.postId]: null,
           }));
         }, 3000);
-
+  
         // Close the modal
         setIsModalOpen(false);
       }
     } catch (error) {
       console.error("Error approving/rejecting application:", error);
     }
-  };
+  }; 
 
   const availablePosts = posts.filter(
     (post) => (!post.userId || post.userId !== currentUser?.uid) && !isAdmin
@@ -238,6 +263,19 @@ function RetrievePosts({ isAdmin }) {
   const createdPosts = posts.filter(
     (post) => post.userId === currentUser?.uid && !isAdmin
   );
+
+
+  const handleDownloadFile = (fileDownloadURL) => {
+    // Implement file download logic here
+    console.log("Downloading file from:", fileDownloadURL);
+  };
+
+  const handlePay = () => {
+    // Navigate to the Payment component
+    // You need to implement the navigation logic based on your router setup
+    console.log("Navigate to Payment component");
+    navigate('/payment');
+  };
 
   return (
     <div className="retrieve-posts-container">
@@ -396,6 +434,11 @@ function RetrievePosts({ isAdmin }) {
                       <strong>
                         <p>Application Accepted</p>
                         <div>Username: {acceptedPosts.find((acceptedPost) => acceptedPost.postId === post.id)?.username}</div>
+                        <button onClick={() => handleDownloadFile(post.fileDownloadURL)}>
+                          Download
+                        </button>
+
+                        <button onClick={handlePay}>Pay</button>
                       </strong>
                     ) : (
                       <div className="job-actions">
