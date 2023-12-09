@@ -67,9 +67,11 @@ function RetrievePosts({ isAdmin }) {
             postId: data.postId,
             userId: data.userId,
             username: data.username,
+            completed: data.completed,
+            fileDownloadURL: data.fileDownloadURL,
           };
         });
-
+        console.log("Accepted Posts Data:", acceptedPostsData);
         setAcceptedPosts(acceptedPostsData);
       } catch (error) {
         console.error("Error fetching accepted posts:", error);
@@ -157,10 +159,6 @@ function RetrievePosts({ isAdmin }) {
     // Add your logic for handling applications here
   };
 
-  const handleDownloadURL = async (downloadURL) => {
-
-  }
-
   const handleApplicationButton = async (postId, postUploaderUserId, postUploaderUsername) => {
     console.log(`Handling application for post with ID: ${postId}. Notifying ${postUploaderUsername}.`);
 
@@ -191,10 +189,10 @@ function RetrievePosts({ isAdmin }) {
     try {
       const applicationDocRef = doc(db, "applications", applicationId);
       const applicationDoc = await getDoc(applicationDocRef);
-  
+
       if (applicationDoc.exists()) {
         const applicationData = applicationDoc.data();
-  
+
         if (status === 1) {
           const acceptedCollectionRef = collection(db, "accepted");
           await addDoc(acceptedCollectionRef, {
@@ -202,7 +200,7 @@ function RetrievePosts({ isAdmin }) {
             userId: applicationData.userId,
             username: applicationData.username,
           });
-  
+
           // Set feedback message for the specific post
           setFeedbackMessages((prevMessages) => ({
             ...prevMessages,
@@ -214,7 +212,7 @@ function RetrievePosts({ isAdmin }) {
         } else if (status === -1) {
           // Update the user's status to rejected in the "applications" collection
           await updateDoc(applicationDocRef, { approved: status, rejected: true });
-  
+
           // Set feedback message for rejection
           setFeedbackMessages((prevMessages) => ({
             ...prevMessages,
@@ -223,7 +221,7 @@ function RetrievePosts({ isAdmin }) {
               action: "reject",
             },
           }));
-  
+
           // Clear the rejection message after 3 seconds
           setTimeout(() => {
             setFeedbackMessages((prevMessages) => ({
@@ -232,14 +230,14 @@ function RetrievePosts({ isAdmin }) {
             }));
           }, 3000);
         }
-  
+
         setPendingApplications((prevApplications) => {
           const updatedApplications = prevApplications.map((app) =>
             app.applicationId === applicationId ? { ...app, approved: status } : app
           );
           return updatedApplications;
         });
-  
+
         // Clear the acceptance message after 3 seconds
         setTimeout(() => {
           setFeedbackMessages((prevMessages) => ({
@@ -247,14 +245,14 @@ function RetrievePosts({ isAdmin }) {
             [applicationData.postId]: null,
           }));
         }, 3000);
-  
+
         // Close the modal
         setIsModalOpen(false);
       }
     } catch (error) {
       console.error("Error approving/rejecting application:", error);
     }
-  }; 
+  };
 
   const availablePosts = posts.filter(
     (post) => (!post.userId || post.userId !== currentUser?.uid) && !isAdmin
@@ -265,9 +263,18 @@ function RetrievePosts({ isAdmin }) {
   );
 
 
-  const handleDownloadFile = (fileDownloadURL) => {
-    // Implement file download logic here
-    console.log("Downloading file from:", fileDownloadURL);
+  const handleDownloadFile = (postId) => {
+    const acceptedPost = acceptedPosts.find((acceptedPost) => acceptedPost.postId === postId);
+
+    // Ensure acceptedPost is not undefined
+    if (acceptedPost && acceptedPost.fileDownloadURL) {
+      // Implement file download logic here
+      console.log("Downloading file from:", acceptedPost.fileDownloadURL);
+      // You can open the file in a new tab or use any other download logic
+      window.open(acceptedPost.fileDownloadURL, '_blank');
+    } else {
+      console.error("File download URL is undefined.");
+    }
   };
 
   const handlePay = () => {
@@ -434,13 +441,22 @@ function RetrievePosts({ isAdmin }) {
                       <strong>
                         <p>Application Accepted</p>
                         <div>Username: {acceptedPosts.find((acceptedPost) => acceptedPost.postId === post.id)?.username}</div>
-                        <button onClick={() => handleDownloadFile(post.fileDownloadURL)}>
-                          Download
-                        </button>
+                        {acceptedPosts.find((acceptedPost) => acceptedPost.postId === post.id)?.completed === 1 && (
+                          <div className="finalApproval">
+                            <div className="downloadFinal">
+                              <button onClick={() => handleDownloadFile(post.id)}>
+                                Download
+                              </button>
 
-                        <button onClick={handlePay}>Pay</button>
+                            </div>
+                            <div className="payFinal">
+                              <button onClick={handlePay}>Pay</button>
+                            </div>
+                          </div>
+                        )}
                       </strong>
                     ) : (
+
                       <div className="job-actions">
                         <div className="handleButton">
 
