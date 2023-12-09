@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   collection,
   addDoc,
+  setDoc,
   serverTimestamp,
   getDoc,
   getDocs,
@@ -13,6 +14,9 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../config/firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import './ApplyButton.css';
 
 function ApplyButton({ postId, currentUserId, applicationMessage }) {
   const [isApplicationSent, setIsApplicationSent] = useState(false);
@@ -86,35 +90,63 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
     }
   };
 
-
-  const handleFileUpload = async () => {
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+  
     try {
       // Check if a file is selected
       if (file) {
-        // Create a storage reference with the desired path
-        const storageRef = ref(storage, `submissions/${currentUserId}/${postId}`);
-
-        // Upload the file
-        const uploadTask = uploadBytes(storageRef, file);
-
-        // Wait for the upload to complete
-        await uploadTask;
-
-        // Get the download URL
-        const downloadURL = await getDownloadURL(storageRef);
-
-        // Update the completed field and add the downloadURL to the database
-        await updateDoc(doc(db, "applications", `${postId}_${currentUserId}`), {
-          completed: 1,
-          fileDownloadURL: downloadURL,
-        });
-
+        // Display a confirmation dialog
+        const userConfirmed = window.confirm("Are you sure you want to submit this file?");
+  
+        if (userConfirmed) {
+          // Create a storage reference with the desired path
+          const storageRef = ref(storage, `submissions/${currentUserId}/${postId}`);
+  
+          // Upload the file
+          await uploadBytes(storageRef, file);
+  
+          // Get the URL of the uploaded file
+          const url = await getDownloadURL(storageRef);
+  
+          // Attempt to update the document
+          const docRef = doc(db, "applications", `${postId}_${currentUserId}`);
+  
+          // Check if the document exists before updating
+          const docSnapshot = await getDoc(docRef);
+  
+          if (docSnapshot.exists()) {
+            // Update the completed field and add the downloadURL to the database
+            await updateDoc(docRef, {
+              completed: 1,
+              fileDownloadURL: url,
+            });
+  
+            // Set the completion status in the state
+            setCompleted(1);
+  
+            // Inform the user that the file has been successfully submitted
+            alert("File submitted successfully!");
+          } else {
+            // If the document does not exist, create it
+            await setDoc(docRef, {
+              completed: 1,
+              fileDownloadURL: url,
+            });
+  
+            // Set the completion status in the state
+            setCompleted(1);
+  
+            // Inform the user that the file has been successfully submitted
+            alert("File submitted successfully!");
+          }
+        }
       }
     } catch (error) {
       console.error("Error handling file upload:", error);
     }
   };
-
+  
   useEffect(() => {
     const checkApplicationStatus = async () => {
       try {
@@ -174,12 +206,28 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
                   Application Approved
                 </p>
               </strong>
-              <div>
-                {/* File upload section */}
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                <button onClick={handleFileUpload}>Turn In</button>
+              {/* File upload section */}
+              <div className="turnIn">
+                <label htmlFor="fileInput" className="fileInputLabel">
+                  <i className="fa-solid fa-upload"></i>
+                </label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  onChange={handleFileUpload}
+                />
               </div>
             </>
+          )}
+          {approvalStatus === 1 && completed === 1 && (
+            <strong>
+              <p
+                className="applicationTurnedIn"
+                style={{ color: "blue", margin: "0.5rem", fontWeight: "bold" }}
+              >
+                Turned In
+              </p>
+            </strong>
           )}
         </>
       ) : (

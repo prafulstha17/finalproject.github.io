@@ -1,0 +1,30 @@
+.turnIn {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.uploadIcon {
+    color: #007bff;
+    margin-right: 8px;
+}
+
+.fileInputLabel {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    margin-right: 2rem;
+}
+
+.fileInputLabel:hover {
+    background-color: #f0f0f0;
+}
+
+.fileInputLabel span {
+    margin-left: 5px;
+}
+
+/* Visually hide the file input */
+#fileInput {
+    display: none;
+}
