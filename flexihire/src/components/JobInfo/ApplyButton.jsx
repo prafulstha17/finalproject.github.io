@@ -101,7 +101,7 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
 
         if (userConfirmed) {
           // Create a storage reference with the desired path
-          const storageRef = ref(storage, `submissions/${currentUserId}/${postId}`);
+          const storageRef = ref(storage, `submissions/${currentUserId}/${file.name}`);
 
           // Upload the file
           await uploadBytes(storageRef, file);

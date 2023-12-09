@@ -86,6 +86,7 @@
 	font-weight: 700;
 	border-bottom: none;
 	border-top: none;
+	border-radius: 0;
   }
   
   .days-of-week {
