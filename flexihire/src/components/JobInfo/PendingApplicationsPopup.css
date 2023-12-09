@@ -1,0 +1,86 @@
+.pending-applications-popup {
+    position: fixed;
+    background-color: rgba(49, 49, 49, 0.952);
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 1rem;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    bottom: 0;
+    left: 30%;
+    right: 30%;
+    transform: translate(0, 0);
+    max-height: 50vh;
+    overflow-y: scroll;
+    width: 30rem;
+    scroll-behavior: smooth;
+}
+
+.pending-applications-popup::-webkit-scrollbar {
+    width: 0.1rem;
+}
+
+.pending-applications-popup::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.applicantHead {
+    color: antiquewhite;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pending-applications-popup .popup-header, .popup-content {
+    color: antiquewhite;
+}
+
+.pending-applications-popup ul {
+    color: antiquewhite;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+}
+
+.pending-applications-popup ul li {
+    color: antiquewhite;
+    margin-bottom: 10px;
+}
+
+.pending-applications-popup ul li p {
+    color: antiquewhite;
+    margin: 0;
+}
+
+.pending-applications-popup ul li a {
+    color: antiquewhite;
+    margin: 1rem;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 600;
+}
+
+.pending-applications-popup button:focus{
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .pending-applications-popup{
+        width: 15rem;
+        left: 20%;
+    }
+
+    .pending-applications-popup .popup-header h2 {
+        color: antiquewhite;
+        font-size: smaller;
+    }
+
+    .pending-applications-popup ul li p {
+        color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+    }
+}

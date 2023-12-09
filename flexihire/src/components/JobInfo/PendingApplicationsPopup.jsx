@@ -1,58 +1,44 @@
+// PendingApplicationsPopup.js
 import React from "react";
+import './PendingApplicationsPopup.css';
 
-function PendingApplicationsPopup({
-  pendingApplications,
-  isAdmin,
-  handleApproveReject,
-  setShowPendingApplications,
-}) {
+const PendingApplicationsPopup = ({ isOpen, handleClose, pendingApplications, handleApproveReject, postTitle, postDescription }) => {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className="pending-applications-popup">
-      <h2>Applications</h2>
-      <ul>
-        {pendingApplications.map((application) => (
-          <li key={application.userId}>
-            <p>
-              <a href={`/profile/${application.userId}`}>
-                {application.username}
-              </a>{" "}
-              applied on{" "}
-              {application.appliedAt.toDate().toLocaleDateString()} -{" "}
-              {application.approved === 1
-                ? "Approved"
-                : application.approved === -1
-                ? "Rejected"
-                : "Pending"}
-            </p>
-            {isAdmin && application.approved === 0 && (
-              <div>
-                <button
-                  onClick={() =>
-                    handleApproveReject(application.applicationId, 1)
-                  }
-                >
-                  Approve
-                </button>
-                <button
-                  onClick={() =>
-                    handleApproveReject(application.applicationId, -1)
-                  }
-                >
+      <div className="forPost">
+        <strong>
+          <div className="popup-header">
+            <h2>Applications for "{postTitle}"</h2>
+          </div>
+        </strong>
+        <div className="popup-content">
+          <p>{postDescription}</p>
+        </div>
+        <ul>
+          {pendingApplications.map((application) => (
+            <li key={application.userId}>
+              <p>
+                <a href={`/users/${application.userId}`}>
+                  {application.username}
+                </a>{" "}
+                <button onClick={() => handleApproveReject(application.applicationId, 1)}>
+                  Accept
+                </button>{" "}
+                <button onClick={() => handleApproveReject(application.applicationId, -1)}>
                   Reject
                 </button>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-      <button
-        className="close-btn"
-        onClick={() => setShowPendingApplications(false)}
-      >
-        Close
-      </button>
+              </p>
+            </li>
+          ))}
+        </ul>
+        <button onClick={handleClose}>Close</button>
+      </div>
     </div>
   );
-}
+};
 
 export default PendingApplicationsPopup;
