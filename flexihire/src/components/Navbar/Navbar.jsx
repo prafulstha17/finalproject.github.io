@@ -101,21 +101,22 @@ function Navbar() {
   }, []);
 
   const handleSearchItemClick = (item) => {
-    setSearchTerm(""); // Clear the search term
-    setSearchResults([]); // Clear the search results
+    setSearchTerm("");
+    setSearchResults([]);
 
     const userId = item.userId;
     console.log("Selected userId:", userId);
 
-    if (selectedDropdown === "Flexer") {
-      // Assuming you have a route for user profiles, replace '/users/:userId' with the actual route
-      navigate(`/users/${userId}`);
+    if (userId === user?.uid) {
+      navigate("/profile");
     } else {
-      // Assuming you have a route for posts, replace '/posts/:id' with the actual route
-      navigate(`/posts/${item.id}`);
+      if (selectedDropdown === "Flexer") {
+        navigate(`/users/${userId}`);
+      } else {
+        navigate(`/jobs`);
+      }
     }
   };
-
 
   const handleInputChange = (e) => {
     const value = e.target.value;
