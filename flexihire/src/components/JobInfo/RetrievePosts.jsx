@@ -5,6 +5,7 @@ import {
   orderBy,
   onSnapshot,
   addDoc,
+  getDoc,
   deleteDoc,
   updateDoc,
   doc,
@@ -27,13 +28,15 @@ function RetrievePosts({ isAdmin }) {
   const [showPendingApplications, setShowPendingApplications] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [feedbackMessages, setFeedbackMessages] = useState({});
+  const [acceptedPosts, setAcceptedPosts] = useState([]);
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
       setCurrentUser(user);
     });
 
-    const fetchPosts = () => {
+    const fetchPosts = async () => {
       if (currentUser) {
         const postsRef = collection(db, "posts");
         const q = query(postsRef, orderBy("timestamp", "desc"));
@@ -51,10 +54,36 @@ function RetrievePosts({ isAdmin }) {
       }
     };
 
+    const fetchAcceptedPosts = async () => {
+      try {
+        const acceptedCollectionRef = collection(db, "accepted");
+        const acceptedSnapshot = await getDocs(acceptedCollectionRef);
+        const acceptedPostsData = acceptedSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            postId: data.postId,
+            userId: data.userId,
+            username: data.username,
+          };
+        });
+
+        setAcceptedPosts(acceptedPostsData);
+      } catch (error) {
+        console.error("Error fetching accepted posts:", error);
+      }
+    };
+
+    const unsubscribeAcceptedPosts = onSnapshot(collection(db, "accepted"), () => {
+      // Fetch updated list of accepted posts when the "accepted" collection changes
+      fetchAcceptedPosts();
+    });
+
     fetchPosts();
+    fetchAcceptedPosts();
 
     return () => {
       unsubscribeAuth();
+      unsubscribeAcceptedPosts();
     };
   }, [currentUser]);
 
@@ -130,7 +159,7 @@ function RetrievePosts({ isAdmin }) {
 
     try {
       const applicationsRef = collection(db, "applications");
-      const q = query(applicationsRef, where("postId", "==", postId));
+      const q = query(applicationsRef, where("postId", "==", postId), where("approved", "==", 0));
       const querySnapshot = await getDocs(q);
       const pendingApplicationsData = querySnapshot.docs
         .filter((doc) => doc.exists())
@@ -144,7 +173,7 @@ function RetrievePosts({ isAdmin }) {
         });
 
       setPendingApplications(pendingApplicationsData);
-      setSelectedPostId(postId);  // Set the selected post ID
+      setSelectedPostId(postId);
       setIsModalOpen(true);
     } catch (error) {
       console.error("Error handling application:", error);
@@ -154,18 +183,49 @@ function RetrievePosts({ isAdmin }) {
   const handleApproveReject = async (applicationId, status) => {
     try {
       const applicationDocRef = doc(db, "applications", applicationId);
-      await updateDoc(applicationDocRef, { approved: status });
+      const applicationDoc = await getDoc(applicationDocRef);
 
-      // Update the state to reflect the change
-      setPendingApplications((prevApplications) => {
-        const updatedApplications = prevApplications.map((app) =>
-          app.applicationId === applicationId
-            ? { ...app, approved: status }
-            : app
-        );
+      if (applicationDoc.exists()) {
+        const applicationData = applicationDoc.data();
 
-        return updatedApplications;
-      });
+        if (status === 1) {
+          const acceptedCollectionRef = collection(db, "accepted");
+          await addDoc(acceptedCollectionRef, {
+            postId: applicationData.postId,
+            userId: applicationData.userId,
+            username: applicationData.username,
+          });
+
+          // Set feedback message for the specific post
+          setFeedbackMessages((prevMessages) => ({
+            ...prevMessages,
+            [applicationData.postId]: {
+              message: "User accepted.",
+              action: "accept",
+            },
+          }));
+        }
+
+        await updateDoc(applicationDocRef, { approved: status });
+
+        setPendingApplications((prevApplications) => {
+          const updatedApplications = prevApplications.map((app) =>
+            app.applicationId === applicationId ? { ...app, approved: status } : app
+          );
+          return updatedApplications;
+        });
+
+        // Clear the feedback message after 3 seconds
+        setTimeout(() => {
+          setFeedbackMessages((prevMessages) => ({
+            ...prevMessages,
+            [applicationData.postId]: null,
+          }));
+        }, 3000);
+
+        // Close the modal
+        setIsModalOpen(false);
+      }
     } catch (error) {
       console.error("Error approving/rejecting application:", error);
     }
@@ -302,7 +362,7 @@ function RetrievePosts({ isAdmin }) {
                       <div className="postDetails">
                         <p>
                           <a
-                            href={`/users/${post.userId}`}
+                            href={`/profile`}
                             className="username-link"
                           >
                             {post.username}
@@ -324,39 +384,45 @@ function RetrievePosts({ isAdmin }) {
                       <div className="workinghrs">Est. time: {post.timing}</div>
                       <div className="salary">Salary: {post.salary}</div>
                     </div>
-                    <div className="job-actions">
-                      <div className="handleButton">
-                        <button onClick={() => handleApplicationButton(post.id, post.userId, post.username)}>
-                          Show Pending Applications
-                        </button>
-                        <button onClick={() => handleDeletePost(post.id)}>
-                          Remove Job Opening
-                        </button>
-                        {isModalOpen && selectedPostId === post.id && (
-                          <div>
-                            <ul>
-                              {pendingApplications.map((application) => (
-                                <li key={application.userId}>
-                                  <p>
-                                    <a
-                                      href={`/users/${application.userId}`}
-                                    >
-                                      {application.username}
-                                    </a>{" "}
-                                    <button onClick={() => handleApproveReject(application.applicationId, 1)}>
-                                      Accept
-                                    </button>{" "}
-                                    <button onClick={() => handleApproveReject(application.applicationId, -1)}>
-                                      Reject
-                                    </button>
-                                  </p>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                    {feedbackMessages[post.id] && (
+                      <div
+                        className={`feedback-message ${feedbackMessages[post.id].action === "accept" ? "accept" : "reject"
+                          }`}
+                      >
+                        {feedbackMessages[post.id].message}
                       </div>
-                    </div>
+                    )}
+                    {acceptedPosts.some((acceptedPost) => acceptedPost.postId === post.id) ? (
+                      <strong>
+                        <p>Application Accepted</p>
+                        <div>Username: {acceptedPosts.find((acceptedPost) => acceptedPost.postId === post.id)?.username}</div>
+                      </strong>
+                    ) : (
+                      <div className="job-actions">
+                        <div className="handleButton">
+
+                          <>
+                            <button onClick={() => handleApplicationButton(post.id, post.userId, post.username)}>
+                              Show Pending Applications
+                            </button>
+                            <button onClick={() => handleDeletePost(post.id)}>
+                              Remove Job Opening
+                            </button>
+                          </>
+
+                        </div>
+                      </div>
+                    )}
+                    {isModalOpen && (
+                      <PendingApplicationsPopup
+                        isOpen={isModalOpen}
+                        handleClose={() => setIsModalOpen(false)}
+                        pendingApplications={pendingApplications}
+                        handleApproveReject={handleApproveReject}
+                        postTitle={selectedPostId ? posts.find(post => post.id === selectedPostId)?.title : ""}
+                        postDescription={selectedPostId ? posts.find(post => post.id === selectedPostId)?.description : ""}
+                      />
+                    )}
                   </li>
                 ))}
               </ul>
@@ -372,17 +438,6 @@ function RetrievePosts({ isAdmin }) {
             </p>
           </div>
         </center>
-      )}
-
-      {isModalOpen && (
-        <div className="pending-applications-popup-container">
-          <PendingApplicationsPopup
-            pendingApplications={pendingApplications}
-            isAdmin={isAdmin}
-            handleApproveReject={handleApproveReject}
-            setShowPendingApplications={setShowPendingApplications}
-          />
-        </div>
       )}
 
     </div>

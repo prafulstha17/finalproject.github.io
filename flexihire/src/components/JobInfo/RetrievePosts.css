@@ -4,7 +4,8 @@
   margin-left: 5%;
   width: 90%;
   border-radius: 0.5rem;
-  text-align: center;
+  text-align: center;  
+  position: relative;
 }
 
 .section-wrapper {
@@ -92,6 +93,48 @@
   align-items: flex-end;
 }
 
+.pendingApplicants{
+  padding: 1rem;
+  text-align: right;
+}
+
+.pendingApplicants .applicantHead{
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.pendingApplicants ul li p a{
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.feedback-message {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.feedback-message.accept {
+  background-color: #4caf50;
+  /* Green background for acceptance */
+  color: white;
+}
+
+.feedback-message.reject {
+  background-color: #ff5252;
+  /* Red background for rejection */
+  color: white;
+}
+
+.feedback-message.fade-out {
+  opacity: 0;
+}
+
 button {
   background-color: #0073e6;
   color: #fff;
@@ -110,7 +153,7 @@ button:hover {
   gap: 0.5rem;
 }
 
-.job-post + .job-post {
+.job-post+.job-post {
   border-top: 1px solid #ddd;
 }
 
@@ -146,14 +189,4 @@ button:hover {
   .postDetails {
     font-size: 9px;
   }
-}
-
-.pending-applications-popup {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  top: 100%; /* Adjust this value based on your layout */
-  left: 0; /* Adjust this value based on your layout */
-  z-index: 1000;
 }
