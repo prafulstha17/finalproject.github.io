@@ -148,7 +148,8 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
         const applicationsCollection = collection(db, "applications");
         const applicationQ = query(
           applicationsCollection,
-          where("postId", "==", postId)
+          where("postId", "==", postId),
+          where("userId", "==", currentUserId) // Add this condition to match userId
         );
 
         const applicationQuerySnapshot = await getDocs(applicationQ);
@@ -168,14 +169,14 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
             // Application is rejected
             setApprovedStatus(-1); // Adjust as needed
           } else if (applicationData.approved === 1) {
-
             setApprovedStatus(1); // Adjust as needed
+
             // Application is approved, check the "accepted" collection
             const acceptedCollectionRef = collection(db, "accepted");
             const acceptedQ = query(
               acceptedCollectionRef,
               where("postId", "==", postId),
-              where("userId", "==", currentUserId)
+              where("userId", "==", currentUserId) // Add this condition to match userId
             );
 
             const acceptedQuerySnapshot = await getDocs(acceptedQ);
