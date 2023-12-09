@@ -48,7 +48,6 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
         appliedAt: serverTimestamp(),
         username: userData.displayName,
         approved: 0, // Initial value: 0 (pending)
-        completed: 0, // Initial value: 0 (not completed)
       });
 
       setIsApplicationSent(true);
@@ -92,53 +91,47 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-  
+
     try {
       // Check if a file is selected
       if (file) {
         // Display a confirmation dialog
         const userConfirmed = window.confirm("Are you sure you want to submit this file?");
-  
+
         if (userConfirmed) {
           // Create a storage reference with the desired path
           const storageRef = ref(storage, `submissions/${currentUserId}/${postId}`);
-  
+
           // Upload the file
           await uploadBytes(storageRef, file);
-  
+
           // Get the URL of the uploaded file
-          const url = await getDownloadURL(storageRef);
-  
-          // Attempt to update the document
-          const docRef = doc(db, "applications", `${postId}_${currentUserId}`);
-  
-          // Check if the document exists before updating
-          const docSnapshot = await getDoc(docRef);
-  
-          if (docSnapshot.exists()) {
-            // Update the completed field and add the downloadURL to the database
-            await updateDoc(docRef, {
+          const fileDownloadURL = await getDownloadURL(storageRef);
+
+          // Query the "accepted" collection to find the matching document
+          const acceptedCollectionRef = collection(db, "accepted");
+          const q = query(
+            acceptedCollectionRef,
+            where("postId", "==", postId) // Assuming userData contains the username
+          );
+
+          const querySnapshot = await getDocs(q);
+
+          if (querySnapshot.size > 0) {
+            // Update the matching document in the "accepted" collection
+            const acceptedDocRef = querySnapshot.docs[0].ref;
+            await updateDoc(acceptedDocRef, {
               completed: 1,
-              fileDownloadURL: url,
+              fileDownloadURL: fileDownloadURL,
             });
-  
+
             // Set the completion status in the state
             setCompleted(1);
-  
+
             // Inform the user that the file has been successfully submitted
             alert("File submitted successfully!");
           } else {
-            // If the document does not exist, create it
-            await setDoc(docRef, {
-              completed: 1,
-              fileDownloadURL: url,
-            });
-  
-            // Set the completion status in the state
-            setCompleted(1);
-  
-            // Inform the user that the file has been successfully submitted
-            alert("File submitted successfully!");
+            console.error("Matching document not found in the 'accepted' collection");
           }
         }
       }
@@ -146,31 +139,62 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
       console.error("Error handling file upload:", error);
     }
   };
-  
-  useEffect(() => {
-    const checkApplicationStatus = async () => {
-      try {
-        const applicationsCollection = collection(db, "applications");
-        const q = query(
-          applicationsCollection,
-          where("userId", "==", currentUserId),
-          where("postId", "==", postId)
-        );
-        const querySnapshot = await getDocs(q);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Query the "accepted" collection to find the matching document
+        const acceptedCollectionRef = collection(db, "accepted");
+        const q = query(
+          acceptedCollectionRef,
+          where("postId", "==", postId),
+          where("userId", "==", currentUserId)
+        );
+  
+        const querySnapshot = await getDocs(q);
+  
         if (querySnapshot.size > 0) {
-          const applicationData = querySnapshot.docs[0].data();
+          const acceptedData = querySnapshot.docs[0].data();
+          setCompleted(acceptedData.completed);
+  
+          // If completed is 1, the file is turned in
+          if (acceptedData.completed === 1) {
+            setIsApplicationSent(true);
+            setApprovalStatus(1);
+          } else {
+            // Check the corresponding application in "applications" collection
+            const applicationsCollection = collection(db, "applications");
+            const applicationQ = query(
+              applicationsCollection,
+              where("userId", "==", currentUserId),
+              where("postId", "==", postId)
+            );
+  
+            const applicationQuerySnapshot = await getDocs(applicationQ);
+  
+            if (applicationQuerySnapshot.size > 0) {
+              const applicationData = applicationQuerySnapshot.docs[0].data();
+              setIsApplicationSent(true);
+              setApprovalStatus(applicationData.approved);
+            } else {
+              // If no application document found, it's still pending
+              setIsApplicationSent(true);
+              setApprovalStatus(0);
+            }
+          }
+        } else {
+          // If no document found in "accepted", it's still pending
           setIsApplicationSent(true);
-          setApprovalStatus(applicationData.approved);
-          setCompleted(applicationData.completed);
+          setApprovalStatus(0);
         }
       } catch (error) {
-        console.error("Error checking application status:", error);
+        console.error("Error checking completed status:", error);
       }
     };
-
-    checkApplicationStatus();
+  
+    fetchData();
   }, [currentUserId, postId]);
+  
 
   return (
     <>
