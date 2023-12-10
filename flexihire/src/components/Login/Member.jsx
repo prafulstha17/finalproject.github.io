@@ -19,9 +19,9 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { auth, googleProvider, db } from "../../config/firebase";
+import { auth, googleProvider, facebookProvider, twitterProvider, db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
-import "./Member.css"; // Import any CSS styles if needed
+import "./Member.css";
 
 const Member = () => {
   const [loginVisible, setLoginVisible] = useState(true);
@@ -87,31 +87,34 @@ const Member = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-
-      await addUserToFirestore(user.uid, name, email);
-      // You can handle the user data or navigate to a different page here
+  
+      // Use the Google profile information
+      const displayName = user.displayName;
+      const email = user.email;
+  
+      await addUserToFirestore(user.uid, displayName, email);
       navigate("/");
     } catch (err) {
       console.error("Google Sign-In Error:", err);
     }
-  };
+  };  
 
-  // Similar functions for Facebook and Twitter sign-in
-  const signInWithFacebook = async () => {
-    try {
-      // Implement Facebook sign-in logic
-    } catch (err) {
-      console.error("Facebook Sign-In Error:", err);
-    }
+  const signInWithFacebook = () => {
+    // Replace 'your-facebook-app-id' with your actual Facebook App ID
+    const facebookLoginUrl = `https://www.facebook.com/v11.0/dialog/oauth?client_id=your-facebook-app-id&redirect_uri=${window.location.origin}/facebook-callback&response_type=token&scope=email`;
+  
+    // Redirect the user to the Facebook login page
+    window.location.href = facebookLoginUrl;
   };
-
-  const signInWithTwitter = async () => {
-    try {
-      // Implement Twitter sign-in logic
-    } catch (err) {
-      console.error("Twitter Sign-In Error:", err);
-    }
+  
+  const signInWithTwitter = () => {
+    // Replace 'your-twitter-app-id' with your actual Twitter App ID
+    const twitterLoginUrl = `https://api.twitter.com/oauth/authenticate?oauth_token=your-twitter-app-id`;
+  
+    // Redirect the user to the Twitter login page
+    window.location.href = twitterLoginUrl;
   };
+  
 
   const handleSwitch1 = () => {
     setLoginVisible(true);
