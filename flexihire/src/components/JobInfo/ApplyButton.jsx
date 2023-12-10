@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   collection,
   addDoc,
-  setDoc,
   serverTimestamp,
   getDoc,
   getDocs,
@@ -14,8 +13,6 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../config/firebase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import './ApplyButton.css';
 
 function ApplyButton({ postId, currentUserId, applicationMessage }) {
@@ -23,7 +20,6 @@ function ApplyButton({ postId, currentUserId, applicationMessage }) {
   const [approvalStatus, setApprovalStatus] = useState(0); // 0: Pending, -1: Rejected, 1: Approved
   const [completed, setCompleted] = useState(0); // 0: Not completed, 1: Completed
   const [approvedStatus, setApprovedStatus] = useState(0); // 0: Not completed, 1: Completed
-  const [file, setFile] = useState(null);
 
   const handleApply = async () => {
     try {
