@@ -1,23 +1,23 @@
-italic{
-    font-style: italic;
-    font-size: small;
+italic {
+  font-style: italic;
+  font-size: small;
 }
 
 .contactUS {
   height: 100vh;
   display: flex;
   -webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-perspective: 1000px;
-	perspective: 1000px;
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-	position: relative;
-	font-family: "Montserrat";
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative;
+  font-family: "Montserrat";
 }
 
 .contactUS .container {
@@ -31,7 +31,7 @@ italic{
   transform-style: preserve-3d;
 }
 
-.contactUS .side { 
+.contactUS .side {
   position: fixed;
   text-align: center;
   width: 100%;
@@ -39,7 +39,7 @@ italic{
   margin-left: -2rem;
   padding: 20px 50px;
   color: #fff;
-	transform-style: preserve-3d;
+  transform-style: preserve-3d;
   backface-visibility: hidden;
   border-radius: 20px;
 }
@@ -74,7 +74,7 @@ italic{
 }
 
 .contactUS .front {
-   z-index: 2;
+  z-index: 2;
   background-size: cover;
   margin-right: -5rem;
   background-color: #000000;
@@ -90,9 +90,9 @@ italic{
   background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
 }
 
-.contactUS .container:hover{
-	-webkit-transform: rotateY(180deg);
-	transform: rotateY(180deg);
+.contactUS .container:hover {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .contactUS form {
@@ -128,15 +128,18 @@ italic{
   cursor: pointer;
 }
 
+.contactUS form input:hover {
+  letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
   .contactUS {
     margin-left: 1rem;
     width: 90vw;
   }
- 
-  .contactUS .content{
+
+  .contactUS .content {
     margin-left: -8.5rem;
   }
 
 }
-

@@ -868,12 +868,3 @@ ol, ul {
   .show {
     display: block;
   }
-  .blog-link {
-    line-height:30px;
-    color:#1A6CCA;
-    text-decoration:none;
-  }
-  .blog-link:hover {
-    text-decoration:underline;
-    color:#5AaCAA;
-  }

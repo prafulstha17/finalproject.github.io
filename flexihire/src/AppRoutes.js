@@ -1,8 +1,7 @@
-// AppRoutes.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Services from './components/Services/Services';
+import Help from './components/PageFooter/Help';
 import ContactForm from './components/ContactForm/ContactForm';
 import AboutUs from './components/AboutUs/About';
 import Jobs from './components/Jobs/Jobs';
@@ -21,7 +20,7 @@ const AppRoutes = ({ userName }) => {
   return (
     <Routes>
       <Route path="/" element={<Home name={userName} />} />
-      <Route path="/services" element={<Services />} />
+      <Route path="/help" element={<Help />} />
       <Route path="/contactUs" element={<ContactForm />} />
       <Route path="/mailReceived" element={<MailReceived />} />
       <Route path="/aboutUs" element={<AboutUs />} />

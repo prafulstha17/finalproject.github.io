@@ -156,6 +156,7 @@ button {
 
 button:hover {
   background-color: #005bb8;
+  letter-spacing: 0.5px;
 }
 
 .handleButton {

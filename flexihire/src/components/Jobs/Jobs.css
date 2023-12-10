@@ -7,6 +7,7 @@
 .container-xxl button:hover{
     box-shadow: 0 5px 15px rgba(75, 136, 172, 0.8);
     background-color: #483d8b;
+    letter-spacing: 1px;
 }
 
 

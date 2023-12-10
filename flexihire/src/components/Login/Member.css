@@ -211,6 +211,7 @@
 .login-button:hover,
 .signup-button:hover {
   background-color: #404040;
+  letter-spacing: 1px;
 }
 
 .login-button.hide,

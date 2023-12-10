@@ -49,9 +49,10 @@
 }
 
 .hero-content .nav h1:hover {
-  transform: translate3d(0, -0.5rem, 2rem);
+  transform: translate3d(0, 0, 2rem);
   color: #ff0266;
   text-shadow: 0 0 0 #faebd7;
+  letter-spacing: 1px;
   animation: loading 1s ease-in-out infinite alternate;
 }
 
