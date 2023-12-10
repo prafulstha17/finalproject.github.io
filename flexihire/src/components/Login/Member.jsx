@@ -20,6 +20,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth, googleProvider, facebookProvider, twitterProvider, db } from "../../config/firebase";
+import { ReactComponent as TwitterIcon } from "../images/x-twitter.svg";
 import { useNavigate } from "react-router-dom";
 import "./Member.css";
 
@@ -215,7 +216,7 @@ const Member = () => {
               </li>
               <li>
                 <a href="#" id="color-gradient" onClick={signInWithTwitter}>
-                  <i className="fab fa-twitter"></i>
+                  <TwitterIcon className="twitter-member" />
                 </a>
               </li>
             </ul>
@@ -269,7 +270,7 @@ const Member = () => {
               </li>
               <li>
                 <a href="#" id="color-gradient" onClick={signInWithTwitter}>
-                  <i className="fab fa-twitter"></i>
+                  <TwitterIcon className="twitter-member" />
                 </a>
               </li>
             </ul>
