@@ -1,101 +1,183 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.clock-container {
-  position: relative;
-  width: 20%;
+@mixin has-child {
+  &:before, &:after {
+      content: "";
+      display: block;
+      position: absolute;
+  }
+}
+
+
+.icon-large {
+  width: 220px;
+  height: 220px;
+  border-radius: 38px;
+  @include centerer;
+}
+
+.icon-clock {
   overflow: hidden;
   background: #000;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+}
+.clock{
+width:192px;
+height:192px;
+border-radius:50%;
+background:#f1f1f1 ;
+@include centerer;
+ol{
+  list-style-type:none;
+  width:100%;
+  height:100%;
+  position:relative;
+  margin:0;
+  padding:0;
+  li{
+    counter-increment: labelCounter;
+    position:absolute;
+    font-size:1.25em;
+    color: #000;
+    &:before {
+      font-family:'Helvetica';
+    content: counter(labelCounter) "";
+    }
+    &:nth-child(1){
+      right:55px;
+      top:20px;
+    }
+     &:nth-child(2){
+      right:25px;
+      top:50px;
+    }
+     &:nth-child(3){
+      right:12px;
+      top:85px;
+    }
+     &:nth-child(4){
+      right:25px;
+      top:125px;
+    }
+     &:nth-child(5){
+      right:55px;
+      top:150px;
+    }
+     &:nth-child(6){
+      right:90px;
+      top:160px;
+       
+    }
+     &:nth-child(7){
+      right:125px;
+      top:150px;
+    }
+     &:nth-child(8){
+      right:155px;
+      top:125px;
+    }
+     &:nth-child(9){
+      right:165px;
+      top:85px;
+    }
+     &:nth-child(10){
+      right:150px;
+      top:50px;
+    }
+     &:nth-child(11){
+      right:120px;
+      top:20px;
+    }
+     &:nth-child(12){
+      right:85px;
+      top:10px;
+    }
+  }
+ 
+}
+
+}
+@keyframes spin{
+100%{
+  transform:rotate(360deg);
+}
+}
+#hour{
+width:14px;
+height:14px;
+border-radius:50%;
+background:#303030 ;
+
+
+
+position:absolute;
+top:50%;
+left:50%;
+margin-top:-7px;
+margin-left:-7px;
+@include has-child;
+
+&:before{
+  width:8px;
+  height:65px;
+  border-radius:4px;
+    background:#303030 ;
+  position:absolute;
+  bottom:2px;
+  left:50%;
+  transform:translate(-50%,0);
+}
+}
+#min{
+width:0;
+height:0;
+border-radius:50%;
+background:#303030 ;
+
+position:absolute;
+top:50%;
+left:50%;
+@include has-child;
+
+&:before{
+  width:6px;
+  height:90px;
+  border-radius:4px;
+    background:#303030 ;
+  position:absolute;
+  bottom:2px;
+  left:50%;
   
-  &.styling{
-    box-shadow: 0px 0px 10px #888888;
-    border-radius: 20px;
-    min-width: 100px;
-    margin-top: 1%;
-    border: 10px solid #294a6f;
-  }
-
-  &:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
+  transform:translate(-50%,0);
 }
-
-.clock-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .background-numbers {
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    z-index: 1;
-    .numbers {
-      fill: #fff;
-    }
-  }
-
-  .indicator {
-    border-radius: 10px;
-    transform-origin: bottom;
-    outline: 1px solid transparent; // Firefox fix on rotation
-    position: absolute;
-    bottom: 50%;
-    transition:0.1s;
-
-    &.seconds-indicator {
-      width: 0.5%;
-      height: 37.5%;
-      z-index: 2;
-      background-color: #dfc48c;
-      &.transition-effect {
-      }
-    }
-
-    &.minutes-indicator {
-      width: 1%;
-      height: 30%;
-      z-index: 3;
-      background-color: #cd6a51;
-      &.transition-effect {
-      }
-    }
-
-    &.hours-indicator {
-      width: 1.5%;
-      height: 22.5%;
-      z-index: 4;
-      background-color: #8f9c6c;
-      &.transition-effect {
-      }
-    }
-  }
-
-  .indicator-cover {
-    position: absolute;
-    bottom: 48.5%; /*(50% - (3% /2)) */
-    border-radius: 50%;
-    width: 3%;
-    height: 3%;
-    background-color: lightgrey;
-    z-index: 5;
-  }
 }
+#sec{
+width:4px;
+height:4px;
+border-radius:50%;
+background:#dd3e1c  ;
+border:2px solid #e13e1b  ;
 
-.digital {
-  margin-top: 50px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+
+position:fixed;
+top:50%;
+left:50%;
+margin-top:-4px;
+margin-left:-4px;
+@include has-child;
+
+&:before{
+  width:2px;
+  height:105px;
+  border-radius:4px;
+    background:#e13e1b ;
+  position:absolute;
+  bottom:-12px;
+  left:50%;
+  transform:translate(-50%,0);
+}
 }

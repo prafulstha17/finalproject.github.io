@@ -2,55 +2,52 @@
 	text-align: right;
   }
   
-  .month {
-	margin-bottom: 20px;
-  }
-  
   .days {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 8px;
+	gap: 0.1rem;
+	cursor: pointer;
   }
   
   .add-event-btn {
-	padding: 10px;
+	padding: 1rem;
 	background-color: #007bff;
 	color: #fff;
 	border: none;
-	border-radius: 4px;
+	border-radius: 1rem;
 	cursor: pointer;
   }
   
   .events {
-	margin-top: 20px;
+	margin-top: 1rem;
   }
   
   .event {
-	margin-bottom: 8px;
-	padding: 8px;
+	margin-bottom: 0.2rem;
+	padding: 0.2rem;
 	background-color: #f2f2f2;
 	border: 1px solid #ccc;
-	border-radius: 4px;
+	border-radius: 0.1rem;
   }
 
   
 .day {
 	text-align: center;
-	padding: 8px;
+	padding: 0.2rem;
 	border-radius: 50%;
-	width: 2.5rem;
-	margin-bottom: 10px;
+	width: 1.8rem;
+	margin-bottom: 0.2rem;
 	border: none;
 	color: #007bff;
 	font-weight: 600;
   }
   
   .add-event-btn {
-	padding: 10px;
+	padding: 0.4rem;
 	background-color: #007bff;
 	color: #fff;
 	border: none;
-	border-radius: 4px;
+	border-radius: 0.1rem;
 	cursor: pointer;
   }
 
@@ -58,13 +55,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 10px;
+	margin-bottom: 1rem;
   }
   
   .navigation button {
 	background-color: #eeeeee;
+	align-items: center;
 	color: #3e82ff;
 	border: 2px solid #3e82ff;
+	margin-right: 1rem;
+	margin-left: 1rem;
 	border-radius: 50%;
 	width: 2.75rem;
 	font-weight: 800;
@@ -77,9 +77,9 @@
 	margin-bottom: 10px;
   }
   
-  .dropdowns select {
-	margin-right: 10px;
-	padding: 8px;
+  .navigation .dropdowns select {
+	margin-right: 1rem;
+	padding: 0;
 	border-left: 0.2rem solid #005ab9;
 	border-right: 0.2rem solid #005ab9;
 	color: #007bff;
@@ -92,16 +92,16 @@
   .days-of-week {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 8px;
+	gap: 0.2rem;
 	font-weight: bold;
 	color: #007bff;
-	margin-bottom: 8px;
+	margin-bottom: 0.2rem;
   }
   
   .day.selected {
 	background-color: #007bff;
 	color: #ffffff;
-	font-weight: 800;
+	font-weight: 900;
   }
 
   .day:focus {
@@ -113,16 +113,16 @@
 	color: #eeeeee;
 	flex-direction: column;
 	background-color: #007bff;
-	padding: 5rem;
-	border-top-left-radius: 4rem;
-	border-bottom-left-radius: 4rem;
+	padding: 3rem;
+	border-top-left-radius: 2rem;
+	border-bottom-left-radius: 2rem;
   }
 
   .rightCalendar{
 	background-color: #eeeeee;
-	padding: 2rem;
-	border-top-right-radius: 4rem;
-	border-bottom-right-radius: 4rem;
+	padding: 1rem;
+	border-top-right-radius: 2rem;
+	border-bottom-right-radius: 2rem;
 	padding-bottom: 0;
   }
 
@@ -172,7 +172,7 @@
   
   .event {
 	cursor: pointer;
-	padding: 8px;
+	padding: 0.2rem;
 	transition: text-decoration 0.3s ease-in-out;
 	border: none;
 	color: #ffffff;
