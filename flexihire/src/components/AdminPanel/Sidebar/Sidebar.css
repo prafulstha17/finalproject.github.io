@@ -39,7 +39,7 @@
 
 .sidebar ul li a span {
   position: absolute;
-  margin-left: -0.6rem;
+  margin-left: 0.6rem;
   opacity: 1;
   transition: opacity 0.4s ease;
 }

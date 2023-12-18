@@ -57,7 +57,7 @@ function Sidebar() {
             <li className="active">
               <a href="/dashboard">
                 <span className="fa-stack fa-lg pull-left">
-                  <i className="fa fa-dashboard fa-stack-1x "></i>
+                  <i class="fa-solid fa-table-columns"></i>
                 </span>{" "}
                 <p>Dashboard</p>
               </a>
@@ -65,7 +65,7 @@ function Sidebar() {
             <li>
               <a href="/reports">
                 <span className="fa-stack fa-lg pull-left">
-                  <i className="fa fa-flag fa-stack-1x "></i>
+                  <i class="fa-solid fa-flag-checkered"></i>
                 </span>
                 <p>Reports</p>
               </a>
@@ -73,7 +73,7 @@ function Sidebar() {
             <li>
               <a href="/users">
                 <span className="fa-stack fa-lg pull-left">
-                  <i className="fa fa-cloud-download fa-stack-1x "></i>
+                  <i class="fa fa-solid fa-users"></i>
                 </span>
                 <p>Users</p>
               </a>
@@ -82,7 +82,7 @@ function Sidebar() {
               <a href="/mails">
                 {" "}
                 <span className="fa-stack fa-lg pull-left">
-                  <i className="fa fa-cart-plus fa-stack-1x "></i>
+                  <i class="fa-solid fa-envelopes-bulk"></i>
                 </span>
                 <p>Mails</p>
               </a>
@@ -91,7 +91,7 @@ function Sidebar() {
               <a href="/managepost">
                 {" "}
                 <span className="fa-stack fa-lg pull-left">
-                  <i className="fa fa-wrench fa-stack-1x "></i>
+                  <i class="fa-solid fa-signs-post"></i>
                 </span>
                 <p>Manage Post</p>
               </a>
