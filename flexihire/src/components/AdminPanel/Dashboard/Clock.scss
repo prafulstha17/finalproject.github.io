@@ -160,14 +160,14 @@ width:4px;
 height:4px;
 border-radius:50%;
 background:#dd3e1c  ;
-border:2px solid #e13e1b  ;
+border:0.2rem solid #e13e1b  ;
 
 
 position:fixed;
 top:50%;
 left:50%;
-margin-top:-4px;
-margin-left:-4px;
+margin-top:-0.15rem;
+margin-left:-0.16rem;
 @include has-child;
 
 &:before{

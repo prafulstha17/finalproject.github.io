@@ -67,7 +67,7 @@ const Dashboard = () => {
           onMouseEnter={() => handleHover(0)}
           onMouseLeave={handleLeave}
         >
-          <h4>Manage Posts</h4>
+          <h4>Posts</h4>
         </div>
         <div
           className={`box kdrama inheritors ${hoveredIndex === 1 ? 'hovered' : ''}`}
