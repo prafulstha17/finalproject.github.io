@@ -360,11 +360,6 @@
   gap: 0;
 }
 
-.how-it-works .rightHow .features{
-  display: flex;
-  flex-direction: column;
-}
-
 @media (max-width: 800px) {
   .nav h1 {
     font-size: 5vw;
