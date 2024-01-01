@@ -24,14 +24,6 @@ function Sidebar() {
             <i className="fa-brands fa-redhat"></i>
             <p> Admin</p>
           </a>
-          <button
-            type="button"
-            className="navbar-toggle collapsed"
-            onClick={toggleSidebar}
-            id="menu-toggle"
-          >
-            <i className="fa-solid fa-thumbtack"></i>
-          </button>
         </div>
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav">
@@ -99,7 +91,7 @@ function Sidebar() {
           </ul>
         </div>
         <div className="admin-session">
-          <div className="admin-logo">A</div>
+          <div className="admin-logo"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fportalinfotec.com%2Fwp-content%2Fuploads%2F2021%2F04%2F20141031772049.jpg&f=1&nofb=1&ipt=f6f12c4a79e7dce8e86f97d3140e1e4effefe8791401a7c4ef09bb6d26a87ecc&ipo=images" alt="A" /></div>
           <a onClick={handleLogout}><p><i className="fa-solid fa-right-from-bracket fa-flip-horizontal"> </i></p> <p>Logout</p></a>
         </div>
       </div>

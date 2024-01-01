@@ -65,37 +65,44 @@ function Message() {
     async function fetchProfileImages() {
       const imagePromises = users.map(async (user) => {
         const profileImageRef = ref(storage, `users/${user.userId}/profile.jpg`);
+        const defaultImageRef = ref(storage, `users/default.jpg`);
+  
         try {
           const profileImageUrl = await getDownloadURL(profileImageRef);
           return { userId: user.userId, imageUrl: profileImageUrl };
         } catch (error) {
           console.log(`Profile image not found for user ${user.userId}.`);
-          return { userId: user.userId, imageUrl: null };
+          
+          // Fetch the URL of the default image
+          const defaultImageUrl = await getDownloadURL(defaultImageRef);
+  
+          return { userId: user.userId, imageUrl: defaultImageUrl };
         }
       });
-
+  
       // Wait for all promises to resolve
       const images = await Promise.all(imagePromises);
-
+  
       // Set profile images for all users
       const profileImagesMap = images.reduce((acc, { userId, imageUrl }) => {
         acc[userId] = imageUrl;
         return acc;
       }, {});
-
+  
       setProfileImages(profileImagesMap);
     }
-
+  
     // Introduce a 3-second delay before setting loading to false
     const delayTimeout = setTimeout(() => {
       setLoading(false); // Set loading to false once images are loaded
     }, 3000);
-
+  
     // Fetch profile images
     fetchProfileImages();
-
+  
     return () => clearTimeout(delayTimeout);
   }, [users]);
+  
 
   useEffect(() => {
     if (selectedUser) {

@@ -12,5 +12,11 @@ center h2{
 
 .rightHow .features{
     display: flex;
+    margin-left: -20rem;
+    margin-right: 6rem;
     flex-direction: column;
+}
+
+.leftHow{
+    margin-left: -20rem;
 }

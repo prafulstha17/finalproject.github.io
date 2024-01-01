@@ -46,10 +46,6 @@
     transform: rotate(-3600deg) !important;
 }
 
-.mainRevoke{
-    background: url(http://salehriaz.com/404Page/img/bg_purple.png);
-}
-
 .bg-purple{
     background-repeat: repeat-x;
     background-size: cover;
@@ -101,8 +97,12 @@
 }
 
 .central-body{
-/*    width: 100%;*/
+   width: 100vw;
+   margin-left: -15rem;
+    margin-top: -13rem;
+
     padding: 17% 5% 10% 5%;
+    background: url(http://salehriaz.com/404Page/img/bg_purple.png);
     text-align: center;
 }
 
@@ -149,8 +149,8 @@
 .box_astronaut{
     z-index: 110 !important;
     position: absolute;
-    top: 60%;
-    right: 20%;
+    top: 40%;
+    right: 10%;
     will-change: transform;
     animation: move-astronaut 50s infinite linear both alternate;
 }

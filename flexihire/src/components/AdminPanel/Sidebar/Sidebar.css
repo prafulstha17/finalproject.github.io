@@ -191,13 +191,6 @@ navbar{
   padding-top: 70px;
 }
 
-
-.admin-logo{
-  border-radius: 50%;
-  background-color: rgb(236, 0, 0);
-  position: relative;
-}
-
 .sidebar {
   position: relative;
 }
@@ -217,15 +210,22 @@ navbar{
 }
 
 .sidebar .admin-session .admin-logo {
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   background-color: blue;
+  overflow: hidden;
   color: #fff;
   font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.admin-logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sidebar .admin-session a {

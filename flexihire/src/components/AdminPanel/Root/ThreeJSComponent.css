@@ -1,11 +1,11 @@
 @import "https://fonts.googleapis.com/css2?family=Megrim&display=swap";
-.three-js-container {
+#three-js-container {
   overflow: hidden;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
 
-.three-js-container  body::-webkit-scrollbar {
+#three-js-container  body::-webkit-scrollbar {
     width: 8px; /* Adjust the width as needed */
   }
   
@@ -14,7 +14,7 @@
   }
 canvas{
     display: block;
-    margin-top: -40rem;
+    margin-top: -36rem;
     z-index: 1;
 }
 
