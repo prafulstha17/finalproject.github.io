@@ -10,7 +10,7 @@ import {
   orderBy,
   where,
 } from "firebase/firestore";
-import { ref, getDownloadURL } from 'firebase/storage';
+import { ref, getDownloadURL } from "firebase/storage";
 import "./Message.css";
 
 function Message() {
@@ -33,10 +33,11 @@ function Message() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
+      if (user) setUser(user);
     });
+
     return unsubscribe;
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     async function fetchUsers() {
@@ -50,7 +51,8 @@ function Message() {
         }));
 
         // Filter out the current user from the list
-        const filteredUsers = usersData.filter(u => u.userId !== user.uid);
+
+        const filteredUsers = usersData.filter((u) => u.userId !== user.uid);
 
         setUsers(filteredUsers);
       } catch (error) {
@@ -59,50 +61,51 @@ function Message() {
     }
 
     fetchUsers();
-  }, [user]);
 
-  useEffect(() => {
     async function fetchProfileImages() {
       const imagePromises = users.map(async (user) => {
-        const profileImageRef = ref(storage, `users/${user.userId}/profile.jpg`);
+        const profileImageRef = ref(
+          storage,
+          `users/${user.userId}/profile.jpg`
+        );
         const defaultImageRef = ref(storage, `users/default.jpg`);
-  
+
         try {
           const profileImageUrl = await getDownloadURL(profileImageRef);
-          return { userId: user.userId, imageUrl: profileImageUrl };
+          return { userId: user.userId, imageUrl: profileImageUrl ?? "" };
         } catch (error) {
-          console.log(`Profile image not found for user ${user.userId}.`);
-          
+          console.log("This is the error");
+          console.log(error);
+
           // Fetch the URL of the default image
           const defaultImageUrl = await getDownloadURL(defaultImageRef);
-  
+
           return { userId: user.userId, imageUrl: defaultImageUrl };
         }
       });
-  
+
       // Wait for all promises to resolve
       const images = await Promise.all(imagePromises);
-  
+
       // Set profile images for all users
       const profileImagesMap = images.reduce((acc, { userId, imageUrl }) => {
         acc[userId] = imageUrl;
         return acc;
       }, {});
-  
+
       setProfileImages(profileImagesMap);
     }
-  
+
     // Introduce a 3-second delay before setting loading to false
     const delayTimeout = setTimeout(() => {
       setLoading(false); // Set loading to false once images are loaded
     }, 3000);
-  
+
     // Fetch profile images
     fetchProfileImages();
-  
+
     return () => clearTimeout(delayTimeout);
-  }, [users]);
-  
+  }, [user]);
 
   useEffect(() => {
     if (selectedUser) {
@@ -133,7 +136,6 @@ function Message() {
     }
   }, [selectedUser, user]);
 
-
   function handleClick() {
     if (isExpanded) {
       setSelectedUser(null);
@@ -145,7 +147,7 @@ function Message() {
 
   function handleUserSelect(userId) {
     // Find the selected user based on the userId
-    const selectedUser = users.find(user => user.userId === userId);
+    const selectedUser = users.find((user) => user.userId === userId);
 
     if (selectedUser) {
       setSelectedUser(selectedUser);
@@ -177,7 +179,7 @@ function Message() {
           setMessageText("");
 
           // Scroll the chat-logs container to the bottom
-          const chatLogsContainer = document.getElementById('chat-logs');
+          const chatLogsContainer = document.getElementById("chat-logs");
           chatLogsContainer.scrollTop = chatLogsContainer.scrollHeight;
         } else {
           console.error("Error: selectedUser.id is undefined");
@@ -238,17 +240,19 @@ function Message() {
                   {messages.map((message, index) => (
                     <div
                       key={index}
-                      className={`chat ${message.userId === user.uid ? 'self' : 'other'}`}
+                      className={`chat ${
+                        message.userId === user.uid ? "self" : "other"
+                      }`}
                     >
                       <div
-                        className={`message-box ${message.senderId === user.uid ? 'sent' : 'received'
-                          }`}
+                        className={`message-box ${
+                          message.senderId === user.uid ? "sent" : "received"
+                        }`}
                       >
                         {message.text}
                       </div>
                     </div>
                   ))}
-
                 </div>
                 <div className="chat-form">
                   <input
@@ -256,7 +260,7 @@ function Message() {
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
                     onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
+                      if (e.key === "Enter") {
                         e.preventDefault();
                         handleSubmit(e);
                       }

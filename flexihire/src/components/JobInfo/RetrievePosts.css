@@ -61,7 +61,6 @@
   white-space: pre-wrap;
 }
 
-
 .job-details {
   display: flex;
   width: 100%;
@@ -165,7 +164,7 @@ button:hover {
   gap: 0.5rem;
 }
 
-.job-post+.job-post {
+.job-post + .job-post {
   border-top: 1px solid #ddd;
 }
 
