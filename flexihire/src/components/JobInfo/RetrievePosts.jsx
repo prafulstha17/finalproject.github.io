@@ -10,22 +10,24 @@ import { useNavigate } from 'react-router-dom';
 
 function RetrievePosts({ isAdmin }) {
     const [posts, setPosts] = useState([]);
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser , setCurrentUser ] = useState(null);
     const [selectedSection, setSelectedSection] = useState('available');
     const [pendingApplications, setPendingApplications] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [feedbackMessages, setFeedbackMessages] = useState({});
     const [acceptedPosts, setAcceptedPosts] = useState([]);
+    const [recommendedPosts, setRecommendedPosts] = useState([]);
     const navigate = useNavigate();
+    
 
     useEffect(() => {
         const unsubscribeAuth = listenToAuthChanges((user) => {
-            setCurrentUser(user);
+            setCurrentUser (user);
         });
 
         const fetchPosts = async () => {
-            if (currentUser) {
+            if (currentUser ) {
                 const postsRef = collection(db, 'posts');
                 const q = query(postsRef, orderBy('timestamp', 'desc'));
 
@@ -49,6 +51,7 @@ function RetrievePosts({ isAdmin }) {
                 const acceptedPostsData = acceptedSnapshot.docs.map((doc) => {
                     const data = doc.data();
                     return {
+                        
                         postId: data.postId,
                         userId: data.userId,
                         username: data.username,
@@ -73,7 +76,37 @@ function RetrievePosts({ isAdmin }) {
             unsubscribeAuth();
             unsubscribeAcceptedPosts();
         };
-    }, [currentUser]);
+    }, [currentUser ]);
+
+    useEffect(() => {
+        fetchRecommendations();
+    }, [currentUser , posts]);
+
+    const fetchRecommendations = async () => {
+        if (currentUser ) {
+            const interactionsRef = collection(db, 'userInteractions');
+            const q = query(interactionsRef, where('userId', '==', currentUser .uid));
+            const querySnapshot = await getDocs(q);
+            
+            const interactedPostIds = querySnapshot.docs.map(doc => doc.data().postId);
+            
+            // Fetch posts interacted by similar users
+            const similarUsersInteractions = await getDocs(collection(db, 'userInteractions'));
+            const recommendedPostIds = new Set();
+
+            similarUsersInteractions.docs.forEach(doc => {
+                const data = doc.data();
+                if (data.userId !== currentUser .uid && interactedPostIds.includes(data.postId)) {
+                    // Add posts that similar users interacted with
+                    recommendedPostIds.add(data.postId);
+                }
+            });
+
+            // Filter out posts that the current user has already interacted with
+            const recommendations = posts.filter(post => recommendedPostIds.has(post.id));
+            setRecommendedPosts(recommendations);
+        }
+    };
 
     const formatDate = (timestamp) => {
         if (timestamp) {
@@ -97,14 +130,26 @@ function RetrievePosts({ isAdmin }) {
         }
     };
 
-    const handleApplyPost = (postId, postUploaderUserId, postUploaderUsername) => {
+    const handleApplyPost = async (postId, postUploaderUserId, postUploaderUsername) => {
         console.log(`Applying post with ID: ${postId}. Notifying ${postUploaderUsername}.`);
+        
+        // Log user interaction
+        if (currentUser ) {
+            const interactionsRef = collection(db, 'userInteractions');
+            await addDoc(interactionsRef, {
+                userId: currentUser .uid,
+                postId: postId,
+                action: 'apply',
+                timestamp: serverTimestamp(),
+            });
+        }
+
         // Add your logic for handling applications here
     };
 
     const handleReportPost = async (postId) => {
         try {
-            if (currentUser) {
+            if (currentUser ) {
                 const reportReason = prompt('Please enter the reason for reporting this post:');
 
                 if (reportReason !== null) {
@@ -228,23 +273,23 @@ function RetrievePosts({ isAdmin }) {
     };
 
     const availablePosts = posts.filter(
-        (post) => (!post.userId || post.userId !== currentUser?.uid) && !isAdmin
+        (post) => (!post.userId || post.userId !== currentUser ?.uid) && !isAdmin
     );
 
     const createdPosts = posts.filter(
-        (post) => post.userId === currentUser?.uid && !isAdmin
+        (post) => post.userId === currentUser ?.uid && !isAdmin
     );
 
     const handleDownloadFile = (postId) => {
-        const acceptedPost = acceptedPosts.find((acceptedPost) => acceptedPost.postId === postId);
+    const acceptedPost = acceptedPosts.find((acceptedPost) => acceptedPost.postId === postId);
 
-        if (acceptedPost && acceptedPost.fileDownloadURL) {
-            console.log('Downloading file from:', acceptedPost.fileDownloadURL);
-            window.open(acceptedPost.fileDownloadURL, '_blank');
-        } else {
-            console.error('File download URL is undefined.');
-        }
-    };
+    if (acceptedPost && acceptedPost.fileDownloadURL) {
+        console.log('Downloading file from:', acceptedPost.fileDownloadURL);
+        window.open(acceptedPost.fileDownloadURL, '_blank');
+    } else {
+        console.error('File download URL is undefined.');
+    }
+};
 
     const handlePay = () => {
         console.log('Navigate to Payment component');
@@ -258,6 +303,7 @@ function RetrievePosts({ isAdmin }) {
                     {isAdmin && (
                         <ul>
                             {posts.map((post) => (
+                                
                                 <li key={post.id} className="job-post">
                                     <div className="job-header">
                                         <div className="title">{post.title}</div>
@@ -266,6 +312,7 @@ function RetrievePosts({ isAdmin }) {
                                                 <a
                                                     href={`/users/${post.userId}`}
                                                     className="username-link"
+                                                    
                                                 >
                                                     {post.username}
                                                 </a>{' '}
@@ -277,10 +324,13 @@ function RetrievePosts({ isAdmin }) {
                                         {post.description && <>{post.description}</>}
                                     </div>
                                     <div className="job-details">
+                                        
                                         <div className="exp">Experience: {post.experience}</div>
                                         <div className="deadline">Deadline: {post.deadline}</div>
                                         <div className="workinghrs">Est. time: {post.timing}</div>
                                         <div className="salary">Salary: {post.salary}</div>
+                                        <div className="categories">categories:{post.category}</div>
+
                                     </div>
                                     <div className="job-actions">
                                         <button onClick={() => handleDeletePost(post.id)}>
@@ -312,7 +362,7 @@ function RetrievePosts({ isAdmin }) {
                     {selectedSection === 'available' && (
                         <AvailablePosts
                             posts={availablePosts}
-                            currentUser={currentUser}
+                            currentUser={currentUser }
                             handleApplyPost={handleApplyPost}
                             handleReportPost={handleReportPost}
                             feedbackMessages={feedbackMessages}
@@ -330,7 +380,7 @@ function RetrievePosts({ isAdmin }) {
                     {selectedSection === 'created' && (
                         <CreatedPosts
                             posts={createdPosts}
-                            currentUser={currentUser}
+                            currentUser={currentUser }
                             feedbackMessages={feedbackMessages}
                             acceptedPosts={acceptedPosts}
                             handleDownloadFile={handleDownloadFile}
@@ -345,6 +395,22 @@ function RetrievePosts({ isAdmin }) {
                             setIsModalOpen={setIsModalOpen}
                         />
                     )}
+                    <div className="recommendations-section">
+                        <h2>Recommended for You</h2>
+                        <ul>
+                            {recommendedPosts.length > 0 ? (
+                                recommendedPosts.map(post => (
+                                    <li key={post.id} className="recommended-post">
+                                        <h3>{post.title}</h3>
+                                        <p>{post.description}</p>
+                                        <button onClick={() => handleApplyPost(post.id)}>Apply</button>
+                                    </li>
+                                ))
+                            ) : (
+                                <p>No recommendations available.</p>
+                            )}
+                        </ul>
+                    </div>
                 </>
             ) : (
                 <center>
@@ -355,8 +421,7 @@ function RetrievePosts({ isAdmin }) {
                         </p>
                     </div>
                 </center>
-            )}
-        </div>
+            )}        </div>
     );
 }
 

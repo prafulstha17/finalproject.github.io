@@ -11,6 +11,7 @@ const PostStatus = () => {
     salary: "",
     deadline: "",
     timing: "",
+    category: "", // Add category to formData
   });
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -21,7 +22,7 @@ const PostStatus = () => {
     });
 
     return () => {
-      unsubscribe(); // Unsubscribe when the component unmounts
+      unsubscribe();
     };
   }, []);
 
@@ -43,7 +44,7 @@ const PostStatus = () => {
     console.log("handlePostSubmit called");
     try {
       if (formData.title.trim() === "" || !currentUser) {
-        console.log("Validation failed"); // Add this line
+        console.log("Validation failed");
         return;
       }
 
@@ -55,12 +56,13 @@ const PostStatus = () => {
         salary: formData.salary,
         deadline: formData.deadline,
         timing: formData.timing,
+        category: formData.category, // Add category to Firestore data
         timestamp: serverTimestamp(),
         userId: currentUser.uid,
         username: currentUser.displayName,
       });
 
-      console.log("Data added to Firestore"); // Add this line
+      console.log("Data added to Firestore");
 
       setFormData({
         title: "",
@@ -69,6 +71,7 @@ const PostStatus = () => {
         salary: "",
         deadline: "",
         timing: "",
+        category: "",
       });
     } catch (error) {
       console.error("Error posting to Firestore:", error);
@@ -111,7 +114,7 @@ const PostStatus = () => {
             className={formData.experience ? "active" : ""}
             onClick={() => handleLabelClick("experience")}
           >
-            Experience Level
+            Qualifications
           </label>
         </div>
 
@@ -123,7 +126,7 @@ const PostStatus = () => {
             value={formData.deadline}
             onChange={handleInputChange}
             placeholder="Select a Deadline"
-            min={new Date().toISOString().split('T')[0]} // Set min attribute to the current date
+            min={new Date().toISOString().split('T')[0]}
           />
           <label
             htmlFor="deadline"
@@ -171,8 +174,7 @@ const PostStatus = () => {
         </div>
 
         <div className="input-group">
-          <input
-            type="text"
+          <textarea
             placeholder=""
             id="description"
             name="description"
@@ -185,6 +187,37 @@ const PostStatus = () => {
             onClick={() => handleLabelClick("description")}
           >
             Description
+          </label>
+        </div>
+
+        <div className="input-group">
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+          >
+            <option value="">Select Category</option>
+            <option value="Writing & Translation">Writing & Translation</option>
+            <option value="Graphic Design & Creative Arts">Graphic Design & Creative Arts</option>
+            <option value="Digital Marketing & Advertising">Digital Marketing & Advertising</option>
+            <option value="Web, Mobile & Software Development">Web, Mobile & Software Development</option>
+            <option value="IT & Networking">IT & Networking</option>
+            <option value="Data Science & Analytics">Data Science & Analytics</option>
+            <option value="Administrative Support">Administrative Support</option>
+            <option value="Finance & Accounting">Finance & Accounting</option>
+            <option value="Consulting & Project Management">Consulting & Project Management</option>
+            <option value="Legal Services">Legal Services</option>
+            <option value="Engineering & Architecture">Engineering & Architecture</option>
+            <option value="Sales & Business Development">Sales & Business Development</option>
+            <option value="Lifestyle & Wellness">Lifestyle & Wellness</option>
+            <option value="Education & Tutoring">Education & Tutoring</option>
+          </select>
+          <label
+            htmlFor="category"
+            className={formData.category ? "active" : ""}
+            onClick={() => handleLabelClick("category")}
+          >
           </label>
         </div>
       </div>

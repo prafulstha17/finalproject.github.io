@@ -46,7 +46,8 @@ function Home(props) {
     <div className="home">
       <div className="hero-content">
         <section className="nav">
-          <h1>Make your own change</h1>
+          <h1>Elevate the search for your next career
+          </h1>
           <h3 className="span loader">
             <span className="m">C</span>
             <span className="m">H</span>

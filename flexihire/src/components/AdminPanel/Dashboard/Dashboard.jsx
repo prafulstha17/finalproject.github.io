@@ -100,9 +100,9 @@ const Dashboard = () => {
           onMouseLeave={handleLeave}>
           <h4 className="break">Users</h4>
         </div>
-        <div className="box anime kakegurui shadow" >
+        {/* <div className="box anime kakegurui shadow" >
           <Clock />
-        </div>
+        </div> */}
 
       </div>
 

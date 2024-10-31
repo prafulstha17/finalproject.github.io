@@ -81,7 +81,8 @@
 }
 
 .workinghrs,
-.salary {
+.salary,
+.category {
   flex-basis: 35%;
   padding: 5px;
   box-sizing: border-box;
