@@ -9,7 +9,6 @@ function Jobs() {
   const [hidden, setHidden] = useState(true);
   const [user, setUser] = useState(null);
 
-
   const handlePostSubmit = async () => {
     setStatus(true);
     setHidden(false);
@@ -26,7 +25,6 @@ function Jobs() {
 
     return () => unsubscribe();
   }, []);
-
 
   return (
     <div className="container-xxl py-5">
@@ -45,7 +43,7 @@ function Jobs() {
           </center>
           <br />
         </>
-      ) : null }
+      ) : null}
       <div className="containerJob">
         <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
           Job Listing
