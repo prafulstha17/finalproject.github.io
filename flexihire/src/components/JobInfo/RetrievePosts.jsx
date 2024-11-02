@@ -479,7 +479,23 @@ function RetrievePosts({ isAdmin }) {
             <ul>
               {recommendedPosts.length > 0 ? (
                 recommendedPosts.map((post) => (
-                  <li key={post.id} className="recommended-post">
+                  <li key={post.id} className="job-post">
+                    <div className="job-header">
+                    <div className="postDetails">
+                      <p>
+                        <a
+                          href={`/users/${post.userId}`}
+                          className="username-link"
+                        >
+                          {post.username}
+                        </a>{" "}
+                        posted on {formatDate(post.timestamp)}
+                      </p>
+                    </div>
+                        
+
+                    </div>
+
                     <h3>{post.title}</h3>
                     <p>{post.description}</p>
                     <button onClick={() => handleApplyPost(post.id)}>
