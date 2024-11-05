@@ -80,6 +80,51 @@ React.useEffect(() => {
   fetchSkillsData();
 }, []);
 
+  React.useEffect(() => {
+    async function fetchPersonalInformation() {
+      const url = `https://localhost:7148/api/User/${user?.uid}`;
+      const response = await fetch(url);
+
+      if(!response.ok) throw new Error("Failed to fetch certification");
+      const responseData = await response.json();
+      const personalInfo = responseData?.data;
+      console.log(personalInfo)
+
+      setDetailsData({
+        address: personalInfo?.address,
+        email: personalInfo?.email,
+        dateOfBirth: new Date(personalInfo?.dateOfBirth).toISOString().split("T")[0],
+        name: personalInfo?.name,
+        phone: personalInfo?.phone
+      });
+
+      let experienceData = personalInfo?.experiences?.$values[0];
+      const e_startDate = new Date(experienceData.startDate).toISOString().split("T")[0];
+      const e_endDate = new Date(experienceData.endDate).toISOString().split("T")[0];
+
+      setExperienceData({...experienceData, startDate: e_startDate, endDate: e_endDate})
+
+      let educationData = personalInfo?.education?.$values[0];
+      const ed_startDate = new Date(educationData.startDate).toISOString().split("T")[0];
+      const ed_endDate = new Date(educationData.endDate).toISOString(educationData.endDate).split("T")[0];
+
+      setEducationData({...educationData, startDate: ed_startDate, endDate: ed_endDate});
+      
+      let skillData = personalInfo?.skills?.$values[0];
+      setSkillsData({...skillData});
+
+      let certificateData = personalInfo?.certifications?.$values[0];      
+      const dateIssued = new Date(certificateData?.dateIssued).toISOString().split("T")[0];
+      setCertificationData({...certificateData, dateIssued});
+    }
+
+    if(user != null) {
+      fetchPersonalInformation()
+    }
+   }, [user]);
+
+
+
   const handlePersonalInfoChange = (e) => {
     const { name, value } = e.target;
     setDetailsData({
@@ -456,9 +501,9 @@ const handleCertificationSubmit = async (e) => {
               <h3 className="block text-sm font-medium text-gray-700">End Date</h3>
               <input type="date" name="endDate" value={ExperienceData.endDate} onChange={handleExperienceChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
             </div>
-            <div className="mb-4 flex items-center">
+            <div className="mb-4 flex items-center w-fit">
               <input type="checkbox" name="isCurrent" checked={ExperienceData.isCurrent} onChange={handleExperienceChange} className="mr-2" />
-              <h3 className="block text-sm font-medium text-gray-700">Is Current</h3>
+              <span className="text-xs font-medium text-gray-700">Is Current</span>
             </div>
             <div className="mb-4">
               <h3 className="block text-sm font-medium text-gray-700">Responsibilities</h3>
@@ -508,9 +553,9 @@ const handleCertificationSubmit = async (e) => {
               <h3 className="block text-sm font-medium text-gray-700">End Date</h3>
               <input type="date" name="endDate" value={EducationData.endDate} onChange={handleEducationChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
             </div>
-            <div className="mb-4 flex items-center">
+            <div className="mb-4 flex items-center w-fit">
               <input type="checkbox" name="isCurrent" checked={EducationData.isCurrent} onChange={handleEducationChange} className="mr-2" />
-              <h3 className="block text-sm font-medium text-gray-700">Is Current</h3>
+              <span className="text-xs font-medium text-gray-700">Is Current</span>
             </div>
             <div className="flex justify-end">
               <button type="button" className="mr-4 text-gray-700">Cancel</button>

@@ -33,7 +33,7 @@ namespace GenerateCV.Controllers
 
         // GET: api/Experience/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BaseResponseModel<Experience>>> GetExperienceById(int id)
+        public async Task<ActionResult<BaseResponseModel<Experience>>> GetExperienceById(String id)
         {
             var experience = await _experienceRepository.GetByIdAsync(id);
             if (experience == null)

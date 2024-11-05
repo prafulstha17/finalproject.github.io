@@ -20,9 +20,9 @@ namespace GenerateCV.Repository
             return await _context.Experiences.Include(e => e.User).ToListAsync();
         }
 
-        public async Task<Experience> GetByIdAsync(int id)
+        public async Task<Experience> GetByIdAsync(String id)
         {
-            return await _context.Experiences.Include(e => e.User).FirstOrDefaultAsync(e => e.Id == id);
+            return await _context.Experiences.Include(e => e.User).FirstOrDefaultAsync(e => e.UserId == id);
         }
 
         public async Task<Experience> AddAsync(ExperienceDTO experienceDTO)

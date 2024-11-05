@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\repository\\experiencerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\repository\\experiencerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\irepository\\iexperiencerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\irepository\\iexperiencerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\controllers\\experiencecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\controllers\\experiencecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\migrations\\20241102112441_addcv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -46,24 +58,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "GenerateCV\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
-              "RelativeToolTip": "GenerateCV\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAkwBQAAAAbAAAAAAAAAA==",
+              "Title": "ExperienceController.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\ExperienceController.cs",
+              "RelativeDocumentMoniker": "GenerateCV\\Controllers\\ExperienceController.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\ExperienceController.cs",
+              "RelativeToolTip": "GenerateCV\\Controllers\\ExperienceController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAewCUAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T05:47:19.307Z",
+              "WhenOpened": "2024-11-05T10:06:39.09Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "IExperienceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\IRepository\\IExperienceRepository.cs",
+              "RelativeDocumentMoniker": "GenerateCV\\IRepository\\IExperienceRepository.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\IRepository\\IExperienceRepository.cs",
+              "RelativeToolTip": "GenerateCV\\IRepository\\IExperienceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T10:05:23.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExperienceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\ExperienceRepository.cs",
+              "RelativeDocumentMoniker": "GenerateCV\\Repository\\ExperienceRepository.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\ExperienceRepository.cs",
+              "RelativeToolTip": "GenerateCV\\Repository\\ExperienceRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T10:04:50.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "20241102112441_addcv.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Migrations\\20241102112441_addcv.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Migrations\\20241102112441_addcv.cs",
@@ -75,7 +113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Cv.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\Cv.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Model\\Cv.cs",
@@ -83,12 +121,11 @@
               "RelativeToolTip": "GenerateCV\\Model\\Cv.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T11:23:55.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T11:23:55.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Program.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Program.cs",
@@ -96,12 +133,11 @@
               "RelativeToolTip": "GenerateCV\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:51:20.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:51:20.056Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "UserCvController.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserCvController.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Controllers\\UserCvController.cs",
@@ -109,25 +145,36 @@
               "RelativeToolTip": "GenerateCV\\Controllers\\UserCvController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwCcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:51:04.01Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:51:04.01Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "CvRepository.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Repository\\CvRepository.cs",
               "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
               "RelativeToolTip": "GenerateCV\\Repository\\CvRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T10:47:27.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "GenerateCV\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
+              "RelativeToolTip": "GenerateCV\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwBQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T05:47:19.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Data\\DataContext.cs",
@@ -139,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "UserCV.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\UserCV.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Model\\UserCV.cs",
@@ -147,20 +194,20 @@
               "RelativeToolTip": "GenerateCV\\Model\\UserCV.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:43:01.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:43:01.457Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "UserCvDTO.cs",
               "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
               "RelativeDocumentMoniker": "GenerateCV\\DTO\\UserCvDTO.cs",
               "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
               "RelativeToolTip": "GenerateCV\\DTO\\UserCvDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:41:55.155Z"
+              "WhenOpened": "2024-11-02T10:41:55.155Z",
+              "EditorCaption": ""
             }
           ]
         }
