@@ -185,6 +185,11 @@ function Navbar() {
               About Us
             </a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/CV" onClick={handleLinkClick}>
+              CV
+            </a>
+          </li>
         </div>
         <div className="login-search">
           <div className="search-form">
