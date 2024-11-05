@@ -1,37 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Praful\\Desktop\\GenerateCV\\",
+  "WorkspaceRootPath": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\migrations\\20241102112441_addcv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\migrations\\20241102112441_addcv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\model\\usercv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\model\\usercv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\model\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\model\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\controllers\\usercvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\controllers\\usercvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\controllers\\usercvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\generatecv\\generatecv\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\model\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\model\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\migrations\\20241102112441_addcv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\migrations\\20241102112441_addcv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\model\\usercv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\model\\usercv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\dto\\usercvdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\repository\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|c:\\users\\praful\\desktop\\finalproject.github.io\\generatecv\\generatecv\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A64A46D0-3EEB-41C6-8C42-DAF415A8F8DD}|GenerateCV\\GenerateCV.csproj|solutionrelative:generatecv\\data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,28 +46,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "GenerateCV\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserController.cs",
+              "RelativeToolTip": "GenerateCV\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T05:47:19.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "20241102112441_addcv.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Migrations\\20241102112441_addcv.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Migrations\\20241102112441_addcv.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Migrations\\20241102112441_addcv.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Migrations\\20241102112441_addcv.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Migrations\\20241102112441_addcv.cs",
               "RelativeToolTip": "GenerateCV\\Migrations\\20241102112441_addcv.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T11:24:42.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T11:24:42.143Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Cv.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Model\\Cv.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\Cv.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Model\\Cv.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Model\\Cv.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\Cv.cs",
               "RelativeToolTip": "GenerateCV\\Model\\Cv.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,79 +90,75 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Program.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Program.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Program.cs",
-              "RelativeToolTip": "GenerateCV\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Program.cs*",
+              "RelativeToolTip": "GenerateCV\\Program.cs*",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T10:51:20.056Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "UserCvController.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Controllers\\UserCvController.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserCvController.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Controllers\\UserCvController.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Controllers\\UserCvController.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Controllers\\UserCvController.cs",
               "RelativeToolTip": "GenerateCV\\Controllers\\UserCvController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T10:51:04.01Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "CvRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Repository\\CvRepository.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Repository\\CvRepository.cs",
               "RelativeToolTip": "GenerateCV\\Repository\\CvRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:47:27.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:47:27.071Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DataContext.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Data\\DataContext.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Data\\DataContext.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Data\\DataContext.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Data\\DataContext.cs",
               "RelativeToolTip": "GenerateCV\\Data\\DataContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:43:28.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:43:28.951Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UserCV.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Model\\UserCV.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\UserCV.cs",
               "RelativeDocumentMoniker": "GenerateCV\\Model\\UserCV.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\Model\\UserCV.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\Model\\UserCV.cs",
               "RelativeToolTip": "GenerateCV\\Model\\UserCV.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:43:01.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:43:01.457Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "UserCvDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
               "RelativeDocumentMoniker": "GenerateCV\\DTO\\UserCvDTO.cs",
-              "ToolTip": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
+              "ToolTip": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\DTO\\UserCvDTO.cs",
               "RelativeToolTip": "GenerateCV\\DTO\\UserCvDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T10:41:55.155Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-02T10:41:55.155Z"
             }
           ]
         }

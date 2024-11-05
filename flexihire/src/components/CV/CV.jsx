@@ -1,4 +1,5 @@
 import React from 'react';
+import { auth } from '../../config/firebase';
 
 function CV() {
   const [DetailsData, setDetailsData] = React.useState({
@@ -36,7 +37,7 @@ function CV() {
     issuingOrganization: ""
   };
 
-
+  const [user, setUser] = React.useState(null); //user information
   const [ExperienceData, setExperienceData] = React.useState(ExperienceDataform);
   const [showAddMoreExperience, setShowAddMoreExperience] = React.useState(false);
   const [EducationData, setEducationData] = React.useState(initialEducationData);
@@ -46,7 +47,38 @@ function CV() {
   const [CertificationData, setCertificationData] = React.useState(initialCertificationData);
   const [showAddMoreCertification, setShowAddMoreCertification] = React.useState(false);
   const [cvGenerated, setCvGenerated] = React.useState(false); // State to track CV generation
+  const [skillsList, setSkillsList] = React.useState([]); // State for fetched skills
+  const [loading, setLoading] = React.useState(false); // Loading state
 
+
+  React.useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    })
+
+    return unsubscribe;
+  }, [])
+
+React.useEffect(() => {
+  const fetchSkillsData = async () => {
+    setLoading(true);
+    const url = 'https://localhost:7148/api/Skill';
+    
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch skills');
+      
+      const result = await response.json();
+      setSkillsList(result.data.$values); // Assuming the skills are inside result.data.$values
+    } catch (error) {
+      console.error('Error fetching skills:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchSkillsData();
+}, []);
 
   const handlePersonalInfoChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +88,7 @@ function CV() {
     });
   };
 
-
+  // personal information
   const handlePersonalInfoSubmit = async (e) => {
     e.preventDefault();
     const url = `https://localhost:7148/api/User`;
@@ -68,7 +100,7 @@ function CV() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          id: "apple1",
+          id: user?.uid,
           name: DetailsData.name,
           email: DetailsData.email,
           phone: DetailsData.phone,
@@ -87,6 +119,133 @@ function CV() {
       alert("An error occurred while saving Personal Information.");
     }
   };
+
+  // handle employment information
+  const handleExperienceSubmit = async (e) => {
+    e.preventDefault();
+    const url = `https://localhost:7148/api/Experience`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          userId: user?.uid,
+          company: ExperienceData.company,
+          position: ExperienceData.position,
+          startDate: new Date(ExperienceData.startDate).toISOString(),
+          endDate: new Date(ExperienceData.endDate).toISOString(),
+          isCurrent: ExperienceData.isCurrent,
+          responsibilities: ExperienceData.responsibilities
+        })
+      });
+
+      if (response.ok) {
+        alert("Experience data saved successfully!");
+      } else {
+        alert("Failed to save Experience. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving Experience:", error);
+      alert("An error occurred while saving Experience.");
+    }
+  };
+
+
+   // handle employment information
+   const handleEducationSubmit = async (e) => {
+    e.preventDefault();
+    const url = `https://localhost:7148/api/Education`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          userId: user?.uid,
+          startDate: new Date(EducationData.startDate).toISOString(),
+          endDate: new Date(EducationData.endDate).toISOString(),
+          degree: EducationData.degree,
+          isCurrent: EducationData.isCurrent,
+          institution: EducationData.institution
+        })
+      });
+
+      if (response.ok) {
+        alert("Education Inforamtoion saved successfully!");
+      } else {
+        alert("Failed to save Education Information. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving Education Information:", error);
+      alert("An error occurred while saving Education Information.");
+    }
+  };
+
+
+   // handle skill information
+   const handleSkillsSubmit = async (e) => {
+    e.preventDefault();
+    const url = `https://localhost:7148/api/Skill`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          userId: user?.uid,
+          name: SkillsData.name,
+          proficiency: SkillsData.proficiency
+        })
+      });
+
+      if (response.ok) {
+        alert("Skill saved successfully!");
+      } else {
+        alert("Failed to save Skill. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving Skill:", error);
+      alert("An error occurred while saving Skill.");
+    }
+  };
+
+// certificate Information
+const handleCertificationSubmit = async (e) => {
+  e.preventDefault();
+  const url = `https://localhost:7148/api/Certification`;
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userId: user?.uid,
+        title: CertificationData.title,
+        dateIssued: new Date(EducationData.endDate).toISOString(),
+        issuingOrganization: CertificationData.issuingOrganization
+      })
+    });
+
+    if (response.ok) {
+      alert("Certification Information saved successfully!");
+    } else {
+      alert("Failed to save Certification Information. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error saving Skill:", error);
+    alert("An error occurred while saving Skill.");
+  }
+};
+
 
   const handleExperienceChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -118,28 +277,16 @@ function CV() {
       [name]: value
     });
   };
-  const handleExperienceSubmit = (e) => {
-    e.preventDefault();
-    setShowAddMoreExperience(true);
-  };
-
+ 
   const handleAddMoreExperience = () => {
     setExperienceData(ExperienceDataform);
     setShowAddMoreExperience(false);
   };
 
-  const handleEducationSubmit = (e) => {
-    e.preventDefault();
-    setShowAddMoreEducation(true);
-  };
 
   const handleAddMoreEducation = () => {
     setEducationData(initialEducationData);
     setShowAddMoreEducation(false);
-  };
-  const handleSkillsSubmit = (e) => {
-    e.preventDefault();
-    setShowAddMoreSkills(true);
   };
 
   const handleAddMoreSkills = () => {
@@ -147,10 +294,6 @@ function CV() {
     setShowAddMoreSkills(false);
   };
 
-  const handleCertificationSubmit = (e) => {
-    e.preventDefault();
-    setShowAddMoreCertification(true);
-  };
 
   const handleAddMoreCertification = () => {
     setCertificationData(initialCertificationData);
@@ -161,40 +304,38 @@ function CV() {
 
   //generate CV
   const handleGenerateCV = async () => {
-    const userId = "apple1"; // Replace with dynamic user ID if needed
+    console.log("hello")
+    const userId = user?.uid; // Replace with dynamic user ID if needed
     const url = `https://localhost:7148/api/UserCv/${userId}/generate-cv`;
-  }
 
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({
-  //         details: DetailsData,
-  //         experience: ExperienceData,
-  //         education: EducationData,
-  //         skills: SkillData,
-  //         certifications: CertificationData
-  //       })
-  //     });
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
 
-  //     if (response.ok) {
-  //       const result = await response.json();
-  //       alert("CV generated successfully!");
-  //     } else {
-  //       alert("Failed to generate CV. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error generating CV:", error);
-  //     alert("An error occurred while generating the CV.");
-  //   }
-  // };
+      if (response.ok) {
+        const res = await response.json();
+        if(res) {
+          alert(res?.message);
+          setCvGenerated(true);
+        } else{
+          alert("Error in response object. Please try again.");
+        }
+      } else {
+        alert("Failed to generate CV. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error generating CV:", error);
+      alert("An error occurred while generating the CV.");
+    }
+  };
 
    // Download CV
    const handleDownloadCV = async () => {
-    const userId = "apple1"; // Replace with dynamic user ID if needed
+    const userId = user?.uid; // Replace with dynamic user ID if needed
     const url = `https://localhost:7148/api/UserCv/${userId}/download-cv`;
 
     try {
@@ -224,11 +365,13 @@ function CV() {
       alert("An error occurred while downloading the CV.");
     }
   };
+
+
   return (
     <>
       {/* Personal Details */}
        {/* Personal Details */}
-       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+       <div className="pt-10 bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-2">Personal Information</h2>
           <form onSubmit={handlePersonalInfoSubmit}>
@@ -293,9 +436,9 @@ function CV() {
       </div>
 
       {/* Experience */}
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="pt-10 bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
-          <h2 className="text-xl font-semibold mb-2">Employment Information</h2>
+          <h2 className="text-xl font-semibold mb-2">Experience</h2>
           <form onSubmit={handleExperienceSubmit}>
             <div className="mb-4">
               <h3 className="block text-sm font-medium text-gray-700">Company</h3>
@@ -335,7 +478,7 @@ function CV() {
       </div>
 
       {/* Education */}
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="pt-10 bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-2">Education Information</h2>
           <form onSubmit={handleEducationSubmit}>
@@ -383,7 +526,7 @@ function CV() {
       </div>
 
       {/* Skills */}
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="pt-10 bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-2">Skills Information</h2>
           <form onSubmit={handleSkillsSubmit}>
@@ -412,7 +555,7 @@ function CV() {
       </div>
 
       {/* Certifications Section */}
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="py-10 bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-2">Certifications Information</h2>
           <form onSubmit={handleCertificationSubmit}>

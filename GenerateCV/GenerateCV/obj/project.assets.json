@@ -6621,11 +6621,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
+      "projectUniqueName": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
       "projectName": "GenerateCV",
-      "projectPath": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
+      "projectPath": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
       "packagesPath": "C:\\Users\\Praful\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\obj\\",
+      "outputPath": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Praful\\AppData\\Roaming\\NuGet\\NuGet.Config",

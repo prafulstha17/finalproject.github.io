@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GenerateCV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6e172131fbbfd8061373bf971e4c149a08f7ad9")]
 [assembly: System.Reflection.AssemblyProductAttribute("GenerateCV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GenerateCV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

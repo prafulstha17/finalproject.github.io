@@ -18,7 +18,7 @@ namespace GenerateCV.Controllers
         }
 
         // GET: api/User
-        [HttpGet]
+        [HttpGet ("GetUsers")]
         public async Task<ActionResult<BaseResponseModel<IEnumerable<User>>>> GetAllUsers()
         {
             var users = await _userRepository.GetAllAsync();

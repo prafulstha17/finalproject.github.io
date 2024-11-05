@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XYWNw96mOu8=",
+  "dgSpecHash": "PWo8tmegIa8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Praful\\Desktop\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
+  "projectFilePath": "C:\\Users\\Praful\\Desktop\\finalproject.github.io\\GenerateCV\\GenerateCV\\GenerateCV.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Praful\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Praful\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
