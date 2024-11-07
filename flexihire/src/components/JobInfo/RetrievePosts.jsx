@@ -21,6 +21,7 @@ import { db } from "../../config/firebase";
 import "./RetrievePosts.css";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
+import { post } from "jquery";
 
 function RetrievePosts({ isAdmin }) {
   const [posts, setPosts] = useState([]);
@@ -34,6 +35,38 @@ function RetrievePosts({ isAdmin }) {
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+  // applied post
+  const [appliedPosts, setAppliedPosts] = useState([]);
+  const fetchAppliedPosts = async () => {
+    if (currentUser) {
+      try {
+        const applicationsRef = collection(db, "applications");
+        const q = query(
+          applicationsRef,
+          where("userId", "==", currentUser.uid)
+        );
+
+        const querySnapshot = await getDocs(q);
+        const appliedPostsData = querySnapshot.docs.map((doc) => doc.data());
+
+        const appliedPostIds = appliedPostsData.map(
+          (application) => application.postId
+        );
+
+        // Filter out posts the user has applied for
+        const appliedPostsList = posts.filter((post) =>
+          appliedPostIds.includes(post.id)
+        );
+        setAppliedPosts(appliedPostsList);
+      } catch (error) {
+        console.error("Error fetching applied posts:", error);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchAppliedPosts();
+  }, [currentUser, posts]);
 
   useEffect(() => {
     const unsubscribeAuth = listenToAuthChanges((user) => {
@@ -354,7 +387,7 @@ function RetrievePosts({ isAdmin }) {
           {isAdmin && (
             <ul>
               {posts.map((post) => (
-                <li key={post.id} className="job-post">
+                <li key={post.id} className="job-post bg-red-700 ">
                   <div className="job-header">
                     <div className="title">{post.title}</div>
                     <div className="postDetails">
@@ -406,6 +439,15 @@ function RetrievePosts({ isAdmin }) {
               >
                 Your Created Jobs
               </h6>
+
+              <h6
+                className={`section-title ${
+                  selectedSection === "applied" && "active"
+                }`}
+                onClick={() => setSelectedSection("applied")}
+              >
+                Applied Jobs
+              </h6>
             </div>
           )}{" "}
           {selectedSection === "available" && (
@@ -456,6 +498,51 @@ function RetrievePosts({ isAdmin }) {
               />
             </>
           )}
+          {selectedSection === "applied" && (
+            <div className="section-wrapperm ">
+              <ul>
+                {appliedPosts.length > 0 ? (
+                  appliedPosts.map((post) => (
+
+                    <li key={post.id} className="items-center bg-white border border-gray-200 rounded-lg shadow m-3 p-5   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ">
+                      <div className="job-header">
+                        <div className="title">{post.title}</div>
+                        <div className="postDetails">
+                          <p>
+                            <a
+                              href={`/users/${post.userId}`}
+                              className="username-link  "
+                            >
+                              {post.username}
+                            </a>{" "}
+                            posted on {formatDate(post.timestamp)}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="job-description">
+                        {post.description && <>{post.description}</>}
+                      </div>
+                      <div className="job-details">
+                        <div className="exp">Experience: {post.experience}</div>
+                        <div className="deadline">
+                          Deadline: {post.deadline}
+                        </div>
+                        <div className="workinghrs">
+                          Est. time: {post.timing}
+                        </div>
+                        <div className="salary">Salary: {post.salary}</div>
+                        <div className="categories">
+                          categories:{post.category}
+                        </div>
+                      </div>
+                    </li>
+                  ))
+                ) : (
+                  <p>You haven't applied to any jobs yet.</p>
+                )}
+              </ul>
+            </div>
+          )}
           {selectedSection === "created" && (
             <CreatedPosts
               posts={createdPosts}
@@ -481,19 +568,17 @@ function RetrievePosts({ isAdmin }) {
                 recommendedPosts.map((post) => (
                   <li key={post.id} className="job-post">
                     <div className="job-header">
-                    <div className="postDetails">
-                      <p>
-                        <a
-                          href={`/users/${post.userId}`}
-                          className="username-link"
-                        >
-                          {post.username}
-                        </a>{" "}
-                        posted on {formatDate(post.timestamp)}
-                      </p>
-                    </div>
-                        
-
+                      <div className="postDetails">
+                        <p>
+                          <a
+                            href={`/users/${post.userId}`}
+                            className="username-link"
+                          >
+                            {post.username}
+                          </a>{" "}
+                          posted on {formatDate(post.timestamp)}
+                        </p>
+                      </div>
                     </div>
 
                     <h3>{post.title}</h3>

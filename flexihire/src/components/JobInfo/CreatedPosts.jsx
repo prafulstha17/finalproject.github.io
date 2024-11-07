@@ -2,6 +2,7 @@
 import React from 'react';
 import PendingApplicationsPopup from "./PendingApplicationsPopup";
 
+
 function CreatedPosts({
     posts,
     currentUser,
@@ -33,7 +34,7 @@ function CreatedPosts({
         <div className="created-posts">
             <ul>
                 {posts.map((post) => (
-                    <li key={post.id} className="job-post">
+                    <li key={post.id} className="items-center bg-white border border-gray-200 rounded-lg shadow m-3 p-5   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         <div className="job-header">
                             <div className="title">{post.title}</div>
                             <div className="postDetails">

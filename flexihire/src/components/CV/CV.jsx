@@ -349,7 +349,7 @@ const handleCertificationSubmit = async (e) => {
 
   //generate CV
   const handleGenerateCV = async () => {
-    console.log("hello")
+
     const userId = user?.uid; // Replace with dynamic user ID if needed
     const url = `https://localhost:7148/api/UserCv/${userId}/generate-cv`;
 
@@ -510,7 +510,7 @@ const handleCertificationSubmit = async (e) => {
               <textarea name="responsibilities" value={ExperienceData.responsibilities} onChange={handleExperienceChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="bg-red-600 mr-4 ">Cancel</button>
+              <button type="button" className="bg-red-600 mr-4 ">Reset</button>
               <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md">Save</button>
             </div>
           </form>
@@ -558,8 +558,8 @@ const handleCertificationSubmit = async (e) => {
               <span className="text-xs font-medium text-gray-700">Is Current</span>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="mr-4 text-gray-700">Cancel</button>
-              <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md">Save</button>
+              <button type="button" className="bg-red-600 mr-4 ">Reset</button>
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md">Save</button>
             </div>
           </form>
           {showAddMoreEducation && (
@@ -587,8 +587,8 @@ const handleCertificationSubmit = async (e) => {
               </div>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="mr-4 text-gray-700">Cancel</button>
-              <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md">Save</button>
+              <button type="button" className="bg-red-600 mr-4 ">Reset</button>
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md">Save</button>
             </div>
           </form>
           {showAddMoreSkills && (
@@ -617,8 +617,8 @@ const handleCertificationSubmit = async (e) => {
               <input type="text" name="issuingOrganization" value={CertificationData.issuingOrganization} onChange={handleCertificationChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
             </div>
             <div className="flex justify-end">
-              <button type="button" className="mr-4 text-gray-700">Cancel</button>
-              <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md">Save</button>
+              <button type="button" className="bg-red-600 mr-4 ">Reset</button>
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded-md">Save</button>
             </div>
           </form>
           {showAddMoreCertification && (

@@ -25,6 +25,13 @@ namespace GenerateCV.Repository
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null) return false;
 
+            // Check if CV already exists for the user and delete if found
+            var existingCv = await _context.UserCVs.FirstOrDefaultAsync(cv => cv.UserId == userId);
+            if (existingCv != null)
+            {
+                _context.UserCVs.Remove(existingCv);
+            }
+
             // Generate PDF
             byte[] pdfData;
             using (var ms = new MemoryStream())
