@@ -40,6 +40,12 @@ function CV() {
   const [user, setUser] = React.useState(null); //user information
   const [ExperienceData, setExperienceData] =
     React.useState(ExperienceDataform);
+
+  const [experiences, setExperiences] = React.useState([]);//sandip Exp
+  const [education, setEducation] = React.useState([]);
+  const [certifications, setCertifications] = React.useState([]);
+  const [skills, setSkills] = React.useState([]);
+
   const [showAddMoreExperience, setShowAddMoreExperience] =
     React.useState(false);
   const [EducationData, setEducationData] =
@@ -106,6 +112,11 @@ function CV() {
       });
 
       let experienceData = personalInfo?.experiences?.$values[0];
+      setExperiences(personalInfo?.experiences?.$values);//sandip Exp
+      setEducation(personalInfo?.education?.$values);
+      setCertifications(personalInfo?.certifications?.$values);
+      setSkills(personalInfo?.skills?.$values);
+
       const e_startDate = new Date(experienceData.startDate)
         .toISOString()
         .split("T")[0];
@@ -468,6 +479,8 @@ function CV() {
     }
   };
 
+  console.log(experiences)
+
   return (
     <>
       {/* Personal Details */}
@@ -630,9 +643,9 @@ function CV() {
               ></textarea>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="bg-red-600 mr-4 ">
+              {/* <button type="button" className="bg-red-600 mr-4 ">
                 Reset
-              </button>
+              </button> */}
               <button
                 type="submit"
                 className="bg-green-600 text-white px-4 py-2 rounded-md"
@@ -651,61 +664,64 @@ function CV() {
               </button>
             </div>
           )}
-
+          {/* sandip */}
           <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
-            <li>
-              <details class="group">
-                <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
-                  <svg
-                    class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                    ></path>
-                  </svg>
-                  <span className="font-bold uppercase">
-                    {ExperienceData.company}
-                  </span>
-                </summary>
+            {
+              experiences?.length >= 0 ? experiences.map((value, index) => (
+                <li key={index}>
+                  <details class="group">
+                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                      <svg
+                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        ></path>
+                      </svg>
+                      <span className="font-bold uppercase">
+                        {value?.company}
+                      </span>
+                    </summary>
 
-                <article class="px-4 pb-4">
-                  <p className="font-bold">
-                    Position:{" "}
-                    <span className="font-light">
-                      {ExperienceData.position}
-                    </span>{" "}
-                  </p>
-                  <p className="font-bold">
-                    Responsibilities:{" "}
-                    <span className="font-light">
-                      {ExperienceData.responsibilities}
-                    </span>
-                  </p>
-                  <p className="font-bold">
-                    StartDate:{" "}
-                    <span className="font-light">
-                      {" "}
-                      {ExperienceData.startDate}
-                    </span>
-                  </p>
-                  <p className="font-bold">
-                    EndDate:{" "}
-                    <span className="font-light">{ExperienceData.endDate}</span>{" "}
-                  </p>
-                  <div className="flex justify-end">
-                    <button type="button" className="bg-red-600 mr-4 ">
-                      delete
-                    </button>
-                  </div>
-                </article>
-              </details>
-            </li>
+                    <article class="px-4 pb-4">
+                      <p className="font-bold">
+                        Position:{" "}
+                        <span className="font-light">
+                          {value?.position}
+                        </span>{" "}
+                      </p>
+                      <p className="font-bold">
+                        Responsibilities:{" "}
+                        <span className="font-light">
+                          {value?.responsibilities}
+                        </span>
+                      </p>
+                      <p className="font-bold">
+                        StartDate:{" "}
+                        <span className="font-light">
+                          {" "}
+                          {value?.startDate}
+                        </span>
+                      </p>
+                      <p className="font-bold">
+                        EndDate:{" "}
+                        <span className="font-light">{value?.endDate}</span>{" "}
+                      </p>
+                      <div className="flex justify-end">
+                        <button type="button" className="bg-red-600 mr-4 ">
+                          delete
+                        </button>
+                      </div>
+                    </article>
+                  </details>
+                </li>
+            )) : ""}
           </ul>
         </div>
       </div>
@@ -791,9 +807,9 @@ function CV() {
               </span>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="bg-red-600 mr-4 ">
+              {/* <button type="button" className="bg-red-600 mr-4 ">
                 Reset
-              </button>
+              </button> */}
               <button
                 type="submit"
                 className="bg-green-600 text-white px-4 py-2 rounded-md"
@@ -812,6 +828,65 @@ function CV() {
               </button>
             </div>
           )}
+
+<ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
+            {
+              education?.length >= 0 ? education.map((value, index) => (
+                <li key={index}>
+                  <details class="group">
+                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                      <svg
+                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        ></path>
+                      </svg>
+                      <span className="font-bold uppercase">
+                        {value?.institution}
+                      </span>
+                    </summary>
+
+                    <article class="px-4 pb-4">
+                      <p className="font-bold">
+                      institution:{" "}
+                        <span className="font-light">
+                          {value?.institution}
+                        </span>{" "}
+                      </p>
+                      <p className="font-bold">
+                      degree:{" "}
+                        <span className="font-light">
+                          {value?.degree}
+                        </span>
+                      </p>
+                      <p className="font-bold">
+                        StartDate:{" "}
+                        <span className="font-light">
+                          {" "}
+                          {value?.startDate}
+                        </span>
+                      </p>
+                      <p className="font-bold">
+                        EndDate:{" "}
+                        <span className="font-light">{value?.endDate}</span>{" "}
+                      </p>
+                      <div className="flex justify-end">
+                        <button type="button" className="bg-red-600 mr-4 ">
+                          delete
+                        </button>
+                      </div>
+                    </article>
+                  </details>
+                </li>
+            )) : ""}
+          </ul>
         </div>
       </div>
 
@@ -853,9 +928,9 @@ function CV() {
               </div>
             </div>
             <div className="flex justify-end">
-              <button type="button" className="bg-red-600 mr-4 ">
+              {/* <button type="button" className="bg-red-600 mr-4 ">
                 Reset
-              </button>
+              </button> */}
               <button
                 type="submit"
                 className="bg-green-600 text-white px-4 py-2 rounded-md"
@@ -874,6 +949,49 @@ function CV() {
               </button>
             </div>
           )}
+          <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
+            {
+              skills?.length >= 0 ? skills.map((value, index) => (
+                <li key={index}>
+                  <details class="group">
+                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                      <svg
+                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        ></path>
+                      </svg>
+                      <span className="font-bold uppercase">
+                        {value?.name}
+                      </span>
+                    </summary>
+
+                    <article class="px-4 pb-4">
+                      <p className="font-bold">
+                      proficiency:{" "}
+                        <span className="font-light">
+                          {value?.proficiency}
+                        </span>{" "}
+                      </p>
+
+                      <div className="flex justify-end">
+                        <button type="button" className="bg-red-600 mr-4 ">
+                          delete
+                        </button>
+                      </div>
+                    </article>
+                  </details>
+                </li>
+            )) : ""}
+          </ul>
+
         </div>
       </div>
 
@@ -919,9 +1037,9 @@ function CV() {
               />
             </div>
             <div className="flex justify-end">
-              <button type="button" className="bg-red-600 mr-4 ">
+              {/* <button type="button" className="bg-red-600 mr-4 ">
                 Reset
-              </button>
+              </button> */}
               <button
                 type="submit"
                 className="bg-green-600 text-white px-4 py-2 rounded-md"
@@ -940,6 +1058,54 @@ function CV() {
               </button>
             </div>
           )}
+                     <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
+            {
+              certifications?.length >= 0 ? certifications.map((value, index) => (
+                <li key={index}>
+                  <details class="group">
+                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                      <svg
+                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        ></path>
+                      </svg>
+                      <span className="font-bold uppercase">
+                        {value?.title}
+                      </span>
+                    </summary>
+
+                    <article class="px-4 pb-4">
+                      <p className="font-bold">
+                      issuingOrganization:{" "}
+                        <span className="font-light">
+                          {value?.issuingOrganization}
+                        </span>{" "}
+                      </p>
+                      <p className="font-bold">
+                      dateIssued:{" "}
+                        <span className="font-light">
+                          {value?.dateIssued}
+                        </span>
+                      </p>
+                    
+                      <div className="flex justify-end">
+                        <button type="button" className="bg-red-600 mr-4 ">
+                          delete
+                        </button>
+                      </div>
+                    </article>
+                  </details>
+                </li>
+            )) : ""}
+          </ul>
         </div>
       </div>
 
