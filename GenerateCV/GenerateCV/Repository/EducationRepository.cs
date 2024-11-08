@@ -1,5 +1,5 @@
 ﻿using GenerateCV.Data;
-using GenerateCV.DTO;
+using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +41,29 @@ namespace GenerateCV.Repository
             return res;
         }
 
-        public async Task<Education> UpdateAsync(Education education)
+        public async Task<Education> UpdateAsync(int id ,EducationDTO education)
         {
-            _context.Educations.Update(education);
+            var existingUser = await _context.Educations.FindAsync(id);
+
+            if (existingUser == null)
+
+            {
+
+                // Handle the case where the user does not exist
+
+                throw new KeyNotFoundException("User  not found");
+
+            }
+            existingUser.Institution = education.Institution;
+            existingUser.Degree = education.Degree;
+            existingUser.StartDate = education.StartDate;
+            existingUser.EndDate = education.EndDate;
+
+
+
+            _context.Educations.Update(existingUser);
             await _context.SaveChangesAsync();
-            return education;
+            return existingUser;
         }
 
         public async Task<bool> DeleteAsync(int id)

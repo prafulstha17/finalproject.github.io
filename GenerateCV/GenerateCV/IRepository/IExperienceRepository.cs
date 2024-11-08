@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.Model;
 
 namespace GenerateCV.IRepository

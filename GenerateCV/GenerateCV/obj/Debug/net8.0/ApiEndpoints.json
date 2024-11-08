@@ -29,7 +29,7 @@
     "Parameters": [
       {
         "Name": "certificationDTO",
-        "Type": "GenerateCV.DTO.CertificationDTO",
+        "Type": "GenerateCV.DTO.CreateDto.CertificationDTO",
         "IsRequired": true
       }
     ],
@@ -86,7 +86,7 @@
       },
       {
         "Name": "certification",
-        "Type": "GenerateCV.Model.Certification",
+        "Type": "GenerateCV.DTO.CreateDto.CertificationDTO",
         "IsRequired": true
       }
     ],
@@ -158,7 +158,7 @@
     "Parameters": [
       {
         "Name": "educationDTO",
-        "Type": "GenerateCV.DTO.EducationDTO",
+        "Type": "GenerateCV.DTO.CreateDto.EducationDTO",
         "IsRequired": true
       }
     ],
@@ -215,7 +215,7 @@
       },
       {
         "Name": "education",
-        "Type": "GenerateCV.Model.Education",
+        "Type": "GenerateCV.DTO.CreateDto.EducationDTO",
         "IsRequired": true
       }
     ],
@@ -287,7 +287,7 @@
     "Parameters": [
       {
         "Name": "experienceDTO",
-        "Type": "GenerateCV.DTO.ExperienceDTO",
+        "Type": "GenerateCV.DTO.CreateDto.ExperienceDTO",
         "IsRequired": true
       }
     ],
@@ -416,7 +416,7 @@
     "Parameters": [
       {
         "Name": "skillDTO",
-        "Type": "GenerateCV.DTO.SkillDTO",
+        "Type": "GenerateCV.DTO.CreateDto.SkillDTO",
         "IsRequired": true
       }
     ],
@@ -525,7 +525,7 @@
     "Parameters": [
       {
         "Name": "userDto",
-        "Type": "GenerateCV.DTO.userDTO",
+        "Type": "GenerateCV.DTO.CreateDto.userDTO",
         "IsRequired": true
       }
     ],
@@ -582,7 +582,7 @@
       },
       {
         "Name": "user",
-        "Type": "GenerateCV.Model.User",
+        "Type": "GenerateCV.DTO.CreateDto.userDTO",
         "IsRequired": true
       }
     ],

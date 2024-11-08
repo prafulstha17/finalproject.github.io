@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;

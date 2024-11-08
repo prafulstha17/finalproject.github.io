@@ -1,5 +1,5 @@
 ﻿using GenerateCV.Data;
-using GenerateCV.DTO;
+using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +41,24 @@ namespace GenerateCV.Repository
             
         }
 
-        public async Task<Certification> UpdateAsync(Certification certification)
+        public async Task<Certification> UpdateAsync(int id ,CertificationDTO certification)
         {
-            _context.Certifications.Update(certification);
+            
+            var existingUser = await _context.Certifications.FindAsync(id);
+
+            if (existingUser == null)
+            {
+                throw new KeyNotFoundException("User  not found");
+            }
+
+            existingUser.Title = certification.Title;
+            existingUser.DateIssued = certification.DateIssued; 
+            existingUser.IssuingOrganization = certification.IssuingOrganization;
+
+
+            _context.Certifications.Update(existingUser);
             await _context.SaveChangesAsync();
-            return certification;
+            return existingUser;
         }
 
         public async Task<bool> DeleteAsync(int id)

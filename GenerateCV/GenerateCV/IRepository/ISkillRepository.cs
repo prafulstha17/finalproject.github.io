@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.Model;
 
 namespace GenerateCV.IRepository
@@ -8,7 +8,7 @@ namespace GenerateCV.IRepository
         Task<IEnumerable<Skill>> GetAllAsync();
         Task<Skill> GetByIdAsync(int id);
         Task<Skill> AddAsync(SkillDTO skillDTO);
-        Task<Skill> UpdateAsync(Skill skill);
+        Task<Skill> UpdateAsync(int id ,Skill skill);
         Task<bool> DeleteAsync(int id);
     }
 }

@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;
@@ -85,18 +85,9 @@ namespace GenerateCV.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<BaseResponseModel<Skill>>> UpdateSkill(int id, Skill skill)
         {
-            if (id != skill.Id)
-            {
-                return BadRequest(new BaseResponseModel<Skill>
-                {
-                    Code = "400",
-                    Message = "Skill ID mismatch",
-                    Status = "Error",
-                    Data = null
-                });
-            }
+            
 
-            var updatedSkill = await _skillRepository.UpdateAsync(skill);
+            var updatedSkill = await _skillRepository.UpdateAsync( id ,skill);
             return Ok(new BaseResponseModel<Skill>
             {
                 Code = "200",

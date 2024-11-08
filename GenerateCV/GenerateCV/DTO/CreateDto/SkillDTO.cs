@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GenerateCV.DTO
+namespace GenerateCV.DTO.CreateDto
 {
     public class SkillDTO
     {

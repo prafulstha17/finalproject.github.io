@@ -1,5 +1,5 @@
 ﻿using GenerateCV.Data;
-using GenerateCV.DTO;
+using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.EntityFrameworkCore;
@@ -39,11 +39,28 @@ namespace GenerateCV.Repository
             return res;
         }
 
-        public async Task<Skill> UpdateAsync(Skill skill)
+        public async Task<Skill> UpdateAsync(int id ,Skill skill)
         {
-            _context.Skills.Update(skill);
+            var existingUser = await _context.Skills.FindAsync(id);
+
+            if (existingUser == null)
+
+            {
+
+                // Handle the case where the user does not exist
+
+                throw new KeyNotFoundException("User  not found");
+
+            }
+            existingUser.Proficiency = skill.Proficiency;
+            existingUser.Name = skill.Name;
+
+
+
+            _context.Skills.Update(existingUser);
             await _context.SaveChangesAsync();
-            return skill;
+            return existingUser;
+            
         }
 
         public async Task<bool> DeleteAsync(int id)

@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;
@@ -83,20 +83,12 @@ namespace GenerateCV.Controllers
 
         // PUT: api/Education/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<BaseResponseModel<Education>>> UpdateEducation(int id, Education education)
+        public async Task<ActionResult<BaseResponseModel<Education>>> UpdateEducation(int id, EducationDTO education)
         {
-            if (id != education.Id)
-            {
-                return BadRequest(new BaseResponseModel<Education>
-                {
-                    Code = "400",
-                    Message = "Education ID mismatch",
-                    Status = "Error",
-                    Data = null
-                });
-            }
 
-            var updatedEducation = await _educationRepository.UpdateAsync(education);
+           
+
+            var updatedEducation = await _educationRepository.UpdateAsync(id,education);
             return Ok(new BaseResponseModel<Education>
             {
                 Code = "200",

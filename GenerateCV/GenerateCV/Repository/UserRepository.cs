@@ -1,5 +1,5 @@
 ﻿using GenerateCV.Data;
-using GenerateCV.DTO;
+using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.EntityFrameworkCore;
@@ -48,11 +48,33 @@ namespace GenerateCV.Repository
             return user;
         }
 
-        public async Task<User> UpdateAsync(User user)
+        public async Task<User> UpdateAsync(userDTO userDto)
         {
-            _context.Users.Update(user);
+            var existingUser = await _context.Users.FindAsync(userDto.Id);
+
+            if (existingUser == null)
+
+            {
+
+                // Handle the case where the user does not exist
+
+                throw new KeyNotFoundException("User  not found");
+
+            }
+            existingUser.Name = userDto.Name;
+
+            existingUser.Email = userDto.Email;
+
+            existingUser.Phone = userDto.Phone;
+
+            existingUser.Address = userDto.Address;
+
+            existingUser.DateOfBirth = userDto.DateOfBirth;
+
+
+            _context.Users.Update(existingUser);
             await _context.SaveChangesAsync();
-            return user;
+            return existingUser;
         }
 
         public async Task<bool> DeleteAsync(string id)

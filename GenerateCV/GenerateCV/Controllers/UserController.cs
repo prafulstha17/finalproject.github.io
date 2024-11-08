@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;
@@ -83,7 +83,7 @@ namespace GenerateCV.Controllers
 
         // PUT: api/User/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<BaseResponseModel<User>>> UpdateUser(string id, User user)
+        public async Task<ActionResult<BaseResponseModel<User>>> UpdateUser(string id, userDTO user)
         {
             if (id != user.Id)
             {

@@ -1,4 +1,4 @@
-﻿using GenerateCV.DTO;
+﻿using GenerateCV.DTO.CreateDto;
 using GenerateCV.IRepository;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;
@@ -83,20 +83,11 @@ namespace GenerateCV.Controllers
 
         // PUT: api/Certification/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<BaseResponseModel<Certification>>> UpdateCertification(int id, Certification certification)
+        public async Task<ActionResult<BaseResponseModel<Certification>>> UpdateCertification(int id, CertificationDTO certification)
         {
-            if (id != certification.Id)
-            {
-                return BadRequest(new BaseResponseModel<Certification>
-                {
-                    Code = "400",
-                    Message = "Certification ID mismatch",
-                    Status = "Error",
-                    Data = null
-                });
-            }
+            
 
-            var updatedCertification = await _certificationRepository.UpdateAsync(certification);
+            var updatedCertification = await _certificationRepository.UpdateAsync(id ,certification);
             return Ok(new BaseResponseModel<Certification>
             {
                 Code = "200",
