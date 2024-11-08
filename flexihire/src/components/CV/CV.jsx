@@ -41,7 +41,7 @@ function CV() {
   const [ExperienceData, setExperienceData] =
     React.useState(ExperienceDataform);
 
-  const [experiences, setExperiences] = React.useState([]);//sandip Exp
+  const [experiences, setExperiences] = React.useState([]); //sandip Exp
   const [education, setEducation] = React.useState([]);
   const [certifications, setCertifications] = React.useState([]);
   const [skills, setSkills] = React.useState([]);
@@ -112,7 +112,7 @@ function CV() {
       });
 
       let experienceData = personalInfo?.experiences?.$values[0];
-      setExperiences(personalInfo?.experiences?.$values);//sandip Exp
+      setExperiences(personalInfo?.experiences?.$values); //sandip Exp
       setEducation(personalInfo?.education?.$values);
       setCertifications(personalInfo?.certifications?.$values);
       setSkills(personalInfo?.skills?.$values);
@@ -365,6 +365,166 @@ function CV() {
     }
   };
 
+  // Function to handle skill deletion
+
+  const handleDeleteSkill = async (skillId) => {
+
+    const url = `https://localhost:7148/api/Skill/${skillId}`;
+
+
+    try {
+
+      const response = await fetch(url, {
+
+        method: "DELETE",
+
+      });
+
+
+      if (response.ok) {
+
+        alert("Skill deleted successfully!");
+
+        // Update the skills list by filtering out the deleted skill
+
+        setSkillsList(skillsList.filter(skill => skill.id !== skillId));
+
+      } else {
+
+        alert("Failed to delete skill. Please try again.");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error deleting skill:", error);
+
+      alert("An error occurred while deleting the skill.");
+
+    }
+
+  };
+
+  // Function to handle Certification deletion
+
+  const handleDeleteCertifications = async (CertificationId) => {
+
+    const url = `https://localhost:7148/api/Certification/${CertificationId}`;
+
+
+    try {
+
+      const response = await fetch(url, {
+
+        method: "DELETE",
+
+      });
+
+
+      if (response.ok) {
+
+        alert("Certification deleted successfully!");
+
+        // Update the skills list by filtering out the deleted skill
+
+        setSkillsList(skillsList.filter(Certification => Certification.id !== CertificationId));
+
+      } else {
+
+        alert("Failed to delete Certification. Please try again.");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error deleting Certification:", error);
+
+      alert("An error occurred while deleting the Certification.");
+
+    }
+
+  };
+
+  // Function to handle experiences deletion
+
+  const handleDeleteExperiences = async (ExperiencesId) => {
+
+    const url = `https://localhost:7148/api/Experience/${ExperiencesId}`;
+
+    try {
+
+      const response = await fetch(url, {
+
+        method: "DELETE",
+
+      });
+
+
+      if (response.ok) {
+
+        alert("Experiences deleted successfully!");
+
+        // Update the skills list by filtering out the deleted skill
+
+        setSkillsList(skillsList.filter(Experiences => Experiences.id !== ExperiencesId));
+
+      } else {
+
+        alert("Failed to delete Experiences. Please try again.");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error deleting Experiences:", error);
+
+      alert("An error occurred while deleting the Experiences.");
+
+    }
+
+  };
+
+  // Function to handle Education deletion
+
+  const handleDeleteEducation = async (EducationId) => {
+
+    const url = `https://localhost:7148/api/Education/${EducationId}`;
+
+    try {
+
+      const response = await fetch(url, {
+
+        method: "DELETE",
+
+      });
+
+
+      if (response.ok) {
+
+        alert("Education deleted successfully!");
+
+        // Update the skills list by filtering out the deleted skill
+
+        setSkillsList(skillsList.filter(Education => Education.id !== EducationId));
+
+      } else {
+
+        alert("Failed to delete Education. Please try again.");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error deleting Education:", error);
+
+      alert("An error occurred while deleting the Education.");
+
+    }
+
+  };
+
+
+
   const handleExperienceChange = (e) => {
     const { name, value, type, checked } = e.target;
     setExperienceData({
@@ -479,7 +639,7 @@ function CV() {
     }
   };
 
-  console.log(experiences)
+  console.log(experiences);
 
   return (
     <>
@@ -666,62 +826,61 @@ function CV() {
           )}
           {/* sandip */}
           <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
-            {
-              experiences?.length >= 0 ? experiences.map((value, index) => (
-                <li key={index}>
-                  <details class="group">
-                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
-                      <svg
-                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                      <span className="font-bold uppercase">
-                        {value?.company}
-                      </span>
-                    </summary>
+            {experiences?.length >= 0
+              ? experiences.map((value, index) => (
+                  <li key={index}>
+                    <details class="group">
+                      <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                        <svg
+                          class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                          ></path>
+                        </svg>
+                        <span className="font-bold uppercase">
+                          {value?.company}
+                        </span>
+                      </summary>
 
-                    <article class="px-4 pb-4">
-                      <p className="font-bold">
-                        Position:{" "}
-                        <span className="font-light">
-                          {value?.position}
-                        </span>{" "}
-                      </p>
-                      <p className="font-bold">
-                        Responsibilities:{" "}
-                        <span className="font-light">
-                          {value?.responsibilities}
-                        </span>
-                      </p>
-                      <p className="font-bold">
-                        StartDate:{" "}
-                        <span className="font-light">
-                          {" "}
-                          {value?.startDate}
-                        </span>
-                      </p>
-                      <p className="font-bold">
-                        EndDate:{" "}
-                        <span className="font-light">{value?.endDate}</span>{" "}
-                      </p>
-                      <div className="flex justify-end">
-                        <button type="button" className="bg-red-600 mr-4 ">
-                          delete
-                        </button>
-                      </div>
-                    </article>
-                  </details>
-                </li>
-            )) : ""}
+                      <article class="px-4 pb-4">
+                        <p className="font-bold">
+                          Position:{" "}
+                          <span className="font-light">{value?.position}</span>{" "}
+                        </p>
+                        <p className="font-bold">
+                          Responsibilities:{" "}
+                          <span className="font-light">
+                            {value?.responsibilities}
+                          </span>
+                        </p>
+                        <p className="font-bold">
+                          StartDate:{" "}
+                          <span className="font-light">
+                            {" "}
+                            {value?.startDate}
+                          </span>
+                        </p>
+                        <p className="font-bold">
+                          EndDate:{" "}
+                          <span className="font-light">{value?.endDate}</span>{" "}
+                        </p>
+                        <div className="flex justify-end">
+                          <button type="button"onClick={() => handleDeleteExperiences(value.id)} className="bg-red-600 mr-4 ">
+                            delete
+                          </button>
+                        </div>
+                      </article>
+                    </details>
+                  </li>
+                ))
+              : ""}
           </ul>
         </div>
       </div>
@@ -829,63 +988,62 @@ function CV() {
             </div>
           )}
 
-<ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
-            {
-              education?.length >= 0 ? education.map((value, index) => (
-                <li key={index}>
-                  <details class="group">
-                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
-                      <svg
-                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                      <span className="font-bold uppercase">
-                        {value?.institution}
-                      </span>
-                    </summary>
-
-                    <article class="px-4 pb-4">
-                      <p className="font-bold">
-                      institution:{" "}
-                        <span className="font-light">
+          <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
+            {education?.length >= 0
+              ? education.map((value, index) => (
+                  <li key={index}>
+                    <details class="group">
+                      <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                        <svg
+                          class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                          ></path>
+                        </svg>
+                        <span className="font-bold uppercase">
                           {value?.institution}
-                        </span>{" "}
-                      </p>
-                      <p className="font-bold">
-                      degree:{" "}
-                        <span className="font-light">
-                          {value?.degree}
                         </span>
-                      </p>
-                      <p className="font-bold">
-                        StartDate:{" "}
-                        <span className="font-light">
-                          {" "}
-                          {value?.startDate}
-                        </span>
-                      </p>
-                      <p className="font-bold">
-                        EndDate:{" "}
-                        <span className="font-light">{value?.endDate}</span>{" "}
-                      </p>
-                      <div className="flex justify-end">
-                        <button type="button" className="bg-red-600 mr-4 ">
-                          delete
-                        </button>
-                      </div>
-                    </article>
-                  </details>
-                </li>
-            )) : ""}
+                      </summary>
+
+                      <article class="px-4 pb-4">
+                        <p className="font-bold">
+                          institution:{" "}
+                          <span className="font-light">
+                            {value?.institution}
+                          </span>{" "}
+                        </p>
+                        <p className="font-bold">
+                          degree:{" "}
+                          <span className="font-light">{value?.degree}</span>
+                        </p>
+                        <p className="font-bold">
+                          StartDate:{" "}
+                          <span className="font-light">
+                            {" "}
+                            {value?.startDate}
+                          </span>
+                        </p>
+                        <p className="font-bold">
+                          EndDate:{" "}
+                          <span className="font-light">{value?.endDate}</span>{" "}
+                        </p>
+                        <div className="flex justify-end">
+                          <button type="button" onClick={() => handleDeleteEducation(value.id)} className="bg-red-600 mr-4 ">
+                            delete
+                          </button>
+                        </div>
+                      </article>
+                    </details>
+                  </li>
+                ))
+              : ""}
           </ul>
         </div>
       </div>
@@ -950,48 +1108,48 @@ function CV() {
             </div>
           )}
           <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
-            {
-              skills?.length >= 0 ? skills.map((value, index) => (
-                <li key={index}>
-                  <details class="group">
-                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
-                      <svg
-                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                      <span className="font-bold uppercase">
-                        {value?.name}
-                      </span>
-                    </summary>
+            {skills?.length >= 0
+              ? skills.map((value, index) => (
+                  <li key={index}>
+                    <details class="group">
+                      <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                        <svg
+                          class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                          ></path>
+                        </svg>
+                        <span className="font-bold uppercase">
+                          {value?.name}
+                        </span>
+                      </summary>
 
-                    <article class="px-4 pb-4">
-                      <p className="font-bold">
-                      proficiency:{" "}
-                        <span className="font-light">
-                          {value?.proficiency}
-                        </span>{" "}
-                      </p>
+                      <article class="px-4 pb-4">
+                        <p className="font-bold">
+                          proficiency:{" "}
+                          <span className="font-light">
+                            {value?.proficiency}
+                          </span>{" "}
+                        </p>
 
-                      <div className="flex justify-end">
-                        <button type="button" className="bg-red-600 mr-4 ">
-                          delete
-                        </button>
-                      </div>
-                    </article>
-                  </details>
-                </li>
-            )) : ""}
+                        <div className="flex justify-end">
+                          <button type="button" onClick={() => handleDeleteSkill(value.id)} className="bg-red-600 mr-4 ">
+                            delete
+                          </button>
+                        </div>
+                      </article>
+                    </details>
+                  </li>
+                ))
+              : ""}
           </ul>
-
         </div>
       </div>
 
@@ -1058,53 +1216,54 @@ function CV() {
               </button>
             </div>
           )}
-                     <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
-            {
-              certifications?.length >= 0 ? certifications.map((value, index) => (
-                <li key={index}>
-                  <details class="group">
-                    <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
-                      <svg
-                        class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                      <span className="font-bold uppercase">
-                        {value?.title}
-                      </span>
-                    </summary>
-
-                    <article class="px-4 pb-4">
-                      <p className="font-bold">
-                      issuingOrganization:{" "}
-                        <span className="font-light">
-                          {value?.issuingOrganization}
-                        </span>{" "}
-                      </p>
-                      <p className="font-bold">
-                      dateIssued:{" "}
-                        <span className="font-light">
-                          {value?.dateIssued}
+          <ul class="max-w-2xl mx-auto mt-20 divide-y  shadow shadow-blue-600 rounded-xl">
+            {certifications?.length >= 0
+              ? certifications.map((value, index) => (
+                  <li key={index}>
+                    <details class="group">
+                      <summary class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                        <svg
+                          class="w-5 h-5 text-gray-500 transition group-open:rotate-90"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                          ></path>
+                        </svg>
+                        <span className="font-bold uppercase">
+                          {value?.title}
                         </span>
-                      </p>
-                    
-                      <div className="flex justify-end">
-                        <button type="button" className="bg-red-600 mr-4 ">
-                          delete
-                        </button>
-                      </div>
-                    </article>
-                  </details>
-                </li>
-            )) : ""}
+                      </summary>
+
+                      <article class="px-4 pb-4">
+                        <p className="font-bold">
+                          issuingOrganization:{" "}
+                          <span className="font-light">
+                            {value?.issuingOrganization}
+                          </span>{" "}
+                        </p>
+                        <p className="font-bold">
+                          dateIssued:{" "}
+                          <span className="font-light">
+                            {value?.dateIssued}
+                          </span>
+                        </p>
+
+                        <div className="flex justify-end">
+                          <button type="button" onClick={() => handleDeleteCertifications(value.id)} className="bg-red-600 mr-4 ">
+                            delete
+                          </button>
+                        </div>
+                      </article>
+                    </details>
+                  </li>
+                ))
+              : ""}
           </ul>
         </div>
       </div>
