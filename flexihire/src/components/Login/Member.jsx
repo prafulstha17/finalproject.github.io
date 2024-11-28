@@ -34,13 +34,14 @@ const Member = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [role, setRole] = useState("");
+
 
   const handleLogin = (e) => {
     e.preventDefault();
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        const isAdmin = email === "flexihirenepal@gmail.com";
         navigate("/");
       })
       .catch((error) => {
@@ -67,7 +68,7 @@ const Member = () => {
       const user = result.user;
   
       // Add user details to Firestore
-      await addUserToFirestore(user.uid, name, email);
+      await addUserToFirestore(user.uid, name, email ,role);
   
       // Update user profile
       await updateProfile(user, {
@@ -141,6 +142,7 @@ const Member = () => {
         userId: userId,
         displayName: displayName,
         email: userEmail,
+        role: role,
         appliedAt: serverTimestamp(),
       };
   
@@ -155,10 +157,38 @@ const Member = () => {
       console.error("Error adding user to Firestore: ", error);
     }
   };
+///algo
+//   const fetchRecommendationsAlgo = async () => {
+//     if (currentUser) {
+//         const interactionsRef = collection(db, 'userInteractions');
+//         const q = query(interactionsRef, where('userId', '==', currentUser.uid));
+//         const querySnapshot = await getDocs(q);
+        
+//         const interactedPostIds = querySnapshot.docs.map(doc => doc.data().postId);
+        
+//         // Fetch posts interacted by similar users
+//         const similarUsersInteractions = await getDocs(collection(db, 'userInteractions'));
+//         const recommendedPostIds = new Set();
+
+//         similarUsersInteractions.docs.forEach(doc => {
+//             const data = doc.data();
+//             if (data.userId !== currentUser.uid && interactedPostIds.includes(data.postId)) {
+//                 // Add posts that similar users interacted with
+//                 recommendedPostIds.add(data.postId);
+//             }
+//         });
+
+//         // Filter out posts that the current user has already interacted with
+//         const recommendations = posts.filter(post => recommendedPostIds.has(post.id));
+//         setRecommendedPosts(recommendations);
+//     }
+// };
+
   
   
 
   return (
+
     <div className="memberBody">
       <div className="containerMember">
         <div className={`frontbox ${frontboxMoving ? "moving" : ""}`}>
@@ -193,6 +223,7 @@ const Member = () => {
             >
               FORGET PASSWORD?
             </a>
+            
             <button
               className={`login-button ${loginVisible ? "" : "hide"}`}
               type="submit"
@@ -200,7 +231,7 @@ const Member = () => {
             >
               LOG IN
             </button>
-            <p className="or mt-4 text-center" id="color-gradient">
+            {/* <p className="or mt-4 text-center" id="color-gradient">
               Or login with
             </p>
             <ul className="social-links">
@@ -219,7 +250,7 @@ const Member = () => {
                   <TwitterIcon className="twitter-member" />
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <div className={`signup ${signupVisible ? "" : "hide"}`}>
@@ -247,6 +278,23 @@ const Member = () => {
                 autoComplete="off"
                 required
               />
+              <div className="inputbox">
+  <select
+    name="role"
+    onChange={(e) => setRole(e.target.value)}
+    required
+    defaultValue=""
+  >
+    <option value="" disabled>
+      Select Your Role
+    </option>
+    <option value="Client">I’m a client, hiring for a project</option>
+    <option value="Freelancer">I’m a freelancer, looking for work</option>
+  </select>
+</div>
+
+              
+              
             </div>
             <button
               className={`signup-button ${signupVisible ? "" : "hide"}`}
@@ -254,10 +302,10 @@ const Member = () => {
             >
               SIGN UP
             </button>
-            <p className="or mt-4 text-center" id="color-gradient">
+            {/* <p className="or mt-4 text-center" id="color-gradient">
               Or signup with
-            </p>
-            <ul className="social-links">
+            </p> */}
+            {/* <ul className="social-links">
               <li>
                 <a href="#" id="color-gradient" onClick={signInWithGoogle}>
                   <i className="fab fa-google"></i>
@@ -273,7 +321,7 @@ const Member = () => {
                   <TwitterIcon className="twitter-member" />
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
 
@@ -305,6 +353,7 @@ const Member = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

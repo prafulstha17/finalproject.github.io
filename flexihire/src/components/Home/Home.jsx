@@ -44,7 +44,7 @@ function Home(props) {
   };
   return (
     
-    <div className="home">
+    <div className="home bg-zinc-900">
          <div class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5" data-aos="fade-right" data-aos-duration="800">
           <div class="pr-2 md:mb-14 py-14 md:py-0">
             
@@ -103,12 +103,12 @@ function Home(props) {
       
 
       
-      <div className="separate-by-line">
+      <div className="separate-by-line  bg-zinc-900 ">
         
-        <div className="need-something-done">
-          <h2 className="text-black">Need something done? </h2>
+        <div className="need-something-done  ">
+          <h2 className="text-black ">Need something done? </h2>
 
-          <div class="grid gap-14 md:grid-cols-3 md:gap-5">
+          <div class="grid gap-14  md:grid-cols-3 md:gap-5">
     <div class="rounded-xl bg-white p-6 text-center shadow-xl">
       <div
         class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">

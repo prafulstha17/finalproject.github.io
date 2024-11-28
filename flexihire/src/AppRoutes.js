@@ -16,6 +16,7 @@ import OthersProfile from './components/Profile/OthersProfile';
 import FAQs from './components/PageFooter/FAQs';
 import Payment from './components/Payment/Payment';
 import CV from './components/CV/CV';
+import AdminLogin from './components/JobPost/AdminLogin';
 
 const AppRoutes = ({ userName }) => {
   return (
@@ -35,6 +36,7 @@ const AppRoutes = ({ userName }) => {
       <Route path="/faq" element={<FAQs/>} />
       <Route path="/CV" element={<CV/>} />
       <Route path="/users/:userId" element={<OthersProfile />} />
+      <Route path="/admin" element={<AdminLogin />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

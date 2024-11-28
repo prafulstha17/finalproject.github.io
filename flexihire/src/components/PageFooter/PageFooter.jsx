@@ -92,7 +92,7 @@ function PageFooter() {
                   <br />
                   Designed By{" "}
                   <a class="border-bottom" href="https://www.instagram.com/ajay.nemkul/">
-                    Ajay Nemkul Shrestha
+                    Saugat khadka
                   </a>{" "}
                   &{" "}
                   <a class="border-bottom" href="https://www.instagram.com/prafulstha.17/">

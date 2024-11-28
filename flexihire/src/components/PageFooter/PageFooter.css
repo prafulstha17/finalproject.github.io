@@ -1,4 +1,5 @@
 .footerBody {
+    background: #f5f3f3;
     display: flex;
     justify-content: flex-end;
     align-items: center;

@@ -5,7 +5,7 @@ import PendingApplicationsPopup from "./PendingApplicationsPopup";
 
 function CreatedPosts({
     posts,
-    currentUser,
+    
     feedbackMessages,
     acceptedPosts,
     handleDownloadFile,
@@ -18,6 +18,7 @@ function CreatedPosts({
     pendingApplications,
     setSelectedPostId,
     setIsModalOpen,
+    userRole
 }) {
     const formatDate = (timestamp) => {
         if (timestamp) {

@@ -639,13 +639,13 @@ function CV() {
     }
   };
 
-  console.log(experiences);
+
 
   return (
     <>
       {/* Personal Details */}
       {/* Personal Details */}
-      <div className="pt-10 bg-gray-100 flex items-center justify-center">
+      <div className="pt-10 bg-gray-100 flex items-center justify-center  ">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
           <h2 className="text-xl font-semibold mb-2">Personal Information</h2>
           <form onSubmit={handlePersonalInfoSubmit}>

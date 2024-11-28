@@ -23,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { post } from "jquery";
 
-function RetrievePosts({ isAdmin }) {
+function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
   const [posts, setPosts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [selectedSection, setSelectedSection] = useState("available");
@@ -34,6 +34,7 @@ function RetrievePosts({ isAdmin }) {
   const [acceptedPosts, setAcceptedPosts] = useState([]);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  
   const navigate = useNavigate();
 
   // applied post
@@ -127,10 +128,58 @@ function RetrievePosts({ isAdmin }) {
     };
   }, [currentUser]);
 
-  useEffect(() => {
-    fetchRecommendations();
-  }, [currentUser, posts]);
+  // useEffect(() => {
+  //   fetchRecommendations();
+  // }, [currentUser, posts]);
 
+  useEffect(() => {
+    const fetchRecommendations = async () => {
+      if (currentUser) {
+        try {
+          // Step 1: Fetch the user's applied post IDs
+          const applicationsRef = collection(db, "applications");
+          const q = query(applicationsRef, where("userId", "==", currentUser.uid));
+          const querySnapshot = await getDocs(q);
+  
+          const appliedPostIds = querySnapshot.docs.map((doc) => doc.data().postId);
+  
+          // Step 2: Get categories of applied posts
+          const appliedCategories = [];
+          for (const postId of appliedPostIds) {
+            const postDoc = await getDoc(doc(db, "posts", postId));
+            if (postDoc.exists()) {
+              const postData = postDoc.data();
+              if (postData.category) appliedCategories.push(postData.category);
+            }
+          }
+  
+          // Step 3: Fetch posts matching applied categories
+          const postsRef = collection(db, "posts");
+          const postsQuery = query(postsRef, orderBy("timestamp", "desc"));
+          const postsSnapshot = await getDocs(postsQuery);
+  
+          const allPosts = postsSnapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+  
+          // Filter posts based on categories and exclude posts the user has already applied for
+          const recommended = allPosts.filter(
+            (post) =>
+              post.userId !== currentUser.uid &&
+              appliedCategories.includes(post.category)
+          );
+  
+          setRecommendedPosts(recommended);
+        } catch (error) {
+          console.error("Error fetching recommendations:", error);
+        }
+      }
+    };
+  
+    fetchRecommendations();
+  }, [currentUser, appliedPosts]);
+  
   const fetchRecommendations = async () => {
     if (currentUser) {
       const postsRef = collection(db, "posts");
@@ -193,7 +242,6 @@ function RetrievePosts({ isAdmin }) {
       });
     }
 
-    // Add your logic for handling applications here
   };
 
   const handleReportPost = async (postId) => {
@@ -379,7 +427,9 @@ function RetrievePosts({ isAdmin }) {
   }, [searchQuery, availablePosts]);
 
   console.log(recommendedPosts);
-
+  console.log("User  role:", userRole);
+  console.log("Is Client:", isClient);
+  console.log("Is Freelancer:", isFreelancer);
   return (
     <div className="retrieve-posts-container">
       {currentUser ? (
@@ -421,7 +471,8 @@ function RetrievePosts({ isAdmin }) {
               ))}
             </ul>
           )}
-          {!isAdmin && (
+          {/* freelancer */}
+          {isFreelancer && (
             <div className="section-wrapper">
               <h6
                 className={`section-title ${
@@ -431,14 +482,14 @@ function RetrievePosts({ isAdmin }) {
               >
                 Available Jobs
               </h6>
-              <h6
+              {/* <h6
                 className={`section-title ${
                   selectedSection === "created" && "active"
                 }`}
                 onClick={() => setSelectedSection("created")}
               >
                 Your Created Jobs
-              </h6>
+              </h6> */}
 
               <h6
                 className={`section-title ${
@@ -449,8 +500,37 @@ function RetrievePosts({ isAdmin }) {
                 Applied Jobs
               </h6>
             </div>
-          )}{" "}
-          {selectedSection === "available" && (
+          )}
+          {isClient && (
+            <div className="section-wrapper">
+              {/* <h6
+                className={`section-title ${
+                  selectedSection === "available" && "active"
+                }`}
+                onClick={() => setSelectedSection("available")}
+              >
+                Available Jobs
+              </h6> */}
+              <h6
+                className={`section-title ${
+                  selectedSection === "created" && "active"
+                }`}
+                onClick={() => setSelectedSection("created")}
+              >
+                Your Created Jobs
+              </h6>
+
+              {/* <h6
+                className={`section-title ${
+                  selectedSection === "applied" && "active"
+                }`}
+                onClick={() => setSelectedSection("applied")}
+              >
+                Applied Jobs
+              </h6> */}
+            </div>
+          )}
+          {selectedSection === "available" && isFreelancer && (
             <>
               {/* search option */}
               <div className="filter-box">
@@ -498,7 +578,7 @@ function RetrievePosts({ isAdmin }) {
               />
             </>
           )}
-          {selectedSection === "applied" && (
+          {selectedSection === "applied" && isFreelancer && (
             <div className="section-wrapperm ">
               <ul>
                 {appliedPosts.length > 0 ? (
@@ -561,8 +641,8 @@ function RetrievePosts({ isAdmin }) {
               setIsModalOpen={setIsModalOpen}
             />
           )}
-          <div className="recommendations-section">
-            <h2>Recommended for You</h2>
+          {isFreelancer &&( <div className="recommendations-section">
+            <h2>recommendations  JobS</h2>
             <ul>
               {recommendedPosts.length > 0 ? (
                 recommendedPosts.map((post) => (
@@ -583,16 +663,17 @@ function RetrievePosts({ isAdmin }) {
 
                     <h3>{post.title}</h3>
                     <p>{post.description}</p>
-                    <button onClick={() => handleApplyPost(post.id)}>
+                    {/* <button onClick={() => handleApplyPost(post.id)}>
                       Apply
-                    </button>
+                    </button> */}
                   </li>
                 ))
               ) : (
                 <p>No recommendations available.</p>
               )}
             </ul>
-          </div>
+          </div>)}
+         
         </>
       ) : (
         <center>

@@ -18,7 +18,7 @@ const Admin = () => {
 
       <div className="body-align">
         <Routes>
-          <Route path="/" element={<ThreeJSComponent />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/users" element={<UserProfiles />} />
