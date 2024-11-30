@@ -96,7 +96,7 @@ function Profile() {
     setZoomedIn(!zoomedIn);
   };
 
-  return (
+  return (<>
     <div className="profile">
       {user ? (
         <>
@@ -148,6 +148,9 @@ function Profile() {
             <p className="profile-name">
               {user.displayName ? user.displayName : "Anonymous"}
             </p>
+            
+          
+            
             <div>
               {user && (
                 <div
@@ -159,6 +162,7 @@ function Profile() {
               )}
             </div>
           </div>
+        
           <div className="personal">{hidden ? <PersonalDataForm /> : null}</div>
         </>
       ) : (
@@ -167,7 +171,9 @@ function Profile() {
         </div>
       )}
       <Progress currentUserId={user?.uid} />
+     
     </div>
+     </>
   );
 }
 

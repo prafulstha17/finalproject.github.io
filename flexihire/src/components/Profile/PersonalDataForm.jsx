@@ -119,7 +119,7 @@ const PersonalDataForm = () => {
     return true;
   };
 
-  return (
+  return (<>
     <div className="post-status-container">
       <h3>Enter your Personal Details :</h3>
       <div className="post-area">
@@ -256,7 +256,10 @@ const PersonalDataForm = () => {
       <button onClick={handlePostSubmit} disabled={!isFormValid()}>
         Post
       </button>
+      
     </div>
+    
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 using GenerateCV.Data;
-using GenerateCV.IRepository;
-using GenerateCV.Repository;
+using GenerateCV.IRepository.CV;
+using GenerateCV.Repository.CV;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +23,8 @@ builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<IEducationRepository, EducationRepository>();
 builder.Services.AddScoped<IExperienceRepository, ExperienceRepository>();
 builder.Services.AddScoped<ICertificationRepository, CertificationRepository>();
+
+
 builder.Services.AddScoped<ICvRepository, CvRepository>();
 
 

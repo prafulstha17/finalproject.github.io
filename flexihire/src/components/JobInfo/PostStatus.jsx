@@ -73,6 +73,7 @@ const PostStatus = () => {
         timing: "",
         category: "",
       });
+      alert("job post successfully!");
     } catch (error) {
       console.error("Error posting to Firestore:", error);
     }

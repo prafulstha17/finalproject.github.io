@@ -4,6 +4,7 @@ import PostStatus from "../JobInfo/PostStatus";
 import RetrievePosts from "../JobInfo/RetrievePosts";
 import "./Jobs.css";
 import { doc, getDoc } from "firebase/firestore";
+import Recommendation from "../Recommendation/Recommendation";
 
 function Jobs() {
   const [status, setStatus] = useState(false);
@@ -62,6 +63,7 @@ function Jobs() {
         isClient={userRole === "Client"}
           isFreelancer={userRole === "Freelancer"}
           userRole={userRole} />
+           
       </div>
     </div>
   );

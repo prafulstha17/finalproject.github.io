@@ -18,7 +18,7 @@ namespace GenerateCV.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Certification> Certifications { get; set; }
         public DbSet<UserCV> UserCVs { get; set; }
-
+    
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.ApplyConfiguration(new CvConfiguration());
@@ -27,6 +27,7 @@ namespace GenerateCV.Data
             modelBuilder.ApplyConfiguration(new EducationConfiguration());
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
             modelBuilder.ApplyConfiguration(new CertificationConfiguration());
+         
         }
     }
 }

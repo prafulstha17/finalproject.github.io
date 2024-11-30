@@ -1,4 +1,4 @@
-﻿using GenerateCV.IRepository;
+﻿using GenerateCV.IRepository.CV;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[8.0.10, )"
             },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.10, )"

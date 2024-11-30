@@ -22,6 +22,7 @@ import "./RetrievePosts.css";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { post } from "jquery";
+import Recommendation from "../Recommendation/Recommendation";
 
 function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
   const [posts, setPosts] = useState([]);
@@ -32,7 +33,6 @@ function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [feedbackMessages, setFeedbackMessages] = useState({});
   const [acceptedPosts, setAcceptedPosts] = useState([]);
-  const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   
   const navigate = useNavigate();
@@ -128,77 +128,10 @@ function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
     };
   }, [currentUser]);
 
-  // useEffect(() => {
-  //   fetchRecommendations();
-  // }, [currentUser, posts]);
 
-  useEffect(() => {
-    const fetchRecommendations = async () => {
-      if (currentUser) {
-        try {
-          // Step 1: Fetch the user's applied post IDs
-          const applicationsRef = collection(db, "applications");
-          const q = query(applicationsRef, where("userId", "==", currentUser.uid));
-          const querySnapshot = await getDocs(q);
-  
-          const appliedPostIds = querySnapshot.docs.map((doc) => doc.data().postId);
-  
-          // Step 2: Get categories of applied posts
-          const appliedCategories = [];
-          for (const postId of appliedPostIds) {
-            const postDoc = await getDoc(doc(db, "posts", postId));
-            if (postDoc.exists()) {
-              const postData = postDoc.data();
-              if (postData.category) appliedCategories.push(postData.category);
-            }
-          }
-  
-          // Step 3: Fetch posts matching applied categories
-          const postsRef = collection(db, "posts");
-          const postsQuery = query(postsRef, orderBy("timestamp", "desc"));
-          const postsSnapshot = await getDocs(postsQuery);
-  
-          const allPosts = postsSnapshot.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }));
-  
-          // Filter posts based on categories and exclude posts the user has already applied for
-          const recommended = allPosts.filter(
-            (post) =>
-              post.userId !== currentUser.uid &&
-              appliedCategories.includes(post.category)
-          );
-  
-          setRecommendedPosts(recommended);
-        } catch (error) {
-          console.error("Error fetching recommendations:", error);
-        }
-      }
-    };
-  
-    fetchRecommendations();
-  }, [currentUser, appliedPosts]);
-  
-  const fetchRecommendations = async () => {
-    if (currentUser) {
-      const postsRef = collection(db, "posts");
 
-      const q = query(postsRef, orderBy("timestamp", "desc"));
+  
 
-      onSnapshot(q, (querySnapshot) => {
-        const postList = querySnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-
-        const validPosts = postList.filter((post) => post && post.title);
-        const topRecommendation = validPosts.slice(0, 3);
-
-        setRecommendedPosts(topRecommendation);
-      });
-    }
-  };
 
   const formatDate = (timestamp) => {
     if (timestamp) {
@@ -426,7 +359,7 @@ function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
     return filteredData;
   }, [searchQuery, availablePosts]);
 
-  console.log(recommendedPosts);
+  
   console.log("User  role:", userRole);
   console.log("Is Client:", isClient);
   console.log("Is Freelancer:", isFreelancer);
@@ -642,36 +575,8 @@ function RetrievePosts({ isAdmin, isClient, isFreelancer, userRole }) {
             />
           )}
           {isFreelancer &&( <div className="recommendations-section">
-            <h2>recommendations  JobS</h2>
-            <ul>
-              {recommendedPosts.length > 0 ? (
-                recommendedPosts.map((post) => (
-                  <li key={post.id} className="items-center bg-white border border-gray-200 rounded-lg shadow m-3 p-5   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                    <div className="job-header">
-                      <div className="postDetails">
-                        <p>
-                          <a
-                            href={`/users/${post.userId}`}
-                            className="username-link"
-                          >
-                            {post.username}
-                          </a>{" "}
-                          posted on {formatDate(post.timestamp)}
-                        </p>
-                      </div>
-                    </div>
-
-                    <h3>{post.title}</h3>
-                    <p>{post.description}</p>
-                    {/* <button onClick={() => handleApplyPost(post.id)}>
-                      Apply
-                    </button> */}
-                  </li>
-                ))
-              ) : (
-                <p>No recommendations available.</p>
-              )}
-            </ul>
+            
+            <Recommendation userId={currentUser?.uid} />
           </div>)}
          
         </>

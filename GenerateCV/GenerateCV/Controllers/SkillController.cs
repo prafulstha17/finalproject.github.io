@@ -1,5 +1,5 @@
-﻿using GenerateCV.DTO.CreateDto;
-using GenerateCV.IRepository;
+﻿using GenerateCV.DTO.CreateDto.CV;
+using GenerateCV.IRepository.CV;
 using GenerateCV.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
