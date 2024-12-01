@@ -62,7 +62,7 @@ function ContactForm() {
 
   return (
     <>
-      <div className="contactUS">
+      <div className="contactUS ">
         <div className="container">
           <div className="front side">
             <div className="content">

@@ -156,6 +156,13 @@ const UserProfiles = () => {
                     </th>
                     <th
                       scope="col"
+                      class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"
+                    >
+                      {" "}
+                      Role{" "}
+                    </th>
+                    <th
+                      scope="col"
                       class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"
                     >
                       {" "}
@@ -186,6 +193,9 @@ const UserProfiles = () => {
                       </td>
                       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
                         {user.displayName}
+                      </td>
+                      <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                        {user.role}
                       </td>
                       <td className="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
                         {user.email}

@@ -1,12 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import "./Admin.css";
 import Dashboard from "./Dashboard/Dashboard";
 import Mails from "./Mails/Mails";
 import ManagePost from "./ManagePost/ManagePost";
 import UserProfiles from "./Users/UserProfiles";
-import ThreeJSComponent from "./Root/ThreeJSComponent";
 import Reports from "./Reports/Reports";
 
 const Admin = () => {

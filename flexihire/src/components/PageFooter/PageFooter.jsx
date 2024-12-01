@@ -4,8 +4,8 @@ import silhouette from "../Icon/silhouette/silhouette.png";
 
 function PageFooter() {
   return (
-    <div className="footerBody">
-      <div className="silhouette">
+    <div className="footerBody ">
+      <div className="silhouette border-solid">
         <img className="silhouette" src={silhouette} />
       </div>
       <footer>

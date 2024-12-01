@@ -19,7 +19,13 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { auth, googleProvider, facebookProvider, twitterProvider, db } from "../../config/firebase";
+import {
+  auth,
+  googleProvider,
+  facebookProvider,
+  twitterProvider,
+  db,
+} from "../../config/firebase";
 import { ReactComponent as TwitterIcon } from "../images/x-twitter.svg";
 import { useNavigate } from "react-router-dom";
 import "./Member.css";
@@ -35,7 +41,6 @@ const Member = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [role, setRole] = useState("");
-
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -60,21 +65,47 @@ const Member = () => {
       });
   };
 
+
+  const validateForm = () => {
+    if (!name.trim()) {
+      setError("Full name is required.");
+      return false;
+    }
+    if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+      setError("A valid email is required.");
+      return false;
+    }
+    if (!password.trim() || password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return false;
+    }
+    if (!role) {
+      setError("Please select a role.");
+      return false;
+    }
+    setError(""); // Clear error if all validations pass
+    return true;
+  };
   const signIn = async () => {
     try {
+      if (!validateForm()) return;
       setLoading(true);
       const auth = getAuth();
-      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = result.user;
-  
+
       // Add user details to Firestore
-      await addUserToFirestore(user.uid, name, email ,role);
-  
+      await addUserToFirestore(user.uid, name, email, role);
+
       // Update user profile
       await updateProfile(user, {
         displayName: name,
       });
-  
+
       navigate("/termsCondition");
     } catch (err) {
       console.error(err);
@@ -83,40 +114,38 @@ const Member = () => {
       setLoading(false);
     }
   };
-  
 
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-  
+
       // Use the Google profile information
       const displayName = user.displayName;
       const email = user.email;
-  
+
       await addUserToFirestore(user.uid, displayName, email);
       navigate("/");
     } catch (err) {
       console.error("Google Sign-In Error:", err);
     }
-  };  
+  };
 
   const signInWithFacebook = () => {
     // Replace 'your-facebook-app-id' with your actual Facebook App ID
     const facebookLoginUrl = `https://www.facebook.com/v11.0/dialog/oauth?client_id=your-facebook-app-id&redirect_uri=${window.location.origin}/facebook-callback&response_type=token&scope=email`;
-  
+
     // Redirect the user to the Facebook login page
     window.location.href = facebookLoginUrl;
   };
-  
+
   const signInWithTwitter = () => {
     // Replace 'your-twitter-app-id' with your actual Twitter App ID
     const twitterLoginUrl = `https://api.twitter.com/oauth/authenticate?oauth_token=your-twitter-app-id`;
-  
+
     // Redirect the user to the Twitter login page
     window.location.href = twitterLoginUrl;
   };
-  
 
   const handleSwitch1 = () => {
     setLoginVisible(true);
@@ -136,7 +165,7 @@ const Member = () => {
     try {
       const usersCollection = collection(db, "users");
       const userDocRef = doc(db, "users", userId);
-  
+
       // Data to be added
       const userData = {
         userId: userId,
@@ -145,50 +174,45 @@ const Member = () => {
         role: role,
         appliedAt: serverTimestamp(),
       };
-  
+
       // Add user data to Firestore
       await setDoc(userDocRef, userData);
-  
+
       // Log the data to console
       console.log("User added to Firestore successfully!");
       console.log("User Data:", userData);
-  
     } catch (error) {
       console.error("Error adding user to Firestore: ", error);
     }
   };
-///algo
-//   const fetchRecommendationsAlgo = async () => {
-//     if (currentUser) {
-//         const interactionsRef = collection(db, 'userInteractions');
-//         const q = query(interactionsRef, where('userId', '==', currentUser.uid));
-//         const querySnapshot = await getDocs(q);
-        
-//         const interactedPostIds = querySnapshot.docs.map(doc => doc.data().postId);
-        
-//         // Fetch posts interacted by similar users
-//         const similarUsersInteractions = await getDocs(collection(db, 'userInteractions'));
-//         const recommendedPostIds = new Set();
+  ///algo
+  //   const fetchRecommendationsAlgo = async () => {
+  //     if (currentUser) {
+  //         const interactionsRef = collection(db, 'userInteractions');
+  //         const q = query(interactionsRef, where('userId', '==', currentUser.uid));
+  //         const querySnapshot = await getDocs(q);
 
-//         similarUsersInteractions.docs.forEach(doc => {
-//             const data = doc.data();
-//             if (data.userId !== currentUser.uid && interactedPostIds.includes(data.postId)) {
-//                 // Add posts that similar users interacted with
-//                 recommendedPostIds.add(data.postId);
-//             }
-//         });
+  //         const interactedPostIds = querySnapshot.docs.map(doc => doc.data().postId);
 
-//         // Filter out posts that the current user has already interacted with
-//         const recommendations = posts.filter(post => recommendedPostIds.has(post.id));
-//         setRecommendedPosts(recommendations);
-//     }
-// };
+  //         // Fetch posts interacted by similar users
+  //         const similarUsersInteractions = await getDocs(collection(db, 'userInteractions'));
+  //         const recommendedPostIds = new Set();
 
-  
-  
+  //         similarUsersInteractions.docs.forEach(doc => {
+  //             const data = doc.data();
+  //             if (data.userId !== currentUser.uid && interactedPostIds.includes(data.postId)) {
+  //                 // Add posts that similar users interacted with
+  //                 recommendedPostIds.add(data.postId);
+  //             }
+  //         });
+
+  //         // Filter out posts that the current user has already interacted with
+  //         const recommendations = posts.filter(post => recommendedPostIds.has(post.id));
+  //         setRecommendedPosts(recommendations);
+  //     }
+  // };
 
   return (
-
     <div className="memberBody">
       <div className="containerMember">
         <div className={`frontbox ${frontboxMoving ? "moving" : ""}`}>
@@ -209,11 +233,7 @@ const Member = () => {
               />
             </div>
             <div className="error-login">
-              {error && (
-                <span className="error">
-                  !! Data not found !!
-                </span>
-              )}
+              {error && <span className="error">User not found </span>}
             </div>
             <a
               href="#0"
@@ -223,7 +243,7 @@ const Member = () => {
             >
               FORGET PASSWORD?
             </a>
-            
+
             <button
               className={`login-button ${loginVisible ? "" : "hide"}`}
               type="submit"
@@ -255,11 +275,13 @@ const Member = () => {
 
           <div className={`signup ${signupVisible ? "" : "hide"}`}>
             <h2>SIGN UP</h2>
+            {error && <p className="error-message text-red-600">{error}</p>}
             <div className="inputbox">
               <input
                 type="text"
                 name="fullname"
                 placeholder="  FULLNAME"
+                required
                 onChange={(e) => setName(e.target.value)}
               />
               <input
@@ -279,22 +301,23 @@ const Member = () => {
                 required
               />
               <div className="inputbox">
-  <select
-    name="role"
-    onChange={(e) => setRole(e.target.value)}
-    required
-    defaultValue=""
-  >
-    <option value="" disabled>
-      Select Your Role
-    </option>
-    <option value="Client">I’m a client, hiring for a project</option>
-    <option value="Freelancer">I’m a freelancer, looking for work</option>
-  </select>
-</div>
-
-              
-              
+                <select
+                  name="role"
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Your Role
+                  </option>
+                  <option value="Client">
+                    I’m a client, hiring for a project
+                  </option>
+                  <option value="Freelancer">
+                    I’m a freelancer, looking for work
+                  </option>
+                </select>
+              </div>
             </div>
             <button
               className={`signup-button ${signupVisible ? "" : "hide"}`}
@@ -327,8 +350,9 @@ const Member = () => {
 
         <div className="backbox">
           <div
-            className={`loginMsg ${loginVisible ? "visibility" : ""} ${frontboxMoving ? "transform-left" : "transform-right"
-              }`}
+            className={`loginMsg ${loginVisible ? "visibility" : ""} ${
+              frontboxMoving ? "transform-left" : "transform-right"
+            }`}
           >
             <div className="textcontent">
               <p className="title">Already have an account?</p>
@@ -339,8 +363,9 @@ const Member = () => {
             </div>
           </div>
           <div
-            className={`signupMsg ${signupVisible ? "visibility" : ""} ${frontboxMoving ? "transform-right" : "transform-left"
-              }`}
+            className={`signupMsg ${signupVisible ? "visibility" : ""} ${
+              frontboxMoving ? "transform-right" : "transform-left"
+            }`}
           >
             <div className="textcontent">
               <p className="title">Don't have an account?</p>
@@ -353,7 +378,6 @@ const Member = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 

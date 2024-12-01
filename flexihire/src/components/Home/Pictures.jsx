@@ -7,8 +7,8 @@ export default function Pictures() {
 
   return (
     <div className="product-categories">
-      <h2 className="categories-title text-black">For all tastes and all desires</h2>
-      <div className="categories-container">
+      <h2 className="categories-title text-slate-100 text-center	">For all tastes and all desires</h2>
+      <div className="categories-container p-5">
           {[...Array(imageCount)].map((_, index) => (
             <div
               key={index}

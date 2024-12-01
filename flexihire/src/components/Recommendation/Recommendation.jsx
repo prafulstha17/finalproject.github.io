@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase'; // Adjust path as needed
-import { post } from 'jquery';
 
 const Recommendation = ({ userId }) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -118,21 +117,7 @@ const Recommendation = ({ userId }) => {
   }
 
   return (
-    // <div>
-    //   <h2>Recommended Jobs for You</h2>
-    //   {loading ? (
-    //     <p>Loading recommendations...</p>
-    //   ) : recommendations.length > 0 ? (
-    //     <ul>
-    //       {recommendations.map((postId, index) => (
-            
-    //         <li key={index}>Job ID: {postId}</li>
-    //       ))}
-    //     </ul>
-    //   ) : (
-    //     <p>No recommendations available at the moment.</p>
-    //   )}
-    // </div>
+   
     <div>
     <h2>Recommended Jobs for You</h2>
     {loading ? (

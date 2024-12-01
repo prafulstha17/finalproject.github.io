@@ -44,7 +44,7 @@ function Home(props) {
   };
   return (
     
-    <div className="home bg-zinc-900">
+    <div className="home bg-slate-950	">
          <div class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5" data-aos="fade-right" data-aos-duration="800">
           <div class="pr-2 md:mb-14 py-14 md:py-0">
             
@@ -103,12 +103,12 @@ function Home(props) {
       
 
       
-      <div className="separate-by-line  bg-zinc-900 ">
+      <div className="separate-by-line  bg-slate-950	 ">
         
-        <div className="need-something-done  ">
-          <h2 className="text-black ">Need something done? </h2>
+        <div className=" bg-slate-950  ">
+          <h2 className="text-black  ">Need something done? </h2>
 
-          <div class="grid gap-14  md:grid-cols-3 md:gap-5">
+          <div class="grid gap-14 bg-slate-950	 md:grid-cols-3 md:gap-5">
     <div class="rounded-xl bg-white p-6 text-center shadow-xl">
       <div
         class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
@@ -173,9 +173,9 @@ function Home(props) {
           </div> */}
         </div>
 
-        <div className="whats-great">
-          <h2 className="text-black"> What's great about it? </h2>
-          <div class="grid gap-14 md:grid-cols-3 md:gap-5">
+        <div className=" bg-slate-950 m-4 mb-5	">
+          <h2 className="text-slate-100"> What's great about it? </h2>
+          <div class="grid gap-14 md:grid-cols-3 md:gap-5 bg-slate-950	">
     <div class="rounded-xl bg-white p-6 text-center shadow-xl">
       <div
         class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full bg-teal-400 shadow-lg shadow-teal-500/40">
@@ -227,10 +227,10 @@ function Home(props) {
           </div> */}
         </div>
 
-        <div className="make-it-real">
-          <h1 className="text-black">Make it Real with Flexer.</h1>
+        <div className=" bg-slate-950	">
+          <h1 className="text-slate-100 text-center	">Make it Real with Flexer.</h1>
           {/* Gallery */}
-          <div className="gallery">
+          <div className="gallery text-slate-100">
             <ProductCategories />
           </div>
         </div>
@@ -242,7 +242,7 @@ function Home(props) {
                             <div className="flex flex-col lg:flex-row flex-wrap">
                                 <div className="mt-4 lg:mt-0 lg:w-3/5">
                                     <div>
-                                        <h1 className="text-3xl ml-2 lg:ml-0 lg:text-4xl font-bold text-black-900 tracking-normal lg:w-11/12">Frequently asked questions</h1>
+                                        <h1 className="text-3xl text-slate-100 text-center	 ml-2 lg:ml-0 lg:text-4xl font-bold tracking-normal lg:w-11/12">Frequently asked questions</h1>
                                     </div>
                                 </div>
                                 <div className="lg:w-2/5 flex mt-10 ml-2 lg:ml-0 lg:mt-0 lg:justify-end">
@@ -592,7 +592,7 @@ function Home(props) {
                   Got any questions? Need help?
                 </span>
               </button>
-              <h3 className="MuiTypography-root MuiTypography-subtitle1">
+              <h3 className="MuiTypography-root MuiTypography-subtitle1 text-slate-100 ">
                 We are here to help. Get in touch!
               </h3>
               <img
