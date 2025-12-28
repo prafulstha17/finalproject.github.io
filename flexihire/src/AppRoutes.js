@@ -15,7 +15,6 @@ import MailReceived from './components/ContactForm/MailReceived';
 import OthersProfile from './components/Profile/OthersProfile';
 import FAQs from './components/PageFooter/FAQs';
 import Payment from './components/Payment/Payment';
-import CV from './components/CV/CV';
 import AdminLogin from './components/JobPost/AdminLogin';
 
 const AppRoutes = ({ userName }) => {
@@ -34,7 +33,6 @@ const AppRoutes = ({ userName }) => {
       <Route path="/payment" element={<Payment />} />
       <Route path="/howItWorks" element={<HowItWorks />} />
       <Route path="/faq" element={<FAQs/>} />
-      <Route path="/CV" element={<CV/>} />
       <Route path="/users/:userId" element={<OthersProfile />} />
       <Route path="/admin" element={<AdminLogin />} />
       <Route path="*" element={<PageNotFound />} />
