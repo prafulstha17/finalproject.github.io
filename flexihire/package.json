@@ -36,7 +36,7 @@
     "react-lazyload": "^3.2.1",
     "react-router-dom": "^7.0.1",
     "react-scripts": "^5.0.1",
-    "react-typist": "^2.0.5",
+    "react-simple-typewriter": "^5.0.1",
     "recommend": "^0.0.3",
     "styled-components": "^6.1.13",
     "swiper": "^11.1.15",
